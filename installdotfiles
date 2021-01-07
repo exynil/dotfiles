@@ -14,10 +14,10 @@ readarray -t files < <(find "${folders[@]}" -type f)
 
 for file in "${files[@]}"; do
     # путь к файлу без имени папки конфига и имени файла
-    dir=$(dirname "${file#*/}")
+    path=$(dirname "${file#*/}")
 
     # проверка наличия директории
-    [[ ! -d "$HOME/$dir" ]] && mkdir -p "$HOME/$dir"
+    [[ ! -d "$HOME/$path" ]] && mkdir -p "$HOME/$path"
 
     # создание симлинка с перезаписью существующего файла
     ln -sf "$PWD/$file" "$HOME/${file#*/}"
