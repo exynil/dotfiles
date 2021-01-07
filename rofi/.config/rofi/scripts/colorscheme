@@ -1,19 +1,14 @@
 #!/bin/bash
 
-dir="$HOME/.config/rofi"
+rofi_dir="$HOME/.config/rofi"
 
 rofi_command='rofi -theme themes/colorscheme.rasi'
 
-colorschemes=($(find "$dir/themes/colorschemes/" -type f | tr '/' ' ' | awk '{print $7}'))
+# Variable passed to rofi
+options=$(ls "$rofi_dir/themes/colorschemes/")
 
-option_colorschemes=$(echo "${colorschemes[@]}" | tr ' ' '\n')
+colorscheme="$(echo -e "$options" | $rofi_command -p colorscheme -dmenu)"
 
-colorscheme="$(echo -e "$option_colorschemes" | $rofi_command -p colorscheme -dmenu)"
+[[ -z "$colorscheme" ]] && exit 1
 
-for j in "${colorschemes[@]}"; do
-    if [ $colorscheme = $j ]; then
-        echo "@import \"colorschemes/$colorscheme\"" > $dir/themes/colors.rasi
-        break
-    fi
-done
-
+echo "@import \"colorschemes/$colorscheme\"" > $rofi_dir/themes/colors.rasi
