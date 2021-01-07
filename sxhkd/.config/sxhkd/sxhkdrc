@@ -176,8 +176,8 @@ alt + g
     translate-sel
 
 # Terminal apps
-alt + {l}
-    $TERMINAL -e {lf}
+alt + {l,v}
+    $TERMINAL -e {lf,$(code /media/hdd/linux/dotfiles)}
 
 # htop
 ctrl + alt + Delete
