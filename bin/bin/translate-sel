@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Что делает этот скрипт:
+# - Переводит текст из буфера
+# - Выводит перевод в уведомление
+
+text="$(xsel -o)"
+translate="$(trans -brief :ru "$text")"
+notify-send -t $((${#text} * 150)) "$translate"
+play-sound "dialog-information.oga"

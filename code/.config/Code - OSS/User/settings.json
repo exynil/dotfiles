@@ -1,0 +1,25 @@
+{
+    "workbench.colorTheme": "Nord",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback','Material Design Icons','Typicons','FontAwesome'",
+    "files.autoSave": "onFocusChange",
+    "window.zoomLevel": 0,
+    "workbench.sideBar.location": "left",
+    "breadcrumbs.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "local-history.path": "~/",
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDelete": false,
+    "explorer.compactFolders": false,
+    "editor.rulers": [
+        60,
+        80,
+        120
+    ],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#60606050"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Что делает этот скрипт:
+# - Переключает видимость polybar
+
+if [[ $(bspc config top_padding) == 0 ]]; then
+    bspc config top_padding 23
+    polybar-msg cmd show
+    play-sound "power-plug.oga"
+else
+    bspc config top_padding 0
+    polybar-msg cmd hide
+    play-sound "power-unplug.oga"
+fi

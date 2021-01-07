@@ -1,0 +1,47 @@
+#!/bin/bash
+
+rofi_command='rofi -theme themes/wallpaper.rasi'
+
+# Options
+random='󰲍'
+random_blurred='󰈉'
+random_favorite='󰯏'
+keep_wallpaper='󰔓'
+
+# Variable passed to rofi
+options="$random\n$random_blurred\n$random_favorite\n$keep_wallpaper"
+
+# Image folder location
+img_folder="$HOME/Pictures"
+wallpaper="$img_folder/wallpaper.jpg"
+
+chosen="$(echo -e "$options" | $rofi_command -p "random wallpaper" -dmenu -selected-row 0)"
+
+if [[ "$chosen" == "$random" || "$chosen" == "$random_blurred" ]]; then
+    pgrep -f random-wallpaper > /dev/null && exit 1
+fi
+
+case $chosen in
+    $random)
+        random-wallpaper
+        hsetroot -fill /home/max/Pictures/wallpaper.jpg
+        ;;
+    $random_blurred)
+        random-wallpaper
+        convert -blur 0x80 "$img_folder/wallpaper.jpg" "$img_folder/wallpaper.jpg"
+        hsetroot -fill /home/max/Pictures/wallpaper.jpg
+        ;;
+    $random_favorite)
+        wallpapers_folder="$img_folder/wallpapers"
+
+        wallpapers=($(ls -p $wallpapers_folder))
+        wallpaper="${wallpapers[$(($RANDOM % ${#wallpapers[@]}))]}"
+
+        cp -rf "$wallpapers_folder/$wallpaper" "$img_folder/wallpaper.jpg"
+
+        hsetroot -fill /home/max/Pictures/wallpaper.jpg
+        ;;
+    $keep_wallpaper)
+        keep-wallpaper
+        ;;
+esac

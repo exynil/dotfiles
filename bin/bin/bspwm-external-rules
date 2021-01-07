@@ -1,0 +1,64 @@
+#!/bin/bash
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+
+# notify-send "wid: $wid"
+# notify-send "class: $class"
+# notify-send "instance: $instance"
+# notify-send "consequences: $consequences"
+
+main() {
+    case "$class" in
+        firefox)
+            if [ "$instance" = "Toolkit" ]; then
+                echo "state=floating sticky=on"
+            fi
+            ;;
+        TelegramDesktop)
+            echo "desktop=4"
+            ;;
+        discord)
+            echo "desktop=5"
+            ;;
+        Gnome-calculator)
+            echo "state=floating"
+            ;;
+        mpv)
+            echo "state=floating"
+            ;;
+        Matplotlib)
+            echo "state=floating"
+            ;;
+        Sxiv)
+            echo "state=fullscreen"
+            ;;
+        xpad)
+            echo "state=floating"
+            ;;
+        Zathura)
+            echo "state=tiled"
+            ;;
+        Spotify)
+            echo "desktop=3 follow=on"
+            ;;
+        URxvt)
+            [[ $(xkb-switch -p) == 'ru' ]] && xkb-switch -n
+            ;;
+        "")
+            sleep 0.5
+
+            wm_class=($(xprop -id $wid | grep "WM_CLASS" | grep -Po '"\K[^,"]+'))
+
+            class=${wm_class[-1]}
+
+            [[ ${#wm_class[@]} == "2" ]] && instance=${wm_class[0]}
+
+            [[ -n $class ]] && main
+            ;;
+    esac
+}
+
+main

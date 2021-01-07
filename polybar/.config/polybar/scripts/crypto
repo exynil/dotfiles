@@ -1,0 +1,18 @@
+#!/bin/bash
+
+icons=("󰠓" "󰩡" "󰡪")
+colors=("#5e81ac" "#ebcb8b" "#a3be8c")
+currencies=("bitcoin" "litecoin" "ethereum")
+
+reg_exp="(?<=<span class=\"cmc-details-panel-price__price\">)([^</span>]*)"
+
+url="https://coinmarketcap.com/currencies"
+
+output=""
+
+for i in $(seq 0 $((${#currencies[@]} - 1))); do
+    currency="$(curl -s "$url/${currencies[$i]}/" | grep -oP "$reg_exp")"
+    output+="%{F${colors[$i]}}${icons[$i]} $currency%{F-} "
+done
+
+echo $output

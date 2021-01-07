@@ -1,0 +1,17 @@
+#!/bin/bash
+
+killall -q polybar
+
+while pgrep -u $UID -x polybar >/dev/null; do
+    sleep 1
+done
+
+laptop="eDP1"
+external="HDMI-1-0"
+
+if [ "$(bspc query -M | wc -l)" -eq 2 ]; then
+    MONITOR=$laptop polybar -r first &
+    MONITOR=$external polybar -r second &
+else
+    polybar -r first &
+fi

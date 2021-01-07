@@ -1,0 +1,15 @@
+#!/bin/bash
+
+rofi_command='rofi -theme themes/conference.rasi'
+
+data='/media/hdd/linux/app-data/zoom/data.json'
+
+# Variable passed to rofi
+options="$(jq -r '.[].name' "$data")"
+
+chosen="$(echo -e "$options" | $rofi_command -p "conference" -dmenu)"
+
+confno=$(jq -r ".[] | select(.name==\"$chosen\") .confno" "$data")
+pwd=$(jq -r ".[] | select(.name==\"$chosen\") .pwd" "$data")
+
+zoom "zoommtg://us04web.zoom.us/join?action=join&confno=$confno&pwd=$pwd"

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Define a help message
+_help_message() {
+    echo "ERROR. Must pass a single argument."
+}
+
+# Show the help message if arguments are not equal to one.
+[ "$#" -eq 1 ] || { _help_message; exit 1; }
+
+sound="$HOME/Sounds/$1"
+
+# Function to check if optional dependencies are in the PATH
+_depcheck() {
+    command -v "$1" 2> /dev/null
+}
+
+_play() {
+    if [ -n "$sound" ] && [ "$(_depcheck ffplay)" ]; then
+        ffplay -nodisp -autoexit "$sound" 2> /dev/null &
+    else
+        exit 1
+    fi
+}
+
+_play

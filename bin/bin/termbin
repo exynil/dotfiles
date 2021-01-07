@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Что делает этот скрипт:
+# - Загружает текст из буфера primary на termbin.com
+# - Полученный url копирует в primary и clipboard
+
+url=$(nc termbin.com 9999 < <(xsel -p))
+echo $url | xsel -b -i
+echo $url | xsel -p -i
+notify-send "$url copied to clipboard"
+play-sound "dialog-information.oga"
