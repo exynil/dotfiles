@@ -28,35 +28,28 @@ yellow = #EBCB8B
 blue = #81A1C1
 magenta = #B48EAD
 cyan = #88C0D0
+orange = #d08770
 
 ;===================================================================== bar-base
 
 [bar/base]
 width = 100%
-height = 23
-
+height = 25
 monitor = ${env:MONITOR:}
-
 radius = 0
 fixed-center = true
-
 background = ${colors.background}
 foreground = ${colors.foreground}
-
 enable-ipc = true
-
 padding-left = 0
 padding-right = 0
-
 module-margin-left = 0
 module-margin-right = 1
-
 font-0 = JetBrains Mono:size=10;2
 font-1 = Material Design Icons:size=12;2
 font-2 = Typicons:size=16;2
-
+font-3 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;2
 wm-restack = bspwm
-
 cursor-click = pointer
 
 ;==================================================================== bar-first
@@ -66,8 +59,7 @@ inherit = bar/base
 
 modules-left = bspwm xwindow
 modules-center = time weather
-modules-right = xkeyboard trash xbacklight pulseaudio battery
-
+modules-right = xkeyboard trash backlight pulseaudio battery
 tray-position = right
 tray-padding = 2
 
@@ -75,7 +67,6 @@ tray-padding = 2
 
 [bar/second]
 inherit = bar/base
-
 modules-left = bspwm xwindow
 modules-center = time
 modules-right = xkeyboard memory cpu tempcores
@@ -84,26 +75,19 @@ modules-right = xkeyboard memory cpu tempcores
 
 [module/bspwm]
 type = internal/bspwm
-
-
 format = <label-state> <label-mode>
-
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-foreground = ${colors.green}
 label-focused-padding = 1
-
 label-occupied = %name%
 label-occupied-padding = 1
-
 label-urgent = %name%!
 label-urgent-background = ${colors.red}
 label-urgent-padding = 1
-
 label-empty = %name%
 label-empty-foreground = ${colors.background-alt}
 label-empty-padding = 1
-
 ws-icon-1 = 1;󰎤
 ws-icon-2 = 2;󰎧
 ws-icon-3 = 3;󰎪
@@ -114,7 +98,6 @@ ws-icon-7 = 7;󰎶
 ws-icon-8 = 8;󰎹
 ws-icon-9 = 9;󰎼
 ws-icon-0 = 0;󰎡
-
 label-monocle = " 󰈈 "
 label-monocle-foreground = ${colors.blue}
 label-tiled = " 󰙀 "
@@ -148,13 +131,10 @@ margin-bottom = 0
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = scroll lock
-
 format-prefix = 󰌌
 format-prefix-foreground = ${colors.blue}
-
 label-layout = %layout%
 label-layout-foreground = ${colors.blue}
-
 label-indicator-on-numlock = 󰰒
 label-indicator-on-numlock-foreground = ${colors.green}
 label-indicator-on-capslock = 󰯫 
@@ -227,7 +207,7 @@ label-foreground = ${colors.cyan}
 
 [module/weather]
 type = custom/script
-exec = ~/.config/polybar/scripts/openweathermap
+exec = curl -s wttr.in/Botakara?format="%c+%t+%f"
 interval = 600
 label = %output%
 label-foreground = ${colors.green}
@@ -249,49 +229,39 @@ interval = 5
 label = %output%
 label-foreground = ${colors.magenta}
 
-;=================================================================== xbacklight
+;==================================================================== backlight
 
-[module/xbacklight]
+[module/backlight]
 type = internal/xbacklight
-format = <bar>
-bar-width = 10
-bar-indicator = 
-bar-indicator-foreground = ${colors.foreground}
-bar-indicator-font = 2
-bar-fill = 
-bar-fill-font = 2
-bar-fill-foreground = ${colors.blue}
-bar-empty = 
-bar-empty-font = 2
-bar-empty-foreground = ${colors.background-alt}
+format = <ramp> <label>
+label = %percentage%%
+label-foreground = ${colors.blue}
+ramp-0 = 󰋙
+ramp-1 = 󰫃
+ramp-2 = 󰫄
+ramp-3 = 󰫅
+ramp-4 = 󰫆
+ramp-5 = 󰫇
+ramp-6 = 󰫈
+ramp-foreground = ${colors.blue}
 
 ;=================================================================== pulseaudio
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
-use-ui-max = false
-interval = 2
-
-format-volume = <bar-volume><label-volume>
-
-label-muted = MUTED
-label-muted-foreground = ${colors.red}
-
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+interval = 5
+format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
-label-volume-foreground = ${colors.green}
-
-bar-volume-width = 10
-bar-volume-indicator = 
-bar-volume-indicator-foreground = ${colors.foreground}
-bar-volume-indicator-font = 2
-bar-volume-fill = 
-bar-volume-fill-font = 2
-bar-volume-fill-foreground = ${colors.green}
-bar-volume-empty = 
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.background-alt}
+label-volume-foreground = ${colors.yellow}
+label-muted = 󰖁 muted
+label-muted-foreground = ${colors.red}
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
+ramp-volume-foreground = ${colors.yellow}
+click-right = pavucontrol
 
 ;======================================================================= memory
 
@@ -333,12 +303,9 @@ ramp-signal-foreground = ${colors.yellow}
 
 [module/network-speed-up]
 type = internal/network
-
 interface = wlp0s20f3
-
 label-connected = %upspeed%
 label-connected-foreground = ${colors.cyan}
-
 format-connected-prefix = 󰶼
 format-connected-prefix-foreground = ${colors.cyan}
 
@@ -346,12 +313,9 @@ format-connected-prefix-foreground = ${colors.cyan}
 
 [module/network-speed-down]
 type = internal/network
-
 interface = wlp0s20f3
-
 label-connected = %downspeed%
 label-connected-foreground = ${colors.magenta}
-
 format-connected-prefix = 󰶹
 format-connected-prefix-foreground = ${colors.magenta}
 
