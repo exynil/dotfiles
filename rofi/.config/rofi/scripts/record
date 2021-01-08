@@ -19,7 +19,7 @@ video_folder="$HOME/Videos/screenrecords"
 start_recording=""
 
 prompt="screen recorder"
-PID=$(pgrep record.sh | head -n 1)
+PID=$(pgrep record | head -n 1)
 
 if [ -n "$PID" ]; then
     elapsed_time=$(ps -p $PID -o etime | sed -n '2p' | tr -d ' ')
@@ -54,7 +54,7 @@ case $chosen in
         start_recording+="ffmpeg -video_size $res -framerate 30 -f x11grab -i :0.0+$x,$y "
         ;;
     $stop)
-        pkill -P $(pgrep record.sh | head -n 1)
+        pkill -P $(pgrep record | head -n 1)
         exit 0
         ;;
     *)
