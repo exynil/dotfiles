@@ -7,9 +7,7 @@ date=$(date +'%Y-%m-%d')
 if [[ -f $journal ]]; then
     last_date=$(tail -n 1 $journal | awk '{print $1}')
 
-    if [[ $last_date == $date ]]; then
-        exit 0
-    fi
+    [[ $last_date == $date ]] && exit 1
 fi
 
 info='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
@@ -19,6 +17,6 @@ energy_full=$($info | grep 'energy-full:' | awk '{print $2}')
 energy_full_design=$($info | grep 'energy-full-design:' | awk '{print $2}')
 capacity=$($info | grep 'capacity:' | awk '{print $2}')
 
-echo "$date $percentage $energy_full $energy_full_design $capacity" >>$journal
+echo "$date $percentage $energy_full $energy_full_design $capacity" >> $journal
 notify-send "Данные о батарее зафиксированы."
 play-sound "dialog-information.oga"
