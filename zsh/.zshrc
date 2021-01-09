@@ -105,7 +105,6 @@ alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias update='yay -Syu'
 alias ls='ls --color=auto'
 alias lf='lf -last-dir-path $HOME/.lfdir; LASTDIR=`cat $HOME/.lfdir`; cd "$LASTDIR"' 
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias ftp='systemctl restart vsftpd'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
