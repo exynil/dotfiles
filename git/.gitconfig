@@ -1,6 +1,5 @@
 [user]
 	name = Maxim Kim
 	email = exynil@gmail.com
-	signingkey = 39E93BB05C5E7695
 [gpg]
 	program = gpg2
