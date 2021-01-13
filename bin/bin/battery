@@ -12,11 +12,10 @@ fi
 
 info='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
-percentage=$($info | grep 'percentage:' | awk '{print $2}')
 energy_full=$($info | grep 'energy-full:' | awk '{print $2}')
 energy_full_design=$($info | grep 'energy-full-design:' | awk '{print $2}')
 capacity=$($info | grep 'capacity:' | awk '{print $2}')
 
-echo "$date $percentage $energy_full $energy_full_design $capacity" >> $journal
+echo "$date $energy_full $energy_full_design $capacity" >> $journal
 notify-send "Данные о батарее зафиксированы."
 play-sound "dialog-information.oga"
