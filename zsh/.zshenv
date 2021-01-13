@@ -5,7 +5,7 @@ export XDG_CURRENT_DESKTOP="gnome"
 export TERMINAL=$(which alacritty)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
