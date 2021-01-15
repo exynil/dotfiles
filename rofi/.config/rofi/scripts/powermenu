@@ -22,7 +22,6 @@ case $chosen in
         systemctl reboot
         ;;
     $lock)
-        play-sound "lock_01.mp3"
         xset dpms force standby
         slock
         ;;

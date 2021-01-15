@@ -8,4 +8,4 @@ url=$(nc termbin.com 9999 < <(xsel -p))
 echo $url | xsel -b -i
 echo $url | xsel -p -i
 notify-send "$url copied to clipboard"
-play-sound "dialog-information.oga"
+play-sound "me-too-603.ogg"

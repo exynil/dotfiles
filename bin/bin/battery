@@ -18,4 +18,3 @@ capacity=$($info | grep 'capacity:' | awk '{print $2}')
 
 echo "$date $energy_full $energy_full_design $capacity" >> $journal
 notify-send "Данные о батарее зафиксированы."
-play-sound "dialog-information.oga"
