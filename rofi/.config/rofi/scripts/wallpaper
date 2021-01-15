@@ -2,46 +2,70 @@
 
 rofi_command='rofi -theme themes/wallpaper.rasi'
 
-# Options
-random='󰲍'
-random_blurred='󰈉'
-random_favorite='󰯏'
-keep_wallpaper='󰔓'
-
 # Variable passed to rofi
-options="$random\n$random_blurred\n$random_favorite\n$keep_wallpaper"
+options=("random"
+    "random from latest"
+    "random from most viewed"
+    "random from toplist"
+    "random from favorites"
+    "random and blurred"
+    "random from saved"
+    "keep wallpaper")
+
+chosen="$(printf '%s\n' "${options[@]}" | $rofi_command -p "wallpaper" -dmenu -selected-row 3)"
+
+pgrep -f random-wallpaper >/dev/null && exit 1
 
 # Image folder location
-img_folder="$HOME/Pictures"
-wallpaper="$img_folder/wallpaper.jpg"
+img_dir="$HOME/Pictures"
 
-chosen="$(echo -e "$options" | $rofi_command -p "random wallpaper" -dmenu -selected-row 0)"
+# Wallpapers folder location
+wallpapers_dir="$img_dir/wallpapers"
 
-if [[ "$chosen" == "$random" || "$chosen" == "$random_blurred" ]]; then
-    pgrep -f random-wallpaper > /dev/null && exit 1
-fi
+# Wallpaper
+wallpaper="$img_dir/wallpaper.jpg"
 
 case $chosen in
-    $random)
-        random-wallpaper
-        hsetroot -fill /home/max/Pictures/wallpaper.jpg
-        ;;
-    $random_blurred)
-        random-wallpaper
-        convert -blur 0x80 "$img_folder/wallpaper.jpg" "$img_folder/wallpaper.jpg"
-        hsetroot -fill /home/max/Pictures/wallpaper.jpg
-        ;;
-    $random_favorite)
-        wallpapers_folder="$img_folder/wallpapers"
+"random")
+    random-wallpaper -r
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"random from latest")
+    random-wallpaper -l
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"random from most viewed")
+    random-wallpaper -v
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"random from toplist")
+    random-wallpaper -t
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"random from favorites")
+    random-wallpaper -f
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"random and blurred")
+    random-wallpaper -r
+    convert -blur 0x80 "$wallpaper" "$wallpaper"
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"random from saved")
+    wallpapers=($(find $wallpapers_dir -type f))
 
-        wallpapers=($(ls -p $wallpapers_folder))
-        wallpaper="${wallpapers[$(($RANDOM % ${#wallpapers[@]}))]}"
+    cp -rf "${wallpapers[$(($RANDOM % ${#wallpapers[@]}))]}" "$wallpaper"
 
-        cp -rf "$wallpapers_folder/$wallpaper" "$img_folder/wallpaper.jpg"
+    hsetroot -fill $wallpaper >/dev/null
+    ;;
+"keep wallpaper")
+    # Name of image
+    img="wallpaper_$(date +%y%m%d_%H%M%S).jpg"
 
-        hsetroot -fill /home/max/Pictures/wallpaper.jpg
-        ;;
-    $keep_wallpaper)
-        keep-wallpaper
-        ;;
+    # Copy the wallpaper image to archive folder
+    [[ ! -d "$wallpapers_dir" ]] && mkdir -p "$wallpapers_dir"
+
+    cp $wallpaper $wallpapers_dir/$img
+    notify-send --hint=string:x-dunst-stack-tag:wallpaper "$img saved"
+    ;;
 esac

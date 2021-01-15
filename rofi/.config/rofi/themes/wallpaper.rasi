@@ -6,7 +6,6 @@
     text-color:             @foreground;
 }
 window {
-    width:                  36%;
     border-color:           @background-light;
     border:                 1;
 }
@@ -15,35 +14,43 @@ mainbox {
 }
 inputbar {
     spacing:                0px;
-    children:               [ textbox-prompt-colon, prompt ];
+    children:               [ prompt,entry,num-filtered-rows,textbox-num-sep,num-rows ];
 }
 prompt {
-    padding:                10px 30px 10px 8px;
-    background-color:       @background-light;
-    text-color:             @selected;
-    border-radius:          0px 12px 12px 0px;
-}
-textbox-prompt-colon {
-    expand: false;
-    padding:                10px 8px 10px 18px;
+    padding:                8px 8px 4px 8px;
+
     background-color:       @selected;
     text-color:             @background;
-    str:                    "rofi";
-    border-radius:          12px 0px 0px 12px;
+}
+entry {
+    padding:                8px 8px 4px 8px;
+    background-color:       @background-light;
+}
+num-filtered-rows {
+    background-color:       @background-light;
+    padding:                8px 0px 4px 8px;
+    expand:                 false;
+}
+num-rows {
+    background-color:       @background-light;
+    padding:                8px 8px 4px 0px;
+    expand:                 false;
+}
+textbox-num-sep {
+    background-color:       @background-light;
+    padding:                8px 0px 4px 0px;
+    expand:                 false;
+    str:                    "/";
+}
+message {
+    padding:                8px 8px 4px 8px;
+    border-color:           @background-light;
 }
 listview {
-    layout:                 horizontal;
-    padding:                15px 0px 0px 0px;
-    spacing:                15px;
-}
-element-text {
-    font:                   "Material Design Icons 44";
+    spacing:                2px;
 }
 element {
-    padding:                40px 40px 80px 40px;
-    border-color:           @background-light;
-    background-color:       @background-light;
-    border-radius:          25px;
+    padding:                8px 8px 4px 8px;
 }
 element selected {
     background-color:       @selected;
