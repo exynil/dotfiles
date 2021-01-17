@@ -86,7 +86,7 @@ case $chosen in
         audio+="-f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo "
         audio+="-filter_complex amix=inputs=2 "
         ;;
-    *)
+    "")
         exit 0
         ;;
 
