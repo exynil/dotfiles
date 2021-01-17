@@ -12,9 +12,7 @@ options=("random"
     "random from saved"
     "keep wallpaper")
 
-chosen="$(printf '%s\n' "${options[@]}" | $rofi_command -p "wallpaper" -dmenu -selected-row 3)"
-
-pgrep -f random-wallpaper >/dev/null && exit 1
+chosen="$(printf '%s\n' "${options[@]}" | $rofi_command -p "wallpaper" -dmenu -selected-row 2)"
 
 # Image folder location
 img_dir="$HOME/Pictures"
@@ -27,35 +25,44 @@ wallpaper="$img_dir/wallpaper.jpg"
 
 case $chosen in
 "random")
-    random-wallpaper -r
+    img=$(swd -l "$img_dir")
+    convert $img $wallpaper
+    rm $img
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "random from latest")
-    random-wallpaper -l
+    img=$(swd -l "$img_dir" -s latest)
+    convert $img $wallpaper
+    rm $img
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "random from most viewed")
-    random-wallpaper -v
+    img=$(swd -l "$img_dir" -s views)
+    convert $img $wallpaper
+    rm $img
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "random from toplist")
-    random-wallpaper -t
+    img=$(swd -l "$img_dir" -s toplist)
+    convert $img $wallpaper
+    rm $img
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "random from favorites")
-    random-wallpaper -f
+    img=$(swd -l "$img_dir" -s favorites)
+    convert $img $wallpaper
+    rm $img
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "random and blurred")
-    random-wallpaper -r
-    convert -blur 0x80 "$wallpaper" "$wallpaper"
+    img=$(swd -l "$img_dir")
+    convert -blur 0x80 "$img" "$wallpaper"
+    rm $img
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "random from saved")
     wallpapers=($(find $wallpapers_dir -type f))
-
     cp -rf "${wallpapers[$(($RANDOM % ${#wallpapers[@]}))]}" "$wallpaper"
-
     hsetroot -fill $wallpaper >/dev/null
     ;;
 "keep wallpaper")
