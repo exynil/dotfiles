@@ -8,7 +8,7 @@ ZSH=/usr/share/oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="rkj"
+ZSH_THEME="candy"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -104,8 +104,8 @@ alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias update='yay -Syu'
 alias ls='ls --color=auto'
-alias lf='lf -last-dir-path $HOME/.lfdir; LASTDIR=`cat $HOME/.lfdir`; cd "$LASTDIR"' 
 alias ftp='systemctl restart vsftpd'
+alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

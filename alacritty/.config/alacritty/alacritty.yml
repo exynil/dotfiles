@@ -109,7 +109,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Terminus (TTF)
+    family: Ubuntu Mono
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -120,10 +120,10 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Terminus (TTF)
+    family: Ubuntu Mono
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: bold
 
   # Italic font face
   italic:
@@ -131,7 +131,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Terminus (TTF)
+    family: Ubuntu Mono
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -142,10 +142,10 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Terminus (TTF)
+    family: Ubuntu Mono
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Bold Italic
 
   # Point size
   size: 12.0
