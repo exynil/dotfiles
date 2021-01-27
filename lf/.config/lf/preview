@@ -1,9 +1,0 @@
-#!/bin/bash
-
-case "$1" in
-    *.md) glow -s dark "$1";;
-    *.png|*.jpg|*jpeg|*.mkv|*.mp4) mediainfo "$1";;
-    *.zip) zipinfo "$1";;
-    *.tar) tar -tvf "$1";;
-    *) highlight "$1" -O ansi --force;;
-esac
