@@ -67,7 +67,7 @@ case $chosen in
     ;;
 "keep wallpaper")
     # Name of image
-    img="wallpaper_$(date +%y%m%d_%H%M%S).jpg"
+    img="wallpaper-$(date +%y%m%d-%H%M%S).jpg"
 
     # Copy the wallpaper image to archive folder
     [[ ! -d "$wallpapers_dir" ]] && mkdir -p "$wallpapers_dir"
