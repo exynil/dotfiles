@@ -30,7 +30,7 @@ magenta = #B48EAD
 cyan = #88C0D0
 orange = #d08770
 
-;===================================================================== bar-base
+;================================================== bar-base
 
 [bar/base]
 width = 100%
@@ -52,7 +52,7 @@ font-3 = NotoColorEmoji:fontformat=truetype:scale=10;2
 wm-restack = bspwm
 cursor-click = pointer
 
-;==================================================================== bar-first
+;================================================= bar-first
 
 [bar/first]
 inherit = bar/base
@@ -63,7 +63,7 @@ modules-right = xkeyboard trash backlight pulseaudio battery
 tray-position = right
 tray-padding = 2
 
-;=================================================================== bar-second
+;================================================ bar-second
 
 [bar/second]
 inherit = bar/base
@@ -71,7 +71,7 @@ modules-left = bspwm xwindow
 modules-center = time
 modules-right = xkeyboard memory cpu tempcores
 
-;======================================================================== bspwm
+;===================================================== bspwm
 
 [module/bspwm]
 type = internal/bspwm
@@ -115,18 +115,18 @@ label-sticky-foreground = ${colors.blue}
 label-private =  " 󰿦 "
 label-private-foreground = ${colors.blue}
 
-;===================================================================== settings
+;================================================== settings
 
 [settings]
 screenchange-reload = true
 
-;=========================================================================== wm
+;======================================================== wm
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
-;==================================================================== xkeyboard
+;================================================= xkeyboard
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -140,7 +140,7 @@ label-indicator-on-numlock-foreground = ${colors.green}
 label-indicator-on-capslock = 󰯫 
 label-indicator-on-capslock-foreground = ${colors.red} 
 
-;======================================================================== trash
+;===================================================== trash
 
 [module/trash]
 type = custom/script
@@ -151,7 +151,7 @@ format-prefix-foreground =${colors.magenta}
 label = %output%
 label-foreground = ${colors.magenta}
 
-;======================================================================= df-sdb
+;==================================================== df-sdb
 
 [module/df-sdb]
 type = custom/script
@@ -162,7 +162,7 @@ format-prefix-foreground =${colors.cyan}
 label = %output%
 label-foreground = ${colors.cyan}
 
-;======================================================================= df-sda
+;==================================================== df-sda
 
 [module/df-sda]
 type = custom/script
@@ -173,7 +173,7 @@ format-prefix-foreground =${colors.cyan}
 label = %output%
 label-foreground = ${colors.cyan}
 
-;==================================================================== tempcores
+;================================================= tempcores
 
 [module/tempcores]
 type = custom/script
@@ -181,7 +181,7 @@ interval = 10
 exec = ~/.config/polybar/scripts/tempcores
 label = %output%
 
-;================================================================= arch-updates
+;============================================== arch-updates
 
 [module/arch-updates]
 type = custom/script
@@ -192,7 +192,7 @@ format-prefix-foreground =${colors.green}
 label = %output%
 label-foreground = ${colors.green}
 
-;================================================================== aur-updates
+;=============================================== aur-updates
 
 [module/aur-updates]
 type = custom/script
@@ -203,7 +203,7 @@ format-prefix-foreground =${colors.cyan}
 label = %output%
 label-foreground = ${colors.cyan}
 
-;====================================================================== weather
+;=================================================== weather
 
 [module/weather]
 type = custom/script
@@ -212,7 +212,7 @@ interval = 600
 label = %output%
 label-foreground = ${colors.green}
 
-;======================================================================== crypto
+;=====================================================crypto
 
 [module/crypto]
 type = custom/script
@@ -220,7 +220,7 @@ exec = ~/.config/polybar/scripts/crypto
 interval = 5
 label = %output%
 
-;====================================================================== spotify
+;=================================================== spotify
 
 [module/spotify]
 type = custom/script
@@ -229,7 +229,7 @@ interval = 5
 label = %output%
 label-foreground = ${colors.magenta}
 
-;==================================================================== backlight
+;================================================= backlight
 
 [module/backlight]
 type = internal/xbacklight
@@ -245,7 +245,7 @@ ramp-5 = 󰫇
 ramp-6 = 󰫈
 ramp-foreground = ${colors.blue}
 
-;=================================================================== pulseaudio
+;================================================ pulseaudio
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -263,7 +263,7 @@ ramp-volume-2 = 󰕾
 ramp-volume-foreground = ${colors.yellow}
 click-right = pavucontrol
 
-;======================================================================= memory
+;==================================================== memory
 
 [module/memory]
 type = internal/memory
@@ -273,7 +273,7 @@ format-prefix-foreground = ${colors.blue}
 label = %percentage_used:2%%
 label-foreground = ${colors.blue}
 
-;========================================================================== cpu
+;======================================================= cpu
 
 [module/cpu]
 type = internal/cpu
@@ -283,7 +283,7 @@ format-prefix-foreground = ${colors.magenta}
 label = %percentage:2%%
 label-foreground = ${colors.magenta}
 
-;========================================================================= wlan
+;====================================================== wlan
 
 [module/wlan]
 type = internal/network
@@ -299,7 +299,7 @@ ramp-signal-3 = 󰤥
 ramp-signal-4 = 󰤨
 ramp-signal-foreground = ${colors.yellow}
 
-;============================================================= network-speed-up
+;========================================== network-speed-up
 
 [module/network-speed-up]
 type = internal/network
@@ -309,7 +309,7 @@ label-connected-foreground = ${colors.cyan}
 format-connected-prefix = 󰶼
 format-connected-prefix-foreground = ${colors.cyan}
 
-;=========================================================== network-speed-down
+;======================================== network-speed-down
 
 [module/network-speed-down]
 type = internal/network
@@ -319,7 +319,7 @@ label-connected-foreground = ${colors.magenta}
 format-connected-prefix = 󰶹
 format-connected-prefix-foreground = ${colors.magenta}
 
-;====================================================================== battery
+;=================================================== battery
 
 [module/battery]
 type = internal/battery
@@ -354,7 +354,7 @@ label-full-foreground = ${colors.green}
 label-charging-foreground = ${colors.green}
 label-discharging-foreground = ${colors.green}
 
-;========================================================================= time
+;====================================================== time
 
 [module/time]
 type = custom/script
@@ -365,14 +365,14 @@ format-prefix-foreground = ${colors.yellow}
 label = %output%
 label-foreground = ${colors.yellow}
 
-;====================================================================== xwindow
+;=================================================== xwindow
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:40:...%
 label-foreground = ${colors.yellow}
 
-;========================================================================== mpd
+;======================================================= mpd
 
 [module/mpd]
 type = internal/mpd
