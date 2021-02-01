@@ -104,8 +104,8 @@ alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias update='yay -Syu'
 alias ls='ls --color=auto'
-alias f='systemctl restart vsftpd'
-alias s='systemctl restart sshd'
+alias srf='systemctl restart vsftpd'
+alias srs='systemctl restart sshd'
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
