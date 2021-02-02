@@ -6,6 +6,7 @@ export TERMINAL=$(which alacritty)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
 export _JAVA_AWT_WM_NONREPARENTING=1
+export TERM=xterm-256color
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
