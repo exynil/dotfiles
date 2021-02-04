@@ -59,7 +59,7 @@ inherit = bar/base
 
 modules-left = bspwm xwindow
 modules-center = time weather
-modules-right = xkeyboard trash backlight pulseaudio battery
+modules-right = mpd xkeyboard trash backlight pulseaudio battery
 tray-position = right
 tray-padding = 2
 
@@ -377,11 +377,16 @@ label-foreground = ${colors.yellow}
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-icon-prev = 󰙣
-icon-stop = 󰙦
-icon-play = 󰐌
-icon-pause = 󰏥
-icon-next = 󰙡
+icon-prev = 󰒮
+icon-prev-foreground = ${colors.green}
+icon-stop = 󰓛
+icon-stop-foreground = ${colors.green}
+icon-play = 󰐊
+icon-play-foreground = ${colors.green}
+icon-pause = 󰏤
+icon-pause-foreground = ${colors.green}
+icon-next = 󰒭
+icon-next-foreground = ${colors.green}
 label-song-maxlen = 25
 label-song-ellipsis = true
-
+label-song-foreground = ${colors.green}
