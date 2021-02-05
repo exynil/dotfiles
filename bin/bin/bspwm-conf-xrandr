@@ -3,6 +3,7 @@
 # Что делает этот скрипт:
 # - Настраивает расположение внешнего монитора, если он подключен
 
-if [ -n "$(xrandr --query | grep 'HDMI-1-0 connected')" ]; then
+if xrandr --query | grep -q 'HDMI-1-0 connected'; then
     xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
 fi
+

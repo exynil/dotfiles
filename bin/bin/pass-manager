@@ -19,14 +19,15 @@ _decrypt() {
         exit 1
     fi
 
-    folders=($(ls "$password_store"))
+    # folders=($(ls "$password_store"))
+    mapfile -t folders < <(ls "$password_store")
 
     for folder in "${folders[@]}"; do
         if [ ! -d "$password_store/.decrypted/$folder" ]; then
             mkdir -p "$password_store/.decrypted/$folder"
         fi
         
-        passwords=($(find "$password_store/$folder" -name "*.gpg" | sed 's|.*/\([^/]*\)\.[^.]*$|\1|'))
+        mapfile -t passwords < <(find "$password_store/$folder" -name "*.gpg" | sed 's|.*/\([^/]*\)\.[^.]*$|\1|')
 
         for password in "${passwords[@]}"; do
             pass "$folder/$password" > "$password_store/.decrypted/$folder/$password"
@@ -50,14 +51,14 @@ _encrypt() {
         exit 1
     fi
 
-    folders=($(ls "$decrypted_folder"))
+    mapfile -t folders < <(ls "$decrypted_folder")
 
     for folder in "${folders[@]}"; do
         if [ ! -d "$encrypted_folder/$folder" ]; then
             mkdir -p "$encrypted_folder/$folder"
         fi
 
-        passwords=($(ls "$decrypted_folder/$folder"))
+        mapfile -t passwords < <(ls "$decrypted_folder/$folder")
 
         for password in "${passwords[@]}"; do
             gpg -er "Maxim Kim" -o "$encrypted_folder/$folder/$password.gpg" "$decrypted_folder/$folder/$password" 

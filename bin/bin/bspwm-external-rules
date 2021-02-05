@@ -50,7 +50,7 @@ main() {
         "")
             sleep 0.5
 
-            wm_class=($(xprop -id $wid | grep "WM_CLASS" | grep -Po '"\K[^,"]+'))
+            mapfile -t wm_class < <(xprop -id "$wid" | grep "WM_CLASS" | grep -Po '"\K[^,"]+')
 
             class=${wm_class[-1]}
 

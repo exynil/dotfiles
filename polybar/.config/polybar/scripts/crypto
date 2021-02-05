@@ -4,7 +4,7 @@ icons=("󰠓" "󰩡" "󰡪")
 colors=("#5e81ac" "#ebcb8b" "#a3be8c")
 currencies=("bitcoin" "litecoin" "ethereum")
 
-reg_exp="(?<=<span class=\"cmc-details-panel-price__price\">)([^</span>]*)"
+reg_exp="(?<=<div class=\"priceValue___11gHJ\">)([^</div>]*)"
 
 url="https://coinmarketcap.com/currencies"
 
@@ -15,4 +15,4 @@ for i in $(seq 0 $((${#currencies[@]} - 1))); do
     output+="%{F${colors[$i]}}${icons[$i]} $currency%{F-} "
 done
 
-echo $output
+echo "$output"

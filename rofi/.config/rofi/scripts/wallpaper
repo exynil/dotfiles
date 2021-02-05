@@ -26,44 +26,44 @@ wallpaper="$img_dir/wallpaper.jpg"
 case $chosen in
 "random")
     img=$(swd -l "$img_dir")
-    convert $img $wallpaper
-    rm $img
-    hsetroot -fill $wallpaper >/dev/null
+    convert "$img" "$wallpaper"
+    rm "$img"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "random from latest")
     img=$(swd -l "$img_dir" -s latest)
-    convert $img $wallpaper
-    rm $img
-    hsetroot -fill $wallpaper >/dev/null
+    convert "$img" "$wallpaper"
+    rm "$img"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "random from most viewed")
     img=$(swd -l "$img_dir" -s views)
-    convert $img $wallpaper
-    rm $img
-    hsetroot -fill $wallpaper >/dev/null
+    convert "$img" "$wallpaper"
+    rm "$img"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "random from toplist")
     img=$(swd -l "$img_dir" -s toplist)
-    convert $img $wallpaper
-    rm $img
-    hsetroot -fill $wallpaper >/dev/null
+    convert "$img" "$wallpaper"
+    rm "$img"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "random from favorites")
     img=$(swd -l "$img_dir" -s favorites)
-    convert $img $wallpaper
-    rm $img
-    hsetroot -fill $wallpaper >/dev/null
+    convert "$img" "$wallpaper"
+    rm "$img"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "random and blurred")
     img=$(swd -l "$img_dir")
     convert -blur 0x80 "$img" "$wallpaper"
-    rm $img
-    hsetroot -fill $wallpaper >/dev/null
+    rm "$img"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "random from saved")
-    wallpapers=($(find $wallpapers_dir -type f))
-    cp -rf "${wallpapers[$(($RANDOM % ${#wallpapers[@]}))]}" "$wallpaper"
-    hsetroot -fill $wallpaper >/dev/null
+    mapfile -t wallpapers < <(find "$wallpapers_dir" -type f)
+    cp -rf "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}" "$wallpaper"
+    hsetroot -fill "$wallpaper" >/dev/null
     ;;
 "keep wallpaper")
     # Name of image
@@ -72,7 +72,7 @@ case $chosen in
     # Copy the wallpaper image to archive folder
     [[ ! -d "$wallpapers_dir" ]] && mkdir -p "$wallpapers_dir"
 
-    cp $wallpaper $wallpapers_dir/$img
+    cp "$wallpaper" "$wallpapers_dir/$img"
     notify-send --hint=string:x-dunst-stack-tag:wallpaper "$img saved"
     ;;
 esac

@@ -21,7 +21,6 @@ case "$arg" in
     *)  arg="${arg}m" ; past="${arg%?} minutes ago" ;;
 esac
 
-time_set="$(date --date="$past" +%T)"
 time_now="$(date +%T)"
 time_after="$(date --date="${past% ago}" +%T)"
 alarm_sound="/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga"

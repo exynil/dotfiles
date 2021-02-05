@@ -15,20 +15,20 @@ options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
 chosen="$(echo -e $options | $rofi_command -p "uptime - $uptime" -dmenu -selected-row 2)"
 case $chosen in
-    $shutdown)
+    "$shutdown")
         systemctl poweroff
         ;;
-    $reboot)
+    "$reboot")
         systemctl reboot
         ;;
-    $lock)
+    "$lock")
         xset dpms force standby
         slock
         ;;
-    $suspend)
+    "$suspend")
         systemctl suspend
         ;;
-    $logout)
+    "$logout")
         bspc quit
         ;;
 esac

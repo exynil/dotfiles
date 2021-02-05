@@ -117,7 +117,7 @@ wallpaper_url="https://$site/search?"
 
 [[ -n "$atleast" ]] && wallpaper_url+="&atleast=$atleast"
 
-wallpaper_url+="&page=$(($RANDOM % 30 + 1))"
+wallpaper_url+="&page=$(("$RANDOM" % 30 + 1))"
 
 case "$sorting" in
 "latest") wallpaper_url+="&sorting=date_added" ;;
@@ -128,18 +128,18 @@ case "$sorting" in
 esac
 
 # Selected images
-img_urls=($(curl -s "$wallpaper_url" | grep -oE 'https://'$site'/w/[[:alnum:]]{6}'))
+mapfile -t img_urls < <(curl -s "$wallpaper_url" | grep -oE 'https://'$site'/w/[[:alnum:]]{6}')
 
 # Randomly selected image
 rand_img_url=${img_urls[$RANDOM % ${#img_urls[@]}]}
 
 # Parse out the image url
-rand_img=$(curl -s $rand_img_url | grep -oE 'https://w.'$site'/full/[[:alnum:]]{2}/wallhaven-[[:alnum:]]{6}\.(jpg|png)')
+rand_img=$(curl -s "$rand_img_url" | grep -oE 'https://w.'$site'/full/[[:alnum:]]{2}/wallhaven-[[:alnum:]]{6}\.(jpg|png)')
 
 # Combine the two above
 wallpaper="$location/${rand_img##*/}"
 
 # Download it
-curl --create-dirs -s $rand_img -o $wallpaper >/dev/null
+curl --create-dirs -s "$rand_img" -o "$wallpaper" >/dev/null
 
-echo $wallpaper
+echo "$wallpaper"

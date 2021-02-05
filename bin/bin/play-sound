@@ -6,19 +6,16 @@ _help_message() {
 }
 
 # Show the help message if arguments are not equal to one.
-[ "$#" -eq 1 ] || {
-    _help_message
-    exit 1
-}
+[ "$#" -eq 1 ] || { _help_message; exit 1; }
 
 # Sound folder location
-sound="$HOME/Sounds"
+sound_dir="$HOME/Sounds"
 
 # Function to check if optional dependencies are in the PATH
 _depcheck() {
     command -v "$1" 2>/dev/null
 }
 
-if [ -n "$sound/$1" ] && [ "$(_depcheck ffplay)" ]; then
-    ffplay -nodisp -autoexit "$sound/$1" 2>/dev/null &
+if [ -f "$sound_dir/$1" ] && [ "$(_depcheck ffplay)" ]; then
+    ffplay -nodisp -autoexit "$sound_dir/$1" 2>/dev/null &
 fi

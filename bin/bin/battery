@@ -7,7 +7,7 @@ date=$(date +'%Y-%m-%d')
 if [[ -f $journal ]]; then
     last_date=$(awk 'END{print $1}' $journal)
 
-    [[ $last_date == $date ]] && exit 1
+    [[ $last_date == "$date" ]] && exit 1
 fi
 
 info='upower -i /org/freedesktop/UPower/devices/battery_BAT0'

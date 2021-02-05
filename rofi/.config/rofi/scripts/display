@@ -9,13 +9,13 @@ multihead='󰌥 󰍹'
 # Variable passed to rofi
 options="$laptop\n$multihead"
 
-chosen="$(echo -e $options | $rofi_command -p "display" -dmenu -selected-row 1)"
+chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 1)"
 case $chosen in
-    $laptop)
+    "$laptop")
         xrandr --output eDP1 --auto --output HDMI-1-0 --off
         bspwm-conf-desktops
         ;;
-    $multihead)
+    "$multihead")
         xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
         bspwm-conf-desktops
         ;;

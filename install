@@ -7,10 +7,10 @@
 # Данный скрипт перезаписывает существующие файлы
 
 # папки конфигов
-folders=($(ls -d */))
+mapfile -t folders < <(ls -d -- *)
 
 # все файлы в папках конфигов
-readarray -t files < <(find "${folders[@]}" -type f)
+mapfile -t files < <(find "${folders[@]}" -type f)
 
 for file in "${files[@]}"; do
     # путь к файлу без имени папки конфига и имени файла
