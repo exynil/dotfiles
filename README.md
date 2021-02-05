@@ -9,5 +9,5 @@ cd dotfiles
 ~~~~
 
 ~~~~
-installdotfiles
+./install
 ~~~~
