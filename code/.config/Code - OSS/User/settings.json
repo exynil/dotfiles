@@ -22,5 +22,5 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "vscode-icons"
 }

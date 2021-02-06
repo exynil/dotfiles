@@ -9,6 +9,7 @@ set softtabstop=4
 set hlsearch
 set incsearch
 set autoindent
+set viminfo+=n~/.vim/viminfo
 
 nnoremap <C-Left> :tabprevious<CR>
 noremap <C-Right> :tabnext<CR>

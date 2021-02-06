@@ -42,6 +42,7 @@ xset r rate 350 62 &
 numlockx on &
 libinput-gestures-setup start &
 xsetroot -cursor_name left_ptr &
+
 # nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1'
 
 hsetroot -fill /home/max/Pictures/wallpaper.jpg &
