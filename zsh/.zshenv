@@ -12,7 +12,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export TERM=xterm-256color
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$XDG_CACHE_HOME/zsh_history"
-# export GIT_CONFIG="$XDG_CONFIG_HOME/git"
+export VIMINIT="source ~/.config/vim/vimrc"
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -24,5 +24,4 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 
-[[ "$PATH" == *"$HOME/bin"* ]] || PATH="$HOME/bin:$PATH"
 [[ "$PATH" == *"$HOME/.local/bin"* ]] || PATH="$HOME/.local/bin:$PATH"

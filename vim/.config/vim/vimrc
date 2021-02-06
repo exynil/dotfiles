@@ -9,13 +9,13 @@ set softtabstop=4
 set hlsearch
 set incsearch
 set autoindent
-set viminfo+=n~/.vim/viminfo
+set viminfo+=n~/.config/vim/viminfo
 
 nnoremap <C-Left> :tabprevious<CR>
 noremap <C-Right> :tabnext<CR>
 
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/vim/pluggins')
 
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }

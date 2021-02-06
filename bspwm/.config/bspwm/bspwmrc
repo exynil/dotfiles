@@ -19,7 +19,7 @@ bspc config remove_disabled_monitors    true
 bspc config remove_unplugged_monitors   true
 
 
-bspc config external_rules_command "$HOME/bin/bspwm-external-rules"
+bspc config external_rules_command "$HOME/.local/bin/bspwm-external-rules"
 
 
 bspc config normal_border_color "#4C566A"
@@ -45,6 +45,6 @@ xsetroot -cursor_name left_ptr &
 
 # nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1'
 
-hsetroot -fill /home/max/Pictures/wallpaper.jpg &
+hsetroot -fill ~/Pictures/wallpaper.jpg &
 battery &
 
