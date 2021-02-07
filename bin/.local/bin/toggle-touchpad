@@ -10,4 +10,3 @@ else
     xinput --enable "$device"
     notify-send --hint=string:x-dunst-stack-tag:touchpad "Touchpad enabled"
 fi
-

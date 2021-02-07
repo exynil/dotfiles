@@ -9,7 +9,10 @@ _help_message() {
 }
 
 # Show the help message if arguments are not equal to one.
-[ "$#" -eq 1 ] || { _help_message; exit 1; }
+[ "$#" -eq 1 ] || {
+    _help_message
+    exit 1
+}
 
 _decrypt() {
     password_store="$HOME/.password-store"
@@ -26,15 +29,14 @@ _decrypt() {
         if [ ! -d "$password_store/.decrypted/$folder" ]; then
             mkdir -p "$password_store/.decrypted/$folder"
         fi
-        
+
         mapfile -t passwords < <(find "$password_store/$folder" -name "*.gpg" | sed 's|.*/\([^/]*\)\.[^.]*$|\1|')
 
         for password in "${passwords[@]}"; do
-            pass "$folder/$password" > "$password_store/.decrypted/$folder/$password"
+            pass "$folder/$password" >"$password_store/.decrypted/$folder/$password"
         done
     done
 }
-
 
 _encrypt() {
     password_store="$HOME/.password-store"
@@ -61,19 +63,19 @@ _encrypt() {
         mapfile -t passwords < <(ls "$decrypted_folder/$folder")
 
         for password in "${passwords[@]}"; do
-            gpg -er "Maxim Kim" -o "$encrypted_folder/$folder/$password.gpg" "$decrypted_folder/$folder/$password" 
+            gpg -er "Maxim Kim" -o "$encrypted_folder/$folder/$password.gpg" "$decrypted_folder/$folder/$password"
         done
     done
 }
 
 case $1 in
-    "-d")
-        _decrypt
-        ;;
-    "-e")
-        _encrypt
-        ;;
-    *)
-        exit 1
-        ;;
+"-d")
+    _decrypt
+    ;;
+"-e")
+    _encrypt
+    ;;
+*)
+    exit 1
+    ;;
 esac

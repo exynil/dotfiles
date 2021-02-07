@@ -2,4 +2,4 @@
 
 rofi_command='rofi -theme themes/calculator.rasi'
 
-$rofi_command -show calc -modi calc -no-show-match -no-sort -calc-command 'echo -n { result } | xclip' 
+$rofi_command -show calc -modi calc -no-show-match -no-sort -calc-command 'echo -n { result } | xclip'

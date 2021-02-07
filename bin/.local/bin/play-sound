@@ -6,7 +6,10 @@ _help_message() {
 }
 
 # Show the help message if arguments are not equal to one.
-[ "$#" -eq 1 ] || { _help_message; exit 1; }
+[ "$#" -eq 1 ] || {
+    _help_message
+    exit 1
+}
 
 # Sound folder location
 sound_dir="$HOME/Sounds"

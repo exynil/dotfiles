@@ -11,4 +11,4 @@ colorscheme="$(echo -e "$options" | $rofi_command -p colorscheme -dmenu)"
 
 [[ -z "$colorscheme" ]] && exit 1
 
-echo "@import \"colorschemes/$colorscheme\"" > "$rofi_dir"/themes/colors.rasi
+echo "@import \"colorschemes/$colorscheme\"" >"$rofi_dir"/themes/colors.rasi

@@ -4,9 +4,8 @@
 
 rofi_command='rofi -theme themes/browser.rasi'
 
-search_engines=$(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' )
+search_engines=$(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1')
 
 query=$(echo "$search_engines" | tr ' ' '\n' | $rofi_command -kb-row-select 'Tab' -kb-row-tab 'Control+space' -p 'web search' -dmenu -i)
 
 surfraw -browser="$BROWSER" $query
-

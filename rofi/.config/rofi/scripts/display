@@ -11,17 +11,17 @@ options="$laptop\n$multihead"
 
 chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 1)"
 case $chosen in
-    "$laptop")
-        xrandr --output eDP1 --auto --output HDMI-1-0 --off
-        bspwm-conf-desktops
-        ;;
-    "$multihead")
-        xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
-        bspwm-conf-desktops
-        ;;
-    *)
-        exit 0
-        ;;
+"$laptop")
+    xrandr --output eDP1 --auto --output HDMI-1-0 --off
+    bspwm-conf-desktops
+    ;;
+"$multihead")
+    xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
+    bspwm-conf-desktops
+    ;;
+*)
+    exit 0
+    ;;
 esac
 
 polybar-run

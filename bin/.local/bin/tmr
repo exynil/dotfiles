@@ -8,17 +8,23 @@ _help_message() {
 }
 
 # Show the help message if arguments are not equal to one.
-[ "$#" -eq 1 ] || { _help_message; exit 1; }
+[ "$#" -eq 1 ] || {
+    _help_message
+    exit 1
+}
 
 # Convert the argument into a human-readable string: to calculate the
 # difference between the time this script starts and ends.
 arg="$1"
 case "$arg" in
-    *s) past="${arg%?} seconds ago" ;;
-    *m) past="${arg%?} minutes ago" ;;
-    *h) past="${arg%?} hours ago"   ;;
-    *d) echo "Days? TMR Made Ridiculous!" && exit 1  ;;
-    *)  arg="${arg}m" ; past="${arg%?} minutes ago" ;;
+*s) past="${arg%?} seconds ago" ;;
+*m) past="${arg%?} minutes ago" ;;
+*h) past="${arg%?} hours ago" ;;
+*d) echo "Days? TMR Made Ridiculous!" && exit 1 ;;
+*)
+    arg="${arg}m"
+    past="${arg%?} minutes ago"
+    ;;
 esac
 
 time_now="$(date +%T)"
@@ -27,7 +33,7 @@ alarm_sound="/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga"
 
 # Function to check if optional dependencies are in the PATH
 _depcheck() {
-    command -v "$1" 2> /dev/null
+    command -v "$1" 2>/dev/null
 }
 
 # The message to print when the timer is done.  This will echo a message
@@ -51,4 +57,3 @@ _notify() {
 echo "tmr started at $time_now"
 notify-send "tmr started at $time_now"
 sleep "$arg" && _notify
-
