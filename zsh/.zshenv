@@ -14,6 +14,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$XDG_CACHE_HOME/zsh_history"
 export VIMINIT="source ~/.config/vim/vimrc"
 export LESSHISTFILE=-
+export PASSWORD_STORE_DIR="/media/hdd/max/password-store"
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
