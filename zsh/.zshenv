@@ -11,7 +11,6 @@ export EDITOR=$(which vim)
 export _JAVA_AWT_WM_NONREPARENTING=1
 export TERM=xterm-256color
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export HISTFILE="$XDG_CACHE_HOME/zsh_history"
 export VIMINIT="source ~/.config/vim/vimrc"
 export PASSWORD_STORE_DIR="/media/hdd/max/password-store"
 

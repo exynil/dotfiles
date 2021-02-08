@@ -115,8 +115,6 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-# (cat ~/.cache/wal/sequences &)
-
 rr() {
     if [ -z "$RANGER_LEVEL" ]
     then
@@ -125,3 +123,5 @@ rr() {
         exit
     fi
 }
+
+HISTFILE=~/.cache/zsh/history
