@@ -47,4 +47,3 @@ xsetroot -cursor_name left_ptr &
 
 hsetroot -fill ~/Pictures/wallpaper.jpg &
 battery &
-

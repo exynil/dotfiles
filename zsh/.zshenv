@@ -4,6 +4,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CURRENT_DESKTOP="gnome"
 
+export HDD="/media/hdd"
+
 export TERMINAL=$(which alacritty)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
@@ -12,7 +14,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export TERM=xterm-256color
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VIMINIT="source ~/.config/vim/vimrc"
-export PASSWORD_STORE_DIR="/media/hdd/max/password-store"
+export PASSWORD_STORE_DIR="$HDD/password-store"
 
 export LESSHISTFILE=-
 export LESS=-R

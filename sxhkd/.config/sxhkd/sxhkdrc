@@ -177,7 +177,7 @@ alt + g
 
 # Terminal apps
 alt + {v}
-    $TERMINAL -e {$(code /media/hdd/linux/dotfiles)}
+    $TERMINAL -e {$(code $HDD/linux/dotfiles)}
 
 # htop
 ctrl + alt + Delete

@@ -106,7 +106,6 @@ alias update='yay -Syu'
 alias ls='ls --color=auto'
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
-alias ranger='ranger --choosedir=/tmp/rangerdir; LASTDIR=`cat /tmp/rangerdir`; cd "$LASTDIR"'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -118,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 rr() {
     if [ -z "$RANGER_LEVEL" ]
     then
-        ranger
+        ranger --choosedir=/tmp/rangerdir; LASTDIR=`cat /tmp/rangerdir`; cd "$LASTDIR"
     else
         exit
     fi
