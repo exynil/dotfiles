@@ -5,13 +5,10 @@
 
 # ВНИМАНИЕ! Скрипт перезаписывает существующие файлы!
 
-# папки конфигов
-mapfile -t folders < <(ls -d ./*/)
+# все файлы в подпапках
+mapfile -t files < <(find ./*/ -type f)
 
-# все файлы в папках
-mapfile -t files < <(find "${folders[@]#*/}" -type f)
-
-for file in "${files[@]}"; do
+for file in "${files[@]#*/}"; do
     # путь к файлу в домашнем каталоге
     dir=$(dirname "${file#*/}")
 
