@@ -7,4 +7,4 @@
 text="$(xsel -o)"
 translate="$(trans -brief :ru "$text")"
 notify-send -t $((${#text} * 150)) "$translate"
-play-sound "me-too-603.ogg"
+play-sound "cyclist.ogg"

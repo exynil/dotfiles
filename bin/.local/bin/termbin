@@ -5,7 +5,7 @@
 # - Полученный url копирует в primary и clipboard
 
 url=$(nc termbin.com 9999 < <(xsel -p))
-echo "$url" | xsel -b -i
-echo "$url" | xsel -p -i
+echo "$url" | xsel -ib
+echo "$url" | xsel -ip
 notify-send "$url copied to clipboard"
-play-sound "me-too-603.ogg"
+play-sound "direct.ogg"

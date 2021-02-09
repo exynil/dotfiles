@@ -12,7 +12,7 @@ _help_message() {
 }
 
 # Sound folder location
-sound_dir="$HOME/Sounds"
+sound_dir="$HDD/max/sounds"
 
 # Function to check if optional dependencies are in the PATH
 _depcheck() {
