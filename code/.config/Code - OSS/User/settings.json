@@ -1,8 +1,7 @@
 {
     "workbench.colorTheme": "Nord",
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback','Material Design Icons','Typicons','FontAwesome'",
+    "editor.fontFamily": "'JetBrains Mono','monospace','Droid Sans Fallback','Material Design Icons','Typicons','FontAwesome','Noto Color Emoji'",
     "files.autoSave": "onFocusChange",
-    "window.zoomLevel": 0,
     "workbench.sideBar.location": "left",
     "breadcrumbs.enabled": true,
     "editor.minimap.enabled": false,
@@ -22,5 +21,6 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": 0
 }
