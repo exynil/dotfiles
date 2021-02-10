@@ -123,4 +123,4 @@ rr() {
     fi
 }
 
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.cache/zsh.history
