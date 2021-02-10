@@ -104,6 +104,7 @@ alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias update='yay -Syu'
 alias ls='ls --color=auto'
+alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh

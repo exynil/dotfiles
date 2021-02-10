@@ -1,6 +1,6 @@
 #!/bin/bash
 
-journal="$HDD/linux/logs/battery.txt"
+journal="$HDD/arch/logs/battery.txt"
 
 date=$(date +'%Y-%m-%d')
 

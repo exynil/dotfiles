@@ -4,7 +4,7 @@ if pgrep -x "mdbook" >/dev/null; then
     killall mdbook
     notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook stopped"
 else
-    mdbook serve "$HDD/linux/knowledge-base" &
+    mdbook serve "$HDD/arch/knowledge-base" &
     $BROWSER "http://localhost:3000/"
     notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook started"
 fi
