@@ -19,7 +19,7 @@
 [colors]
 background = #20242d
 background-alt = #444
-foreground = #dfdfdf
+foreground = #d8dee9
 foreground-alt = #333
 
 red = #BF616A
