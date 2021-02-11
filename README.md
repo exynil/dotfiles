@@ -1,17 +1,19 @@
 # Dot Files
 
-## About system
+## Configuration
 
-|                      |                                 |
-|----------------------|---------------------------------|
-| OS                   | Archlinux                       |
-| WM                   | Bspwm                           |
-| Terminal             | Alacritty                       |
-| File manager         | Ranger                          |
-| Application launcher | Rofi                            |
-| Font                 | JetBrains Mono, Ubuntu Mono     |
-| Iconic font          | Material Design Icons, Typicons |
-| Colorscheme          | Nord                            |
+|              |                                 |
+|--------------|---------------------------------|
+| OS           | Archlinux                       |
+| WM           | Bspwm                           |
+| Terminal     | Alacritty                       |
+| File manager | Ranger                          |
+| App launcher | Rofi                            |
+| Bar          | Polybar                         |
+| Font         | JetBrains Mono, Ubuntu Mono     |
+| Iconic font  | Material Design Icons, Typicons |
+| Colorscheme  | Nord                            |
+
 
 ## Screenshots
 
