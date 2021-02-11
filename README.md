@@ -2,17 +2,15 @@
 
 ## About system
 
-OS: `Archlinux`
-
-WM: `Bspwm`
-
-Terminal: `Alacritty`
-
-File manager: `Ranger`
-
-Font: `JetBrains Mono`
-
-Colorscheme: `Nord`
+| OS                   | Archlinux                       |
+|----------------------|---------------------------------|
+| WM                   | Bspwm                           |
+| Terminal             | Alacritty                       |
+| File manager         | Ranger                          |
+| Application launcher | Rofi                            |
+| Font                 | JetBrains Mono, Ubuntu Mono     |
+| Iconic font          | Material Design Icons, Typicons |
+| Colorscheme          | Nord                            |
 
 ## Screenshots
 
@@ -21,17 +19,3 @@ Colorscheme: `Nord`
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/2.jpg">
 
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/3.jpg">
-
-## Installation
-
-~~~~
-git clone https://github.com/exynil/dotfiles.git
-~~~~
-
-~~~~
-cd dotfiles
-~~~~
-
-~~~~
-./install
-~~~~
