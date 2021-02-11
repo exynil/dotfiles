@@ -1,5 +1,9 @@
 # Dot Files
 
+## About
+
+My dotfiles
+
 ## Configuration
 
 |              |                                 |
