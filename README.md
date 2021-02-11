@@ -1,11 +1,5 @@
 # Dot Files
 
-## About
-
-My dotfiles
-
-## Configuration
-
 |              |                                 |
 |--------------|---------------------------------|
 | OS           | Archlinux                       |
