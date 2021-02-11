@@ -3,10 +3,15 @@
 ## About system
 
 OS: `Archlinux`
+
 WM: `Bspwm`
+
 Terminal: `Alacritty`
+
 File manager: `Ranger`
+
 Font: `JetBrains Mono`
+
 Colorscheme: `Nord`
 
 ## Screenshots
