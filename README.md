@@ -2,8 +2,9 @@
 
 ## About system
 
-| OS                   | Archlinux                       |
+|                      |                                 |
 |----------------------|---------------------------------|
+| OS                   | Archlinux                       |
 | WM                   | Bspwm                           |
 | Terminal             | Alacritty                       |
 | File manager         | Ranger                          |
