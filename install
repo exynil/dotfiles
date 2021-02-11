@@ -9,11 +9,8 @@
 mapfile -t files < <(find ./*/ -type f)
 
 for file in "${files[@]#*/}"; do
-    # путь к файлу в домашнем каталоге
-    dir=$(dirname "${file#*/}")
-
-    # проверка наличия директории в $HOME
-    [[ ! -d "$HOME/$dir" ]] && mkdir -p "$HOME/$dir"
+    # создание папок в домашнем каталоге
+    mkdir -p "$HOME/$(dirname "${file#*/}")"
 
     # создание ссылки с перезаписью существующего файла
     ln -sf "$PWD/$file" "$HOME/${file#*/}"
