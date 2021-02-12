@@ -32,9 +32,6 @@ main() {
     Matplotlib)
         echo "state=floating"
         ;;
-    Sxiv)
-        echo "state=fullscreen"
-        ;;
     xpad)
         echo "state=floating"
         ;;
