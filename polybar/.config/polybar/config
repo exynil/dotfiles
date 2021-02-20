@@ -49,71 +49,50 @@ font-0 = JetBrains Mono:size=10;2
 font-1 = Material Design Icons:size=12;2
 font-2 = Typicons:size=16;2
 font-3 = NotoColorEmoji:fontformat=truetype:scale=10;2
-wm-restack = bspwm
+wm-restack = i3
 cursor-click = pointer
 
-;================================================= bar-first
+;================================================== bar-main
 
-[bar/first]
+[bar/main]
 inherit = bar/base
 
-modules-left = bspwm xwindow
+modules-left = i3 xwindow
 modules-center = time weather
 modules-right = mpd xkeyboard trash backlight pulseaudio battery
 tray-position = right
 tray-padding = 2
 
-;================================================ bar-second
+;======================================================== i3
 
-[bar/second]
-inherit = bar/base
-modules-left = bspwm xwindow
-modules-center = time
-modules-right = xkeyboard memory cpu tempcores
-
-;===================================================== bspwm
-
-[module/bspwm]
-type = internal/bspwm
+[module/i3]
+type = internal/i3
 format = <label-state> <label-mode>
-label-focused = %name%
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 1
+label-mode-foreground = ${colors.background}
+label-mode-background = ${colors.yellow}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-foreground = ${colors.green}
 label-focused-padding = 1
-label-occupied = %name%
-label-occupied-padding = 1
-label-urgent = %name%!
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${colors.background}
+label-visible-padding = 1
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
 label-urgent-background = ${colors.red}
 label-urgent-padding = 1
-label-empty = %name%
-label-empty-foreground = ${colors.background-alt}
-label-empty-padding = 1
-ws-icon-1 = 1;󰎤
-ws-icon-2 = 2;󰎧
-ws-icon-3 = 3;󰎪
-ws-icon-4 = 4;󰎭
-ws-icon-5 = 5;󰎱
-ws-icon-6 = 6;󰎳
-ws-icon-7 = 7;󰎶
-ws-icon-8 = 8;󰎹
-ws-icon-9 = 9;󰎼
-ws-icon-0 = 0;󰎡
-label-monocle = " 󰈈 "
-label-monocle-foreground = ${colors.blue}
-label-tiled = " 󰙀 "
-label-tiled-foreground = ${colors.blue}
-label-fullscreen = " 󰹸 "
-label-fullscreen-foreground = ${colors.blue}
-label-floating = " 󰖯 "
-label-floating-foreground = ${colors.blue}
-label-pseudotiled = " 󰕬 "
-label-pseudotiled-foreground = ${colors.blue}
-label-locked = " 󰌾 "
-label-locked-foreground = ${colors.blue}
-label-sticky = " 󰐃 "
-label-sticky-foreground = ${colors.blue}
-label-private =  " 󰿦 "
-label-private-foreground = ${colors.blue}
 
 ;================================================== settings
 

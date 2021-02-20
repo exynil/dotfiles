@@ -1,0 +1,56 @@
+#define nord00 #2E3440
+#define nord01 #3B4252
+#define nord02 #434C5E
+#define nord03 #4C566A
+#define nord04 #D8DEE9
+#define nord05 #E5E9F0
+#define nord06 #ECEFF4
+#define nord07 #8FBCBB
+#define nord08 #88C0D0
+#define nord09 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+! special
+*.foreground:   nord04
+*.background:   nord00
+*.cursorColor:  nord04
+
+! black
+*.color0: nord01
+*.color8: nord03
+
+! red
+*.color1: nord11
+*.color9: nord11
+
+! green
+*.color2: nord14
+*.color10: nord14
+
+! yellow
+*.color3: nord13
+*.color11: nord13
+
+! blue
+*.color4: nord09
+*.color12: nord09
+
+! magenta
+*.color5: nord15
+*.color13: nord15
+
+! cyan
+*.color6: nord08
+*.color14: nord07
+
+! white
+*.color7: nord05
+*.color15: nord06
+
+XTerm.vt100.faceName: Ubuntu Mono:size=12
+XTerm.vt100.internalBorder: 10

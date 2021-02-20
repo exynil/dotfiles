@@ -4,24 +4,25 @@ rofi_command='rofi -theme themes/display.rasi'
 
 # Options
 laptop='󰌥'
+external='󰍹'
 multihead='󰌥 󰍹'
+duplicate='󰍺'
 
 # Variable passed to rofi
-options="$laptop\n$multihead"
+options="$laptop\n$external\n$multihead\n$duplicate"
 
-chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 1)"
+chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 2)"
 case $chosen in
 "$laptop")
     xrandr --output eDP1 --auto --output HDMI-1-0 --off
-    bspwm-conf-desktops
+    ;;
+"$external")
+    xrandr --output eDP1 --off --output HDMI-1-0 --auto
     ;;
 "$multihead")
     xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
-    bspwm-conf-desktops
     ;;
-*)
-    exit 0
+"$duplicate")
+    xrandr --output eDP1 --auto --output HDMI-1-0 --auto --same-as eDP1
     ;;
 esac
-
-polybar-run

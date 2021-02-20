@@ -106,6 +106,7 @@ alias update='yay -Syu'
 alias ls='ls --color=auto'
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
+alias xrdb-reload='xrdb ~/.config/xresources/xresources'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

@@ -7,12 +7,11 @@ export XDG_CURRENT_DESKTOP="gnome"
 export HDD="/media/hdd"
 export APP_DATA="$HDD/arch/app-data"
 
-export TERMINAL=$(which alacritty)
+export TERMINAL=$(which xterm)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
 
-export _JAVA_AWT_WM_NONREPARENTING=1
-export TERM=xterm-256color
+export TERM="xterm-256color"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VIMINIT="source ~/.config/vim/vimrc"
 export PASSWORD_STORE_DIR="$APP_DATA/pass"

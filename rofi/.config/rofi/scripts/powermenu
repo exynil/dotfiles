@@ -29,6 +29,6 @@ case $chosen in
     systemctl suspend
     ;;
 "$logout")
-    bspc quit
+    i3-msg exit
     ;;
 esac
