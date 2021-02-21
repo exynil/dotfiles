@@ -24,3 +24,5 @@
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/4.jpg">
 
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/5.jpg">
+
+<img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/6.jpg">
