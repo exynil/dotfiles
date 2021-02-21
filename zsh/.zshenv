@@ -11,7 +11,6 @@ export TERMINAL=$(which xterm)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
 
-export TERM="xterm-256color"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VIMINIT="source ~/.config/vim/vimrc"
 export PASSWORD_STORE_DIR="$APP_DATA/pass"

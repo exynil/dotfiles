@@ -1,6 +1,7 @@
 # i3 config file (v4)
 
-for_window [class="^.*"] border pixel 2
+default_border pixel 2
+default_floating_border pixel 2
 
 hide_edge_borders smart
 
@@ -94,7 +95,7 @@ bindsym $alt+w layout tabbed
 bindsym $alt+e layout toggle split
 
 # toggle tiling / floating
-bindsym $alt+z floating toggle
+bindsym $super+f floating toggle; resize set 960 540; move position center; 
 
 # change focus between tiling / floating windows
 bindsym $alt+space focus mode_toggle
@@ -212,8 +213,9 @@ for_window [class="Gnome-calculator"]                   floating enable
 for_window [class="mpv"]                                floating enable
 for_window [class="xpad"]                               floating enable
 
+exec_always --no-startup-id polybar-run &
+exec_always --no-startup-id xrdb ~/.config/xresources/xresources &
 exec --no-startup-id hsetroot -fill ~/Pictures/wallpaper.jpg &
-exec --no-startup-id polybar-run &
 exec --no-startup-id xrdb ~/.config/xresources/xresources &
 exec --no-startup-id udiskie -s &
 exec --no-startup-id telegram-desktop &

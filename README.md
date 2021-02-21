@@ -4,7 +4,7 @@
 |--------------|------------------------|
 | OS           | Archlinux              |
 | WM           | i3                     |
-| Terminal     | xterm                  |
+| Terminal     | XTerm                  |
 | File manager | Ranger                 |
 | App launcher | Rofi                   |
 | Bar          | Polybar                |
