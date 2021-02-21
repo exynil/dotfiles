@@ -94,7 +94,7 @@ esac
 
 start_recording+=$audio
 # для поддержки видео на моб. устройствах
-start_recording+="-c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p "
+# start_recording+="-c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p "
 # кодеку h264 требуются исключительно чётные размерности ширины и высоты
 start_recording+="-vf crop=trunc(iw/2)*2:trunc(ih/2)*2 "
 start_recording+=$screencast

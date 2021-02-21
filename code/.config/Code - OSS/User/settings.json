@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Nord",
+    "workbench.colorTheme": "Dracula",
     "editor.fontFamily": "'JetBrains Mono','monospace','Droid Sans Fallback','Material Design Icons','Typicons','FontAwesome','Noto Color Emoji'",
     "files.autoSave": "onFocusChange",
     "workbench.sideBar.location": "left",

@@ -22,27 +22,27 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
-Plug 'arcticicestudio/nord-vim'
 Plug 'lilydjwg/colorizer'
 Plug 'chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
-" lightline.vim
+" for plugin -> tchyny/lightline.vim
 set laststatus=2
 set noshowmode
 
-" nerdtee.vim
+" for plugin -> preservim/nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
-" vim-easymotion
+" for plugin -> easymotion/vim-easymotion
 map <Leader> <Plug>(easymotion-prefix)
 
-" nord-vim
-colorscheme nord
+" for plugin -> dracula/vim
+colorscheme dracula
 
-" vim-autoformat
+" for plugin -> chiel92/vim-autoformat
 noremap <F3> :Autoformat<CR>
 
 

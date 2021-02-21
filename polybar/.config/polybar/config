@@ -17,18 +17,18 @@
 ;==========================================================
 
 [colors]
-background = #20242d
-background-alt = #444
-foreground = #d8dee9
-foreground-alt = #333
+background = #282a36
+background-alt = #44475a
+foreground = #f8f8f2
+foreground-alt = #44475a
 
-red = #BF616A
-green = #A3BE8C
-yellow = #EBCB8B
-blue = #81A1C1
-magenta = #B48EAD
-cyan = #88C0D0
-orange = #d08770
+red = #ff5555
+green = #50fa7b
+yellow = #f1fa8c
+cyan = #8be9fd
+orange = #ffb86c
+pink = #ff79c6
+purple = #bd93f9
 
 ;================================================== bar-base
 
@@ -73,7 +73,7 @@ wrapping-scroll = false
 
 label-mode-padding = 1
 label-mode-foreground = ${colors.background}
-label-mode-background = ${colors.yellow}
+label-mode-background = ${colors.green}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
@@ -111,9 +111,9 @@ margin-bottom = 0
 type = internal/xkeyboard
 blacklist-0 = scroll lock
 format-prefix = 󰌌
-format-prefix-foreground = ${colors.blue}
+format-prefix-foreground = ${colors.purple}
 label-layout = %layout%
-label-layout-foreground = ${colors.blue}
+label-layout-foreground = ${colors.purple}
 label-indicator-on-numlock = 󰰒
 label-indicator-on-numlock-foreground = ${colors.green}
 label-indicator-on-capslock = 󰯫 
@@ -126,9 +126,9 @@ type = custom/script
 interval = 30
 exec = trash-list | wc -l
 format-prefix = 󰩺
-format-prefix-foreground =${colors.magenta}
+format-prefix-foreground =${colors.red}
 label = %output%
-label-foreground = ${colors.magenta}
+label-foreground = ${colors.red}
 
 ;==================================================== df-sdb
 
@@ -186,7 +186,7 @@ label-foreground = ${colors.cyan}
 
 [module/weather]
 type = custom/script
-exec = curl -s wttr.in/Botakara?format="%c+%t+%f"
+exec =  ~/.config/polybar/scripts/weather
 interval = 600
 label = %output%
 label-foreground = ${colors.green}
@@ -206,7 +206,7 @@ type = custom/script
 exec = ~/.config/polybar/scripts/spotify
 interval = 5
 label = %output%
-label-foreground = ${colors.magenta}
+label-foreground = ${colors.purple}
 
 ;================================================= backlight
 
@@ -214,7 +214,7 @@ label-foreground = ${colors.magenta}
 type = internal/xbacklight
 format = <ramp> <label>
 label = %percentage%%
-label-foreground = ${colors.blue}
+label-foreground = ${colors.purple}
 ramp-0 = 󰋙
 ramp-1 = 󰫃
 ramp-2 = 󰫄
@@ -222,7 +222,7 @@ ramp-3 = 󰫅
 ramp-4 = 󰫆
 ramp-5 = 󰫇
 ramp-6 = 󰫈
-ramp-foreground = ${colors.blue}
+ramp-foreground = ${colors.purple}
 
 ;================================================ pulseaudio
 
@@ -233,13 +233,13 @@ use-ui-max = true
 interval = 5
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
-label-volume-foreground = ${colors.yellow}
+label-volume-foreground = ${colors.orange}
 label-muted = 󰖁 muted
 label-muted-foreground = ${colors.red}
 ramp-volume-0 = 󰕿
 ramp-volume-1 = 󰖀
 ramp-volume-2 = 󰕾
-ramp-volume-foreground = ${colors.yellow}
+ramp-volume-foreground = ${colors.orange}
 click-right = pavucontrol
 
 ;==================================================== memory
@@ -248,9 +248,9 @@ click-right = pavucontrol
 type = internal/memory
 interval = 5
 format-prefix = 󰘚
-format-prefix-foreground = ${colors.blue}
+format-prefix-foreground = ${colors.purple}
 label = %percentage_used:2%%
-label-foreground = ${colors.blue}
+label-foreground = ${colors.purple}
 
 ;======================================================= cpu
 
@@ -258,9 +258,9 @@ label-foreground = ${colors.blue}
 type = internal/cpu
 interval = 5
 format-prefix = 󰻠
-format-prefix-foreground = ${colors.magenta}
+format-prefix-foreground = ${colors.purple}
 label = %percentage:2%%
-label-foreground = ${colors.magenta}
+label-foreground = ${colors.purple}
 
 ;====================================================== wlan
 
@@ -294,9 +294,9 @@ format-connected-prefix-foreground = ${colors.cyan}
 type = internal/network
 interface = wlp0s20f3
 label-connected = %downspeed%
-label-connected-foreground = ${colors.magenta}
+label-connected-foreground = ${colors.purple}
 format-connected-prefix = 󰶹
-format-connected-prefix-foreground = ${colors.magenta}
+format-connected-prefix-foreground = ${colors.purple}
 
 ;=================================================== battery
 
@@ -340,16 +340,16 @@ type = custom/script
 interval = 5
 exec = date "+%a %d %b %H:%M"
 format-prefix = 󰃮
-format-prefix-foreground = ${colors.yellow}
+format-prefix-foreground = ${colors.green}
 label = %output%
-label-foreground = ${colors.yellow}
+label-foreground = ${colors.green}
 
 ;=================================================== xwindow
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:40:...%
-label-foreground = ${colors.yellow}
+label-foreground = ${colors.purple}
 
 ;======================================================= mpd
 

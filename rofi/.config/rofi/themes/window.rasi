@@ -56,8 +56,8 @@ element selected {
     text-color:             @background;
 }
 element active {
-    text-color:             #95ff85;
+    text-color:             #50fa7b;
 }
 element urgent {
-    text-color:             #ff8585;
+    text-color:             #ff5555;
 }

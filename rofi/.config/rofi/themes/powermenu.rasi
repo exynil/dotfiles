@@ -6,7 +6,7 @@
     text-color:             @foreground;
 }
 window {
-    width:                  44%;
+    width:                  46%;
     border-color:           @background-light;
     border:                 1;
 }
@@ -19,9 +19,11 @@ inputbar {
 }
 prompt {
     padding:                10px 30px 10px 8px;
-    background-color:       @background-light;
+    background-color:       @background;
     text-color:             @selected;
     border-radius:          0px 12px 12px 0px;
+    border-color:           @selected;
+    border:                 2;
 }
 textbox-prompt-colon {
     expand: false;
@@ -42,10 +44,11 @@ element-text {
 element {
     padding:                40px 40px 80px 40px;
     border-color:           @background-light;
-    background-color:       @background-light;
+    background-color:       @background;
     border-radius:          25px;
+    border:                 2;
 }
 element selected {
-    background-color:       @selected;
-    text-color:             @background;
+    text-color:             @selected;
+    border-color:           @selected;
 }
