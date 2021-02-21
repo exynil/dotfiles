@@ -23,8 +23,11 @@ bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 bindsym XF86AudioStop        exec --no-startup-id playerctl stop
 bindsym XF86AudioMute        exec --no-startup-id pamixer -t
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5; \
+exec notify-send -h string:x-canonical-private-synchronous:audio "Vol [$(pamixer --get-volume)%]" -t 800
+
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5; \
+exec notify-send -h string:x-canonical-private-synchronous:audio "Vol [$(pamixer --get-volume)%]" -t 800
 
 # backlight
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10
@@ -263,6 +266,22 @@ mode "resize" {
 }
 
 bindsym $alt+r mode "resize"
+
+# i3 launcher
+set $mode_launcher Launch: [f]irefox [d]dotfiles
+bindsym $super+i mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym f exec --no-startup-id firefox
+    bindsym d exec --no-startup-id code /media/hdd/arch/dotfiles
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym $super+i mode "default"
+}
+
+# watching youtube video with MPV
+bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o) &
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
