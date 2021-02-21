@@ -17,6 +17,6 @@
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
-XTerm.vt100.faceName: Ubuntu Mono:size=12
-XTerm.vt100.internalBorder: 10
-XTerm.termName: xterm-256color
+XTerm.vt100.faceName:           Ubuntu Mono:size=12
+XTerm.vt100.internalBorder:     10
+XTerm.termName:                 xterm-256color

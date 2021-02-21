@@ -3,7 +3,7 @@
 * {
     font:                   "Ubuntu Mono 14";
     background-color:       @background;
-    text-color:             @foreground;
+    text-color:             @background-light;
 }
 window {
     width:                  42%;
