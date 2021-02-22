@@ -20,3 +20,4 @@
 XTerm.vt100.faceName:           Ubuntu Mono:size=12
 XTerm.vt100.internalBorder:     10
 XTerm.termName:                 xterm-256color
+XTerm.borderColor:              #44475a
