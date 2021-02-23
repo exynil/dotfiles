@@ -23,7 +23,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'lilydjwg/colorizer'
-Plug 'chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
@@ -41,9 +40,6 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " for plugin -> dracula/vim
 colorscheme dracula
-
-" for plugin -> chiel92/vim-autoformat
-noremap <F3> :Autoformat<CR>
 
 
 
