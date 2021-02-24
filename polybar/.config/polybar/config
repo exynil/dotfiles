@@ -48,7 +48,7 @@ module-margin-right = 1
 font-0 = JetBrains Mono:size=10;2
 font-1 = Material Design Icons:size=12;2
 font-2 = Typicons:size=16;2
-font-3 = NotoColorEmoji:fontformat=truetype:scale=10;2
+font-3 = NotoColorEmoji:fontformat=truetype:scale=10;3
 wm-restack = i3
 cursor-click = pointer
 
@@ -59,7 +59,7 @@ inherit = bar/base
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = mpd weather xkeyboard trash backlight pulseaudio battery
+modules-right = mpd xkeyboard trash backlight pulseaudio battery weather
 tray-position = right
 tray-padding = 2
 
@@ -189,7 +189,7 @@ type = custom/script
 exec =  ~/.config/polybar/scripts/weather
 interval = 600
 label = %output%
-label-foreground = ${colors.green}
+label-foreground = ${colors.foreground}
 
 ;=====================================================crypto
 
