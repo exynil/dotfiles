@@ -58,8 +58,8 @@ cursor-click = pointer
 inherit = bar/base
 
 modules-left = i3 xwindow
-modules-center = time weather
-modules-right = mpd xkeyboard trash backlight pulseaudio battery
+modules-center = date
+modules-right = mpd weather xkeyboard trash backlight pulseaudio battery
 tray-position = right
 tray-padding = 2
 
@@ -333,15 +333,16 @@ label-full-foreground = ${colors.green}
 label-charging-foreground = ${colors.green}
 label-discharging-foreground = ${colors.green}
 
-;====================================================== time
+;====================================================== date
 
-[module/time]
-type = custom/script
+[module/date]
+type = internal/date
 interval = 5
-exec = date "+%a %d %b %H:%M"
-format-prefix = 󰃮
-format-prefix-foreground = ${colors.green}
-label = %output%
+date =
+date-alt = "%a %d %b"
+time = %H:%M
+time-alt = %H:%M
+label = %date% %time%
 label-foreground = ${colors.green}
 
 ;=================================================== xwindow
