@@ -58,6 +58,7 @@ bindsym $super+r exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/record
 bindsym $super+d exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/run
 bindsym $super+e exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/wallpaper
 bindsym $super+w exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/window
+bindsym $super+z exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/code
 
 # change focus
 bindsym $super+$left focus left
@@ -266,19 +267,6 @@ mode "resize" {
 }
 
 bindsym $alt+r mode "resize"
-
-# i3 launcher
-set $mode_launcher Launch: [f]irefox [d]dotfiles
-bindsym $super+i mode "$mode_launcher"
-
-mode "$mode_launcher" {
-    bindsym f exec --no-startup-id firefox
-    bindsym d exec --no-startup-id code /media/hdd/arch/dotfiles
-
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-    bindsym $super+i mode "default"
-}
 
 # watching youtube video with MPV
 bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o) &
