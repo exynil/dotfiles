@@ -57,7 +57,7 @@ case $chosen in
     pkill -P "$(pgrep record | head -n 1)"
     exit 0
     ;;
-*)
+"")
     exit 0
     ;;
 esac
@@ -89,7 +89,6 @@ case $chosen in
 "")
     exit 0
     ;;
-
 esac
 
 start_recording+=$audio
