@@ -235,7 +235,7 @@ exec --no-startup-id battery &
 bindsym $alt+p exec --no-startup-id polybar-msg cmd toggle
 
 # translate selection
-bindsym $super+g exec --no-startup-id translate-sel
+bindsym $super+g exec --no-startup-id translate
 
 # upload to termbin
 bindsym $super+t exec --no-startup-id termbin
