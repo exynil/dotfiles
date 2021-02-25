@@ -5,7 +5,6 @@
     "workbench.sideBar.location": "left",
     "breadcrumbs.enabled": true,
     "editor.renderWhitespace": "all",
-    "local-history.path": "~/",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
     "explorer.compactFolders": false,
@@ -22,16 +21,4 @@
     },
     "workbench.iconTheme": "vscode-icons",
     "window.zoomLevel": 0,
-    "[dart]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.rulers": [
-            80
-        ],
-        "editor.selectionHighlight": false,
-        "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.suggestSelection": "first",
-        "editor.tabCompletion": "onlySnippets",
-        "editor.wordBasedSuggestions": false
-    }
 }
