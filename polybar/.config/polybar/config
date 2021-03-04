@@ -49,7 +49,6 @@ font-0 = JetBrains Mono:size=10;2
 font-1 = Material Design Icons:size=12;2
 font-2 = Typicons:size=16;2
 font-3 = NotoColorEmoji:fontformat=truetype:scale=10;3
-wm-restack = i3
 cursor-click = pointer
 
 ;================================================== bar-main
