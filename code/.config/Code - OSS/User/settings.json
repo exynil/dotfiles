@@ -21,4 +21,7 @@
     },
     "workbench.iconTheme": "vscode-icons",
     "window.zoomLevel": 0,
+    "files.associations": {
+        "**/.config/polybar/config": "ini",
+    },
 }
