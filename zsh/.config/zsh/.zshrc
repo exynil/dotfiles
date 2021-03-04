@@ -104,9 +104,11 @@ alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias update='yay -Syu'
 alias ls='ls --color=auto'
+alias xrdb-reload='xrdb ~/.config/xresources/xresources'
+
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
-alias xrdb-reload='xrdb ~/.config/xresources/xresources'
+alias srd='systemctl restart docker'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -126,28 +128,3 @@ rr() {
 }
 
 HISTFILE=~/.cache/zsh.history
-
-# https://transfer.sh/
-transfer() {
-    if [ $# -eq 0 ]; then
-        echo "No arguments specified.\nUsage:\n  transfer <file|directory>\n  ... | transfer <file_name>" >&2
-        return 1
-    fi
-    if tty -s; then
-        file="$1"
-        file_name=$(basename "$file")
-        if [ ! -e "$file" ]; then
-            echo "$file: No such file or directory" >&2
-            return 1
-        fi
-        if [ -d "$file" ]; then
-            file_name="$file_name.zip" ,
-            (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name",
-        else
-            cat "$file" | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"
-        fi
-    else
-        file_name=$1
-        curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
-    fi
-}
