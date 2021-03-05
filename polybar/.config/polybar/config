@@ -18,17 +18,17 @@
 
 [colors]
 background = #2E3440
-background-alt = #4C566A
-foreground = #D8DEE9
-foreground-alt = #44475a
+background-alt = #3B4252
+foreground = #d8dee9
+foreground-alt = #3B4252
 
 red = #BF616A
 green = #A3BE8C
 yellow = #EBCB8B
-blue = #5E81AC
+blue = #81A1C1
+magenta = #B48EAD
 cyan = #88C0D0
-orange = #D08770
-purple = #B48EAD
+orange = #d08770
 
 ;================================================== bar-base
 

@@ -21,9 +21,9 @@ prompt {
     padding:                10px 30px 10px 8px;
     background-color:       @background;
     text-color:             @selected;
-    border-radius:          0px 12px 12px 0px;
+    border-radius:          0px 5px 5px 0px;
     border-color:           @selected;
-    border:                 2;
+    border:                 1;
 }
 textbox-prompt-colon {
     expand: false;
@@ -31,7 +31,7 @@ textbox-prompt-colon {
     background-color:       @selected;
     text-color:             @background;
     str:                    "system";
-    border-radius:          12px 0px 0px 12px;
+    border-radius:          5px 0px 0px 5px;
 }
 listview {
     layout:                 horizontal;
@@ -44,7 +44,7 @@ element-text {
 element {
     padding:                40px 40px 80px 40px;
     background-color:       @background-light;
-    border-radius:          25px;
+    border-radius:          10px;
 }
 element selected {
     text-color:             @background;
