@@ -24,7 +24,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'lilydjwg/colorizer'
 Plug 'jiangmiao/auto-pairs'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -38,8 +38,8 @@ map <C-n> :NERDTreeToggle<CR>
 " for plugin -> easymotion/vim-easymotion
 map <Leader> <Plug>(easymotion-prefix)
 
-" for plugin -> dracula/vim
-colorscheme dracula
+" for plugin -> arcticicestudio/nord-vim
+colorscheme nord
 
 
 

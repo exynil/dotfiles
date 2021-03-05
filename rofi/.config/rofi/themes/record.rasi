@@ -3,10 +3,10 @@
 * {
     font:                   "Ubuntu Mono 14";
     background-color:       @background;
-    text-color:             @background-light;
+    text-color:             @foreground;
 }
 window {
-    width:                  50%;
+    width:                  48%;
     border-color:           @background-light;
     border:                 1;
 }
@@ -43,12 +43,10 @@ element-text {
 }
 element {
     padding:                40px 40px 80px 40px;
-    border-color:           @background-light;
-    background-color:       @background;
+    background-color:       @background-light;
     border-radius:          25px;
-    border:                 2;
 }
 element selected {
-    text-color:             @selected;
-    border-color:           @selected;
+    text-color:             @background;
+    background-color:           @selected;
 }

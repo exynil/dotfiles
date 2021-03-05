@@ -17,18 +17,18 @@
 ;==========================================================
 
 [colors]
-background = #282a36
-background-alt = #44475a
-foreground = #f8f8f2
+background = #2E3440
+background-alt = #4C566A
+foreground = #D8DEE9
 foreground-alt = #44475a
 
-red = #ff5555
-green = #50fa7b
-yellow = #f1fa8c
-cyan = #8be9fd
-orange = #ffb86c
-pink = #ff79c6
-purple = #bd93f9
+red = #BF616A
+green = #A3BE8C
+yellow = #EBCB8B
+blue = #5E81AC
+cyan = #88C0D0
+orange = #D08770
+purple = #B48EAD
 
 ;================================================== bar-base
 
@@ -110,9 +110,9 @@ margin-bottom = 0
 type = internal/xkeyboard
 blacklist-0 = scroll lock
 format-prefix = 󰌌
-format-prefix-foreground = ${colors.purple}
+format-prefix-foreground = ${colors.blue}
 label-layout = %layout%
-label-layout-foreground = ${colors.purple}
+label-layout-foreground = ${colors.blue}
 label-indicator-on-numlock = 󰰒
 label-indicator-on-numlock-foreground = ${colors.green}
 label-indicator-on-capslock = 󰯫 
@@ -213,7 +213,7 @@ label-foreground = ${colors.purple}
 type = internal/xbacklight
 format = <ramp> <label>
 label = %percentage%%
-label-foreground = ${colors.purple}
+label-foreground = ${colors.yellow}
 ramp-0 = 󰋙
 ramp-1 = 󰫃
 ramp-2 = 󰫄
@@ -221,7 +221,7 @@ ramp-3 = 󰫅
 ramp-4 = 󰫆
 ramp-5 = 󰫇
 ramp-6 = 󰫈
-ramp-foreground = ${colors.purple}
+ramp-foreground = ${colors.yellow}
 
 ;================================================ pulseaudio
 
@@ -231,13 +231,13 @@ use-ui-max = true
 interval = 5
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
-label-volume-foreground = ${colors.orange}
+label-volume-foreground = ${colors.blue}
 label-muted = 󰖁 muted
 label-muted-foreground = ${colors.red}
 ramp-volume-0 = 󰕿
 ramp-volume-1 = 󰖀
 ramp-volume-2 = 󰕾
-ramp-volume-foreground = ${colors.orange}
+ramp-volume-foreground = ${colors.blue}
 click-right = pavucontrol
 
 ;==================================================== memory
@@ -348,7 +348,7 @@ label-foreground = ${colors.green}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:40:...%
-label-foreground = ${colors.purple}
+label-foreground = ${colors.yellow}
 
 ;======================================================= mpd
 
