@@ -274,7 +274,7 @@ bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" 
 # class                 border  bground text    indicator child_border
 client.focused          #5E81AC #5E81AC #F8F8F2 #5E81AC   #5E81AC
 client.focused_inactive #3B4252 #3B4252 #F8F8F2 #3B4252   #3B4252
-client.unfocused        #2E3440 #2E3440 #BFBFBF #2E3440   #2E3440
+client.unfocused        #2E3440 #2E3440 #BFBFBF #2E3440   #3B4252
 client.urgent           #3B4252 #BF616A #F8F8F2 #BF616A   #BF616A
 client.placeholder      #2E3440 #2E3440 #F8F8F2 #2E3440   #2E3440
 
