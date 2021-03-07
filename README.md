@@ -10,7 +10,7 @@
 | Bar          | Polybar                |
 | Font         | Ubuntu Mono            |
 | Iconic font  | Material Design Icons  |
-| Colorscheme  | Dracula                |
+| Colorscheme  | Nord                   |
 
 
 ## Screenshots
