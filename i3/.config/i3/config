@@ -229,6 +229,7 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id xautolock -time 5 -detectsleep -corners 000- -locker slock &
 exec --no-startup-id xset r rate 350 62 &
 exec --no-startup-id numlockx on &
+exec --no-startup-id clipit &
 exec --no-startup-id battery &
 
 # polybar toggle
