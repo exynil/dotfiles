@@ -61,7 +61,6 @@ modules-center = date
 modules-right = mpd xkeyboard trash backlight pulseaudio battery weather
 tray-position = right
 tray-padding = 2
-override-redirect = true
 
 ;======================================================== i3
 
