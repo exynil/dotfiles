@@ -53,7 +53,7 @@ cursor-click = pointer
 
 ;================================================== bar-main
 
-[bar/main]
+[bar/top]
 inherit = bar/base
 
 modules-left = i3 xwindow
@@ -61,6 +61,7 @@ modules-center = date
 modules-right = mpd xkeyboard trash backlight pulseaudio battery weather
 tray-position = right
 tray-padding = 2
+override-redirect = true
 
 ;======================================================== i3
 
