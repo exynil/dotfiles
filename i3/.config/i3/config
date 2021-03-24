@@ -41,7 +41,7 @@ bindsym Print exec flameshot gui
 floating_modifier $super
 
 # start a terminal
-bindsym $super+Return exec --no-startup-id xterm
+bindsym $super+Return exec --no-startup-id xkb-switch -s us && xterm
 
 # kill focused window
 bindsym $super+Shift+q kill
