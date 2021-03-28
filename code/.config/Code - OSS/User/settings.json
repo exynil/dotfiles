@@ -20,7 +20,4 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "workbench.iconTheme": "vscode-icons",
-    "files.associations": {
-        "**/.config/polybar/config": "ini",
-    },
 }
