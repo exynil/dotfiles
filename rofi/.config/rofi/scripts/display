@@ -20,8 +20,32 @@ case $chosen in
     xrandr --output eDP1 --off --output HDMI-1-0 --auto
     ;;
 "$multihead")
-    # xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
-    xrandr --output eDP1 --auto --pos 1920x0 --output HDMI-1-0 --auto --pos 0x0
+    left='󰁎'
+    up='󰁞'
+    down='󰁆'
+    right='󰁕'
+
+    options="$left\n$up\n$down\n$right"
+
+    chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 1)"
+    case $chosen in
+    "$left")
+        xrandr --output eDP1 --auto --pos 1920x0 --output HDMI-1-0 --auto --pos 0x0
+        exit 0
+        ;;
+    "$up")
+        xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
+        exit 0
+        ;;
+    "$down")
+        xrandr --output eDP1 --auto --pos 0x0 --output HDMI-1-0 --auto --pos 0x1080
+        exit 0
+        ;;
+    "$right")
+        xrandr --output eDP1 --auto --pos 0x0 --output HDMI-1-0 --auto --pos 1920x0
+        exit 0
+        ;;
+    esac
     ;;
 "$duplicate")
     xrandr --output eDP1 --auto --output HDMI-1-0 --auto --same-as eDP1
