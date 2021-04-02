@@ -20,7 +20,8 @@ case $chosen in
     xrandr --output eDP1 --off --output HDMI-1-0 --auto
     ;;
 "$multihead")
-    xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
+    # xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
+    xrandr --output eDP1 --auto --pos 1920x0 --output HDMI-1-0 --auto --pos 0x0
     ;;
 "$duplicate")
     xrandr --output eDP1 --auto --output HDMI-1-0 --auto --same-as eDP1
