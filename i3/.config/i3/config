@@ -273,10 +273,10 @@ bindsym $alt+r mode "resize"
 bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o) &
 
 # class                 border  bground text    indicator child_border
-client.focused          #5E81AC #5E81AC #F8F8F2 #5E81AC   #5E81AC
-client.focused_inactive #3B4252 #3B4252 #F8F8F2 #3B4252   #3B4252
-client.unfocused        #2E3440 #2E3440 #BFBFBF #2E3440   #3B4252
-client.urgent           #3B4252 #BF616A #F8F8F2 #BF616A   #BF616A
-client.placeholder      #2E3440 #2E3440 #F8F8F2 #2E3440   #2E3440
+client.focused          #98C379 #98C379 #3A3F4B #98C379   #98C379
+client.focused_inactive #3A3F4B #3A3F4B #F8F8F2 #3A3F4B   #3A3F4B
+client.unfocused        #282c34 #282c34 #BFBFBF #282c34   #3A3F4B
+client.urgent           #3A3F4B #BF616A #F8F8F2 #BF616A   #BF616A
+client.placeholder      #282c34 #282c34 #F8F8F2 #282c34   #282c34
 
 client.background       #F8F8F2
