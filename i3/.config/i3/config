@@ -231,6 +231,7 @@ exec --no-startup-id xset r rate 350 62 &
 exec --no-startup-id numlockx on &
 exec --no-startup-id clipit &
 exec --no-startup-id battery &
+exec --no-startup-id scratchpad &
 
 # polybar toggle
 bindsym $alt+p exec --no-startup-id polybar-msg cmd toggle
@@ -271,6 +272,12 @@ bindsym $alt+r mode "resize"
 
 # watching youtube video with MPV
 bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o) &
+
+# scratchpad terminal
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 1000 800
+for_window [instance="dropdown"] move scratchpad
+bindsym $super+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 
 # class                 border  bground text    indicator child_border
 client.focused          #98C379 #98C379 #3A3F4B #98C379   #98C379
