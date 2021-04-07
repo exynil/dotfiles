@@ -3,3 +3,5 @@
 	email = exynil@gmail.com
 [gpg]
 	program = gpg2
+[init]
+	defaultBranch = master
