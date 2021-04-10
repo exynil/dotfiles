@@ -30,7 +30,7 @@ textbox-prompt-colon {
     padding:                10px 8px 10px 18px;
     background-color:       @selected;
     text-color:             @background;
-    str:                    "system";
+    str:                    "rofi";
     border-radius:          5px 0px 0px 5px;
 }
 listview {
