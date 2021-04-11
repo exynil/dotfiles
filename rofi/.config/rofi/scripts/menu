@@ -10,11 +10,19 @@ termbin='󱃖'
 knowledge_base='󰂺'
 picom='󰏘'
 scratchpad='󰆍'
-polybar='󰅹'
+polybar='󰬗'
 private_window='󱐡'
 
 # Variable passed to rofi
-options="$knowledge_base\n$touchpad\n$picom\n$termbin\n$bt_headphones\n$translate\n$scratchpad\n$polybar\n$private_window"
+options="$knowledge_base"
+options+="\n$touchpad"
+options+="\n$picom"
+options+="\n$termbin"
+options+="\n$bt_headphones"
+options+="\n$translate"
+options+="\n$scratchpad"
+options+="\n$polybar"
+options+="\n$private_window"
 
 chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 4)"
 case $chosen in
@@ -27,8 +35,10 @@ case $chosen in
 
     if [ "$state" = "no" ]; then
         bluetoothctl connect "$mac"
+        notify-send --hint=string:x-dunst-stack-tag:headphones "Galaxy Buds+ connected"
     else
         bluetoothctl disconnect "$mac"
+        notify-send --hint=string:x-dunst-stack-tag:headphones "Galaxy Buds+ disconnected"
     fi
     ;;
 "$touchpad")
@@ -82,6 +92,9 @@ case $chosen in
     polybar-run
     ;;
 "$private_window")
-    firefox --private-window
+    if pgrep -x "firefox" >/dev/null; then
+        killall firefox
+    fi
+    firefox -P guest
     ;;
 esac

@@ -50,7 +50,7 @@ bindsym $super+Shift+q kill
 bindsym $super+s exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/browser
 bindsym $super+q exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/calculator
 bindsym $super+c exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/clipboard
-bindsym $super+a exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/colorscheme
+bindsym $super+v exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/colorscheme
 bindsym $super+o exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/conference
 bindsym $super+m exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/display
 bindsym $super+x exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/powermenu
@@ -58,7 +58,7 @@ bindsym $super+r exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/record
 bindsym $super+d exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/run
 bindsym $super+e exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/wallpaper
 bindsym $super+w exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/window
-bindsym $super+v exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/code
+bindsym $super+a exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/code
 bindsym $super+z exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/menu
 
 # change focus
