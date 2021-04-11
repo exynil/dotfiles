@@ -20,4 +20,11 @@
     },
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "One Dark Pro",
+    // Для работы emmet в файлах Django
+    "files.associations": {
+        "**/templates/*.html": "django-html",
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    }
 }
