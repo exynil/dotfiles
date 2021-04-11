@@ -7,7 +7,7 @@ tempCore=("$rawData")
 # Define constants :
 degree="°C"
 temperaturesValues=(50 60 70 80 90)
-temperaturesColors=("#A3BE8C" "#EBCB8B" "#D08770" "#BF616A" "#bf3442")
+temperaturesColors=("#98c379" "#b5b05c" "#ce9953" "#dd815d" "#e06c75")
 temperaturesIcons=(󰔏 󰸃 󰸁 󰀦 󰚑)
 
 for iCore in ${!tempCore[*]}; do
