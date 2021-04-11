@@ -220,7 +220,6 @@ for_window [class="xpad"]                               floating enable
 exec_always --no-startup-id polybar-run &
 exec_always --no-startup-id xrdb ~/.config/xresources/xresources &
 exec --no-startup-id hsetroot -fill ~/Pictures/wallpaper.jpg &
-exec --no-startup-id xrdb ~/.config/xresources/xresources &
 exec --no-startup-id udiskie -s &
 exec --no-startup-id telegram-desktop &
 exec --no-startup-id greenclip daemon &
@@ -231,7 +230,7 @@ exec --no-startup-id xset r rate 350 62 &
 exec --no-startup-id numlockx on &
 exec --no-startup-id clipit &
 exec --no-startup-id battery &
-exec --no-startup-id scratchpad &
+exec --no-startup-id sleep 1 && scratchpad &
 
 # polybar toggle
 bindsym $alt+p exec --no-startup-id polybar-msg cmd toggle
