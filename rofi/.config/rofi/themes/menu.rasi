@@ -1,0 +1,57 @@
+@import "colors.rasi"
+
+* {
+    font:                   "Ubuntu Mono 14";
+    background-color:       @background;
+    text-color:             @foreground;
+}
+window {
+    width:                  28%;
+    border-color:           @background-light;
+    location:               east;
+    border:                 1;
+    x-offset:               -20px;
+    y-offset:               0;
+}
+mainbox {
+    padding:                40px;
+}
+inputbar {
+    spacing:                0px;
+    children:               [ textbox-prompt-colon, prompt ];
+}
+prompt {
+    padding:                10px 30px 10px 8px;
+    background-color:       @background;
+    text-color:             @selected;
+    border-radius:          0px 5px 5px 0px;
+    border-color:           @selected;
+    border:                 1;
+}
+textbox-prompt-colon {
+    expand: false;
+    padding:                10px 8px 10px 18px;
+    background-color:       @selected;
+    text-color:             @background;
+    str:                    "rofi";
+    border-radius:          5px 0px 0px 5px;
+}
+listview {
+    layout:                 vertical;
+    columns:                6;
+    lines:                  3;
+    padding:                15px 0px 0px 0px;
+    spacing:                15px;
+}
+element-text {
+    font:                   "Material Design Icons 44";
+}
+element {
+    padding:                40px 40px 80px 40px;
+    background-color:       @background-light;
+    border-radius:          10px;
+}
+element selected {
+    text-color:             @background;
+    background-color:       @selected;
+}

@@ -1,0 +1,87 @@
+#!/bin/bash
+
+rofi_command='rofi -theme themes/menu.rasi'
+
+# Options
+bt_headphones='󰋋'
+touchpad='󰟸'
+translate='󰊿'
+termbin='󱃖'
+knowledge_base='󰂺'
+picom='󰏘'
+scratchpad='󰆍'
+polybar='󰅹'
+private_window='󱐡'
+
+# Variable passed to rofi
+options="$knowledge_base\n$touchpad\n$picom\n$termbin\n$bt_headphones\n$translate\n$scratchpad\n$polybar\n$private_window"
+
+chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 4)"
+case $chosen in
+"$bt_headphones")
+    data="$APP_DATA/menu/data.json"
+
+    mac=$(jq -r ".[] | select(.name==\"Galaxy Buds+\") .mac" "$data")
+
+    state=$(bluetoothctl info "$mac" | awk '/Connected:/{print $2}')
+
+    if [ "$state" = "no" ]; then
+        bluetoothctl connect "$mac"
+    else
+        bluetoothctl disconnect "$mac"
+    fi
+    ;;
+"$touchpad")
+    device="DELL0825:00 06CB:7E92 Touchpad"
+    state=$(xinput list-props "$device" | grep "Device Enabled" | grep -o "[01]$")
+
+    if [ "$state" == "1" ]; then
+        xinput --disable "$device"
+        notify-send --hint=string:x-dunst-stack-tag:touchpad "Touchpad disabled"
+    else
+        xinput --enable "$device"
+        notify-send --hint=string:x-dunst-stack-tag:touchpad "Touchpad enabled"
+    fi
+    ;;
+"$translate")
+    text="$(xsel -o)"
+    translate="$(trans -brief :ru "$text")"
+    notify-send -t $((${#text} * 150)) "$translate"
+    play-sound "cyclist.ogg"
+    ;;
+"$termbin")
+    url=$(nc termbin.com 9999 < <(xsel -p))
+    echo "$url" | xsel -ib
+    echo "$url" | xsel -ip
+    notify-send "$url copied to clipboard"
+    play-sound "direct.ogg"
+    ;;
+"$knowledge_base")
+    if pgrep -x "mdbook" >/dev/null; then
+        killall mdbook
+        notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook stopped"
+    else
+        mdbook serve "$HDD/arch/knowledge-base" &
+        $BROWSER "http://localhost:3000/"
+        notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook started"
+    fi
+    ;;
+"$picom")
+    if pgrep -x "picom" >/dev/null; then
+        killall picom
+        notify-send --hint=string:x-dunst-stack-tag:picom "picom stopped"
+    else
+        picom &
+        notify-send --hint=string:x-dunst-stack-tag:picom "picom started"
+    fi
+    ;;
+"$scratchpad")
+    xterm -name "dropdown"
+    ;;
+"$polybar")
+    polybar-run
+    ;;
+"$private_window")
+    firefox --private-window
+    ;;
+esac

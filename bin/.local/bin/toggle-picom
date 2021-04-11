@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if pgrep -x "picom" >/dev/null; then
-    killall picom
-    notify-send --hint=string:x-dunst-stack-tag:picom "picom stopped"
-else
-    picom &
-    notify-send --hint=string:x-dunst-stack-tag:picom "picom started"
-fi
