@@ -71,8 +71,7 @@ case $chosen in
         killall mdbook
         notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook stopped"
     else
-        mdbook serve "$HDD/arch/knowledge-base" &
-        $BROWSER "http://localhost:3000/"
+        mdbook serve "$HDD/arch/knowledge-base" --open &
         notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook started"
     fi
     ;;
