@@ -11,7 +11,7 @@ knowledge_base='󰂺'
 picom='󰏘'
 scratchpad='󰆍'
 polybar='󰬗'
-private_window='󱐡'
+guest_firefox_profile='󱐡'
 
 # Variable passed to rofi
 options="$knowledge_base"
@@ -22,7 +22,7 @@ options+="\n$bt_headphones"
 options+="\n$translate"
 options+="\n$scratchpad"
 options+="\n$polybar"
-options+="\n$private_window"
+options+="\n$guest_firefox_profile"
 
 chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 4)"
 case $chosen in
@@ -90,7 +90,7 @@ case $chosen in
 "$polybar")
     polybar-run
     ;;
-"$private_window")
+"$guest_firefox_profile")
     if pgrep -x "firefox" >/dev/null; then
         killall firefox
     fi
