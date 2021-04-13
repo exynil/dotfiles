@@ -58,8 +58,8 @@ bindsym $super+r exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/record
 bindsym $super+d exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/run
 bindsym $super+e exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/wallpaper
 bindsym $super+w exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/window
-bindsym $super+slash exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/code
-bindsym $super+a exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/menu
+bindsym $super+a exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/code
+bindsym $super+z exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/menu
 
 # change focus
 bindsym $super+$left focus left
@@ -277,7 +277,7 @@ bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" 
 for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set 1000 800
 for_window [instance="dropdown"] move scratchpad
-bindsym $super+z [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+bindsym $super+slash [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 
 # class                 border  bground text    indicator child_border
 client.focused          #98C379 #98C379 #3A3F4B #98C379   #98C379
