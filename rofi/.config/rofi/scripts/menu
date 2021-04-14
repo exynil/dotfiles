@@ -12,19 +12,21 @@ picom='󰏘'
 scratchpad='󰆍'
 polybar='󰬗'
 guest_firefox_profile='󱐡'
+mpv_controller='󰹰'
 
 # Variable passed to rofi
 options="$knowledge_base"
 options+="\n$touchpad"
 options+="\n$picom"
 options+="\n$termbin"
-options+="\n$bt_headphones"
 options+="\n$translate"
+options+="\n$bt_headphones"
 options+="\n$scratchpad"
 options+="\n$polybar"
 options+="\n$guest_firefox_profile"
+options+="\n$mpv_controller"
 
-chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 4)"
+chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 5)"
 case $chosen in
 "$bt_headphones")
     data="$APP_DATA/menu/data.json"
@@ -95,5 +97,12 @@ case $chosen in
         killall firefox
     fi
     firefox -P guest
+    ;;
+"$mpv_controller")
+    if pgrep -x "mpv-controller" >/dev/null; then
+        killall mpv-controller
+    else
+        mpv-controller
+    fi
     ;;
 esac

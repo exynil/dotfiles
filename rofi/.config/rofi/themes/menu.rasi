@@ -38,8 +38,8 @@ textbox-prompt-colon {
 }
 listview {
     layout:                 vertical;
-    columns:                6;
-    lines:                  3;
+    columns:                3;
+    lines:                  4;
     padding:                15px 0px 0px 0px;
     spacing:                15px;
 }
