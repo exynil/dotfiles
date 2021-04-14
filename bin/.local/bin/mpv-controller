@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Что делает этот скрипт:
+# - Переключает mpv в полноэкранный режим, когда фокус направлен на vscode
+
+
+i3-msg -t subscribe -m '[ "window" ]' | while read -r event ;
+do
+    change=$(echo "$event" | jq -r '.change')
+    if [[ "$change" == "focus" ]]; then
+        class=$(echo "$event" | jq -r '.container.window_properties.class')
+        if [[ "$class" == "code-oss" ]]; then
+            i3-msg '[class=mpv]' fullscreen enable
+        else
+            i3-msg '[class=mpv]' fullscreen disable
+        fi
+        echo "$class"
+    fi
+done
