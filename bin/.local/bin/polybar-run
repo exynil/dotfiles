@@ -6,4 +6,4 @@ while pgrep -u $UID -x polybar >/dev/null; do
     sleep 1
 done
 
-polybar -r top -c "$HOME/.config/polybar/config.ini" &
+polybar -r top -c "$XDG_CONFIG_HOME/polybar/config.ini" &
