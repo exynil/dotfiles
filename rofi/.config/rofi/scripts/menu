@@ -13,6 +13,7 @@ scratchpad='󰆍'
 polybar='󰬗'
 guest_firefox_profile='󱐡'
 mpv_controller='󰹰'
+trash_empty='󰩹'
 
 # Variable passed to rofi
 options="$knowledge_base"
@@ -25,6 +26,7 @@ options+="\n$scratchpad"
 options+="\n$polybar"
 options+="\n$guest_firefox_profile"
 options+="\n$mpv_controller"
+options+="\n$trash_empty"
 
 chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 5)"
 case $chosen in
@@ -104,5 +106,8 @@ case $chosen in
     else
         mpv-controller
     fi
+    ;;
+"$trash_empty")
+    trash-empty
     ;;
 esac
