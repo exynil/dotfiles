@@ -12,21 +12,25 @@ picom='󰏘'
 scratchpad='󰆍'
 polybar='󰬗'
 guest_firefox_profile='󱐡'
-mpv_controller='󰹰'
+xkill='󱓈'
 trash_empty='󰩹'
+mpv_controller='󰹰'
+
 
 # Variable passed to rofi
 options="$knowledge_base"
 options+="\n$touchpad"
-options+="\n$picom"
 options+="\n$termbin"
+options+="\n$picom"
 options+="\n$translate"
 options+="\n$bt_headphones"
 options+="\n$scratchpad"
 options+="\n$polybar"
 options+="\n$guest_firefox_profile"
-options+="\n$mpv_controller"
+options+="\n$xkill"
 options+="\n$trash_empty"
+options+="\n$mpv_controller"
+
 
 chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 5)"
 case $chosen in
@@ -109,5 +113,8 @@ case $chosen in
     ;;
 "$trash_empty")
     trash-empty
+    ;;
+"$xkill")
+    xkill
     ;;
 esac

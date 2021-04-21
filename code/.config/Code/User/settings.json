@@ -1,0 +1,23 @@
+{
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome', 'Noto Color Emoji'",
+    "files.autoSave": "onFocusChange",
+    "workbench.sideBar.location": "left",
+    "breadcrumbs.enabled": true,
+    "editor.renderWhitespace": "all",
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDelete": false,
+    "explorer.compactFolders": false,
+    "editor.rulers": [
+        60,
+        80,
+        120
+    ],
+    "workbench.iconTheme": "vscode-icons",
+    "files.associations": {
+        "**/templates/*.html": "django-html", // Для работы emmet в файлах Django
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html" // Для работы emmet в файлах Django
+    },
+    "workbench.colorTheme": "One Dark Pro"
+}
