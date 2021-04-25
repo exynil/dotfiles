@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ $(xkb-switch -p) == 'ru' ]] && xkb-switch -n
+xkb-switch -s us
 
 rofi_command='rofi -theme themes/run.rasi'
 
