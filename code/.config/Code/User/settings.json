@@ -19,5 +19,11 @@
     "emmet.includeLanguages": {
         "django-html": "html" // Для работы emmet в файлах Django
     },
-    "workbench.colorTheme": "One Dark Pro"
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }

@@ -29,7 +29,6 @@ esac
 
 time_now="$(date +%T)"
 time_after="$(date --date="${past% ago}" +%T)"
-alarm_sound="/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga"
 
 # Function to check if optional dependencies are in the PATH
 _depcheck() {
@@ -46,11 +45,7 @@ _notify() {
 
     [ "$(_depcheck notify-send)" ] && notify-send -i clock "$message"
 
-    if [ -n "$alarm_sound" ] && [ "$(_depcheck mpv)" ]; then
-        mpv "$alarm_sound"
-    else
-        echo -e "\a"
-    fi
+    play-sound "direct.ogg"
 }
 
 # Set the timer and send notification when its done
