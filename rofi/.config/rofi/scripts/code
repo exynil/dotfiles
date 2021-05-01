@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Что делает этот скрипт:
+# - Позволяет быстро запускать vscode c выбранной папкой
+
+# data - переменная хранит путь к файлу со списком папок
+
+# стуркура data.txt
+
+# /media/hdd/arch/dotfiles
+# /media/hdd/arch/knowledge-base
+# /media/hdd/arch/scripts
+# /media/hdd/github/my-works
+
+
 rofi_command='rofi -theme themes/conference.rasi'
 
 data="$APP_DATA/code/data.txt"

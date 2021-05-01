@@ -1,5 +1,30 @@
 #!/bin/bash
 
+# Что делает этот скрипт:
+# - Позволяет быстро запускать конференции в Zoom
+
+# data - переменная хранит путь к файлу с настройками для конференции
+
+# стуркура data.json
+
+# [
+#   {
+#     "name": "Джон",
+#     "confno": "4523760702",
+#     "pwd": "WTVDN1BpQWlvazhVbLPNR2NwCVxvdIO9"
+#   },
+#   {
+#     "name": "Боб",
+#     "confno": "2026942512",
+#     "pwd": "POI3amZyWmdnh3lXUG1aMmhvPo4yZmn9"
+#   },
+#   {
+#     "name": "Алиса",
+#     "confno": "9809753744",
+#     "pwd": "aVgwaStwMDM5вHdh2а52Z8йzT025dz09"
+#   }
+# ]
+
 rofi_command='rofi -theme themes/conference.rasi'
 
 data="$APP_DATA/zoom/data.json"
