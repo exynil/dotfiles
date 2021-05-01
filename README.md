@@ -26,3 +26,8 @@
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/5.jpg">
 
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/6.jpg">
+
+ВНИМАНИЕ! Скрипт install перезаписывает существующие файлы!
+
+Пожалуйста ознакомтесь с [этой](https://exynil.github.io/knowledge-base/Linux/How-to/Manage-dotfiles.html) небольшой инстуркцией 
+по управлению конфигурацией системы
