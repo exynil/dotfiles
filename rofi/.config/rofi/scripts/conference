@@ -34,6 +34,8 @@ options="$(jq -r '.[].name' "$data")"
 
 chosen="$(echo -e "$options" | $rofi_command -p "conference" -dmenu)"
 
+[[ -z "$chosen" ]] && exit 1
+
 confno=$(jq -r ".[] | select(.name==\"$chosen\") .confno" "$data")
 pwd=$(jq -r ".[] | select(.name==\"$chosen\") .pwd" "$data")
 
