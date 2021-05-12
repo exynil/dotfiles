@@ -25,6 +25,7 @@ Plug 'ervandew/supertab'
 Plug 'lilydjwg/colorizer'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
+Plug 'vim-scripts/LargeFile'
 
 call plug#end()
 
