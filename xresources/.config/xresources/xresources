@@ -7,8 +7,8 @@
 *.color0:        #282c34
 *.color8:        #5C6370
 ! Rojos
-*.color1:        #E06C75
-*.color9:        #E06C75
+*.color1:        #E05355
+*.color9:        #E05355
 ! Verde
 *.color2:        #98C379
 *.color10:       #98C379

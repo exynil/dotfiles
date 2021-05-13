@@ -2,5 +2,5 @@
   background:         #282c34;
   background-light:   #31353f;
   foreground:         #bdbdbd;
-  selected:           #E06C75;
+  selected:           #e05355;
 }
