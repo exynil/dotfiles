@@ -45,7 +45,7 @@ _notify() {
 
     [ "$(_depcheck notify-send)" ] && notify-send -i clock "$message"
 
-    play-sound "direct.ogg"
+    play-sound "long-expected.ogg"
 }
 
 # Set the timer and send notification when its done
