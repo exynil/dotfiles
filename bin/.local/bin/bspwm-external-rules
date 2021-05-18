@@ -40,5 +40,8 @@ Zathura)
 XTerm)
     xkb-switch -s us
     ;;
+Alacritty)
+    xkb-switch -s us
+    ;;
 esac
 
