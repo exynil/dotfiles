@@ -3,51 +3,33 @@
 rofi_command='rofi -theme themes/display.rasi'
 
 # Options
-laptop='󰌥'
-external='󰍹'
-multihead='󰌥 󰍹'
-duplicate='󰍺'
+laptop='laptop'
+laptop_hdmi='laptop & hdmi'
+laptop_hdmi_dp='laptop & hdmi & dp'
+
+edp="eDP1"
+hdmi="HDMI-1-0"
+dp="DP1"
 
 # Variable passed to rofi
-options="$laptop\n$external\n$multihead\n$duplicate"
+options="$laptop\n$laptop_hdmi\n$laptop_hdmi_dp"
 
 chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 2)"
 case $chosen in
 "$laptop")
-    xrandr --output eDP1 --auto --output HDMI-1-0 --off
+    xrandr --output "$edp" --auto --output "$hdmi" --off --output DP1 --off
     ;;
-"$external")
-    xrandr --output eDP1 --off --output HDMI-1-0 --auto
+"$laptop_hdmi")
+    xrandr --output "$edp" --auto --pos 1920x0 --output "$hdmi" --auto --pos 0x0
+    bspwm-conf-desktops
     ;;
-"$multihead")
-    left='󰁎'
-    up='󰁞'
-    down='󰁆'
-    right='󰁕'
-
-    options="$left\n$up\n$down\n$right"
-
-    chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu -selected-row 1)"
-    case $chosen in
-    "$left")
-        xrandr --output eDP1 --auto --pos 1920x0 --output HDMI-1-0 --auto --pos 0x0
-        exit 0
-        ;;
-    "$up")
-        xrandr --output eDP1 --auto --pos 0x1080 --output HDMI-1-0 --auto --pos 0x0
-        exit 0
-        ;;
-    "$down")
-        xrandr --output eDP1 --auto --pos 0x0 --output HDMI-1-0 --auto --pos 0x1080
-        exit 0
-        ;;
-    "$right")
-        xrandr --output eDP1 --auto --pos 0x0 --output HDMI-1-0 --auto --pos 1920x0
-        exit 0
-        ;;
-    esac
+"$laptop_hdmi_dp")
+    xrandr --output "$edp" --auto --pos 1920x0 --output "$dp" --auto --pos 0x0 --output "$hdmi" --auto --pos 3840x0 
+    bspwm-conf-desktops
     ;;
-"$duplicate")
-    xrandr --output eDP1 --auto --output HDMI-1-0 --auto --same-as eDP1
+*)
+    exit 0
     ;;
 esac
+
+polybar-run
