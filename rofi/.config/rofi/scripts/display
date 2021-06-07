@@ -24,7 +24,7 @@ case $chosen in
     bspwm-conf-desktops
     ;;
 "$laptop_hdmi_dp")
-    xrandr --output "$edp" --auto --pos 1920x0 --output "$dp" --auto --pos 0x0 --output "$hdmi" --auto --pos 3840x0 
+    xrandr --output "$edp" --auto --pos 960x1080 --output "$dp" --auto --pos 0x0 --output "$hdmi" --auto --pos 1920x0
     bspwm-conf-desktops
     ;;
 *)

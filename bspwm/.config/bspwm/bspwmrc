@@ -27,7 +27,7 @@ bspc config presel_feedback_color "#E05355"
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 pgrep -x polybar >/dev/null || polybar-run &
-pgrep -x xautolock >/dev/null || xautolock -time 5 -detectsleep -corners 000- -locker slock &
+pgrep -x xautolock >/dev/null || xautolock -time 10 -detectsleep -corners 000- -locker slock &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x greenclip >/dev/null || greenclip daemon &
