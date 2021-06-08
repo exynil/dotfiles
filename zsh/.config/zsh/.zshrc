@@ -105,6 +105,10 @@ alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias update='yay -Syu --noconfirm'
 alias ls='ls --color=auto'
 alias xrdb-reload='xrdb ~/.config/xresources/xresources'
+# Загрузка видео из YouTube в лучшем качестве
+alias y='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-format mp4'
+# Загрузка плейлиста из YouTube в лучшем качестве
+alias yp='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-format mp4 --yes-playlist'
 
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
