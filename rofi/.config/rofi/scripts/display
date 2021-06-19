@@ -20,7 +20,7 @@ case $chosen in
     xrandr --output "$edp" --auto --output "$hdmi" --off --output DP1 --off
     ;;
 "$laptop_hdmi")
-    xrandr --output "$edp" --auto --pos 1920x0 --output "$hdmi" --auto --pos 0x0
+    xrandr --output "$edp" --auto --pos 0x1080 --output "$hdmi" --auto --pos 0x0
     bspwm-conf-desktops
     ;;
 "$laptop_hdmi_dp")

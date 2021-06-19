@@ -19,11 +19,15 @@
     "emmet.includeLanguages": {
         "django-html": "html" // Для работы emmet в файлах Django
     },
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ]
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "prettier.printWidth": 120,
+    "workbench.colorTheme": "One Dark Pro"
 }
