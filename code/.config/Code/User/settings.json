@@ -26,8 +26,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[vue]": {
-        "editor.defaultFormatter": "octref.vetur"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "prettier.printWidth": 120,
-    "workbench.colorTheme": "One Dark Pro"
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.tabSize": 2,
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
