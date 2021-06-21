@@ -21,15 +21,14 @@ case $chosen in
     ;;
 "$laptop_hdmi")
     xrandr --output "$edp" --auto --pos 0x1080 --output "$hdmi" --auto --pos 0x0
-    bspwm-conf-desktops
     ;;
 "$laptop_hdmi_dp")
     xrandr --output "$edp" --auto --pos 960x1080 --output "$dp" --auto --pos 0x0 --output "$hdmi" --auto --pos 1920x0
-    bspwm-conf-desktops
     ;;
 *)
     exit 0
     ;;
 esac
 
+bspwm-conf-desktops
 polybar-run

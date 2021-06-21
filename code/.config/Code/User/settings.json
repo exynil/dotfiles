@@ -34,5 +34,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "security.workspace.trust.enabled": false
 }
