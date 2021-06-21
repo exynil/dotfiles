@@ -7,21 +7,34 @@
 
 # стуркура data.txt
 
-# /media/hdd/arch/dotfiles
-# /media/hdd/arch/knowledge-base
-# /media/hdd/arch/scripts
-# /media/hdd/github/my-works
-
+# [
+#   {
+#     "name": "Dotfiles",
+#     "folders": ["/media/hdd/arch/dotfiles"]
+#   },
+#   {
+#     "name": "Knowledge Base",
+#     "folders": ["/media/hdd/arch/knowledge-base"]
+#   },
+#   {
+#     "name": "Scripts",
+#     "folders": ["/media/hdd/arch/scripts", "/media/hdd/arch/test"]
+#   },
+# ]
 
 rofi_command='rofi -theme themes/conference.rasi'
 
-data="$APP_DATA/code/data.txt"
+data="$APP_DATA/code/data.json"
 
 # Variable passed to rofi
-options="$(cat "$data")"
+options="$(jq -r '.[].name' "$data")"
 
-chosen="$(echo -e "$options" | $rofi_command -p "code" -dmenu)"
+chosen="$(echo -e "$options" | $rofi_command -p "conference" -dmenu)"
 
 [[ -z "$chosen" ]] && exit 1
 
-code "$chosen"
+IFS=" " read -r -a folders <<< "$(jq -r ".[] | select(.name==\"$chosen\") .folders | @sh" "$data" | tr -d \')"
+
+for folder in "${folders[@]}"; do
+    code "$folder"
+done
