@@ -110,7 +110,8 @@ alias y='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-
 # Загрузка плейлиста из YouTube в лучшем качестве
 alias yp='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-format mp4 --yes-playlist'
 
-alias c='exit && code ./'
+alias c='code ./'
+alias v='source ./venv/bin/activate'
 
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'

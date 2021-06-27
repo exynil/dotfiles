@@ -35,5 +35,6 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "security.workspace.trust.enabled": false
+    "security.workspace.trust.enabled": false,
+    "editor.formatOnSave": true
 }

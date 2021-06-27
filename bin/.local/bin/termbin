@@ -4,7 +4,7 @@
 # - Загружает текст из буфера primary на termbin.com
 # - Полученный url копирует в primary и clipboard
 
-url=$(nc termbin.com 9999 < <(xsel -p))
+url=$(nc termbin.com 9999 < <(xsel -p) | sed 's/\x0//g')
 echo "$url" | xsel -ib
 echo "$url" | xsel -ip
 notify-send "$url copied to clipboard"
