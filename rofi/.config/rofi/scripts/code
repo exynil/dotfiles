@@ -33,7 +33,7 @@ chosen="$(echo -e "$options" | $rofi_command -p "conference" -dmenu)"
 
 [[ -z "$chosen" ]] && exit 1
 
-IFS=" " read -r -a folders <<< "$(jq -r ".[] | select(.name==\"$chosen\") .folders | @sh" "$data" | tr -d \')"
+IFS=" " read -r -a folders <<<"$(jq -r ".[] | select(.name==\"$chosen\") .folders | @sh" "$data" | tr -d \')"
 
 for folder in "${folders[@]}"; do
     code "$folder"
