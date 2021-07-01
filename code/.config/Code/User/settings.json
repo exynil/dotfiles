@@ -13,15 +13,6 @@
         120
     ],
     "workbench.iconTheme": "vscode-icons",
-    "files.associations": {
-        "**/templates/*.html": "django-html", // Для работы emmet в файлах Django
-    },
-    "emmet.includeLanguages": {
-        "django-html": "html" // Для работы emmet в файлах Django
-    },
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

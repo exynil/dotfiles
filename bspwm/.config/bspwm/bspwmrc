@@ -32,7 +32,7 @@ pgrep -x blueman-applet >/dev/null || blueman-applet &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x greenclip >/dev/null || greenclip daemon &
 pgrep -x telegram >/dev/null || telegram-desktop &
-# pgrep -x picom >/dev/null || picom &
+pgrep -x picom >/dev/null || picom &
 pgrep -x udiskie >/dev/null || udiskie -s &
 pgrep -x clipit >/dev/null || clipit &
 

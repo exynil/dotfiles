@@ -19,25 +19,17 @@ super + shift + q
     bspc node -c
 
 # alternate between the tiled and monocle layout
-super + m
+alt + m
     bspc desktop -l next
-
-# send the newest marked node to the newest preselected node
-super + y
-    bspc node newest.marked.local -n newest.!automatic.local
-
-# swap the current node and the biggest window
-super + g
-    bspc node -s biggest.window
 
 #--------------------- state/flags ---------------------#
 
 # set the window state
-super + {t,shift + t,s,f}
+alt + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,y,z}
+alt + ctrl + {m,x,y,z}
     bspc node -g {marked,locked,sticky,private}
 
 #--------------------- focus/swap ---------------------#
@@ -53,28 +45,13 @@ super + {_,shift + }{Left,Down,Up,Right}
 super + {p,b,comma,period}
     bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous desktop
-alt + {_,shift +} Tab
-    bspc desktop -f {next,prev}.local
-
 # focus the next/previous window in the current desktop
 super + {_,shift +} Tab
     bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous monitor
-super + bracket{left,right}
-    bspc monitor -f {prev,next}
-
-# focus the older or newer node in the focus history
-super + {o,i}
-    bspc wm -h off; \
-    bspc node {older,newer} -f; \
-    bspc wm -h on
-
 # focus or send to the given desktop
 super + {_,shift + } {1-9,0}
     bspc {desktop -f,node -d} '{1-9,10}'
-
 
 #--------------------- Preselect ---------------------#
 
@@ -85,10 +62,6 @@ super + ctrl + {h,j,k,l}
 super + ctrl + {Left,Down,Up,Right}
     bspc node -p {west,south,north,east}
 
-# preselect the ratio
-#super + ctrl + {1-9}
-#   bspc node -o 0.{1-9}
-
 # cancel the preselection for the focused node
 super + ctrl + space
     bspc node -p cancel
@@ -96,7 +69,6 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
 
 #--------------------- move/resize ---------------------#
 
@@ -118,19 +90,18 @@ super + alt + shift + {Left,Down,Up,Right}
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
 #--------------------- Rofi ---------------------#
 
-alt + {d,w,x,m}
+super + {d,w,x,m}
     $XDG_CONFIG_HOME/rofi/scripts/{run,window,powermenu,display}
 
-alt + {c,s,q,o}
+super + {c,s,q,o}
     $XDG_CONFIG_HOME/rofi/scripts/{clipboard,browser,calculator,conference}
 
-alt + {v,r,e,a}
+super + {v,r,e,a}
     $XDG_CONFIG_HOME/rofi/scripts/{colorscheme,record,wallpaper,code}
 
-alt + {z}
+super + {z}
     $XDG_CONFIG_HOME/rofi/scripts/{menu}
 
 #--------------------- Screenshot ---------------------#
@@ -145,7 +116,7 @@ super + Print
 
 #--------------------- watching youtube video with MPV ---------------------#
 
-alt + y
+super + y
     sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o)
 
 #--------------------- Backlight ---------------------#
@@ -164,15 +135,15 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 #--------------------- user setup ---------------------#
 
 # Hide polybar
-alt + p
+super + i
     polybar-toggle
 
 # Termbin
-alt + t
+super + t
     termbin
 
 # Translate selection
-alt + g
+super + g
     translate
 
 # htop
