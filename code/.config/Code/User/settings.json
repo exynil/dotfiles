@@ -20,12 +20,14 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "prettier.printWidth": 120,
-    "workbench.colorTheme": "One Dark Pro",
     "editor.tabSize": 2,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "security.workspace.trust.enabled": false,
-    "editor.formatOnSave": true
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.colorTheme": "One Dark Pro"
 }

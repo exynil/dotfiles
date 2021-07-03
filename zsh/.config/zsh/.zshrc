@@ -113,6 +113,8 @@ alias yp='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output
 alias c='code ./'
 alias v='source ./venv/bin/activate'
 
+alias n='xmodmap -e "keycode 77="'
+
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
 alias srd='systemctl restart docker'
