@@ -102,7 +102,7 @@ alias x='startx ~/.config/xinit/xinitrc &> /dev/null'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
-alias update='yay -Syu --noconfirm'
+alias update='yay -Syu --noconfirm --ignore pulseaudio --ignore libpulse'
 alias ls='ls --color=auto'
 alias xrdb-reload='xrdb ~/.config/xresources/xresources'
 # Загрузка видео из YouTube в лучшем качестве

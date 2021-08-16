@@ -1,40 +1,54 @@
 #!/bin/bash
 
 # Что делает этот скрипт:
-# - Позволяет быстро запускать vscode c выбранной папкой
+# - Позволяет быстро запускать программы c выбранной папкой
 
-# data - переменная хранит путь к файлу со списком папок
+# data - переменная хранит названия программ и папки для открытия
 
 # стуркура data.txt
 
 # [
 #   {
 #     "name": "Dotfiles",
-#     "folders": ["/media/hdd/arch/dotfiles"]
+#     "folders": [
+#       {
+#         "app": "code",
+#         "folder": "/media/hdd/arch/dotfiles"
+#       }
+#     ]
 #   },
 #   {
-#     "name": "Knowledge Base",
-#     "folders": ["/media/hdd/arch/knowledge-base"]
-#   },
-#   {
-#     "name": "Scripts",
-#     "folders": ["/media/hdd/arch/scripts", "/media/hdd/arch/test"]
-#   },
-# ]
+#     "name": "ITP",
+#     "folders": [
+#       {
+#         "app": "code",
+#         "folder": "/media/hdd/work/itp_vue"
+#       },
+#       {
+#         "app": "pycharm",
+#         "folder": "/media/hdd/work/itp_django"
+#       }
+#     ]
+#   }
+]
 
-rofi_command='rofi -theme themes/conference.rasi'
+rofi_command='rofi -theme themes/code.rasi'
 
 data="$APP_DATA/code/data.json"
 
 # Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"
 
-chosen="$(echo -e "$options" | $rofi_command -p "conference" -dmenu)"
+chosen="$(echo -e "$options" | $rofi_command -p "code" -dmenu)"
 
 [[ -z "$chosen" ]] && exit 1
 
-IFS=" " read -r -a folders <<<"$(jq -r ".[] | select(.name==\"$chosen\") .folders | @sh" "$data" | tr -d \')"
+rules=$(jq -r ".[] | select(.name==\"$chosen\") .rules" "$data")
 
-for folder in "${folders[@]}"; do
-    code "$folder"
+for row in $(echo "${rules}" | jq -r '.[] | @base64'); do
+    command=$(echo "${row}" | base64 --decode | jq -r ".app")
+    command+=" "
+    command+=$(echo "${row}" | base64 --decode | jq -r ".folder")
+
+    $command
 done
