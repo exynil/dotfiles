@@ -33,3 +33,5 @@ XTerm.*.internalBorder:   10
 XTerm.*.metaSendsEscape:  true
 XTerm.termName:           xterm-256color
 XTerm.borderWidth:        0
+
+Xcursor.size: 32

@@ -19,7 +19,6 @@
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "prettier.printWidth": 120,
     "editor.tabSize": 2,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
