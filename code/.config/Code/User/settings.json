@@ -28,7 +28,7 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "One Dark Pro",
     "editor.formatOnSave": true,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
