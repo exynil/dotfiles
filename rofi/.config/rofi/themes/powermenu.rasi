@@ -40,13 +40,18 @@ listview {
 }
 element-text {
     font:                   "Material Design Icons 44";
+    background-color:       @background-light;
+}
+element-text selected {
+    font:                   "Material Design Icons 44";
+    background-color:       @selected;
+    text-color:             @background;
 }
 element {
-    padding:                40px 40px 80px 40px;
+    padding:                40px 40px 40px 40px;
     background-color:       @background-light;
     border-radius:          10px;
 }
 element selected {
-    text-color:             @background;
     background-color:       @selected;
 }
