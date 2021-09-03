@@ -101,8 +101,8 @@ super + {c,s,q,o}
 super + {v,r,e,a}
     $XDG_CONFIG_HOME/rofi/scripts/{colorscheme,record,wallpaper,code}
 
-super + {z}
-    $XDG_CONFIG_HOME/rofi/scripts/{menu}
+super + {z,slash}
+    $XDG_CONFIG_HOME/rofi/scripts/{menu,command}
 
 #--------------------- Screenshot ---------------------#
 
