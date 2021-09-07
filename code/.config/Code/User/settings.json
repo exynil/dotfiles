@@ -29,7 +29,6 @@
         "*.ipynb": "jupyter-notebook"
     },
     "workbench.colorTheme": "One Dark Pro Darker",
-    "editor.formatOnSave": true,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -95,5 +94,6 @@
     "[nginx]": {
         "editor.defaultFormatter": "raynigon.nginx-formatter"
     },
+    "docker.languageserver.formatter.ignoreMultilineInstructions": true,
     
 }
