@@ -4,7 +4,7 @@
 |--------------|------------------------|
 | OS           | Archlinux              |
 | WM           | bspwm                  |
-| Terminal     | XTerm                  |
+| Terminal     | Alacritty              |
 | File manager | Ranger                 |
 | App launcher | Rofi                   |
 | Bar          | Polybar                |
