@@ -95,5 +95,7 @@
         "editor.defaultFormatter": "raynigon.nginx-formatter"
     },
     "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+    "prettier.printWidth": 120,
+    "editor.formatOnSave": true,
     
 }

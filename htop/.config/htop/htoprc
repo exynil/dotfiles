@@ -3,7 +3,7 @@
 fields=0 48 17 18 38 39 40 2 46 47 49 1
 sort_key=46
 sort_direction=1
-tree_sort_key=0
+tree_sort_key=46
 tree_sort_direction=1
 hide_kernel_threads=1
 hide_userland_threads=0
@@ -13,7 +13,7 @@ show_program_path=1
 highlight_base_name=0
 highlight_megabytes=1
 highlight_threads=1
-highlight_changes=0
+highlight_changes=1
 highlight_changes_delay_secs=5
 find_comm_in_cmdline=1
 strip_exe_from_cmdline=1

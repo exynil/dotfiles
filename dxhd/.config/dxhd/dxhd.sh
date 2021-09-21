@@ -92,6 +92,10 @@ bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 # super + {Left,Down,Up,Right}
 bspc node -v {-20 0,0 20,0 -20,20 0}
 
+## rotate
+# alt + r
+bspc node @parent -R 90
+
 ##--------------------- Rofi ---------------------##
 
 # super + {d,w,x,m}
