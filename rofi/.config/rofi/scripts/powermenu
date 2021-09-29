@@ -27,6 +27,7 @@ case $chosen in
     ;;
 "$suspend")
     systemctl suspend
+    slock
     ;;
 "$logout")
     bspc quit
