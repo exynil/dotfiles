@@ -135,8 +135,12 @@ xbacklight {-inc 10,-dec 10}
 # XF86Audio{Play,Stop,Prev,Next}
 playerctl {play-pause,stop,previous,next}
 
-# XF86Audio{RaiseVolume,LowerVolume,Mute}
-pamixer {-i 2,-d 2,-t}
+# XF86AudioMute
+pamixer -t
+
+# XF86Audio{RaiseVolume,LowerVolume}
+pamixer {-i 2,-d 2}
+dunstify -h int:value:$(pamixer --get-volume) Volume
 
 ##--------------------- user setup ---------------------##
 
@@ -155,3 +159,7 @@ translate
 ## htop
 #ctrl + alt + Delete
 $TERMINAL -e htop -H
+
+## dunst history
+#ctrl + grave
+dunstctl history-pop

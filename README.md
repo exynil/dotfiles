@@ -3,8 +3,8 @@
 |              |                        |
 |--------------|------------------------|
 | OS           | Archlinux              |
-| WM           | bspwm                  |
-| Terminal     | Alacritty              |
+| WM           | i3                     |
+| Terminal     | XTerm                  |
 | File manager | Ranger                 |
 | App launcher | Rofi                   |
 | Bar          | Polybar                |

@@ -7,7 +7,7 @@ export XDG_CURRENT_DESKTOP="gnome"
 export HDD="/media/hdd"
 export APP_DATA="$HDD/arch/app-data"
 
-export TERMINAL=$(which alacritty)
+export TERMINAL=$(which xterm)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
 
@@ -25,6 +25,12 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
 export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
+# export http_proxy="proxy2.keu.kz:3128"
+# export https_proxy=$http_proxy
+# export ftp_proxy=$http_proxy
+# export rsync_proxy=$http_proxy
+# export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com,*.keu.kz"
 
 
 [[ "$PATH" == *"$HOME/.local/bin"* ]] || PATH="$HOME/.local/bin:$PATH"

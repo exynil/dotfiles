@@ -20,59 +20,70 @@ img_dir="$HOME/Pictures"
 # Wallpapers folder location
 wallpapers_dir="$img_dir/wallpapers"
 
+# Wallhaven folder location
+wallhaven_dir="$img_dir/wallhaven.cc"
+
 # Wallpaper
 wallpaper="$img_dir/wallpaper.jpg"
 
+# Resolution
+resolution="3840x2160"
+
 case $chosen in
 "random")
-    img=$(swd -l "$img_dir")
-    convert "$img" "$wallpaper"
-    rm "$img"
-    hsetroot -fill "$wallpaper" >/dev/null
+    img=$(swd -l "$wallhaven_dir" -a "$resolution")
+    ln -sf "$img" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "random from latest")
-    img=$(swd -l "$img_dir" -s latest)
-    convert "$img" "$wallpaper"
-    rm "$img"
-    hsetroot -fill "$wallpaper" >/dev/null
+    img=$(swd -l "$wallhaven_dir" -s latest -a "$resolution")
+    ln -sf "$img" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "random from most viewed")
-    img=$(swd -l "$img_dir" -s views)
-    convert "$img" "$wallpaper"
-    rm "$img"
-    hsetroot -fill "$wallpaper" >/dev/null
+    img=$(swd -l "$wallhaven_dir" -s views -a "$resolution")
+    ln -sf "$img" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "random from toplist")
-    img=$(swd -l "$img_dir" -s toplist)
-    convert "$img" "$wallpaper"
-    rm "$img"
-    hsetroot -fill "$wallpaper" >/dev/null
+    img=$(swd -l "$wallhaven_dir" -s toplist -a "$resolution")
+    ln -sf "$img" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "random from favorites")
-    img=$(swd -l "$img_dir" -s favorites)
-    convert "$img" "$wallpaper"
-    rm "$img"
-    hsetroot -fill "$wallpaper" >/dev/null
+    img=$(swd -l "$wallhaven_dir" -s favorites -a "$resolution")
+    ln -sf "$img" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "random and blurred")
-    img=$(swd -l "$img_dir")
-    convert -blur 0x80 "$img" "$wallpaper"
-    rm "$img"
-    hsetroot -fill "$wallpaper" >/dev/null
+    img=$(swd -l "$wallhaven_dir")
+    convert -blur 0x80 "$img" "$img"
+    ln -sf "$img" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "random from saved")
     mapfile -t wallpapers < <(find "$wallpapers_dir" -type f)
-    cp -rf "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}" "$wallpaper"
-    hsetroot -fill "$wallpaper" >/dev/null
+    ln -sf "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}" "$wallpaper"
+    feh --bg-center "$wallpaper"
     ;;
 "keep wallpaper")
-    # Name of image
-    img="wallpaper-$(date +%y%m%d-%H%M%S).jpg"
+    # Получаем путь текущего изображения
+    current_wallpaper="$(readlink -f "$wallpaper")"
 
-    # Copy the wallpaper image to archive folder
-    [[ ! -d "$wallpapers_dir" ]] && mkdir -p "$wallpapers_dir"
+    PATTERN="$wallpapers_dir/*${current_wallpaper##*/}"
 
-    cp "$wallpaper" "$wallpapers_dir/$img"
-    notify-send --hint=string:x-dunst-stack-tag:wallpaper "$img saved"
+    # Проверяем имеется ли такое изображение
+    if compgen -G "$PATTERN" >/dev/null; then
+        notify-send -u critical "Image already exists"
+    else
+        mkdir -p "$wallpapers_dir"
+
+        # Name of image
+        img="$(date +%y%m%d-%H%M%S)-${current_wallpaper##*/}"
+
+        # Copy the wallpaper image to archive folder
+        cp "$current_wallpaper" "$wallpapers_dir/$img"
+        notify-send "$img saved"
+    fi
     ;;
 esac

@@ -17,7 +17,7 @@ firefox)
     fi
     ;;
 TelegramDesktop)
-    echo "desktop=4"
+    echo "desktop=8"
     ;;
 discord)
     echo "desktop=5"

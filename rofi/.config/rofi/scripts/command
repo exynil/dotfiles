@@ -3,20 +3,29 @@
 # Что делает этот скрипт:
 # - Позволяет быстро запускать часто используемые команды
 
-# data - переменная хранит названия программ и папки для открытия
+# data - должна хранить путь к data.json 
 
-# стуркура data.txt
+# стуркура data.json
 
 # [
 #   {
-#     "name": "Приватное окно firefox",
+#     "name": "firefox --private-window http://localhost",
 #     "commands": [
 #       {
 #         "app": "firefox",
 #         "arguments": "--private-window http://localhost"
 #       },
 #     ]
-#   }
+#   },
+#   {
+#     "name": "Подключиться к WLAN_XXX",
+#     "commands": [
+#       {
+#         "app": "nmcli",
+#         "arguments": "con up WLAN_XXX"
+#       }
+#     ]
+#   },
 # ]
 
 rofi_command='rofi -theme themes/command.rasi'

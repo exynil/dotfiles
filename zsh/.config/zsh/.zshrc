@@ -119,6 +119,8 @@ alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
 alias srd='systemctl restart docker'
 
+alias watch_docker='watch -n 3 "docker ps --format '"'"'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"'"'"'
+
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
     mkdir $ZSH_CACHE_DIR
@@ -135,5 +137,6 @@ rr() {
         exit
     fi
 }
+
 
 HISTFILE=~/.cache/zsh.history

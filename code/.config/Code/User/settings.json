@@ -3,7 +3,7 @@
     "files.autoSave": "onFocusChange",
     "workbench.sideBar.location": "left",
     "breadcrumbs.enabled": true,
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "none",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
     "explorer.compactFolders": false,
@@ -28,7 +28,6 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
-    "workbench.colorTheme": "One Dark Pro Darker",
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -96,5 +95,11 @@
     },
     "docker.languageserver.formatter.ignoreMultilineInstructions": true,
     "prettier.printWidth": 120,
-    
+     // For which languages indent-rainbow should be activated (if empty it means all).
+    "indentRainbow.includedLanguages": [
+        "html",
+        "vue",
+        "js"
+    ],
+    "workbench.colorTheme": "One Dark Pro Darker" // for example ["nim", "nims", "python"]
 }

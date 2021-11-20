@@ -3,14 +3,14 @@
 # Что делает этот скрипт:
 # - Позволяет быстро запускать программы c выбранной папкой
 
-# data - переменная хранит названия программ и папки для открытия
+# data - должна хранить путь к data.json 
 
-# стуркура data.txt
+# стуркура data.json
 
 # [
 #   {
 #     "name": "Dotfiles",
-#     "folders": [
+#     "rules": [
 #       {
 #         "app": "code",
 #         "folder": "/media/hdd/arch/dotfiles"
@@ -19,7 +19,7 @@
 #   },
 #   {
 #     "name": "ITP",
-#     "folders": [
+#     "rules": [
 #       {
 #         "app": "code",
 #         "folder": "/media/hdd/work/itp_vue"
@@ -30,7 +30,7 @@
 #       }
 #     ]
 #   }
-]
+# ]
 
 rofi_command='rofi -theme themes/code.rasi'
 
@@ -50,5 +50,5 @@ for row in $(echo "${rules}" | jq -r '.[] | @base64'); do
     command+=" "
     command+=$(echo "${row}" | base64 --decode | jq -r ".folder")
 
-    $command
+    $command &
 done

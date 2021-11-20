@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Функция возвращает индекс в массиве значения
+get_index() {
+  mapfile -t arr <<<"$1"
+  value="$2"
+
+  for i in "${!arr[@]}"; do
+    if [[ "${arr[$i]}" = "$value" ]]; then
+      return "${i}"
+    fi
+  done
+}
+
 rofi_dir="$XDG_CONFIG_HOME/rofi"
 
 rofi_command='rofi -theme themes/colorscheme.rasi'
@@ -7,8 +19,17 @@ rofi_command='rofi -theme themes/colorscheme.rasi'
 # Variable passed to rofi
 options=$(ls "$rofi_dir/themes/colorschemes/")
 
-colorscheme="$(echo -e "$options" | $rofi_command -p colorscheme -dmenu)"
+# Получаем название текущей цветовой схемы
+current_colorscheme=$(head "$rofi_dir/themes/colors.rasi" | cut -d "/" -f2 | sed 's/"//')
+
+# Получаем её индекс
+get_index "$options" "$current_colorscheme"
+
+colorscheme="$(echo -e "$options" | $rofi_command -p colorscheme -dmenu -selected-row $?)"
 
 [[ -z "$colorscheme" ]] && exit 1
 
 echo "@import \"colorschemes/$colorscheme\"" >"$rofi_dir"/themes/colors.rasi
+
+# Повторный запуск скрипта
+"$0"

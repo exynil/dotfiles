@@ -15,12 +15,12 @@ connected_monitors=$(bspc query -M | wc -l)
 polybar_config="$XDG_CONFIG_HOME/polybar/config.ini"
 
 if [ "$connected_monitors" -eq "2" ]; then
-    MONITOR=$laptop polybar -r laptop -c "$polybar_config" &
-    MONITOR=$hdmi polybar -r hdmi -c "$polybar_config" &
+    MONITOR=$laptop polybar -r first -c "$polybar_config" &
+    MONITOR=$hdmi polybar -r second -c "$polybar_config" &
 elif [ "$connected_monitors" -eq "3" ]; then
-    MONITOR=$laptop polybar -r laptop -c "$polybar_config" &
-    MONITOR=$hdmi polybar -r hdmi -c "$polybar_config" &
-    MONITOR=$dp polybar -r dp -c "$polybar_config" &
+    MONITOR=$laptop polybar -r first -c "$polybar_config" &
+    MONITOR=$hdmi polybar -r second -c "$polybar_config" &
+    MONITOR=$dp polybar -r third -c "$polybar_config" &
 else
-    polybar -r laptop -c "$polybar_config" &
+    polybar -r first -c "$polybar_config" &
 fi

@@ -93,7 +93,7 @@ case $chosen in
     fi
     ;;
 "$scratchpad")
-    # xterm -name "dropdown"
+    xterm -name "dropdown"
     ;;
 "$polybar")
     polybar-run
