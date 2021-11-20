@@ -140,7 +140,7 @@ pamixer -t
 
 # XF86Audio{RaiseVolume,LowerVolume}
 pamixer {-i 2,-d 2}
-dunstify -h int:value:$(pamixer --get-volume) Volume
+dunstify -t 500 -h int:value:$(pamixer --get-volume) Volume
 
 ##--------------------- user setup ---------------------##
 
