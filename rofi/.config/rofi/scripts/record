@@ -12,11 +12,19 @@ stop='󰙦'
 # Variable passed to rofi
 options="$laptop\n$external\n$all\n$select\n$stop"
 
+# Имя конечного файла
 video="$(date +%Y%m%d-%H%M%S).mp4"
 
+# Папка для сохранения
 video_folder="$HOME/Videos/screenrecords"
 
-start_recording=""
+# Используйте команду pactl list sinks short для получения списка каналов
+
+# Канал микрофона
+mic_sink="alsa_input.pci-0000_00_1f.3.analog-stereo"
+
+# Канал устройства
+desktop_sink="alsa_output.pci-0000_00_1f.3.analog-stereo.monitor"
 
 prompt="screen recorder"
 PID=$(pgrep record | head -n 1)
@@ -30,6 +38,8 @@ if [ -n "$PID" ]; then
 fi
 
 screencast="$video_folder/$video"
+
+start_recording=""
 
 chosen="$(echo -e "$options" | $rofi_command -p "$prompt" -dmenu -selected-row 2)"
 case $chosen in
@@ -76,14 +86,14 @@ audio=""
 chosen="$(echo -e "$options" | $rofi_command -p "$prompt" -dmenu)"
 case $chosen in
 "$desktop")
-    audio+="-f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor "
+    audio+="-f pulse -i $desktop_sink "
     ;;
 "$mic")
-    audio+="-f pulse -ac 2 -i alsa_input.pci-0000_00_1f.3.analog-stereo "
+    audio+="-f pulse -ac 2 -i $mic_sink "
     ;;
 "$desktop_and_mic")
-    audio+="-f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor "
-    audio+="-f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo "
+    audio+="-f pulse -i $desktop_sink "
+    audio+="-f pulse -i $mic_sink "
     audio+="-filter_complex amix=inputs=2 "
     ;;
 "")
@@ -92,12 +102,34 @@ case $chosen in
 esac
 
 start_recording+=$audio
-# для поддержки видео на моб. устройствах
+
+# для поддержки видео на моб. устройствах (отключите, если необходимо получить
+# видео без потери качества)
 start_recording+="-c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p "
+
 # кодеку h264 требуются исключительно чётные размерности ширины и высоты
 start_recording+="-vf crop=trunc(iw/2)*2:trunc(ih/2)*2 "
+
 start_recording+=$screencast
 
 [[ ! -d "$video_folder" ]] && mkdir -p "$video_folder"
 
 $start_recording
+
+# Данный скрипт рофи был оптимизирован под два монитора 
+# расположенных по оси Y с разрешениями 1920x1080.
+# Вам необхоимо будет внести некоторые изменния, если
+# ваша конфигурация отличима от моей.
+
+# +-----[ 1920 ]-----+
+# |                  |
+# |                  |
+# |                  |
+# |                  |
+# +------------------+
+# +-----[ 1920 ]-----+
+# |                  |
+# |                  |
+# |                  |
+# |                  |
+# +------------------+
