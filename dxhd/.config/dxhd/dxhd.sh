@@ -117,7 +117,7 @@ $XDG_CONFIG_HOME/rofi/scripts/{menu,command}
 flameshot gui
 
 ## fullscreen
-super + Print
+# super + Print
 flameshot full -c
 
 ##--------------------- watching youtube video with MPV ---------------------##
@@ -149,11 +149,11 @@ dunstify -t 500 -h int:value:$(pamixer --get-volume) Volume
 polybar-toggle
 
 ## Termbin
-#super + t
+# super + t
 termbin
 
 ## Translate selection
-#super + g
+# super + g
 translate
 
 ## htop
@@ -161,5 +161,5 @@ translate
 $TERMINAL -e htop -H
 
 ## dunst history
-#ctrl + grave
+# ctrl + grave
 dunstctl history-pop

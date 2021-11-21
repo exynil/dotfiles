@@ -101,5 +101,6 @@
         "vue",
         "js"
     ],
-    "workbench.colorTheme": "One Dark Pro Darker" // for example ["nim", "nims", "python"]
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "window.zoomLevel": 1 // for example ["nim", "nims", "python"]
 }
