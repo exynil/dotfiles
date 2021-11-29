@@ -6,7 +6,7 @@
     text-color:             @foreground;
 }
 window {
-    width:                  28%;
+    width:                  530px;
     border-color:           @background-light;
     location:               east;
     border:                 1;

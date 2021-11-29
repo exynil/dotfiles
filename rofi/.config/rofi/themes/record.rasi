@@ -6,7 +6,7 @@
     text-color:             @foreground;
 }
 window {
-    width:                  48%;
+    width:                  934px;
     border-color:           @background-light;
     border:                 1;
 }

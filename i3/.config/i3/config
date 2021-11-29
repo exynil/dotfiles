@@ -1,0 +1,292 @@
+# i3 config file (v4)
+
+default_border pixel 2
+default_floating_border pixel 3
+
+hide_edge_borders smart
+
+# Font for window titles.
+font pango:Ubuntu Mono 12
+
+# use these keys for focus, movement, and resize directions when reaching for
+set $up k
+set $down j
+set $left h
+set $right l
+
+set $alt Mod1
+set $super Mod4
+
+# audio
+bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext        exec --no-startup-id playerctl next
+bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
+bindsym XF86AudioStop        exec --no-startup-id playerctl stop
+bindsym XF86AudioMute        exec --no-startup-id pamixer -t
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5; \
+exec notify-send -h string:x-canonical-private-synchronous:audio "Vol [$(pamixer --get-volume)%]" -t 800
+
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5; \
+exec notify-send -h string:x-canonical-private-synchronous:audio "Vol [$(pamixer --get-volume)%]" -t 800
+
+# backlight
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+# screenshot
+bindsym $super+Print exec flameshot full -c
+bindsym Print exec flameshot gui
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier $super
+
+# start a terminal
+bindsym $super+Return exec --no-startup-id xkb-switch -s us && $TERMINAL
+
+# kill focused window
+bindsym $super+Shift+q kill
+
+# start rofi (a program launcher)
+bindsym $super+s exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/browser
+bindsym $super+q exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/calculator
+bindsym $super+c exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/clipboard
+bindsym $super+v exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/colorscheme
+bindsym $super+o exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/conference
+bindsym $super+m exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/display
+bindsym $super+x exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/powermenu
+bindsym $super+r exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/record
+bindsym $super+d exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/run
+bindsym $super+e exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/wallpaper
+bindsym $super+w exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/window
+bindsym $super+a exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/code
+bindsym $super+z exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/menu
+bindsym $super+period exec --no-startup-id $XDG_CONFIG_HOME/rofi/scripts/command
+
+# change focus
+bindsym $super+$left focus left
+bindsym $super+$down focus down
+bindsym $super+$up focus up
+bindsym $super+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# move focused window
+bindsym $super+Shift+$left move left
+bindsym $super+Shift+$down move down
+bindsym $super+Shift+$up move up
+bindsym $super+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $alt+h split h
+
+# split in vertical orientation
+bindsym $alt+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $alt+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $alt+s layout stacking
+bindsym $alt+w layout tabbed
+bindsym $alt+e layout toggle split
+
+# toggle tiling / floating
+bindsym $super+f floating toggle; resize set 960 540; move position center; 
+
+# change focus between tiling / floating windows
+bindsym $alt+space focus mode_toggle
+
+# focus the parent container
+bindsym $alt+a focus parent
+
+# focus the child container
+#bindsym $alt+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $alt+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $alt+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $super+1 workspace number $ws1
+bindsym $super+2 workspace number $ws2
+bindsym $super+3 workspace number $ws3
+bindsym $super+4 workspace number $ws4
+bindsym $super+5 workspace number $ws5
+bindsym $super+6 workspace number $ws6
+bindsym $super+7 workspace number $ws7
+bindsym $super+8 workspace number $ws8
+bindsym $super+9 workspace number $ws9
+bindsym $super+0 workspace number $ws10
+
+# switch to workspace - numpad alternatives
+bindsym $super+mod2+KP_1 workspace number $ws1
+bindsym $super+mod2+KP_2 workspace number $ws2
+bindsym $super+mod2+KP_3 workspace number $ws3
+bindsym $super+mod2+KP_4 workspace number $ws4
+bindsym $super+mod2+KP_5 workspace number $ws5
+bindsym $super+mod2+KP_6 workspace number $ws6
+bindsym $super+mod2+KP_7 workspace number $ws7
+bindsym $super+mod2+KP_8 workspace number $ws8
+bindsym $super+mod2+KP_9 workspace number $ws9
+bindsym $super+mod2+KP_0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace number $ws1
+bindsym $super+Shift+2 move container to workspace number $ws2
+bindsym $super+Shift+3 move container to workspace number $ws3
+bindsym $super+Shift+4 move container to workspace number $ws4
+bindsym $super+Shift+5 move container to workspace number $ws5
+bindsym $super+Shift+6 move container to workspace number $ws6
+bindsym $super+Shift+7 move container to workspace number $ws7
+bindsym $super+Shift+8 move container to workspace number $ws8
+bindsym $super+Shift+9 move container to workspace number $ws9
+bindsym $super+Shift+0 move container to workspace number $ws10
+
+# move focused container to workspace - numpad alternatives
+bindsym $super+Shift+mod2+KP_End move container to workspace number $ws1
+bindsym $super+Shift+mod2+KP_Down move container to workspace number $ws2
+bindsym $super+Shift+mod2+KP_Next move container to workspace number $ws3
+bindsym $super+Shift+mod2+KP_Left move container to workspace number $ws4
+bindsym $super+Shift+mod2+KP_Begin move container to workspace number $ws5
+bindsym $super+Shift+mod2+KP_Right move container to workspace number $ws6
+bindsym $super+Shift+mod2+KP_Home move container to workspace number $ws7
+bindsym $super+Shift+mod2+KP_Up move container to workspace number $ws8
+bindsym $super+Shift+mod2+KP_Prior move container to workspace number $ws9
+bindsym $super+Shift+mod2+KP_Insert move container to workspace number $ws10
+
+# Move workspaces betweeen monitors
+bindsym $super+Control+m move workspace to output eDP1
+bindsym $super+Control+s move workspace to output HDMI-1-0
+bindsym $super+Control+Right move workspace to output right
+bindsym $super+Control+Left move workspace to output left
+bindsym $super+Control+Down move workspace to output down
+bindsym $super+Control+Up move workspace to output up
+
+# Moves container to the active workspace on another screen
+bindsym $super+Shift+Control+m move container to output eDP1
+bindsym $super+Shift+Control+s move container to output HDMI-1-0
+bindsym $super+Shift+Control+Right move container to output right
+bindsym $super+Shift+Control+Left move container to output left
+bindsym $super+Shift+Control+Down move container to output down
+bindsym $super+Shift+Control+Up move container to output up
+
+# reload the configuration file
+bindsym $super+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+
+# Size
+bindsym $alt+Up    resize shrink height 10 px or 1 ppt
+bindsym $alt+Down  resize grow   height 10 px or 1 ppt
+bindsym $alt+Left  resize shrink width  10 px or 1 ppt
+bindsym $alt+Right resize grow   width  10 px or 1 ppt
+
+# assign applications to specific workspace
+assign [class="(?i)(?:TelegramDesktop)"]                → 8
+assign [class="(?i)(?:Discord)"]                        → 9
+
+# focus, floating, & sticky
+for_window [class="(?i)(?:qt5ct|pinentry)"]             floating enable, focus
+for_window [title="(?i)(?:copying|deleting|moving)"]    floating enable
+for_window [window_role="(?i)(?:pop-up|setup)"]         floating enable
+for_window [class="Gnome-calculator"]                   floating enable
+for_window [class="mpv"]                                floating enable
+for_window [class="xpad"]                               floating enable
+for_window [class="flameshot"]                          floating enable
+
+exec_always --no-startup-id polybar-run &
+exec_always --no-startup-id xrdb ~/.config/xresources/xresources &
+exec --no-startup-id hsetroot -fill ~/Pictures/wallpaper.jpg &
+exec --no-startup-id picom &
+exec --no-startup-id udiskie -s &
+exec --no-startup-id telegram-desktop &
+exec --no-startup-id greenclip daemon &
+exec --no-startup-id blueman-applet &
+exec --no-startup-id nm-applet &
+exec --no-startup-id xautolock -time 5 -detectsleep -corners ---- -locker slock &
+exec --no-startup-id xset r rate 350 62 &
+exec --no-startup-id numlockx on &
+exec --no-startup-id clipit &
+exec --no-startup-id battery &
+exec --no-startup-id sleep 1 && xterm -name "dropdown" &
+
+# polybar toggle
+bindsym $alt+p exec --no-startup-id polybar-msg cmd toggle
+
+# translate selection
+bindsym $super+g exec --no-startup-id translate
+
+# upload to termbin
+bindsym $super+t exec --no-startup-id termbin
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or Mod1+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $alt+r mode "default"
+}
+
+bindsym $alt+r mode "resize"
+
+# watching youtube video with MPV
+bindsym $super+y exec sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o) &
+
+# scratchpad terminal
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 1000 800
+for_window [instance="dropdown"] move scratchpad
+bindsym $super+slash [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+
+# class                 border  bground text    indicator child_border
+client.focused          #61AFEF #61AFEF #3A3F4B #61AFEF   #61AFEF
+client.focused_inactive #3A3F4B #3A3F4B #F8F8F2 #3A3F4B   #3A3F4B
+client.unfocused        #282c34 #282c34 #BFBFBF #282c34   #3A3F4B
+client.urgent           #3A3F4B #BF616A #F8F8F2 #BF616A   #BF616A
+client.placeholder      #282c34 #282c34 #F8F8F2 #282c34   #282c34
+
+client.background       #F8F8F2

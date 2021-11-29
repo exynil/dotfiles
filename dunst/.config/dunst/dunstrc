@@ -390,9 +390,9 @@
 #    msg_urgency = critical
 #    fullscreen = show
 
-#[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
+# [espeak]
+#    summary = "*lock"
+#    script = slock
 
 #[script-test]
 #    summary = "*script*"

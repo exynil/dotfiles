@@ -41,10 +41,14 @@ chosen="$(echo -e "$options" | $rofi_command -p "commands" -dmenu)"
 
 commands=$(jq -r ".[] | select(.name==\"$chosen\") .commands" "$data")
 
-for row in $(echo "${commands}" | jq -r '.[] | @base64'); do
-    command=$(echo "${row}" | base64 --decode | jq -r ".app")
-    command+=" "
-    command+=$(echo "${row}" | base64 --decode | jq -r ".arguments")
+for i in $(echo "${commands}" | jq -r '.[] | @base64'); do
+    command=$(echo "${i}" | base64 --decode | jq -r ".app")
+    arguments=$(echo "${i}" | base64 --decode | jq -r ".arguments")
 
-    $command
+    for j in $(echo "$arguments" | jq -r '.[] | @base64'); do
+        command+=" "
+        command+=$(echo "$j" | base64 --decode)
+    done
+
+    $command &
 done
