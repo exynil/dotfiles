@@ -35,9 +35,7 @@ options+="\n$mpv_controller"
 chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 5)"
 case $chosen in
 "$bt_headphones")
-    data="$APP_DATA/menu/data.json"
-
-    mac=$(jq -r ".[] | select(.name==\"Galaxy Buds+\") .mac" "$data")
+    mac="E8:7F:6B:27:DE:FB"
 
     state=$(bluetoothctl info "$mac" | awk '/Connected:/{print $2}')
 

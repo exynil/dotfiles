@@ -21,5 +21,3 @@ fi
 while [ "$(bspc query -D --names | grep -c 'Desktop')" -gt 0 ]; do
     bspc desktop "Desktop" -r
 done
-
-# for i in {0..8..2}; do echo "$i"; done

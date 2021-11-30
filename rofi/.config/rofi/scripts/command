@@ -3,26 +3,29 @@
 # Что делает этот скрипт:
 # - Позволяет быстро запускать часто используемые команды
 
-# data - должна хранить путь к data.json 
+# data - должна хранить путь к command.json 
 
-# стуркура data.json
+# стуркура command.json
 
 # [
 #   {
-#     "name": "firefox --private-window http://localhost",
-#     "commands": [
-#       {
-#         "app": "firefox",
-#         "arguments": "--private-window http://localhost"
-#       },
-#     ]
-#   },
-#   {
-#     "name": "Подключиться к WLAN_XXX",
+#     "name": "Подключиться к INET STUD",
 #     "commands": [
 #       {
 #         "app": "nmcli",
-#         "arguments": "con up WLAN_XXX"
+#         "arguments": ["con up InetStud"]
+#       }
+#     ]
+#   },
+#   {
+#     "name": "cd itp",
+#     "commands": [
+#       {
+#         "app": "alacritty",
+#         "arguments": [
+#           "--working-directory /home/max/work/itp",
+#           "-e zsh"
+#         ]
 #       }
 #     ]
 #   },
@@ -30,7 +33,7 @@
 
 rofi_command='rofi -theme themes/command.rasi'
 
-data="$APP_DATA/commands/data.json"
+data="$APP_DATA/rofi/command.json"
 
 # Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"

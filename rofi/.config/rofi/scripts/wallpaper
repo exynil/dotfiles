@@ -32,34 +32,28 @@ resolution="3840x2160"
 case $chosen in
 "random")
     img=$(swd -l "$wallhaven_dir" -a "$resolution")
-    ln -sf "$img" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from latest")
     img=$(swd -l "$wallhaven_dir" -s latest -a "$resolution")
-    ln -sf "$img" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from most viewed")
     img=$(swd -l "$wallhaven_dir" -s views -a "$resolution")
-    ln -sf "$img" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from toplist")
     img=$(swd -l "$wallhaven_dir" -s toplist -a "$resolution")
-    ln -sf "$img" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from favorites")
     img=$(swd -l "$wallhaven_dir" -s favorites -a "$resolution")
-    ln -sf "$img" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random and blurred")
     img=$(swd -l "$wallhaven_dir")
     convert -blur 0x80 "$img" "$img"
-    ln -sf "$img" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from saved")
     mapfile -t wallpapers < <(find "$wallpapers_dir" -type f)

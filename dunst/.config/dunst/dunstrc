@@ -391,8 +391,8 @@
 #    fullscreen = show
 
 # [espeak]
-#    summary = "*lock"
-#    script = slock
+#    summary = "*"
+#    script = dunst_espeak.sh
 
 #[script-test]
 #    summary = "*script*"

@@ -3,9 +3,9 @@
 # Что делает этот скрипт:
 # - Позволяет быстро запускать конференции в Zoom
 
-# data - переменная хранит путь к файлу с настройками для конференции
+# data - переменная хранит путь к файлу zoom.json
 
-# стуркура data.json
+# стуркура zoom.json
 
 # [
 #   {
@@ -25,9 +25,9 @@
 #   }
 # ]
 
-rofi_command='rofi -theme themes/conference.rasi'
+rofi_command='rofi -theme themes/zoom.rasi'
 
-data="$APP_DATA/zoom/data.json"
+data="$APP_DATA/rofi/zoom.json"
 
 # Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"

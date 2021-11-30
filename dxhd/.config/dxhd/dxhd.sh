@@ -2,7 +2,7 @@
 
 ## Терминал
 # super + Return
-$TERMINAL
+kitty
 
 ## Перезагрузка dxhd
 # super + Escape
@@ -102,10 +102,10 @@ bspc node @parent -R 90
 $XDG_CONFIG_HOME/rofi/scripts/{run,window,powermenu,display}
 
 # super + {c,s,q,o}
-$XDG_CONFIG_HOME/rofi/scripts/{clipboard,browser,calculator,conference}
+$XDG_CONFIG_HOME/rofi/scripts/{clipboard,browser,calculator,zoom}
 
 # super + {v,r,e,a}
-$XDG_CONFIG_HOME/rofi/scripts/{colorscheme,record,wallpaper,code}
+$XDG_CONFIG_HOME/rofi/scripts/{colorscheme,record,wallpaper,folder}
 
 # super + {z,slash}
 $XDG_CONFIG_HOME/rofi/scripts/{menu,command}

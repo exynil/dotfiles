@@ -3,9 +3,9 @@
 # Что делает этот скрипт:
 # - Позволяет быстро запускать программы c выбранной папкой
 
-# data - должна хранить путь к data.json 
+# data - должна хранить путь к folder.json 
 
-# стуркура data.json
+# стуркура folder.json
 
 # [
 #   {
@@ -32,9 +32,9 @@
 #   }
 # ]
 
-rofi_command='rofi -theme themes/code.rasi'
+rofi_command='rofi -theme themes/folder.rasi'
 
-data="$APP_DATA/code/data.json"
+data="$APP_DATA/rofi/folder.json"
 
 # Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"
