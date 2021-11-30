@@ -2,7 +2,7 @@
 
 ## Терминал
 # super + Return
-kitty
+$TERMINAL
 
 ## Перезагрузка dxhd
 # super + Escape

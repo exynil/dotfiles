@@ -121,6 +121,9 @@ alias srd='systemctl restart docker'
 
 alias watch_docker='watch -n 3 "docker ps --format '"'"'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"'"'"'
 
+alias nvidia='cd $SCRIPTS/xorg-conf && sudo ./switch.sh nvidia.conf; cd ~'
+alias intel='cd $SCRIPTS/xorg-conf && sudo ./switch.sh intel.conf; cd ~'
+
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
     mkdir $ZSH_CACHE_DIR
