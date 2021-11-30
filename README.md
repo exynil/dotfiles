@@ -3,7 +3,7 @@
 |              |                        |
 |--------------|------------------------|
 | OS           | Archlinux              |
-| WM           | i3                     |
+| WM           | bspwm                  |
 | Terminal     | XTerm                  |
 | File manager | Ranger                 |
 | App launcher | Rofi                   |
