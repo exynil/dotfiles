@@ -3,9 +3,9 @@
 rofi_command='rofi -theme themes/record.rasi'
 
 # Options
-laptop='󰌥'
+laptop='󰌢'
 external='󰍹'
-all='󰌥 󰍹'
+all='󰌢 󰍹'
 select='󰊓'
 stop='󰙦'
 

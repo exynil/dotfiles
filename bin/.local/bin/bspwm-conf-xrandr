@@ -9,5 +9,6 @@ hdmi="HDMI-1-0"
 connected_monitors="$(xrandr --query | grep -cw 'connected')"
 
 if [ "$connected_monitors" -eq "2" ]; then
-    xrandr --output "$edp" --auto --pos 0x1080 --output "$hdmi" --auto --pos 0x0
+    # xrandr --output "$edp" --auto --pos 0x1080 --output "$hdmi" --auto --pos 0x0
+    xrandr --output "$edp" --auto --pos 960x2160 --output "$hdmi" --auto --pos 0x0
 fi
