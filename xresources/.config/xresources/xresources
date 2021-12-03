@@ -29,7 +29,7 @@
 *.color15:       #FFFFFF
 
 XTerm.*.faceName:         Ubuntu Mono:size=12
-XTerm.*.internalBorder:   10
+XTerm.*.internalBorder:   
 XTerm.*.metaSendsEscape:  true
 XTerm.termName:           xterm-256color
 XTerm.borderWidth:        0
