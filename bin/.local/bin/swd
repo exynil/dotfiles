@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# github https://github.com/exynil/swd.git
+
 # Set location where the wallpapers will be stored
 location="$(pwd)"
 
