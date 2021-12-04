@@ -139,7 +139,7 @@ rand_img_url=${img_urls[$RANDOM % ${#img_urls[@]}]}
 rand_img=$(curl -s "$rand_img_url" | grep -oE 'https://w.'$site'/full/[[:alnum:]]{2}/wallhaven-[[:alnum:]]{6}\.(jpg|png)')
 
 if [ -z "$rand_img" ]; then
-    notify-send -u critical "Не удалось загрузить обои"
+    notify-send -u critical "Failed to load wallpaper"
     exit 1
 fi
 
