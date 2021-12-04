@@ -136,7 +136,6 @@ rand_img_url=${img_urls[$RANDOM % ${#img_urls[@]}]}
 # Parse out the image url
 rand_img=$(curl -s "$rand_img_url" | grep -oE 'https://w.'$site'/full/[[:alnum:]]{2}/wallhaven-[[:alnum:]]{6}\.(jpg|png)')
 
-
 if [ -z "$rand_img" ]; then
     notify-send -u critical "Не удалось загрузить обои"
     exit 1
@@ -144,6 +143,21 @@ fi
 
 # Combine the two above
 wallpaper="$location/${rand_img##*/}"
+
+show_progress() {
+    touch "$1"
+    local_file_size=$(stat -c%s "$1")
+    dest_file_size=$(curl -sI "$2" | grep -i 'Content-Length' | awk '{print $2}' | tr -d '\r')
+
+    while [ "$local_file_size" != "$dest_file_size" ]; do
+        percent=$(("$local_file_size"*100/"$dest_file_size"))
+        notify-send -t 200 --hint=string:x-dunst-stack-tag:swd -h int:value:$percent Downloading...
+        local_file_size=$(stat -c%s "$1")
+        sleep 0.1
+    done
+}
+
+show_progress "$wallpaper" "$rand_img" &
 
 # Download it
 curl --create-dirs -s "$rand_img" -o "$wallpaper" >/dev/null
