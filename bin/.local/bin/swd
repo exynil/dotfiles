@@ -153,7 +153,7 @@ show_progress() {
 
     while [ "$local_file_size" != "$dest_file_size" ]; do
         percent=$(("$local_file_size"*100/"$dest_file_size"))
-        notify-send -t 200 --hint=string:x-dunst-stack-tag:swd -h int:value:$percent Downloading...
+        notify-send -t 200 --hint=string:x-dunst-stack-tag:swd -h int:value:$percent "$percent% Downloading..."
         local_file_size=$(stat -c%s "$1")
         sleep 0.1
     done

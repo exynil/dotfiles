@@ -14,6 +14,11 @@ options=("random"
 
 chosen="$(printf '%s\n' "${options[@]}" | $rofi_command -p "wallpaper" -dmenu -selected-row 2)"
 
+if [ "$(pgrep wallpaper | wc -l)" -gt 2 ]; then
+    notify-send "Please wait"
+    exit 1
+fi
+
 # Image folder location
 img_dir="$HOME/Pictures"
 
