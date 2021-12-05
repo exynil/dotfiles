@@ -9,21 +9,21 @@
 
 # [
 #   {
-#     "name": "Подключиться к INET STUD",
+#     "name": "Подключиться к HOME",
 #     "commands": [
 #       {
 #         "app": "nmcli",
-#         "arguments": ["con up InetStud"]
+#         "arguments": ["con up HOME"]
 #       }
 #     ]
 #   },
 #   {
-#     "name": "cd itp",
+#     "name": "cd projects",
 #     "commands": [
 #       {
 #         "app": "alacritty",
 #         "arguments": [
-#           "--working-directory /home/max/work/itp",
+#           "--working-directory /home/max/projects",
 #           "-e zsh"
 #         ]
 #       }
