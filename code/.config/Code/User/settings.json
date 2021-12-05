@@ -103,6 +103,6 @@
     ],
     "workbench.colorTheme": "One Dark Pro", // for example ["nim", "nims", "python"]
     "terminal.integrated.persistentSessionReviveProcess": "never",
-    "window.zoomLevel": 2,
-    "editor.linkedEditing": true
+    "editor.linkedEditing": true,
+    "window.zoomLevel": 2
 }
