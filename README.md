@@ -31,5 +31,5 @@
 
 Скрипт `install` перезаписывает существующие файлы!
 
-Пожалуйста ознакомьтесь с [этой](https://exynil.github.io/knowledge-base/Linux/How-to/Manage-dotfiles.html) небольшой инстуркцией 
+Пожалуйста ознакомьтесь с [этой](https://exynil.github.io/knowledge-base/Linux/How-to/Manage-dotfiles.html) небольшой инструкцией 
 по управлению конфигурацией системы
