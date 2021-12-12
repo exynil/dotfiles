@@ -2,7 +2,6 @@
     "editor.fontFamily": "'JetBrains Mono', 'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome', 'Noto Color Emoji'",
     "files.autoSave": "onFocusChange",
     "workbench.sideBar.location": "left",
-    "breadcrumbs.enabled": true,
     "editor.renderWhitespace": "none",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
@@ -104,5 +103,7 @@
     "workbench.colorTheme": "One Dark Pro", // for example ["nim", "nims", "python"]
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "editor.linkedEditing": true,
-    "window.zoomLevel": 2
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "window.zoomLevel": 1
 }
