@@ -3,21 +3,25 @@
 rofi_command='rofi -theme themes/display.rasi'
 
 # Options
-laptop='laptop (2K)'
-laptop_hdmi_2k='laptop (2K) & hdmi (2K)'
-laptop_hdmi_4k='laptop (2K) & hdmi (4K)'
+laptop='laptop'
+hdmi_4k='hdmi (4K)'
+laptop_hdmi_2k='laptop & hdmi (2K)'
+laptop_hdmi_4k='laptop & hdmi (4K)'
 
 edp="eDP1"
 
-hdmi="HDMI-1-0"
+hdmi=$(xrandr | grep -oE 'HDMI-.+ connected' | awk '{print $1}')
 
 # Variable passed to rofi
-options="$laptop\n$laptop_hdmi_2k\n$laptop_hdmi_4k"
+options="$laptop\n$hdmi_4k\n$laptop_hdmi_2k\n$laptop_hdmi_4k"
 
 chosen="$(echo -e "$options" | $rofi_command -p "display" -dmenu)"
 case $chosen in
 "$laptop")
-    xrandr --output "$edp" --auto --output "$hdmi" --off --output DP1 --off
+    xrandr --output "$edp" --auto
+    ;;
+"$hdmi_4k")
+    xrandr --output "$hdmi" --auto
     ;;
 "$laptop_hdmi_2k")
     xrandr --output "$edp" --auto --pos 0x1080 --output "$hdmi" --auto --pos 0x0
