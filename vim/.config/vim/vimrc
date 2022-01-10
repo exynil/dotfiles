@@ -24,7 +24,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'lilydjwg/colorizer'
 Plug 'jiangmiao/auto-pairs'
-Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'vim-scripts/LargeFile'
 
 call plug#end()

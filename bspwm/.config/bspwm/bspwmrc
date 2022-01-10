@@ -39,6 +39,7 @@ pgrep -x clipit >/dev/null || clipit &
 pgrep -x picom >/dev/null || picom &
 
 
+sct 4500 &
 xrdb "$XDG_CONFIG_HOME"/xresources/xresources &
 xset r rate 350 62 &
 numlockx on &

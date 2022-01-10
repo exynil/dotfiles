@@ -105,5 +105,7 @@
     "editor.linkedEditing": true,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.hover.delay": 800,
+    "bracketPairColorizer.depreciation-notice": false,
     "window.zoomLevel": 2
 }
