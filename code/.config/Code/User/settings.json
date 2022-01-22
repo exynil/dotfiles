@@ -100,12 +100,12 @@
         "vue",
         "js"
     ],
-    "workbench.colorTheme": "One Dark Pro", // for example ["nim", "nims", "python"]
+    "workbench.colorTheme": "One Dark Pro Darker", // for example ["nim", "nims", "python"]
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "editor.linkedEditing": true,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.hover.delay": 800,
     "bracketPairColorizer.depreciation-notice": false,
-    "window.zoomLevel": 2
+    "window.zoomLevel": 3
 }

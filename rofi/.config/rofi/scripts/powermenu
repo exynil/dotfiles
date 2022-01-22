@@ -23,11 +23,11 @@ case $chosen in
     ;;
 "$lock")
     xset dpms force standby
-    xautolock -locknow
+    slock
     ;;
 "$suspend")
     systemctl suspend
-    xautolock -locknow
+    slock
     ;;
 "$logout")
     bspc quit

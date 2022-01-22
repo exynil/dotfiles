@@ -120,6 +120,13 @@ alias srs='systemctl restart sshd'
 alias srd='systemctl restart docker'
 
 alias watch_docker='watch -n 3 "docker ps --format '"'"'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"'"'"'
+alias drb='docker restart backend'
+alias drf='docker restart frontend'
+alias dab='docker container attach backend'
+alias daf='docker container attach frontend'
+
+alias zip-git='git ls-files | zip -@ $(basename "$PWD")'
+alias grc='gource -3840x2160 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 ~/gource.mp4'
 
 alias nvidia='cd $SCRIPTS/xorg-conf && sudo ./switch.sh nvidia.conf; cd ~'
 alias intel='cd $SCRIPTS/xorg-conf && sudo ./switch.sh intel.conf; cd ~'
@@ -133,8 +140,8 @@ source $ZSH/oh-my-zsh.sh
 
 rr() {
     if [ -z "$RANGER_LEVEL" ]; then
-        ranger --choosedir=/tmp/rangerdir
-        LASTDIR=$(cat /tmp/rangerdir)
+        ranger --choosedir=/tmp/$USER.rangerdir
+        LASTDIR=$(cat /tmp/$USER.rangerdir)
         cd "$LASTDIR"
     else
         exit
