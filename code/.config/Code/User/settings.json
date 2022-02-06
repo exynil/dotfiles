@@ -107,5 +107,5 @@
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.hover.delay": 800,
     "bracketPairColorizer.depreciation-notice": false,
-    "window.zoomLevel": 3
+    "window.zoomLevel": 1
 }
