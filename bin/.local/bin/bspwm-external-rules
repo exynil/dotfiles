@@ -46,5 +46,8 @@ Alacritty)
 flameshot)
     echo "state=floating"
     ;;
+Steam)
+    echo "desktop=10"
+    ;;
 esac
 

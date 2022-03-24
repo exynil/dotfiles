@@ -1,6 +1,5 @@
 {
     "editor.fontFamily": "'JetBrains Mono', 'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome', 'Noto Color Emoji'",
-    "files.autoSave": "onFocusChange",
     "workbench.sideBar.location": "left",
     "editor.renderWhitespace": "none",
     "workbench.startupEditor": "newUntitledFile",
@@ -107,5 +106,7 @@
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.hover.delay": 800,
     "bracketPairColorizer.depreciation-notice": false,
-    "window.zoomLevel": 1
+    "files.autoSave": "onFocusChange",
+    "window.zoomLevel": 1,
+    "remote.SSH.remoteServerListenOnSocket": true
 }

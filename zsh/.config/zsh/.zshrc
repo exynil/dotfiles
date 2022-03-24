@@ -102,19 +102,22 @@ alias x='startx ~/.config/xinit/xinitrc &> /dev/null'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
-alias update='yay -Syu --noconfirm --ignore pulseaudio --ignore libpulse'
+alias update='yay -Syu --noconfirm'
 alias ls='ls --color=auto'
 alias xrdb-reload='xrdb ~/.config/xresources/xresources'
-# Загрузка видео из YouTube в лучшем качестве
+
+# Загрузка видео с YouTube в лучшем качестве
 alias y='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-format mp4'
-# Загрузка плейлиста из YouTube в лучшем качестве
+# Загрузка плейлиста с YouTube в лучшем качестве
 alias yp='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-format mp4 --yes-playlist'
 
 alias c='code ./'
 alias v='source ./venv/bin/activate'
 
+# Отключение возможности включения и отключения numlock
 alias n='xmodmap -e "keycode 77="'
 
+# Некоторые часто перезапускаемые службы
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
 alias srd='systemctl restart docker'
@@ -125,7 +128,9 @@ alias drf='docker restart frontend'
 alias dab='docker container attach backend'
 alias daf='docker container attach frontend'
 
+# Архивация гит репозитория (untracked файлы пропускает)
 alias zip-git='git ls-files | zip -@ $(basename "$PWD")'
+
 alias grc='gource -3840x2160 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 ~/gource.mp4'
 
 alias nvidia='cd $SCRIPTS/xorg-conf && sudo ./switch.sh nvidia.conf; cd ~'
