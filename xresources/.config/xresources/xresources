@@ -4,7 +4,7 @@
 *.highlightColor:#3A3F4B
 
 ! Negro y gris
-*.color0:        [90]#282c34
+*.color0:        #282c34
 *.color8:        #5C6370
 ! Rojos
 *.color1:        #E05355
