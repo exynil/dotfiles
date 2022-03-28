@@ -17,6 +17,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VIMINIT="source ~/.config/vim/vimrc"
 export PASSWORD_STORE_DIR="$APP_DATA/pass"
 export _JAVA_AWT_WM_NONREPARENTING=1
+export TERM=xterm-256color 
 
 export LESSHISTFILE=-
 export LESS=-R
