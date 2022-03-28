@@ -107,6 +107,6 @@
     "editor.hover.delay": 800,
     "bracketPairColorizer.depreciation-notice": false,
     "files.autoSave": "onFocusChange",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 2,
     "remote.SSH.remoteServerListenOnSocket": true
 }
