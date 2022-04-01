@@ -5,3 +5,5 @@
 	program = gpg2
 [init]
 	defaultBranch = master
+[core]
+	fileMode = false
