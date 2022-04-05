@@ -23,10 +23,12 @@ case $chosen in
     ;;
 "$lock")
     xset dpms force standby
+    xkb-switch -s us
     slock
     ;;
 "$suspend")
     systemctl suspend
+    xkb-switch -s us
     slock
     ;;
 "$logout")

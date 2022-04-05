@@ -154,6 +154,4 @@ rr() {
         exit
     fi
 }
-
-
 HISTFILE=~/.cache/zsh.history
