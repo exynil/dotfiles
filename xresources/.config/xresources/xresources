@@ -1,5 +1,5 @@
 *.foreground:    #ABB2BF
-*.background:    [80]#1e2127
+*.background:    #1e2127
 *.cursorColor:   #5C6370
 *.highlightColor:#3A3F4B
 
@@ -28,41 +28,10 @@
 *.color7:        #ABB2BF
 *.color15:       #FFFFFF
 
-*.font: xft:Ubuntu Mono:style=Regular:size=10
-*.boldFont: xft:Ubuntu Mono:style=Bold:size=10
-*.italicFont: xft:Ubuntu Mono:style=Italic:size=10
-*.boldItalicFont: xft:Ubuntu Mono:style=Bold Italic:size=10
+XTerm.*.faceName:         Ubuntu Mono:size=12
+XTerm.*.internalBorder:   10
+XTerm.*.metaSendsEscape:  true
+XTerm.termName:           xterm-256color
+XTerm.borderWidth:        0
 
-!! URxvt Appearance
-URxvt.letterSpace: 0
-URxvt.lineSpace: 0
-URxvt.geometry: 92x24
-URxvt.internalBorder: 24
-URxvt.cursorBlink: true
-URxvt.cursorUnderline: false
-URxvt.saveline: 2048
-URxvt.scrollBar: false
-URxvt.scrollBar_right: false
-URxvt.urgentOnBell: true
-URxvt.depth: 32
-URxvt.iso14755: false
-
-!! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,tabbedex
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: firefox
-URxvt.underlineURLs: true
-URxvt.urlButton: 1
-
-!! Tabbedex
-URxvt.tabbed.autohide: true
-URxvt.tabbed.reopen-on-close: yes
-URxvt.tabbed.new-button: true
-URxvt.tabbed.no-tabbedex-keys: true
+Xcursor.size:             32

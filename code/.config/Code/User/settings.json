@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'JetBrains Mono', 'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome', 'Noto Color Emoji'",
+    "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
     "workbench.sideBar.location": "left",
     "editor.renderWhitespace": "none",
     "workbench.startupEditor": "newUntitledFile",
@@ -17,7 +17,6 @@
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.tabSize": 2,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -108,5 +107,12 @@
     "bracketPairColorizer.depreciation-notice": false,
     "files.autoSave": "onFocusChange",
     "remote.SSH.remoteServerListenOnSocket": true,
-    "window.zoomLevel": 1
+    "glassit.alpha": 220,
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+    "remote.SSH.remotePlatform": {
+        "192.168.110.47": "linux"
+    },
+    "window.zoomLevel": 2
 }

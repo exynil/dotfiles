@@ -10,7 +10,8 @@ options=("random"
     "random from favorites"
     "random and blurred"
     "random from saved"
-    "keep wallpaper")
+    "keep wallpaper"
+    "last saved")
 
 chosen="$(printf '%s\n' "${options[@]}" | $rofi_command -p "wallpaper" -dmenu -selected-row 2)"
 
@@ -38,7 +39,7 @@ resolution="3840x2160"
 
 case $chosen in
 "random")
-    img=$(swd -l "$wallhaven_dir" -a "$resolution")
+    img=$(swd -l "$wallhaven_dir" -a "$resolution" -p 000)
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from latest")
@@ -86,5 +87,12 @@ case $chosen in
         cp "$current_wallpaper" "$wallpapers_dir/$img"
         notify-send "$img saved"
     fi
+    ;;
+"last saved")
+    # Получаем путь текущего изображения
+    last_saved="$(ls "$wallpapers_dir" | tail -1)"
+
+    ln -sf "$wallpapers_dir/$last_saved" "$wallpaper"
+    hsetroot -fill "$wallpaper"
     ;;
 esac

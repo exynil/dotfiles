@@ -136,7 +136,7 @@ alias grc='gource -3840x2160 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i
 alias nvidia='cd $SCRIPTS/xorg-conf && sudo ./switch.sh nvidia.conf; cd ~'
 alias intel='cd $SCRIPTS/xorg-conf && sudo ./switch.sh intel.conf; cd ~'
 
-alias ed='export DISPLAY=:0'
+alias lock='export DISPLAY=:0;slock'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

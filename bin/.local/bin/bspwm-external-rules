@@ -22,7 +22,7 @@ TelegramDesktop)
 discord)
     echo "desktop=5"
     ;;
-Gnome-calculator)
+gnome-calculator)
     echo "state=floating"
     ;;
 mpv)
