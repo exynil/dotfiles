@@ -48,6 +48,9 @@ bspc node -f @{parent,brother,first,second}
 # super + {_,shift +} Tab
 bspc node -f {next,prev}.local.!hidden.window
 
+# super + {_,shift +} BackSpace
+bspc node -f {next,prev}.local.!hidden.window
+
 ## focus or send to the given desktop
 # super + {_,shift + } {1-9,0}
 bspc {desktop -f,node -d} '{1-9,10}'
@@ -77,21 +80,21 @@ bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ## expand a window by moving one of its side outward
 # super + alt + {h,j,k,l}
-bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+bspc node -z {left -80 0,bottom 0 80,top 0 -80,right 80 0}
 
 # super + alt + {Left,Down,Up,Right}
-bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+bspc node -z {left -80 0,bottom 0 80,top 0 -80,right 80 0}
 
 ## contract a window by moving one of its side inward
 # super + alt + shift + {h,j,k,l}
-bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+bspc node -z {right -80 0,top 0 80,bottom 0 -80,left 80 0}
 
 # super + alt + shift + {Left,Down,Up,Right}
-bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+bspc node -z {right -80 0,top 0 80,bottom 0 -80,left 80 0}
 
 ## move a floating window
 # super + {Left,Down,Up,Right}
-bspc node -v {-20 0,0 20,0 -20,20 0}
+bspc node -v {-80 0,0 80,0 -80,80 0}
 
 ## rotate
 # alt + r
@@ -146,8 +149,8 @@ dunstify -t 500 -h int:value:$(pamixer --get-volume) Volume
 ##--------------------- user setup ---------------------##
 
 ## Hide polybar
-# super + i
-polybar-toggle
+## super + i
+##polybar-toggle
 
 ## Termbin
 # super + t

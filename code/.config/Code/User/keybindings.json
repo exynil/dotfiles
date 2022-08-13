@@ -5,4 +5,14 @@
     "command": "editor.action.commentLine",
     "when": "editorTextFocus && !editorReadonly"
   },
+  {
+    "key": "ctrl+k ctrl+i",
+    "command": "-editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+i",
+    "command": "-editor.debug.action.showDebugHover",
+    "when": "editorTextFocus && inDebugMode"
+  },
 ]

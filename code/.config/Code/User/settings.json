@@ -1,7 +1,7 @@
 {
     "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
     "workbench.sideBar.location": "left",
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
     "explorer.compactFolders": false,
@@ -103,16 +103,21 @@
     "editor.linkedEditing": true,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "editor.hover.delay": 800,
+    "editor.hover.delay": 9999,
     "bracketPairColorizer.depreciation-notice": false,
-    "files.autoSave": "onFocusChange",
     "remote.SSH.remoteServerListenOnSocket": true,
     "glassit.alpha": 220,
     "files.exclude": {
         "**/__pycache__": true
     },
     "remote.SSH.remotePlatform": {
-        "192.168.110.47": "linux"
+        "192.168.110.47": "linux",
+        "192.168.236.242": "linux"
     },
-    "window.zoomLevel": 2
+    "editor.hover.enabled": false,
+    "editor.hover.above": false,
+    "workbench.editor.enablePreview": false,
+    "editor.lightbulb.enabled": false,
+    "editor.parameterHints.enabled": false,
+    "files.autoSave": "afterDelay"
 }
