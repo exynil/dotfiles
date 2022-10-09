@@ -6,7 +6,7 @@ export XDG_CURRENT_DESKTOP="gnome"
 
 export HDD="/media/hdd"
 export APP_DATA="$HDD/arch/app-data"
-export SCRIPTS="$HDD/arch/scripts"
+# export SCRIPTS="$HDD/arch/scripts"
 export DOTFILES="${$(dirname "$(realpath "$HOME/.zshenv")")%/*}"
 
 export TERMINAL=$(which xterm)

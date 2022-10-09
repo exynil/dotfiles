@@ -1,6 +1,5 @@
 {
     "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
-    "workbench.sideBar.location": "left",
     "editor.renderWhitespace": "all",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
@@ -112,7 +111,8 @@
     },
     "remote.SSH.remotePlatform": {
         "192.168.110.47": "linux",
-        "192.168.236.242": "linux"
+        "192.168.236.242": "linux",
+        "10.0.0.3": "linux"
     },
     "editor.hover.enabled": false,
     "editor.hover.above": false,

@@ -149,8 +149,8 @@ dunstify -t 500 -h int:value:$(pamixer --get-volume) Volume
 ##--------------------- user setup ---------------------##
 
 ## Hide polybar
-## super + i
-##polybar-toggle
+# super + i
+polybar-toggle
 
 ## Termbin
 # super + t
