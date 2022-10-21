@@ -102,7 +102,6 @@
     "editor.linkedEditing": true,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "editor.hover.delay": 9999,
     "bracketPairColorizer.depreciation-notice": false,
     "remote.SSH.remoteServerListenOnSocket": true,
     "glassit.alpha": 220,
@@ -112,10 +111,9 @@
     "remote.SSH.remotePlatform": {
         "192.168.110.47": "linux",
         "192.168.236.242": "linux",
-        "10.0.0.3": "linux"
+        "10.0.0.3": "linux",
+        "10.0.0.2": "linux"
     },
-    "editor.hover.enabled": false,
-    "editor.hover.above": false,
     "workbench.editor.enablePreview": false,
     "editor.lightbulb.enabled": false,
     "editor.parameterHints.enabled": false,
