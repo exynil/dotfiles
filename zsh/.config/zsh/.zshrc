@@ -138,6 +138,8 @@ alias intel='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh intel.conf
 
 alias lock='export DISPLAY=:0;slock'
 
+alias rr='. ranger'
+
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
     mkdir $ZSH_CACHE_DIR
@@ -145,13 +147,4 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-rr() {
-    if [ -z "$RANGER_LEVEL" ]; then
-        ranger --choosedir=/tmp/$USER.rangerdir
-        LASTDIR=$(cat /tmp/$USER.rangerdir)
-        cd "$LASTDIR"
-    else
-        exit
-    fi
-}
 HISTFILE=~/.cache/zsh.history
