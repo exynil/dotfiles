@@ -28,8 +28,8 @@ img_dir="$HOME/Pictures"
 # Wallpapers folder location
 wallpapers_dir="$img_dir/wallpapers"
 
-# Wallhaven folder location
-wallhaven_dir="$img_dir/wallhaven.cc"
+# Temp folder location
+temp_dir="$wallpapers_dir/temp"
 
 # Wallpaper
 wallpaper="$img_dir/wallpaper.jpg"
@@ -37,34 +37,37 @@ wallpaper="$img_dir/wallpaper.jpg"
 # Resolution
 resolution="3840x2160"
 
+# Clean temp folter
+find "$temp_dir" -mtime +1 -print0 ! name "$wallpaper" | xargs rm -rf
+
 case $chosen in
 "random")
-    img=$(swd -l "$wallhaven_dir" -a "$resolution" -p 000)
+    img=$(swd -l "$temp_dir" -a "$resolution" -p 000)
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from latest")
-    img=$(swd -l "$wallhaven_dir" -s latest -a "$resolution")
+    img=$(swd -l "$temp_dir" -s latest -a "$resolution")
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from most viewed")
-    img=$(swd -l "$wallhaven_dir" -s views -a "$resolution")
+    img=$(swd -l "$temp_dir" -s views -a "$resolution")
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from toplist")
-    img=$(swd -l "$wallhaven_dir" -s toplist -a "$resolution")
+    img=$(swd -l "$temp_dir" -s toplist -a "$resolution")
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from favorites")
-    img=$(swd -l "$wallhaven_dir" -s favorites -a "$resolution")
+    img=$(swd -l "$temp_dir" -s favorites -a "$resolution")
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random and blurred")
-    img=$(swd -l "$wallhaven_dir")
+    img=$(swd -l "$temp_dir")
     convert -blur 0x80 "$img" "$img"
     ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
     ;;
 "random from saved")
-    mapfile -t wallpapers < <(find "$wallpapers_dir" -type f)
+    mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
     ln -sf "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}" "$wallpaper"
     hsetroot -fill "$wallpaper"
     ;;
@@ -90,7 +93,7 @@ case $chosen in
     ;;
 "last saved")
     # Получаем путь текущего изображения
-    last_saved="$(ls "$wallpapers_dir" | tail -1)"
+    last_saved="$(find "$wallpapers_dir" -type f -printf "%f\n" | sort -n | tail -1)"
 
     ln -sf "$wallpapers_dir/$last_saved" "$wallpaper"
     hsetroot -fill "$wallpaper"

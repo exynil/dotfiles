@@ -33,6 +33,6 @@ case $chosen in
     physlock
     ;;
 "$logout")
-    bspc quit
+    pkill xinit
     ;;
 esac
