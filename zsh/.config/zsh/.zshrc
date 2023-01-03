@@ -139,6 +139,7 @@ alias intel='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh intel.conf
 alias lock='export DISPLAY=:0;slock'
 
 alias rr='. ranger'
+alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

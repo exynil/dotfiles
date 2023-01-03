@@ -9,7 +9,7 @@ export APP_DATA="$HDD/arch/app-data"
 # export SCRIPTS="$HDD/arch/scripts"
 export DOTFILES="${$(dirname "$(realpath "$HOME/.zshenv")")%/*}"
 
-export TERMINAL=$(which xterm)
+export TERMINAL=$(which alacritty)
 export BROWSER=$(which firefox)
 export EDITOR=$(which vim)
 

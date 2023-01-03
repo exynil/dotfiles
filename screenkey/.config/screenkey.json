@@ -1,1 +1,27 @@
-{"no_systray": false, "timeout": 0.5, "recent_thr": 0.1, "compr_cnt": 3, "ignore": [], "position": "bottom", "persist": false, "font_desc": "JetBrains Mono Bold 5", "font_size": "small", "font_color": "#ebebcbcb8b8b", "bg_color": "#202024242d2d", "opacity": 0.5, "key_mode": "composed", "bak_mode": "normal", "mods_mode": "emacs", "mods_only": false, "multiline": false, "vis_shift": true, "vis_space": true, "geometry": null, "screen": 0, "start_disabled": false, "window": null, "mouse": true, "button_hide_duration": 1}
+{
+    "no_systray": false,
+    "timeout": 0.5,
+    "recent_thr": 0.1,
+    "compr_cnt": 3,
+    "ignore": [],
+    "position": "bottom",
+    "persist": false,
+    "font_desc": "JetBrains Mono Bold 5",
+    "font_size": "small",
+    "font_color": "#ebebcbcb8b8b",
+    "bg_color": "#202024242d2d",
+    "opacity": 0.5,
+    "key_mode": "composed",
+    "bak_mode": "normal",
+    "mods_mode": "emacs",
+    "mods_only": false,
+    "multiline": false,
+    "vis_shift": true,
+    "vis_space": true,
+    "geometry": null,
+    "screen": 0,
+    "start_disabled": false,
+    "window": null,
+    "mouse": true,
+    "button_hide_duration": 1
+}
