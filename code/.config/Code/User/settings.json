@@ -117,5 +117,12 @@
     "workbench.editor.enablePreview": false,
     "editor.lightbulb.enabled": false,
     "editor.parameterHints.enabled": false,
-    "files.autoSave": "afterDelay"
+    "[lua]": {
+        "editor.defaultFormatter": "yinfei.luahelper"
+    },
+    "editor.hover.delay": 4000,
+    "editor.tabSize": 2,
+    "files.autoSave": "afterDelay",
+    "debug.inlineValues": "on",
+    
 }
