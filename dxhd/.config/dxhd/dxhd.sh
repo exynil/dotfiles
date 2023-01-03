@@ -80,17 +80,17 @@ bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ## expand a window by moving one of its side outward
 # super + alt + {h,j,k,l}
-bspc node -z {left -80 0,bottom 0 80,top 0 -80,right 80 0}
+bspc node -z {left -120 0,bottom 0 120,top 0 -120,right 120 0}
 
 # super + alt + {Left,Down,Up,Right}
-bspc node -z {left -80 0,bottom 0 80,top 0 -80,right 80 0}
+bspc node -z {left -120 0,bottom 0 120,top 0 -120,right 120 0}
 
 ## contract a window by moving one of its side inward
 # super + alt + shift + {h,j,k,l}
-bspc node -z {right -80 0,top 0 80,bottom 0 -80,left 80 0}
+bspc node -z {right -120 0,top 0 120,bottom 0 -120,left 120 0}
 
 # super + alt + shift + {Left,Down,Up,Right}
-bspc node -z {right -80 0,top 0 80,bottom 0 -80,left 80 0}
+bspc node -z {right -120 0,top 0 120,bottom 0 -120,left 120 0}
 
 ## move a floating window
 # super + {Left,Down,Up,Right}
@@ -105,8 +105,8 @@ bspc node @parent -R 90
 # super + {d,w,x,m}
 $XDG_CONFIG_HOME/rofi/scripts/{run,window,powermenu,display}
 
-# super + {c,s,q,o}
-$XDG_CONFIG_HOME/rofi/scripts/{clipboard,browser,calculator,zoom}
+# super + {c,q,o}
+$XDG_CONFIG_HOME/rofi/scripts/{clipboard,calculator,zoom}
 
 # super + {v,r,e,a}
 $XDG_CONFIG_HOME/rofi/scripts/{colorscheme,record,wallpaper,folder}
