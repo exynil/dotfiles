@@ -140,6 +140,7 @@ alias lock='export DISPLAY=:0;slock'
 
 alias rr='. ranger'
 alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
+alias find_blank='grep -r "[[:blank:]]$" -I . --exclude-dir=node_modules --exclude-dir=media --exclude-dir=postgres-data --exclude-dir=__pycache__'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
