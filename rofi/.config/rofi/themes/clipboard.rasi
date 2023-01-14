@@ -4,6 +4,7 @@
     font:                   "Ubuntu Mono 14";
     background-color:       @background;
     text-color:             @foreground;
+    highlight:              #f43f5e;
 }
 window {
     width:                  848px;

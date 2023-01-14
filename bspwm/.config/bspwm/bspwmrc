@@ -29,14 +29,14 @@ bspc config presel_feedback_color "#E05355"
 # Запуск приложений
 pgrep -x dxhd >/dev/null || dxhd &
 pgrep -x polybar >/dev/null || polybar-run &
-pgrep -x xautolock >/dev/null || xautolock -time 5 -detectsleep -corners ---- -locker physlock &
+pgrep -x xautolock >/dev/null || xautolock -time 15 -detectsleep -corners ---- -locker physlock &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x greenclip >/dev/null || greenclip daemon &
 pgrep -x telegram >/dev/null || telegram-desktop &
 # pgrep -x udiskie >/dev/null || udiskie -t &
 pgrep -x clipit >/dev/null || clipit &
-# pgrep -x picom >/dev/null || picom &
+pgrep -x picom >/dev/null || picom &
 
 
 sct 4500 &
