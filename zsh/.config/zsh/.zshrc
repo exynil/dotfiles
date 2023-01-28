@@ -98,7 +98,7 @@ plugins=(
 #
 # Example aliases
 alias matrix='unimatrix -l Aang -s 95'
-alias x='startx ~/.config/xinit/xinitrc &> /dev/null'
+alias x='startx ~/.config/xinit/xinitrc &> /dev/null;exit'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'

@@ -124,5 +124,8 @@
     "editor.tabSize": 2,
     "files.autoSave": "afterDelay",
     "debug.inlineValues": "on",
+    "[python]": {
+        "editor.formatOnType": true
+    },
     
 }

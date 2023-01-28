@@ -25,12 +25,12 @@ case $chosen in
     xset dpms force standby
     xkb-switch -s us
     ssh -t max@10.0.0.2 "export DISPLAY=:0;slock" &
-    physlock
+    slock
     ;;
 "$suspend")
     systemctl suspend
     xkb-switch -s us
-    physlock
+    slock
     ;;
 "$logout")
     pkill xinit
