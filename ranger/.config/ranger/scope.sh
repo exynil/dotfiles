@@ -108,12 +108,12 @@ handle_extension() {
             # Get the size of the file in bytes
             file_size=$(stat -c%s "$FILE_PATH")
 
-            # Convert bytes to megabytes
-            file_size_mb=$((file_size / 1024 / 1024))
+            # Convert bytes to kilobytes
+            file_size_mb=$((file_size / 1024))
 
-            # Check if the file size is greater than 1 MB
-            if [[ "$file_size_mb" -gt 1 ]]; then
-                echo "File size is greater than 1 MB" && exit 5
+            # Check if the file size is greater than 900 KB
+            if [[ "$file_size_mb" -gt 900 ]]; then
+                echo "File size is greater than 900 KB" && exit 5
             else
                 jq --color-output . "${FILE_PATH}" && exit 5
             fi
