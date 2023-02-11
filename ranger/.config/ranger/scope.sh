@@ -105,8 +105,18 @@ handle_extension() {
 
         ## JSON
         json)
-            jq --color-output . "${FILE_PATH}" && exit 5
-            python -m json.tool -- "${FILE_PATH}" && exit 5
+            # Get the size of the file in bytes
+            file_size=$(stat -c%s "$FILE_PATH")
+
+            # Convert bytes to megabytes
+            file_size_mb=$((file_size / 1024 / 1024))
+
+            # Check if the file size is greater than 1 MB
+            if [[ "$file_size_mb" -gt 1 ]]; then
+                echo "File size is greater than 1 MB" && exit 5
+            else
+                jq --color-output . "${FILE_PATH}" && exit 5
+            fi
             ;;
 
         ## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected
