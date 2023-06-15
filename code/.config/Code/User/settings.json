@@ -121,11 +121,14 @@
         "editor.defaultFormatter": "yinfei.luahelper"
     },
     "editor.hover.delay": 4000,
-    "editor.tabSize": 2,
-    "files.autoSave": "afterDelay",
     "debug.inlineValues": "on",
     "[python]": {
         "editor.formatOnType": true
+    },
+    "editor.tabSize": 2,
+    "files.autoSave": "onFocusChange",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     
 }
