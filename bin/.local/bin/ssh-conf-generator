@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Скрипт генерирует конфиг ssh (~/.ssh/config) на основе ваших ключей
+# в папке ~/.ssh/keys
+
+# Файл конфигурации
+CONFIG_FILE="$HOME/.ssh/config"
+
+# Создание конфига и его очистка файла конфигурации
+touch "$CONFIG_FILE"
+> "$CONFIG_FILE"
+
+# Чтение списка файлов в папке
+files=($(find ~/.ssh/keys -type f -not -name "*.pub"))
+
+# Генерация конфигурации для каждого файла
+for file in "${files[@]}"; do
+  host=$(basename "$file")   # Получение имени файла без пути
+
+  # Генерация конфигурации и запись в файл
+  echo "Host $host" >>"$CONFIG_FILE"
+  echo "  IdentityFile $file" >>"$CONFIG_FILE"
+  echo "  IdentitiesOnly yes" >>"$CONFIG_FILE"
+  echo "" >>"$CONFIG_FILE"
+done
+
+echo "Конфигурация успешно сгенерирована в файле $CONFIG_FILE"
