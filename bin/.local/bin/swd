@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$HOME/.config/wih/wih.conf"
+source "$HOME/.config/swd/swd.conf"
 
 apikey="$(cat $apikey_file)"
 
