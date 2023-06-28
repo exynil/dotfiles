@@ -123,7 +123,8 @@
     "editor.hover.delay": 4000,
     "debug.inlineValues": "on",
     "[python]": {
-        "editor.formatOnType": true
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.autopep8"
     },
     "editor.tabSize": 2,
     "files.autoSave": "onFocusChange",
