@@ -138,6 +138,11 @@ alias intel='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh intel.conf
 
 alias lock='export DISPLAY=:0;slock'
 
+alias tree_c='tree -La 5 \
+    -I __pycache__ -I .git -I .venv -I pytest-cov-report \
+    -I .pytest_cache -I __init__.py -I __main__.py -I venv
+'
+
 alias rr='. ranger'
 alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
 alias find_blank='grep -r "[[:blank:]]$" -I . \

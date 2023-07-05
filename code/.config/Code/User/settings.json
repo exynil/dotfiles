@@ -126,7 +126,6 @@
         "editor.formatOnType": true,
         "editor.defaultFormatter": "ms-python.autopep8"
     },
-    "editor.tabSize": 2,
     "files.autoSave": "onFocusChange",
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
