@@ -96,8 +96,7 @@
         "html",
         "vue",
         "js"
-    ],
-    "workbench.colorTheme": "One Dark Pro Darker", // for example ["nim", "nims", "python"]
+    ], // for example ["nim", "nims", "python"]
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "editor.linkedEditing": true,
     "vsicons.dontShowNewVersionMessage": true,
@@ -124,11 +123,15 @@
     "debug.inlineValues": "on",
     "[python]": {
         "editor.formatOnType": true,
-        "editor.defaultFormatter": "ms-python.autopep8"
+        "editor.defaultFormatter": "ms-python.python"
     },
     "files.autoSave": "onFocusChange",
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "files.associations": {
+        "*.txt": "bat"
+    },
+    "workbench.colorTheme": "One Dark Pro",
     
 }

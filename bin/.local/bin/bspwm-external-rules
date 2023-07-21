@@ -17,10 +17,10 @@ firefox)
     fi
     ;;
 TelegramDesktop)
-    echo "desktop=8"
+    echo "desktop=8 locked=on"
     ;;
 discord)
-    echo "desktop=5"
+    echo "desktop=9"
     ;;
 gnome-calculator)
     echo "state=floating"
