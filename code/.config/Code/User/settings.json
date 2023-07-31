@@ -119,7 +119,6 @@
     "[lua]": {
         "editor.defaultFormatter": "yinfei.luahelper"
     },
-    "editor.hover.delay": 4000,
     "debug.inlineValues": "on",
     "[python]": {
         "editor.formatOnType": true,
@@ -133,5 +132,4 @@
         "*.txt": "bat"
     },
     "workbench.colorTheme": "One Dark Pro",
-    
 }
