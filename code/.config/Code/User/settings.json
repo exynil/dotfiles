@@ -90,7 +90,6 @@
         "editor.defaultFormatter": "raynigon.nginx-formatter"
     },
     "docker.languageserver.formatter.ignoreMultilineInstructions": true,
-    "prettier.printWidth": 120,
      // For which languages indent-rainbow should be activated (if empty it means all).
     "indentRainbow.includedLanguages": [
         "html",
@@ -131,9 +130,10 @@
     "files.associations": {
         "*.txt": "bat"
     },
-    "workbench.colorTheme": "One Dark Pro Darker",
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "workbench.colorTheme": "One Dark Pro Mix",
+    "codesnap.showWindowControls": false
 }
