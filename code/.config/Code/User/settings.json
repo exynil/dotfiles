@@ -6,8 +6,7 @@
     "explorer.compactFolders": false,
     "editor.rulers": [
         60,
-        80,
-        120
+        88
     ],
     "workbench.iconTheme": "vscode-icons",
     "[javascript]": {
@@ -113,7 +112,7 @@
         "10.0.0.2": "linux"
     },
     "workbench.editor.enablePreview": false,
-    "editor.lightbulb.enabled": false,
+    "editor.lightbulb.enabled": "off",
     "editor.parameterHints.enabled": false,
     "[lua]": {
         "editor.defaultFormatter": "yinfei.luahelper"
@@ -134,6 +133,8 @@
         "editor.defaultFormatter": "ms-python.autopep8"
     },
     "python.formatting.provider": "none",
-    "workbench.colorTheme": "One Dark Pro Mix",
-    "codesnap.showWindowControls": false
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "codesnap.showWindowControls": false,
+    "prettier.printWidth": 100,
+    "extensions.ignoreRecommendations": true
 }

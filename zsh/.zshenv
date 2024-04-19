@@ -6,7 +6,6 @@ export XDG_CURRENT_DESKTOP="gnome"
 
 export HDD="/media/hdd"
 export APP_DATA="$HDD/arch/app-data"
-# export SCRIPTS="$HDD/arch/scripts"
 export DOTFILES="${$(dirname "$(realpath "$HOME/.zshenv")")%/*}"
 
 export TERMINAL=$(which alacritty)
@@ -32,12 +31,6 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export LC_TIME=C.UTF-8
 
 export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
-
-# export http_proxy="proxy2.keu.kz:3128"
-# export https_proxy=$http_proxy
-# export ftp_proxy=$http_proxy
-# export rsync_proxy=$http_proxy
-# export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com,*.keu.kz"
 
 
 [[ "$PATH" == *"$HOME/.local/bin"* ]] || PATH="$HOME/.local/bin:$PATH"

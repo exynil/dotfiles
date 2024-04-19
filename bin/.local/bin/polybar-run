@@ -7,20 +7,15 @@ while pgrep -u $UID -x polybar >/dev/null; do
 done
 
 
-laptop="eDP1"
-hdmi="HDMI-1-0"
-dp="DP1"
-
-connected_monitors=$(bspc query -M | wc -l)
 polybar_config="$XDG_CONFIG_HOME/polybar/config.ini"
 
-if [ "$connected_monitors" -eq "2" ]; then
-    MONITOR=$laptop polybar -r first -c "$polybar_config" &
+hostname=$(uname -n)
+
+if [ "$hostname" = "arch-pc" ]; then
+    hdmi="HDMI-0"
+    dp="DP-4"
+    MONITOR=$dp polybar -r first -c "$polybar_config" &
     MONITOR=$hdmi polybar -r second -c "$polybar_config" &
-elif [ "$connected_monitors" -eq "3" ]; then
-    MONITOR=$laptop polybar -r first -c "$polybar_config" &
-    MONITOR=$hdmi polybar -r second -c "$polybar_config" &
-    MONITOR=$dp polybar -r third -c "$polybar_config" &
 else
     polybar -r first -c "$polybar_config" &
 fi

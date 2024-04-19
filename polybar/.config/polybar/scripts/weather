@@ -1,6 +1,6 @@
 #!/bin/bash
 
-response=$(curl -s wttr.in/Karaganda?format="%t")
+response=$(curl -s wttr.in/Almaty?format="%t")
 
 [[ "$response" =~ "Unknown location;".* ]] && exit 1
 

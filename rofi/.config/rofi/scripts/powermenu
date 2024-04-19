@@ -22,9 +22,7 @@ case $chosen in
     systemctl reboot
     ;;
 "$lock")
-    xset dpms force standby
     xkb-switch -s us
-    ssh -t max@10.0.0.2 "export DISPLAY=:0;slock" &
     slock
     ;;
 "$suspend")

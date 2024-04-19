@@ -36,4 +36,4 @@ XTerm.borderWidth:        0
 
 Xcursor.size:             32
 
-Xft.dpi: 141
+!Xft.dpi: 141

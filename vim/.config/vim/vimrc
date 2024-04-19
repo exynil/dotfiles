@@ -20,10 +20,10 @@ call plug#begin('~/.config/vim/pluggins')
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
-Plug 'lilydjwg/colorizer'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'ervandew/supertab'
+" Plug 'lilydjwg/colorizer'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'vim-scripts/LargeFile'
 
