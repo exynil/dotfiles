@@ -3,6 +3,7 @@ x-scheme-handler/tg=userapp-Telegram Desktop-KY39Y0.desktop
 image/jpeg=imv.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-KY39Y0.desktop;

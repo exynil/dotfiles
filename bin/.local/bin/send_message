@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+TOKEN="$(cat /media/hdd/arch/app-data/bot/token)"
+CHAT_ID="$(cat /media/hdd/arch/app-data/bot/chat_id)"
+MESSAGE="${1// /%20}"
+
+RETRY_DELAY=5
+success=false
+
+TELEGRAM_API="https://api.telegram.org"
+
+PARAMS="chat_id=$CHAT_ID&text=$MESSAGE"
+
+URL="$TELEGRAM_API/bot$TOKEN/sendMessage?$PARAMS"
+
+command="curl $URL -o /dev/null -s"
+
+while [ "$success" = false ]; do
+    if $command; then
+        echo "Request sent successfully."
+        success=true
+    else
+        echo "Request failed. Retrying in $RETRY_DELAY seconds..."
+        sleep "$RETRY_DELAY"
+    fi
+done
