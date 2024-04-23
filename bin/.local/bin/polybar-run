@@ -11,7 +11,7 @@ polybar_config="$XDG_CONFIG_HOME/polybar/config.ini"
 
 hostname=$(uname -n)
 
-if [ "$hostname" = "arch-pc" ]; then
+if [ "$hostname" = "arch-rrg" ]; then
     hdmi="HDMI-0"
     dp="DP-4"
     MONITOR=$dp polybar -r first -c "$polybar_config" &

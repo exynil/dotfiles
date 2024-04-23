@@ -6,7 +6,7 @@
 
 hostname=$(uname -n)
 
-if [ "$hostname" = "arch-pc" ]; then
+if [ "$hostname" = "arch-rrg" ]; then
     hdmi="HDMI-0"
     dp="DP-4"
     for i in {1..5}; do bspc desktop "$i" -m "$dp"; done

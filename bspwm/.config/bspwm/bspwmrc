@@ -34,7 +34,7 @@ pgrep -x xautolock >/dev/null || xautolock -time 15 -detectsleep -corners ---- -
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x greenclip >/dev/null || greenclip daemon &
 pgrep -x telegram >/dev/null || telegram-desktop &
-# pgrep -x udiskie >/dev/null || udiskie -t &
+#pgrep -x udiskie >/dev/null || udiskie -t &
 pgrep -x clipit >/dev/null || clipit &
 pgrep -x picom >/dev/null || picom &
 
