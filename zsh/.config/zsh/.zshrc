@@ -140,6 +140,8 @@ alias lock='export DISPLAY=:0;slock'
 
 alias pretty_json="sed 's/'\''/\"/g' | python3 -m json.tool | bat -l json"
 
+alias my_ip="curl -s ipinfo.io | pretty_json"
+
 alias tree_c='tree -La 5 \
     -I __pycache__ -I .git -I .venv -I pytest-cov-report \
     -I .pytest_cache -I __init__.py -I __main__.py -I venv
