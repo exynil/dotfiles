@@ -120,7 +120,7 @@
     "debug.inlineValues": "on",
     "[python]": {
         "editor.formatOnType": true,
-        "editor.defaultFormatter": "ms-python.python"
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "files.autoSave": "onFocusChange",
     "[typescript]": {
@@ -130,7 +130,7 @@
         "*.txt": "bat"
     },
     "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "python.formatting.provider": "none",
     "workbench.colorTheme": "One Dark Pro Darker",

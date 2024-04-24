@@ -43,33 +43,33 @@ find "$temp_dir" -mtime +1 -print0 ! name "$wallpaper" | xargs rm -rf
 case $chosen in
 "random")
     img=$(swd -l "$temp_dir" -a "$resolution" -p 000)
-    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from latest")
     img=$(swd -l "$temp_dir" -s latest -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from most viewed")
     img=$(swd -l "$temp_dir" -s views -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from toplist")
     img=$(swd -l "$temp_dir" -s toplist -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from favorites")
     img=$(swd -l "$temp_dir" -s favorites -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random and blurred")
     img=$(swd -l "$temp_dir")
     convert -blur 0x80 "$img" "$img"
-    ln -sf "$img" "$wallpaper" && hsetroot -fill "$wallpaper"
+    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from saved")
     mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
     ln -sf "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    hsetroot -cover "$wallpaper"
     ;;
 "keep wallpaper")
     # Получаем путь текущего изображения
@@ -96,6 +96,6 @@ case $chosen in
     last_saved="$(find "$wallpapers_dir" -type f -printf "%f\n" | sort -n | tail -1)"
 
     ln -sf "$wallpapers_dir/$last_saved" "$wallpaper"
-    hsetroot -fill "$wallpaper"
+    hsetroot -cover "$wallpaper"
     ;;
 esac
