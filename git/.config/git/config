@@ -7,3 +7,4 @@
 	defaultBranch = master
 [core]
 	fileMode = false
+	quotepath = false

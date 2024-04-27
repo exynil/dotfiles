@@ -14,8 +14,8 @@ hostname=$(uname -n)
 if [ "$hostname" = "arch-rrg" ]; then
     hdmi="HDMI-0"
     dp="DP-4"
-    MONITOR=$dp polybar -r first -c "$polybar_config" &
-    MONITOR=$hdmi polybar -r second -c "$polybar_config" &
+    MONITOR=$dp polybar -r a -c "$polybar_config" &
+    MONITOR=$hdmi polybar -r b -c "$polybar_config" &
 else
-    polybar -r first -c "$polybar_config" &
+    polybar -r d -c "$polybar_config" &
 fi
