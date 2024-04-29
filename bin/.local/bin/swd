@@ -109,6 +109,8 @@ show_progress() {
   done
 }
 
+mkdir -p "$location"
+
 # Start the progress display function in the background
 show_progress "$wallpaper" "$dest_file_size" &
 
