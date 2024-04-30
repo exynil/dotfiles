@@ -5,7 +5,6 @@
     "explorer.confirmDelete": false,
     "explorer.compactFolders": false,
     "editor.rulers": [
-        60,
         88
     ],
     "workbench.iconTheme": "vscode-icons",
@@ -133,9 +132,12 @@
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "python.formatting.provider": "none",
-    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.colorTheme": "Default Dark+",
     "codesnap.showWindowControls": false,
     "prettier.printWidth": 100,
     "extensions.ignoreRecommendations": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnPaste": true,
+    "editor.minimap.enabled": false,
+    "workbench.tree.enableStickyScroll": false,
+    "editor.glyphMargin": false
 }

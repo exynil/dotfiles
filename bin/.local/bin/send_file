@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+TOKEN="$(cat /media/hdd/arch/app-data/bot/token)"
+CHAT_ID="$(cat /media/hdd/arch/app-data/bot/chat_id)"
+
+RETRY_DELAY=5
+success=false
+
+caption=""
+
+# Обработка параметров командной строки
+while getopts ":hc:f:" opt; do
+    case $opt in
+    h)
+        caption="[$(uname -n)] $caption"
+        ;;
+    c)
+        caption="$caption$OPTARG"
+        ;;
+    f)
+        file_path="$OPTARG"
+        ;;
+    \?)
+        echo "Неверный параметр: -$OPTARG" >&2
+        exit 1
+        ;;
+    :)
+        echo "Для параметра -$OPTARG необходим аргумент." >&2
+        exit 1
+        ;;
+    esac
+done
+
+TELEGRAM_API="https://api.telegram.org"
+
+# Преобразование сообщения в URL-кодированный формат
+caption=$(printf "%s" "$caption" | od -An -tx1 | tr ' ' % | tr -d '\n')
+
+PARAMS="chat_id=$CHAT_ID&caption=$caption"
+
+URL="$TELEGRAM_API/bot$TOKEN/sendDocument?$PARAMS"
+
+command="curl $URL -o /dev/null -s -F document=@$file_path"
+
+while [ "$success" = false ]; do
+    if $command; then
+        echo "Запрос успешно отправлен."
+        success=true
+    else
+        echo "Ошибка. Повтор через $RETRY_DELAY секунд..."
+        sleep "$RETRY_DELAY"
+    fi
+done
