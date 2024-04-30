@@ -4,7 +4,6 @@ TOKEN="$(cat /media/hdd/arch/app-data/bot/token)"
 CHAT_ID="$(cat /media/hdd/arch/app-data/bot/chat_id)"
 
 RETRY_DELAY=5
-success=false
 
 caption=""
 
@@ -40,14 +39,16 @@ PARAMS="chat_id=$CHAT_ID&caption=$caption"
 
 URL="$TELEGRAM_API/bot$TOKEN/sendDocument?$PARAMS"
 
-command="curl $URL -o /dev/null -s -F document=@$file_path"
+while :; do
+    response=$(curl "$URL" -s -F document=@"$file_path" --retry 99999 --retry-delay 3)
+    success=$(jq -r '.ok' <<< "$response")
 
-while [ "$success" = false ]; do
-    if $command; then
+    if [ "$success" = "true" ]; then
         echo "Запрос успешно отправлен."
-        success=true
+        break
     else
-        echo "Ошибка. Повтор через $RETRY_DELAY секунд..."
+        echo "$response"
+        echo "Повтор через $RETRY_DELAY секунд..."
         sleep "$RETRY_DELAY"
     fi
 done
