@@ -132,12 +132,14 @@
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "python.formatting.provider": "none",
-    "workbench.colorTheme": "Default Dark+",
     "codesnap.showWindowControls": false,
     "prettier.printWidth": 100,
     "extensions.ignoreRecommendations": true,
     "editor.formatOnPaste": true,
     "editor.minimap.enabled": false,
     "workbench.tree.enableStickyScroll": false,
-    "editor.glyphMargin": false
+    "editor.glyphMargin": false,
+    "workbench.activityBar.location": "top",
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "toggle"
 }
