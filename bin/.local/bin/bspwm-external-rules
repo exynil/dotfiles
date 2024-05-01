@@ -37,9 +37,6 @@ xpad)
 Zathura)
     echo "state=tiled"
     ;;
-XTerm)
-    xkb-switch -s us
-    ;;
 Alacritty)
     xkb-switch -s us
     ;;

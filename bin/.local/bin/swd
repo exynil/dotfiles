@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$HOME/.config/swd/swd.conf"
+source "$XDG_CONFIG_HOME/swd/swd.conf"
 
 apikey="$(cat $apikey_file)"
 
@@ -59,21 +59,11 @@ wallpaper_url+="apikey=$apikey"
 [[ -n "$atleast" ]] && wallpaper_url+="&atleast=$atleast"
 
 case "$sorting" in
-"latest")
-  wallpaper_url+="&sorting=date_added"
-  ;;
-"views")
-  wallpaper_url+="&sorting=views"
-  ;;
-"toplist")
-  wallpaper_url+="&sorting=toplist"
-  ;;
-"favorites")
-  wallpaper_url+="&sorting=favorites"
-  ;;
-*)
-  wallpaper_url+="&sorting=random"
-  ;;
+"latest") wallpaper_url+="&sorting=date_added" ;;
+"views") wallpaper_url+="&sorting=views" ;;
+"toplist") wallpaper_url+="&sorting=toplist" ;;
+"favorites") wallpaper_url+="&sorting=favorites" ;;
+*) wallpaper_url+="&sorting=random" ;;
 esac
 
 # Get the last page number from the API
@@ -90,7 +80,7 @@ index=$((RANDOM % 24))
 
 # Extract download URL and file size for the selected wallpaper
 download_url=$(echo "$response" | jq -r ".data[$index].path")
-dest_file_size=$(echo "$response" | jq -r ".data[$index].file_size")
+wallpaper_size=$(echo "$response" | jq -r ".data[$index].file_size")
 
 # Set wallpaper file path
 wallpaper="$location/${download_url##*/}"
@@ -98,7 +88,7 @@ wallpaper="$location/${download_url##*/}"
 mkdir -p "$location"
 
 # Start the File Download Progress script in the background
-fdp "$wallpaper" "$dest_file_size" &
+fdp "$wallpaper" "$wallpaper_size" &
 
 curl -s -L "$download_url" -o "$wallpaper"
 
