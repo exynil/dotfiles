@@ -43,7 +43,7 @@ case $chosen in
     ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from latest")
-    img=$(swd -l "$temp_dir" -s latest -a "$resolution")
+    img=$(swd -l "$temp_dir" -s date_added -a "$resolution")
     ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
     ;;
 "random from most viewed")

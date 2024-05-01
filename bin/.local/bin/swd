@@ -2,94 +2,40 @@
 
 source "$XDG_CONFIG_HOME/swd/swd.conf"
 
-apikey="$(cat $apikey_file)"
+params+="apikey=$(cat $apikey_file)"
 
 while getopts ":C:a:p:c:r:s:o:l:" opt; do
   case ${opt} in
-  C)
-    colors="${OPTARG}"
-    ;;
-  a)
-    atleast="${OPTARG}"
-    ;;
-  p)
-    purity="${OPTARG}"
-    ;;
-  c)
-    categories="${OPTARG}"
-    ;;
-  r)
-    ratios="${OPTARG}"
-    ;;
-  s)
-    sorting="${OPTARG}"
-    ;;
-  o)
-    order="${OPTARG}"
-    ;;
-  l)
-    location="${OPTARG}"
-    ;;
-  \?)
-    echo "Invalid option: -$OPTARG" >&2
-    exit 1
-    ;;
-  :)
-    echo "Option -$OPTARG requires an argument." >&2
-    exit 1
-    ;;
+  C) params+="&colors=${OPTARG}" ;;
+  a) params+="&atleast=${OPTARG}" ;;
+  p) params+="&purity=${OPTARG}" ;;
+  c) params+="&categories=${OPTARG}" ;;
+  r) params+="&ratios=${OPTARG}" ;;
+  s) params+="&sorting=${OPTARG}" ;;
+  o) params+="&order=${OPTARG}" ;;
+  l) location="${OPTARG}" && mkdir -p "$location" ;;
+  \?) echo "Invalid option: -$OPTARG" >&2 && exit 1 ;;
+  :) echo "Option -$OPTARG requires an argument." >&2 && exit 1 ;;
   esac
 done
 
-# Address for the wallpaper website
-wallpaper_url="https://wallhaven.cc/api/v1/search?"
+api_url="https://wallhaven.cc/api/v1/search?$params"
 
-wallpaper_url+="apikey=$apikey"
+last_page=$(curl -s -L "$api_url" | jq -r '.meta.last_page')
 
-[[ -n "$categories" ]] && wallpaper_url+="&categories=$categories"
+api_url+="&page=$((1 + RANDOM % last_page))"
 
-[[ -n "$purity" ]] && wallpaper_url+="&purity=$purity"
+response=$(curl -s -L "$api_url")
 
-[[ -n "$order" ]] && wallpaper_url+="&order=$order"
-
-[[ -n "$colors" ]] && wallpaper_url+="&colors=$colors"
-
-[[ -n "$ratios" ]] && wallpaper_url+="&ratios=$ratios"
-
-[[ -n "$atleast" ]] && wallpaper_url+="&atleast=$atleast"
-
-case "$sorting" in
-"latest") wallpaper_url+="&sorting=date_added" ;;
-"views") wallpaper_url+="&sorting=views" ;;
-"toplist") wallpaper_url+="&sorting=toplist" ;;
-"favorites") wallpaper_url+="&sorting=favorites" ;;
-*) wallpaper_url+="&sorting=random" ;;
-esac
-
-# Get the last page number from the API
-last_page=$(curl -s -L "$wallpaper_url" | jq -r '.meta.last_page')
-
-# Add random page parameter to the URL
-wallpaper_url+="&page=$((1 + RANDOM % last_page))"
-
-# Fetch response from the API
-response=$(curl -s -L "$wallpaper_url")
-
-# Choose a random index from the data array
 index=$((RANDOM % 24))
 
-# Extract download URL and file size for the selected wallpaper
-download_url=$(echo "$response" | jq -r ".data[$index].path")
+wallpaper_url=$(echo "$response" | jq -r ".data[$index].path")
 wallpaper_size=$(echo "$response" | jq -r ".data[$index].file_size")
 
-# Set wallpaper file path
-wallpaper="$location/${download_url##*/}"
+wallpaper="$location/${wallpaper_url##*/}"
 
-mkdir -p "$location"
-
-# Start the File Download Progress script in the background
 fdp "$wallpaper" "$wallpaper_size" &
 
-curl -s -L "$download_url" -o "$wallpaper"
+curl -s -L "$wallpaper_url" -o "$wallpaper"
 
 echo "$wallpaper"
