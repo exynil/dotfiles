@@ -95,24 +95,10 @@ dest_file_size=$(echo "$response" | jq -r ".data[$index].file_size")
 # Set wallpaper file path
 wallpaper="$location/${download_url##*/}"
 
-# Function to show progress while downloading wallpaper
-show_progress() {
-  touch "$1"
-  local_file_size=$(stat -c%s "$1")
-  dest_file_size="$2"
-
-  while [ "$local_file_size" != "$dest_file_size" ]; do
-    percent=$(("$local_file_size" * 100 / "$dest_file_size"))
-    notify-send -t 200 --hint=string:x-dunst-stack-tag:swd -h int:value:$percent "Downloading... $percent%"
-    local_file_size=$(stat -c%s "$1")
-    sleep 0.1
-  done
-}
-
 mkdir -p "$location"
 
-# Start the progress display function in the background
-show_progress "$wallpaper" "$dest_file_size" &
+# Start the File Download Progress script in the background
+fdp "$wallpaper" "$dest_file_size" &
 
 curl -s -L "$download_url" -o "$wallpaper"
 
