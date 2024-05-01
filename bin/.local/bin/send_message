@@ -5,25 +5,13 @@ CHAT_ID="$(cat /media/hdd/arch/app-data/bot/chat_id)"
 
 RETRY_DELAY=5
 
-message=""
-
 # Обработка параметров командной строки
 while getopts ":hm:" opt; do
     case $opt in
-    h)
-        message="[$(uname -n)] "
-        ;;
-    m)
-        message="$message$OPTARG"
-        ;;
-    \?)
-        echo "Неверный параметр: -$OPTARG" >&2
-        exit 1
-        ;;
-    :)
-        echo "Для параметра -$OPTARG необходим аргумент." >&2
-        exit 1
-        ;;
+    h) message="[$(uname -n)] $message" ;;
+    m) message="$message$OPTARG" ;;
+    \?) echo "Неверный параметр: -$OPTARG" >&2 && exit 1 ;;
+    :) echo "Для параметра -$OPTARG необходим аргумент." >&2 && exit 1;;
     esac
 done
 
@@ -32,9 +20,7 @@ TELEGRAM_API="https://api.telegram.org"
 # Преобразование сообщения в URL-кодированный формат
 message=$(printf "%s" "$message" | od -An -tx1 | tr ' ' % | tr -d '\n')
 
-PARAMS="chat_id=$CHAT_ID&text=$message"
-
-URL="$TELEGRAM_API/bot$TOKEN/sendMessage?$PARAMS"
+URL="$TELEGRAM_API/bot$TOKEN/sendMessage?chat_id=$CHAT_ID&text=$message"
 
 while :; do
     response=$(curl "$URL" -s --retry 99999 --retry-delay 3)
