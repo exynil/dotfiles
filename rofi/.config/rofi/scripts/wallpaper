@@ -2,7 +2,6 @@
 
 rofi_command='rofi -theme themes/wallpaper.rasi'
 
-# Variable passed to rofi
 options=("random"
     "random from latest"
     "random from most viewed"
@@ -22,51 +21,47 @@ if [ -n "$chosen" ]; then
     fi
 fi
 
-# Image folder location
 img_dir="$HOME/Pictures"
 
-# Wallpapers folder location
-wallpapers_dir="$img_dir/wallpapers"
+wallpapers_dir="$img_dir/wallpapers" && mkdir -p "$wallpapers_dir"
 
-# Temp folder location
 temp_dir="$wallpapers_dir/temp"
 
-# Wallpaper
 wallpaper="$img_dir/wallpaper.jpg"
 
-# Resolution
-resolution="3840x2160"
+set_wallpaper() {
+    ln -sf "$1" "$wallpaper" && hsetroot -cover "$wallpaper"
+}
 
 case $chosen in
 "random")
-    img=$(swd -l "$temp_dir" -a "$resolution" -p 000)
-    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
+    img=$(swd -l "$temp_dir" -p 000)
+    set_wallpaper "$img"
     ;;
 "random from latest")
-    img=$(swd -l "$temp_dir" -s date_added -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
+    img=$(swd -l "$temp_dir" -s date_added)
+    set_wallpaper "$img"
     ;;
 "random from most viewed")
-    img=$(swd -l "$temp_dir" -s views -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
+    img=$(swd -l "$temp_dir" -s views)
+    set_wallpaper "$img"
     ;;
 "random from toplist")
-    img=$(swd -l "$temp_dir" -s toplist -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
+    img=$(swd -l "$temp_dir" -s toplist)
+    set_wallpaper "$img"
     ;;
 "random from favorites")
-    img=$(swd -l "$temp_dir" -s favorites -a "$resolution")
-    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
+    img=$(swd -l "$temp_dir" -s favorites)
+    set_wallpaper "$img"
     ;;
 "random and blurred")
     img=$(swd -l "$temp_dir")
     convert -blur 0x80 "$img" "$img"
-    ln -sf "$img" "$wallpaper" && hsetroot -cover "$wallpaper"
+    set_wallpaper "$img"
     ;;
 "random from saved")
     mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
-    ln -sf "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}" "$wallpaper"
-    hsetroot -cover "$wallpaper"
+    set_wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
     ;;
 "keep wallpaper")
     # Получаем путь текущего изображения
@@ -78,21 +73,15 @@ case $chosen in
     if compgen -G "$PATTERN" >/dev/null; then
         notify-send -u critical "Image already exists"
     else
-        mkdir -p "$wallpapers_dir"
-
-        # Name of image
+        # Генерируем название изображения
         img="$(date +%y%m%d-%H%M%S)-${current_wallpaper##*/}"
 
-        # Copy the wallpaper image to archive folder
-        cp "$current_wallpaper" "$wallpapers_dir/$img"
-        notify-send "$img saved"
+        # Сохраняем изображение
+        cp "$current_wallpaper" "$wallpapers_dir/$img" && notify-send "$img saved"
     fi
     ;;
 "last saved")
-    # Получаем путь текущего изображения
     last_saved="$(find "$wallpapers_dir" -type f -printf "%f\n" | sort -n | tail -1)"
-
-    ln -sf "$wallpapers_dir/$last_saved" "$wallpaper"
-    hsetroot -cover "$wallpaper"
+    set_wallpaper "$wallpapers_dir/$last_saved"
     ;;
 esac

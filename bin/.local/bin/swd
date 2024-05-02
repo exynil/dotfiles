@@ -2,22 +2,29 @@
 
 source "$XDG_CONFIG_HOME/swd/swd.conf"
 
-params+="apikey=$(cat $apikey_file)"
-
 while getopts ":C:a:p:c:r:s:o:l:" opt; do
   case ${opt} in
-  C) params+="&colors=${OPTARG}" ;;
-  a) params+="&atleast=${OPTARG}" ;;
-  p) params+="&purity=${OPTARG}" ;;
-  c) params+="&categories=${OPTARG}" ;;
-  r) params+="&ratios=${OPTARG}" ;;
-  s) params+="&sorting=${OPTARG}" ;;
-  o) params+="&order=${OPTARG}" ;;
+  C) colors="${OPTARG}" ;;
+  a) atleast="${OPTARG}" ;;
+  p) purity="${OPTARG}" ;;
+  c) categories="${OPTARG}" ;;
+  r) ratios="${OPTARG}" ;;
+  s) sorting="${OPTARG}" ;;
+  o) order="${OPTARG}" ;;
   l) location="${OPTARG}" && mkdir -p "$location" ;;
   \?) echo "Invalid option: -$OPTARG" >&2 && exit 1 ;;
   :) echo "Option -$OPTARG requires an argument." >&2 && exit 1 ;;
   esac
 done
+
+params+="apikey=$(cat $apikey_file)"
+params+="&colors=$colors"
+params+="&atleast=$atleast"
+params+="&purity=$purity"
+params+="&categories=$categories"
+params+="&ratios=$ratios"
+params+="&sorting=$sorting"
+params+="&order=$order"
 
 api_url="https://wallhaven.cc/api/v1/search?$params"
 

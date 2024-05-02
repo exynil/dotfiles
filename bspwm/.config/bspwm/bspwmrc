@@ -41,8 +41,13 @@ pgrep -x picom >/dev/null || picom &
 sct 4500 &
 xrdb "$XDG_CONFIG_HOME"/xresources/xresources &
 xset r rate 350 62 &
-#libinput-gestures-setup start &
 xsetroot -cursor_name left_ptr &
 hsetroot -cover ~/Pictures/wallpaper.jpg &
 
-#nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1'
+hostname=$(uname -n)
+
+if [ "$hostname" = "arch" ]; then
+    libinput-gestures-setup start &
+    numlockx on &
+fi
+
