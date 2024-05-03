@@ -124,11 +124,6 @@ flameshot gui
 # super + Print
 flameshot full -c
 
-##--------------------- watching youtube video with MPV ---------------------##
-
-# super + y
-sleep 0.5 && xdotool key "ctrl+l" && xdotool key "ctrl+c" && mpv $(xclip -o)
-
 ##--------------------- Backlight ---------------------##
 
 # XF86MonBrightness{Up,Down}
