@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rofi_command='rofi -theme themes/wallpaper.rasi'
+rofi='rofi -theme themes/wallpaper.rasi'
 
 options=("random"
     "random from latest"
@@ -12,13 +12,10 @@ options=("random"
     "keep wallpaper"
     "last saved")
 
-chosen="$(printf '%s\n' "${options[@]}" | $rofi_command -p "wallpaper" -dmenu -selected-row 2)"
+chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row 2)"
 
-if [ -n "$chosen" ]; then
-    if [ "$(pgrep wallpaper | wc -l)" -gt 2 ]; then
-        notify-send "Please wait"
-        exit 1
-    fi
+if [ -n "$chosen" ] && [ "$(pgrep wallpaper | wc -l)" -gt 2 ]; then
+    notify-send "Please wait" && exit 1
 fi
 
 img_dir="$HOME/Pictures"
@@ -29,30 +26,23 @@ temp_dir="$wallpapers_dir/temp"
 
 wallpaper="$img_dir/wallpaper.jpg"
 
-set_wallpaper() {
-    ln -sf "$1" "$wallpaper" && hsetroot -cover "$wallpaper"
-}
+set_wallpaper() { ln -sf "$1" "$wallpaper" && hsetroot -cover "$wallpaper"; }
 
 case $chosen in
 "random")
-    img=$(swd -l "$temp_dir" -p 000)
-    set_wallpaper "$img"
+    set_wallpaper "$(swd -l "$temp_dir")"
     ;;
 "random from latest")
-    img=$(swd -l "$temp_dir" -s date_added)
-    set_wallpaper "$img"
+    set_wallpaper "$(swd -l "$temp_dir" -s date_added)"
     ;;
 "random from most viewed")
-    img=$(swd -l "$temp_dir" -s views)
-    set_wallpaper "$img"
+    set_wallpaper "$(swd -l "$temp_dir" -s views)"
     ;;
 "random from toplist")
-    img=$(swd -l "$temp_dir" -s toplist)
-    set_wallpaper "$img"
+    set_wallpaper "$(swd -l "$temp_dir" -s toplist)"
     ;;
 "random from favorites")
-    img=$(swd -l "$temp_dir" -s favorites)
-    set_wallpaper "$img"
+    set_wallpaper "$(swd -l "$temp_dir" -s favorites)"
     ;;
 "random and blurred")
     img=$(swd -l "$temp_dir")
@@ -81,7 +71,6 @@ case $chosen in
     fi
     ;;
 "last saved")
-    last_saved="$(find "$wallpapers_dir" -type f -printf "%f\n" | sort -n | tail -1)"
-    set_wallpaper "$wallpapers_dir/$last_saved"
+    set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
     ;;
 esac
