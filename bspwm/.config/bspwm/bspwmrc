@@ -42,7 +42,7 @@ sct 4500 &
 xrdb "$XDG_CONFIG_HOME"/xresources/xresources &
 xset r rate 350 62 &
 xsetroot -cursor_name left_ptr &
-hsetroot -cover ~/Pictures/wallpaper.jpg &
+feh --no-fehbg --bg-fill ~/Pictures/wallpaper.jpg &
 
 hostname=$(uname -n)
 

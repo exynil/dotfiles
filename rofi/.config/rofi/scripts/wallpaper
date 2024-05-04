@@ -26,7 +26,7 @@ temp_dir="$wallpapers_dir/temp"
 
 wallpaper="$img_dir/wallpaper.jpg"
 
-set_wallpaper() { ln -sf "$1" "$wallpaper" && hsetroot -cover "$wallpaper"; }
+set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
 
 case $chosen in
 "random")
