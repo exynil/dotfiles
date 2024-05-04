@@ -30,11 +30,6 @@ esac
 time_now="$(date +%T)"
 time_after="$(date --date="${past% ago}" +%T)"
 
-# Function to check if optional dependencies are in the PATH
-_depcheck() {
-    command -v "$1" 2>/dev/null
-}
-
 # The message to print when the timer is done.  This will echo a message
 # in the terminal and, if optional dependencies are present, set a
 # desktop notification while ringing the alarm bell for a short time.
@@ -43,7 +38,7 @@ _notify() {
 
     echo "$message"
 
-    [ "$(_depcheck notify-send)" ] && notify-send -i clock "$message"
+    notify-send -i clock "$message"
 
     play-sound "long-expected.ogg"
 }

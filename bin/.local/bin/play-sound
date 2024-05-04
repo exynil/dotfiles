@@ -14,11 +14,6 @@ _help_message() {
 # Sound folder location
 sound_dir="$HDD/max/sounds"
 
-# Function to check if optional dependencies are in the PATH
-_depcheck() {
-    command -v "$1" 2>/dev/null
-}
-
-if [ -f "$sound_dir/$1" ] && [ "$(_depcheck ffplay)" ]; then
+if [ -f "$sound_dir/$1" ]; then
     ffplay -nodisp -autoexit "$sound_dir/$1" 2>/dev/null &
 fi
