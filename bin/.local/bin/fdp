@@ -29,6 +29,7 @@
 
 local_file="$1"
 dest_file_size="$2"
+preview="$3"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
@@ -36,7 +37,8 @@ while [ "$local_file_size" != "$dest_file_size" ]; do
   percent=$(("$local_file_size" * 100 / "$dest_file_size"))
   notify-send \
     -t 200 --hint=string:x-dunst-stack-tag:swd \
-    -h int:value:$percent "Downloading... $percent%"
+    -h int:value:$percent "Downloading... $percent%" \
+    --icon="$preview"
   local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
   sleep 0.1
 done

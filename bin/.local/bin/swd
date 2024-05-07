@@ -11,7 +11,7 @@ while getopts ":C:a:p:c:r:s:o:l:" opt; do
   r) ratios="${OPTARG}" ;;
   s) sorting="${OPTARG}" ;;
   o) order="${OPTARG}" ;;
-  l) location="${OPTARG}" && mkdir -p "$location" ;;
+  l) location="${OPTARG}" ;;
   \?) echo "Invalid option: -$OPTARG" >&2 && exit 1 ;;
   :) echo "Option -$OPTARG requires an argument." >&2 && exit 1 ;;
   esac
@@ -30,7 +30,7 @@ api_url="https://wallhaven.cc/api/v1/search?$params"
 
 last_page=$(curl -s -L "$api_url" | jq -r '.meta.last_page')
 
-api_url+="&page=$((1 + RANDOM % last_page))"
+api_url+="&page=$((RANDOM % last_page))"
 
 response=$(curl -s -L "$api_url")
 
@@ -39,10 +39,15 @@ index=$((RANDOM % 24))
 wallpaper_url=$(echo "$response" | jq -r ".data[$index].path")
 wallpaper_size=$(echo "$response" | jq -r ".data[$index].file_size")
 
+wallpaper_preview_url=$(echo "$response" | jq -r ".data[$index].thumbs.small")
+wallpaper_preview="/tmp/swd/${wallpaper_preview_url##*/}"
+
+curl --create-dirs -s -L "$wallpaper_preview_url" -o "$wallpaper_preview"
+
 wallpaper="$location/${wallpaper_url##*/}"
 
-fdp "$wallpaper" "$wallpaper_size" &
+fdp "$wallpaper" "$wallpaper_size" "$wallpaper_preview" &
 
-curl -s -L "$wallpaper_url" -o "$wallpaper"
+curl --create-dirs -s -L "$wallpaper_url" -o "$wallpaper"
 
 echo "$wallpaper"

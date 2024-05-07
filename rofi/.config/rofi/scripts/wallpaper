@@ -20,7 +20,7 @@ fi
 
 img_dir="$HOME/Pictures"
 
-wallpapers_dir="$img_dir/wallpapers" && mkdir -p "$wallpapers_dir"
+wallpapers_dir="$img_dir/wallpapers"
 
 temp_dir="$wallpapers_dir/temp"
 
