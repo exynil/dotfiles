@@ -5,7 +5,7 @@
 
 # data - переменная хранит путь к файлу zoom.json
 
-# стуркура zoom.json
+# структура zoom.json
 
 # [
 #   {
@@ -25,14 +25,13 @@
 #   }
 # ]
 
-rofi_command='rofi -theme themes/zoom.rasi'
+rofi='rofi -theme themes/zoom.rasi'
 
 data="$APP_DATA/rofi/zoom.json"
 
-# Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"
 
-chosen="$(echo -e "$options" | $rofi_command -p "conference" -dmenu)"
+chosen="$(echo "$options" | $rofi -p "conference" -dmenu)"
 
 [[ -z "$chosen" ]] && exit 1
 

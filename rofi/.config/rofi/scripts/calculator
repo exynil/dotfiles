@@ -1,5 +1,8 @@
 #!/bin/bash
 
-rofi_command='rofi -theme themes/calculator.rasi'
-
-$rofi_command -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xsel -b"
+rofi -theme 'themes/calculator.rasi' \
+    -show calc \
+    -modi calc \
+    -no-show-match \
+    -no-sort \
+    -calc-command "echo -n '{expression} = {result}' | xsel -ib"

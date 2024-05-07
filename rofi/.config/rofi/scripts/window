@@ -1,5 +1,3 @@
 #!/bin/bash
 
-rofi_command='rofi -theme themes/window.rasi'
-
-$rofi_command -show window -modi window
+rofi -theme 'themes/window.rasi' -show window -modi window

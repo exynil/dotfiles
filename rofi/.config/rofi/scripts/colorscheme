@@ -1,35 +1,21 @@
 #!/bin/bash
 
-# Функция возвращает индекс в массиве значения
-get_index() {
-  mapfile -t arr <<<"$1"
-  value="$2"
+ROFI_DIR="$XDG_CONFIG_HOME/rofi"
 
-  for i in "${!arr[@]}"; do
-    if [[ "${arr[$i]}" = "$value" ]]; then
-      return "${i}"
-    fi
-  done
-}
+rofi='rofi -theme themes/colorscheme.rasi'
 
-rofi_dir="$XDG_CONFIG_HOME/rofi"
+options=$(ls "$ROFI_DIR/themes/colorschemes/")
 
-rofi_command='rofi -theme themes/colorscheme.rasi'
+# Получаем названия текущей цветовой схемы
+current_scheme=$(head "$ROFI_DIR/themes/colors.rasi" | cut -d "/" -f2 | sed 's/"//')
 
-# Variable passed to rofi
-options=$(ls "$rofi_dir/themes/colorschemes/")
+index=$(echo "$options" | awk "\$0 == \"$current_scheme\" {print NR - 1}")
 
-# Получаем название текущей цветовой схемы
-current_colorscheme=$(head "$rofi_dir/themes/colors.rasi" | cut -d "/" -f2 | sed 's/"//')
+scheme=$(echo "$options" | $rofi -p colorscheme -dmenu -selected-row "$index ")
 
-# Получаем её индекс
-get_index "$options" "$current_colorscheme"
+[[ -z "$scheme" ]] && exit 1
 
-colorscheme="$(echo -e "$options" | $rofi_command -p colorscheme -dmenu -selected-row $?)"
-
-[[ -z "$colorscheme" ]] && exit 1
-
-echo "@import \"colorschemes/$colorscheme\"" >"$rofi_dir"/themes/colors.rasi
+echo "@import \"colorschemes/$scheme\"" >"$ROFI_DIR"/themes/colors.rasi
 
 # Повторный запуск скрипта
-"$0"
+"$0" &

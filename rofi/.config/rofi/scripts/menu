@@ -5,16 +5,16 @@ rofi_command='rofi -theme themes/menu.rasi'
 # Options
 bt_headphones='󰋋'
 touchpad='󰟸'
-translate='󰊿'
-termbin='󱃖'
+translate='󰪥'
+termbin='󰪥'
 knowledge_base='󰂺'
 picom='󰏘'
-scratchpad='󰆍'
-polybar='󰬗'
+scratchpad='󰪥'
+polybar='󰪥'
 guest_firefox_profile='󱐡'
 xkill='󱓈'
 trash_empty='󰩹'
-mpv_controller='󰹰'
+mpv_controller='󰪥'
 
 
 # Variable passed to rofi
@@ -66,20 +66,8 @@ case $chosen in
     play-sound "cyclist.ogg"
     ;;
 "$termbin")
-    url=$(nc termbin.com 9999 < <(xsel -p))
-    echo "$url" | xsel -ib
-    echo "$url" | xsel -ip
-    notify-send "$url copied to clipboard"
-    play-sound "direct.ogg"
     ;;
 "$knowledge_base")
-    if pgrep -x "mdbook" >/dev/null; then
-        killall mdbook
-        notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook stopped"
-    else
-        mdbook serve "$HDD/arch/knowledge-base" --open &
-        notify-send --hint=string:x-dunst-stack-tag:mdbook "mdbook started"
-    fi
     ;;
 "$picom")
     if pgrep -x "picom" >/dev/null; then
@@ -91,7 +79,6 @@ case $chosen in
     fi
     ;;
 "$scratchpad")
-    xterm -name "dropdown"
     ;;
 "$polybar")
     polybar-run
@@ -103,11 +90,6 @@ case $chosen in
     firefox -P guest
     ;;
 "$mpv_controller")
-    if pgrep -x "mpv-controller" >/dev/null; then
-        killall mpv-controller
-    else
-        mpv-controller
-    fi
     ;;
 "$trash_empty")
     trash-empty

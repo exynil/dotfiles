@@ -5,7 +5,7 @@
 
 # data - должна хранить путь к command.json
 
-# стуркура command.json
+# структура command.json
 
 # [
 #   {
@@ -35,7 +35,6 @@ rofi_command='rofi -theme themes/command.rasi'
 
 data="$APP_DATA/rofi/command.json"
 
-# Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"
 
 chosen="$(echo -e "$options" | $rofi_command -p "commands" -dmenu)"

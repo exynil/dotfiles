@@ -2,6 +2,4 @@
 
 xkb-switch -s us &
 
-rofi_command='rofi -theme themes/run.rasi'
-
-$rofi_command -show run -modi run
+rofi -theme 'themes/run.rasi' -show run -modi run

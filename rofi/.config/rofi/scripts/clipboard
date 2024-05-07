@@ -1,5 +1,3 @@
 #!/bin/bash
 
-rofi_command='rofi -theme themes/clipboard.rasi'
-
-$rofi_command -show clipboard -modi 'clipboard:greenclip print'
+rofi -theme 'themes/clipboard.rasi' -show clipboard -modi 'clipboard:greenclip print'
