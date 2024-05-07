@@ -2,6 +2,16 @@
 
 rofi='rofi -theme themes/wallpaper.rasi'
 
+img_dir="$HOME/Pictures"
+
+wallpapers_dir="$img_dir/wallpapers"
+
+temp_dir="$wallpapers_dir/temp"
+
+wallpaper="$img_dir/wallpaper.jpg"
+
+id="$(readlink -f "$wallpaper" | awk -F '[-.]' '{print $(NF-1)}')"
+
 options=("random"
     "random from latest"
     "random from most viewed"
@@ -10,21 +20,14 @@ options=("random"
     "random and blurred"
     "random from saved"
     "keep wallpaper"
-    "last saved")
+    "last saved"
+    "open wallhaven/w/$id")
 
 chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row 2)"
 
 if [ -n "$chosen" ] && [ "$(pgrep -c "$(basename "$0")")" -gt 1 ]; then
     notify-send "Please wait" && exit 1
 fi
-
-img_dir="$HOME/Pictures"
-
-wallpapers_dir="$img_dir/wallpapers"
-
-temp_dir="$wallpapers_dir/temp"
-
-wallpaper="$img_dir/wallpaper.jpg"
 
 set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
 
@@ -72,5 +75,9 @@ case $chosen in
     ;;
 "last saved")
     set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
+    ;;
+"open wallhaven/w/$id")
+    id="$(readlink -f "$wallpaper" | awk -F '[-.]' '{print $(NF-1)}')"
+    $BROWSER "https://wallhaven.cc/w/$id"
     ;;
 esac

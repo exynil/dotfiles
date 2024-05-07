@@ -7,9 +7,10 @@
 # Аргументы:
 #   $1: Путь к локальному файлу, который загружается.
 #   $2: Размер целевого файла, который нужно загрузить.
+#   $3: Путь к превью (необязательно)
 #
 # Пример использования:
-#   fdp /путь/к/локальному_файлу размер_целевого_файла
+#   fdp /путь/к/локальному_файлу размер_целевого_файла /путь/к/превью
 #
 # Скрипт следит за прогрессом загрузки локального файла и выводит уведомление
 # с процентом завершенности загрузки. Как только размер локального файла
@@ -18,6 +19,7 @@
 # Зависимости:
 #   - notify-send (утилита для отправки уведомлений)
 #   - stat (утилита для получения информации о файле)
+#   - bс (калькулятор)
 #
 # Примечания:
 #   - Если файл отсутствует, скрипт будет предполагать его размер как 0.
@@ -29,16 +31,20 @@
 
 local_file="$1"
 dest_file_size="$2"
-preview="$3"
+preview_file="$3"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
 while [ "$local_file_size" != "$dest_file_size" ]; do
   percent=$(("$local_file_size" * 100 / "$dest_file_size"))
+
+  size=$(echo "scale=1;$dest_file_size / 1048576" | bc)
+
   notify-send \
     -t 200 --hint=string:x-dunst-stack-tag:swd \
-    -h int:value:$percent "Downloading... $percent%" \
-    --icon="$preview"
+    -h int:value:$percent "Downloading... $percent% ($size MB)" \
+    --icon="$preview_file"
   local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
+
   sleep 0.1
 done
