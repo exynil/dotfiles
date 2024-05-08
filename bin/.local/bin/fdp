@@ -36,15 +36,16 @@ preview_file="$3"
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
 while [ "$local_file_size" != "$dest_file_size" ]; do
-  percent=$(("$local_file_size" * 100 / "$dest_file_size"))
+    percent=$((local_file_size * 100 / dest_file_size))
 
-  size=$(echo "scale=1;$dest_file_size / 1048576" | bc)
+    size=$(echo "scale=1;$dest_file_size / 1048576" | bc)
 
-  notify-send \
-    -t 200 --hint=string:x-dunst-stack-tag:swd \
-    -h int:value:$percent "Downloading... $percent% ($size MB)" \
-    --icon="$preview_file"
-  local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
+    notify-send \
+        -t 200 --hint=string:x-dunst-stack-tag:swd \
+        -h int:value:$percent "Downloading... $percent% ($size MB)" \
+        --icon="$preview_file"
 
-  sleep 0.1
+    local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
+
+    sleep 0.1
 done
