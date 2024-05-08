@@ -67,6 +67,6 @@ case $chosen in
     set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
     ;;
 "󰈹 | https://wallhaven.cc/w/$wallpaper_id")
-    $BROWSER "https://wallhaven.cc/w/$wallpaper_id"
+    xdg-open "https://wallhaven.cc/w/$wallpaper_id" &
     ;;
 esac
