@@ -7,7 +7,7 @@ SURFRAW_graphical=yes
 
 # name/path of text browser executable
 # e.g links, lynx, w3m
-SURFRAW_text_browser=w3m	
+SURFRAW_text_browser=w3m
 
 # name/path of browser executable
 # e.g mozilla, netscape etc. Default to $BROWSER if no listed ones found

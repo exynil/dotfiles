@@ -1,7 +1,0 @@
-#!/bin/bash
-
-response=$(curl -s wttr.in/Almaty?format="%t")
-
-[[ "$response" =~ "Unknown location;".* ]] && exit 1
-
-echo "$response"
