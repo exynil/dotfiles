@@ -10,18 +10,23 @@ temp_dir="$wallpapers_dir/temp"
 
 wallpaper="$img_dir/wallpaper.jpg"
 
-id="$(readlink -f "$wallpaper" | awk -F '[-.]' '{print $(NF-1)}')"
+current_wallpaper="$(readlink -f "$wallpaper")"
 
-options=("random"
-    "random from latest"
-    "random from most viewed"
-    "random from toplist"
-    "random from favorites"
-    "random and blurred"
-    "random from saved"
-    "keep wallpaper"
-    "last saved"
-    "open wallhaven/w/$id")
+wallpaper_id="$(awk -F '[-.]' '{print $(NF-1)}' <<< "$current_wallpaper")"
+
+set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
+
+options=(
+    "󰇎 random"
+    "󰸗 random from latest"
+    "󰈈 random from most viewed"
+    "󰜸 random from toplist"
+    "󰓏 random from favorites"
+    "󰂸 random and blurred"
+    "󰀼 random from saved"
+    "󰆓 keep wallpaper"
+    "󰃰 last saved"
+    "󰈹 https://wallhaven.cc/w/$wallpaper_id")
 
 chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row 2)"
 
@@ -29,37 +34,22 @@ if [ -n "$chosen" ] && [ "$(pgrep -c "$(basename "$0")")" -gt 1 ]; then
     notify-send "Please wait" && exit 1
 fi
 
-set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
-
 case $chosen in
-"random")
-    set_wallpaper "$(swd -l "$temp_dir")"
-    ;;
-"random from latest")
-    set_wallpaper "$(swd -l "$temp_dir" -s date_added)"
-    ;;
-"random from most viewed")
-    set_wallpaper "$(swd -l "$temp_dir" -s views)"
-    ;;
-"random from toplist")
-    set_wallpaper "$(swd -l "$temp_dir" -s toplist)"
-    ;;
-"random from favorites")
-    set_wallpaper "$(swd -l "$temp_dir" -s favorites)"
-    ;;
-"random and blurred")
+"󰇎 random") set_wallpaper "$(swd -l "$temp_dir")" ;;
+"󰸗 random from latest") set_wallpaper "$(swd -l "$temp_dir" -s date_added)" ;;
+"󰈈 random from most viewed") set_wallpaper "$(swd -l "$temp_dir" -s views)" ;;
+"󰜸 random from toplist") set_wallpaper "$(swd -l "$temp_dir" -s toplist)" ;;
+"󰓏 random from favorites") set_wallpaper "$(swd -l "$temp_dir" -s favorites)" ;;
+"󰂸 random and blurred")
     img=$(swd -l "$temp_dir")
     convert -blur 0x80 "$img" "$img"
     set_wallpaper "$img"
     ;;
-"random from saved")
+"󰀼 random from saved")
     mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
     set_wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
     ;;
-"keep wallpaper")
-    # Получаем путь текущего изображения
-    current_wallpaper="$(readlink -f "$wallpaper")"
-
+"󰆓 keep wallpaper")
     PATTERN="$wallpapers_dir/*${current_wallpaper##*/}"
 
     # Проверяем имеется ли такое изображение
@@ -73,11 +63,10 @@ case $chosen in
         cp "$current_wallpaper" "$wallpapers_dir/$img" && notify-send "$img saved"
     fi
     ;;
-"last saved")
+"󰃰 last saved")
     set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
     ;;
-"open wallhaven/w/$id")
-    id="$(readlink -f "$wallpaper" | awk -F '[-.]' '{print $(NF-1)}')"
-    $BROWSER "https://wallhaven.cc/w/$id"
+"󰈹 https://wallhaven.cc/w/$wallpaper_id")
+    $BROWSER "https://wallhaven.cc/w/$wallpaper_id"
     ;;
 esac
