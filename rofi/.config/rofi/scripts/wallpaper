@@ -1,18 +1,13 @@
 #!/bin/bash
 
 rofi='rofi -theme themes/wallpaper.rasi'
-
 img_dir="$HOME/Pictures"
-
 wallpapers_dir="$img_dir/wallpapers"
-
 temp_dir="$wallpapers_dir/temp"
-
 wallpaper="$img_dir/wallpaper.jpg"
-
 current_wallpaper="$(readlink -f "$wallpaper")"
-
 wallpaper_id="$(awk -F '[-.]' '{print $(NF-1)}' <<< "$current_wallpaper")"
+wallpaper_url="https://wallhaven.cc/w/$wallpaper_id"
 
 set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
 
@@ -26,7 +21,7 @@ options=(
     "󰀼 | random from saved"
     "󰆓 | keep wallpaper"
     "󰃰 | last saved"
-    "󰈹 | https://wallhaven.cc/w/$wallpaper_id")
+    "󰈹 | $wallpaper_url")
 
 chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row 2)"
 
@@ -66,7 +61,7 @@ case $chosen in
 "󰃰 | last saved")
     set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
     ;;
-"󰈹 | https://wallhaven.cc/w/$wallpaper_id")
-    xdg-open "https://wallhaven.cc/w/$wallpaper_id" &
+"󰈹 | $wallpaper_url")
+    xdg-open "$wallpaper_url" &
     ;;
 esac
