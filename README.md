@@ -1,19 +1,18 @@
-# Dot Files
+## DotFiles
 
 |              |                        |
 |--------------|------------------------|
 | OS           | Archlinux              |
-| WM           | bspwm                  |
+| WM           | Bspwm                  |
 | Terminal     | Alacritty              |
 | File manager | Ranger                 |
 | App launcher | Rofi                   |
 | Bar          | Polybar                |
 | Font         | Ubuntu Mono            |
 | Iconic font  | Material Design Icons  |
-| Colorscheme  | One Dark               |
 
 
-## Screenshots
+### Screenshots
 
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/1.jpg">
 
@@ -27,9 +26,10 @@
 
 <img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/6.jpg">
 
-## Внимание
 
-Скрипт `install` перезаписывает существующие файлы!
+### Attention
 
-Ознакомьтесь с [инструкцией](https://github.com/exynil/knowledge-base/blob/master/ArchLinux/Dotfiles.md)
-по управлению конфигурацией системы
+The `install.sh` script overwrites existing files!
+
+Please review the [instruction](https://github.com/exynil/knowledge-base/blob/master/ArchLinux/Dotfiles.md)
+for managing system configuration.
