@@ -141,5 +141,6 @@
     "editor.glyphMargin": false,
     "workbench.activityBar.location": "top",
     "window.commandCenter": false,
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "git.openRepositoryInParentFolders": "never"
 }

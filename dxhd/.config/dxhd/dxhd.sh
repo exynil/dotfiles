@@ -2,7 +2,6 @@
 
 ## Терминал
 # super + Return
-xkb-switch -s us
 $TERMINAL
 
 ## Перезагрузка dxhd
