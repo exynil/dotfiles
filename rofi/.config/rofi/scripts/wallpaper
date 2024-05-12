@@ -1,10 +1,9 @@
 #!/bin/bash
 
 rofi='rofi -theme themes/wallpaper.rasi'
-img_dir="$HOME/Pictures"
-wallpapers_dir="$img_dir/wallpapers"
+wallpapers_dir="$HOME/Pictures/wallpapers"
 temp_dir="$wallpapers_dir/temp"
-wallpaper="$img_dir/wallpaper.jpg"
+wallpaper="$HOME/Pictures/wallpaper.jpg"
 current_wallpaper="$(readlink -f "$wallpaper")"
 wallpaper_id="$(awk -F '[-.]' '{print $(NF-1)}' <<<"$current_wallpaper")"
 wallpaper_url="https://wallhaven.cc/w/$wallpaper_id"
