@@ -39,7 +39,7 @@ data="$APP_DATA/rofi/folder.json"
 # Variable passed to rofi
 options="$(jq -r '.[].name' "$data")"
 
-chosen="$(echo -e "$options" | $rofi_command -p "code" -dmenu)"
+chosen="$(echo -e "$options" | $rofi_command -p "code" -dmenu -markup-rows)"
 
 [[ -z "$chosen" ]] && exit 1
 
