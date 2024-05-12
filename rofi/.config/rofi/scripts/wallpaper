@@ -6,7 +6,7 @@ wallpapers_dir="$img_dir/wallpapers"
 temp_dir="$wallpapers_dir/temp"
 wallpaper="$img_dir/wallpaper.jpg"
 current_wallpaper="$(readlink -f "$wallpaper")"
-wallpaper_id="$(awk -F '[-.]' '{print $(NF-1)}' <<< "$current_wallpaper")"
+wallpaper_id="$(awk -F '[-.]' '{print $(NF-1)}' <<<"$current_wallpaper")"
 wallpaper_url="https://wallhaven.cc/w/$wallpaper_id"
 
 set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
@@ -25,8 +25,12 @@ options=(
 
 chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row 2)"
 
-if [ -n "$chosen" ] && [ "$(pgrep -c "$(basename "$0")")" -gt 1 ]; then
-    notify-send "Please wait" && exit 1
+if [ -n "$chosen" ] &&
+    [ "$chosen" != "󰈹 | $wallpaper_url" ] &&
+    [ "$chosen" != "󰆓 | keep wallpaper" ]; then
+    if [ "$(pgrep -c "$(basename "$0")")" -gt 1 ]; then
+        notify-send "Please wait" && exit 1
+    fi
 fi
 
 case $chosen in
@@ -61,7 +65,5 @@ case $chosen in
 "󰃰 | last saved")
     set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
     ;;
-"󰈹 | $wallpaper_url")
-    xdg-open "$wallpaper_url" &
-    ;;
+"󰈹 | $wallpaper_url") xdg-open "$wallpaper_url" & ;;
 esac
