@@ -55,7 +55,7 @@ alias find_blank='grep -r "[[:blank:]]$" -I . \
     --exclude-dir=media \
     --exclude-dir=postgres-data \
     --exclude-dir=__pycache__ \
-    --exclude-dir=venv \
+    --exclude-dir=.venv \
     --exclude-dir=static \
 '
 alias p='python'
