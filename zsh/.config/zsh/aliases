@@ -43,14 +43,20 @@ alias my_ip="curl -s ipinfo.io | pretty_json"
 
 alias remove_broken_links='find ~ -type l ! -exec test -e {} \; -exec rm {} \;'
 
-alias tree_c='tree -La 5 \
-    -I __pycache__ -I .git -I .venv -I pytest-cov-report \
-    -I .pytest_cache -I __init__.py -I __main__.py -I venv
+alias tree_c='tree -La 6 \
+    -I .git \
+    -I .venv \
+    -I __pycache__ \
+    -I .pytest_cache \
+    -I pytest-cov-report \
+    -I __init__.py \
+    -I __main__.py \
 '
 
 alias rr='. ranger'
 alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
 alias find_blank='grep -r "[[:blank:]]$" -I . \
+    --exclude-ri=.git \
     --exclude-dir=node_modules \
     --exclude-dir=media \
     --exclude-dir=postgres-data \
