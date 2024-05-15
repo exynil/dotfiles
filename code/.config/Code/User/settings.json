@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
+    "editor.fontFamily": " 'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
     "editor.renderWhitespace": "all",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
@@ -8,92 +8,11 @@
         88
     ],
     "workbench.iconTheme": "vscode-icons",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[vue]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "javascript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "security.workspace.trust.enabled": false,
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "attrsSorter.order": [
-        "is",
-        "v-for",
-        "v-if",
-        "v-else-if",
-        "v-else",
-        "v-show",
-        "v-cloak",
-        "v-once",
-        "v-pre",
-        "id",
-        "ref",
-        "key",
-        "v-slot",
-        "v-slot.+",
-        "#.*",
-        "slot",
-        "v-model",
-        "v-model.+",
-        "v-bind",
-        "v-bind.+",
-        ":.+",
-        "v-text",
-        "v-text.+",
-        "v-html",
-        "v-html.+",
-        "class",
-        "v-on.+",
-        "@.+",
-        "name",
-        "data-.+",
-        "ng-.+",
-        "src",
-        "for",
-        "type",
-        "href",
-        "values",
-        "title",
-        "alt",
-        "role",
-        "aria-.+",
-        "$unknown$"
-      ],
-      "todohighlight.isEnable": true,
-      "todohighlight.include": [
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.html",
-        "**/*.php",
-        "**/*.css",
-        "**/*.sass",
-        "**/*.scss",
-        "**/*.vue"
-    ],
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "[nginx]": {
-        "editor.defaultFormatter": "raynigon.nginx-formatter"
-    },
     "docker.languageserver.formatter.ignoreMultilineInstructions": true,
-     // For which languages indent-rainbow should be activated (if empty it means all).
-    "indentRainbow.includedLanguages": [
-        "html",
-        "vue",
-        "js"
-    ], // for example ["nim", "nims", "python"]
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "editor.linkedEditing": true,
     "vsicons.dontShowNewVersionMessage": true,
@@ -104,31 +23,16 @@
     "files.exclude": {
         "**/__pycache__": true
     },
-    "remote.SSH.remotePlatform": {
-        "192.168.110.47": "linux",
-        "192.168.236.242": "linux",
-        "10.0.0.3": "linux",
-        "10.0.0.2": "linux"
-    },
     "workbench.editor.enablePreview": false,
     "editor.lightbulb.enabled": "off",
     "editor.parameterHints.enabled": false,
-    "[lua]": {
-        "editor.defaultFormatter": "yinfei.luahelper"
-    },
     "debug.inlineValues": "on",
-    "[python]": {
-        "editor.formatOnType": true,
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
     "files.autoSave": "onFocusChange",
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "files.associations": {
         "*.txt": "bat"
     },
     "[python]": {
+        "editor.formatOnType": true,
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "python.formatting.provider": "none",
@@ -138,7 +42,6 @@
     "editor.formatOnPaste": true,
     "editor.minimap.enabled": false,
     "workbench.tree.enableStickyScroll": false,
-    "editor.glyphMargin": false,
     "workbench.activityBar.location": "top",
     "window.commandCenter": false,
     "window.menuBarVisibility": "toggle",
