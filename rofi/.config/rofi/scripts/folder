@@ -50,5 +50,5 @@ for row in $(echo "${rules}" | jq -r '.[] | @base64'); do
     command+=" "
     command+=$(echo "${row}" | base64 --decode | jq -r ".folder")
 
-    $command &
+    eval "$command"
 done
