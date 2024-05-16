@@ -42,7 +42,7 @@ while [ "$local_file_size" != "$dest_file_size" ]; do
 
     notify-send \
         -t 200 --hint=string:x-dunst-stack-tag:swd \
-        -h int:value:$percent "Downloading... $percent% ($size MB)" \
+        -h int:value:$percent "Downloading... $percent% | $size MB" \
         --icon="$preview_file"
 
     local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
