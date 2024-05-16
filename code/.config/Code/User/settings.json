@@ -45,5 +45,7 @@
     "workbench.activityBar.location": "top",
     "window.commandCenter": false,
     "window.menuBarVisibility": "toggle",
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "editor.hover.delay": 1000,
+    "editor.glyphMargin": false
 }

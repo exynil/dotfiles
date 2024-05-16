@@ -52,5 +52,5 @@ for i in $(echo "${commands}" | jq -r '.[] | @base64'); do
         command+=$(echo "$j" | base64 --decode)
     done
 
-    $command &
+    eval "$command"
 done
