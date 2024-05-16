@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Функция для проверки доступности интернета
+check_internet() {
+    wget -q --spider http://google.com
+    return $?
+}
+
+# Проверяем доступность интернета
+while ! check_internet; do
+    echo "Ожидание подключения к сети..."
+    sleep 5
+done
+
+folders=(
+    "$DOTFILES"
+    "$HDD/obsidian/knowledge-base"
+)
+
+# Проходимся по каждой папке и выполняем git pull
+for folder in "${folders[@]}"; do
+    if [ -d "$folder/.git" ]; then
+        if ! (cd "$folder" && git pull) then
+            notify-send -u critical -t 0 "Ошибка при выполнении git pull в $folder"
+        fi
+    else
+        notify-send -u critical -t 0 "$folder не является git-репозиторием"
+    fi
+done

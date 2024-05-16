@@ -51,3 +51,4 @@ if [ "$hostname" = "arch" ]; then
     numlockx on &
 fi
 
+git-pull-all &
