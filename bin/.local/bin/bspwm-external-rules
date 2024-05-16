@@ -16,35 +16,13 @@ firefox)
         echo "state=floating sticky=on"
     fi
     ;;
-TelegramDesktop)
-    echo "desktop=8 locked=on"
-    ;;
-discord)
-    echo "desktop=9"
-    ;;
-gnome-calculator)
-    echo "state=floating"
-    ;;
-mpv)
-    echo "state=floating"
-    ;;
-Matplotlib)
-    echo "state=floating"
-    ;;
-xpad)
-    echo "state=floating"
-    ;;
-Zathura)
-    echo "state=tiled"
-    ;;
-Alacritty)
-    xkb-switch -s us
-    ;;
-flameshot)
-    echo "state=floating"
-    ;;
-Steam)
-    echo "desktop=10"
-    ;;
+TelegramDesktop) echo "desktop=8 locked=on" ;;
+discord) echo "desktop=9" ;;
+gnome-calculator) echo "state=floating" ;;
+mpv) echo "state=floating" ;;
+xpad) echo "state=floating" ;;
+Zathura) echo "state=tiled" ;;
+Alacritty) xkb-switch -s us ;;
+flameshot) echo "state=floating" ;;
+Steam) echo "desktop=10" ;;
 esac
-
