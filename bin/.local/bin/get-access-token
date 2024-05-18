@@ -23,4 +23,3 @@ if [ "$(jq -r ".username" <<<"$response")" = "$username" ]; then
 else
     notify-send -u critical "Something went wrong"
 fi
-
