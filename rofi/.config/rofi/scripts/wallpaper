@@ -26,7 +26,8 @@ chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-
 
 if [ -n "$chosen" ] &&
     [ "$chosen" != "󰈹 | $wallpaper_url" ] &&
-    [ "$chosen" != "󰆓 | keep wallpaper" ]; then
+    [ "$chosen" != "󰆓 | keep wallpaper" ] &&
+    [ "$chosen" != "󰀼 | random from saved" ]; then
     if [ "$(pgrep -c "$(basename "$0")")" -gt 1 ]; then
         notify-send "Please wait" && exit 1
     fi

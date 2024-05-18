@@ -20,6 +20,7 @@
 #   - notify-send (утилита для отправки уведомлений)
 #   - stat (утилита для получения информации о файле)
 #   - bс (калькулятор)
+#   - uuidgen (генератор  UUID)
 #
 # Примечания:
 #   - Если файл отсутствует, скрипт будет предполагать его размер как 0.
@@ -32,6 +33,7 @@
 local_file="$1"
 dest_file_size="$2"
 preview_file="$3"
+tag="$(uuidgen)"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
@@ -40,10 +42,8 @@ while [ "$local_file_size" != "$dest_file_size" ]; do
 
     size=$(echo "scale=1;$dest_file_size / 1048576" | bc)
 
-    notify-send \
-        -t 200 --hint=string:x-dunst-stack-tag:swd \
-        -h int:value:$percent "Downloading... $percent% | $size MB" \
-        --icon="$preview_file"
+    notify-send -t 200 --icon="$preview_file" --hint=string:x-dunst-stack-tag:"$tag" \
+        -h int:value:$percent "Downloading... $percent% | $size MB"
 
     local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
