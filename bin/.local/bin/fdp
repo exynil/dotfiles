@@ -33,6 +33,7 @@
 local_file="$1"
 dest_file_size="$2"
 preview_file="$3"
+file_size_in_mb=$(bc <<< "scale=1;$dest_file_size / 1048576")
 tag="$(uuidgen)"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
@@ -40,10 +41,8 @@ local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 while [ "$local_file_size" != "$dest_file_size" ]; do
     percent=$((local_file_size * 100 / dest_file_size))
 
-    size=$(echo "scale=1;$dest_file_size / 1048576" | bc)
-
     notify-send -t 200 --icon="$preview_file" --hint=string:x-dunst-stack-tag:"$tag" \
-        -h int:value:$percent "Downloading... $percent% | $size MB"
+        -h int:value:$percent "Downloading... $percent % | $file_size_in_mb MB"
 
     local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
