@@ -19,8 +19,8 @@
 # Зависимости:
 #   - notify-send (утилита для отправки уведомлений)
 #   - stat (утилита для получения информации о файле)
-#   - bс (калькулятор)
-#   - uuidgen (генератор  UUID)
+#   - awk (утилита для обработки и анализа текстовых данных)
+#   - uuidgen (утилита для создания UUID)
 #
 # Примечания:
 #   - Если файл отсутствует, скрипт будет предполагать его размер как 0.
@@ -33,7 +33,7 @@
 local_file="$1"
 dest_file_size="$2"
 preview_file="$3"
-file_size_in_mb=$(bc <<< "scale=1;$dest_file_size / 1048576")
+file_size_in_mb=$(awk "BEGIN {printf '%.1f', $dest_file_size / 1048576 }")
 tag="$(uuidgen)"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
