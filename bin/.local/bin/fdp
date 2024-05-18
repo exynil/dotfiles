@@ -33,7 +33,7 @@
 local_file="$1"
 dest_file_size="$2"
 preview_file="$3"
-file_size_in_mb=$(awk "BEGIN {printf '%.1f', $dest_file_size / 1048576 }")
+file_size_in_mb=$(awk "BEGIN {printf \"%.1f\", $dest_file_size / 1048576 }")
 tag="$(uuidgen)"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
