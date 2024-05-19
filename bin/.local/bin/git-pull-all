@@ -16,6 +16,7 @@ folders=(
     "$DOTFILES"
     "$HDD/obsidian/knowledge-base"
     "$APP_DATA/pass"
+    "$HDD/arch/scripts"
 )
 
 # Проходимся по каждой папке и выполняем git pull
