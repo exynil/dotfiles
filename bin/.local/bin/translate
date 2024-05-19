@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 # Что делает этот скрипт:
-# - Переводит текст из буфера
+# - Переводит текст из буфера обмена
 # - Выводит перевод в уведомление
 
-text="$(xsel -o)"
-translate="$(trans -brief :ru "$text")"
-notify-send -t $((${#text} * 150)) "$translate"
+clipboard_text="$(xsel -o)"
+translated_text="$(trans -brief :ru "$clipboard_text")"
+notify_duration=$((${#clipboard_text} * 200))
+notify-send -t "$notify_duration" "$translated_text"
 play-sound "your-turn.ogg"
