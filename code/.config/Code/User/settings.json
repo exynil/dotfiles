@@ -47,5 +47,6 @@
     "window.menuBarVisibility": "toggle",
     "git.openRepositoryInParentFolders": "never",
     "editor.hover.delay": 1000,
-    "editor.glyphMargin": false
+    "editor.glyphMargin": false,
+    "window.restoreWindows": "none"
 }
