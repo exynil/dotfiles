@@ -1,23 +1,34 @@
 #!/bin/bash
 
 # Массив ключевых слов для скрытия паролей
-keywords=("password" "passwd" "pass" "PrivateKey" "PresharedKey" "PublicKey")
+keywords=(
+    "password" "passwd" "pass" "PrivateKey" "PresharedKey" "PublicKey" "SecretKey"
+    "Token" "APIKey" "ClientSecret" "EncryptionKey" "Secret" "Credential" "AccessKey"
+    "AuthToken" "SecurityToken" "AuthKey" "Key" "Certificate" "PrivateCertificate"
+    "SSHKey" "OAuthToken" "BearerToken" "EncryptionPassword" "DecryptionKey"
+    "SymmetricKey" "AsymmetricKey" "MasterKey" "DatabasePassword" "DBPassword"
+    "UserPassword" "UserSecret" "AppSecret" "AppKey" "AuthPassword" "EncryptionSecret"
+    "SecureToken" "SessionKey" "SessionSecret" "APISecret" "JwtToken" "JwtSecret"
+    "PrivateToken" "VaultKey" "EncryptionPass" "SecurityPass" "TokenSecret"
+    "RootPassword" "RootKey" "AdminPassword" "AdminKey" "AdminSecret" "ServicePassword"
+    "ServiceKey" "ServiceSecret" "SSHSecret" "CryptoKey" "KeyPass" "SecretPass"
+    "KeyStore" "TrustStore" "EncryptionKeyPass" "SigningKey" "ApiPass" "CloudKey"
+    "CloudSecret" "CloudPass"
+)
 
 # Функция для замены паролей на звездочки
 hide_passwords() {
-    local pattern
-    for keyword in "${keywords[@]}"; do
-        pattern+="|$keyword"
-    done
-    pattern=${pattern:1} # Удаление первого символа "|"
-    sed -E "s/($pattern)(\s*=\s*)([^[:space:]]+)/\1\2********/gi"
+    # Объединяем элементы массива в одну строку с помощью printf
+    joined_keywords=$(printf "|%s" "${keywords[@]}")
+    joined_keywords=${joined_keywords:1}  # Удаляем начальный символ "|"
+    sed -E "s/($joined_keywords)(\s*=\s*)([^[:space:]]+)/\1\2********/gi"
 }
 
 # Проверяем, существует ли файл и доступен ли он для чтения
 if [ ! -r "$1" ]; then
-    echo "Файл не найден или недоступен для чтения."
+    echo "File not found or not readable."
     exit 1
 fi
 
 # Отображаем содержимое файла с скрытыми паролями
-hide_passwords < "$1"
+hide_passwords <"$1"
