@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Массив ключевых слов для скрытия паролей
+keywords=("password" "passwd" "pass" "PrivateKey" "PresharedKey" "PublicKey")
+
+# Функция для замены паролей на звездочки
+hide_passwords() {
+    local pattern
+    for keyword in "${keywords[@]}"; do
+        pattern+="|$keyword"
+    done
+    pattern=${pattern:1} # Удаление первого символа "|"
+    sed -E "s/($pattern)(\s*=\s*)([^[:space:]]+)/\1\2********/gi"
+}
+
+# Проверяем, существует ли файл и доступен ли он для чтения
+if [ ! -r "$1" ]; then
+    echo "Файл не найден или недоступен для чтения."
+    exit 1
+fi
+
+# Отображаем содержимое файла с скрытыми паролями
+hide_passwords < "$1"
