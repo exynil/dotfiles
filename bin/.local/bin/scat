@@ -1,20 +1,7 @@
 #!/bin/bash
 
 # Массив ключевых слов для скрытия паролей
-keywords=(
-    "password" "passwd" "pass" "PrivateKey" "PresharedKey" "PublicKey" "SecretKey"
-    "Token" "APIKey" "ClientSecret" "EncryptionKey" "Secret" "Credential" "AccessKey"
-    "AuthToken" "SecurityToken" "AuthKey" "Key" "Certificate" "PrivateCertificate"
-    "SSHKey" "OAuthToken" "BearerToken" "EncryptionPassword" "DecryptionKey"
-    "SymmetricKey" "AsymmetricKey" "MasterKey" "DatabasePassword" "DBPassword"
-    "UserPassword" "UserSecret" "AppSecret" "AppKey" "AuthPassword" "EncryptionSecret"
-    "SecureToken" "SessionKey" "SessionSecret" "APISecret" "JwtToken" "JwtSecret"
-    "PrivateToken" "VaultKey" "EncryptionPass" "SecurityPass" "TokenSecret"
-    "RootPassword" "RootKey" "AdminPassword" "AdminKey" "AdminSecret" "ServicePassword"
-    "ServiceKey" "ServiceSecret" "SSHSecret" "CryptoKey" "KeyPass" "SecretPass"
-    "KeyStore" "TrustStore" "EncryptionKeyPass" "SigningKey" "ApiPass" "CloudKey"
-    "CloudSecret" "CloudPass"
-)
+keywords=("password" "passwd" "pass" "key" "token"  "secret" "credential" "certificate")
 
 # Функция для замены паролей на звездочки
 hide_passwords() {
