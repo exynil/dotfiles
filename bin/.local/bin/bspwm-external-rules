@@ -20,7 +20,7 @@ TelegramDesktop) echo "desktop=8 locked=on" ;;
 discord) echo "desktop=9" ;;
 gnome-calculator) echo "state=floating" ;;
 mpv) echo "state=floating" ;;
-xpad) echo "state=floating" ;;
+xpad) echo "state=floating sticky=on" ;;
 Zathura) echo "state=tiled" ;;
 Alacritty) xkb-switch -s us ;;
 flameshot) echo "state=floating" ;;

@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Массив ключевых слов для скрытия паролей
-keywords=("password" "passwd" "pass" "key" "token"  "secret" "credential" "certificate")
+keywords=("password" "passwd" "pass" "key" "token" "secret" "psk")
 
 # Функция для замены паролей на звездочки
 hide_passwords() {
     # Объединяем элементы массива в одну строку с помощью printf
     joined_keywords=$(printf "|%s" "${keywords[@]}")
-    joined_keywords=${joined_keywords:1}  # Удаляем начальный символ "|"
+    joined_keywords=${joined_keywords:1} # Удаляем начальный символ "|"
     sed -E "s/($joined_keywords)(\s*=\s*)([^[:space:]]+)/\1\2********/gi"
 }
 
