@@ -6,25 +6,27 @@ CHAT_ID="$(cat /media/hdd/arch/app-data/bot/chat_id)"
 RETRY_DELAY=5
 
 # Обработка параметров командной строки
-while getopts ":hm:" opt; do
+while getopts ":hm:t:" opt; do
     case $opt in
     h) message="[$(uname -n)] $message" ;;
     m) message="$message$OPTARG" ;;
+    t) topic_id="$OPTARG" ;;
     \?) echo "Неверный параметр: -$OPTARG" >&2 && exit 1 ;;
-    :) echo "Для параметра -$OPTARG необходим аргумент." >&2 && exit 1;;
+    :) echo "Для параметра -$OPTARG необходим аргумент." >&2 && exit 1 ;;
     esac
 done
 
 TELEGRAM_API="https://api.telegram.org"
 
-# Преобразование сообщения в URL-кодированный формат
-message=$(printf "%s" "$message" | od -An -tx1 | tr ' ' % | tr -d '\n')
-
-URL="$TELEGRAM_API/bot$TOKEN/sendMessage?chat_id=$CHAT_ID&text=$message"
+URL="$TELEGRAM_API/bot$TOKEN/sendMessage"
 
 while :; do
-    response=$(curl "$URL" -s --retry 99999 --retry-delay 3)
-    success=$(jq -r '.ok' <<< "$response")
+    response=$(curl "$URL" -s --retry 99999 --retry-delay 3 \
+        -F "chat_id=$CHAT_ID" \
+        -F "message_thread_id=$topic_id" \
+        -F "text=$message")
+
+    success=$(jq -r '.ok' <<<"$response")
 
     if [ "$success" = "true" ]; then
         echo "Запрос успешно отправлен."
