@@ -7,7 +7,7 @@ check_and_run() { pgrep "$1" >/dev/null || eval "${2:-$1}"; }
 
 check_and_run "dxhd" &
 check_and_run "polybar" "polybar-run" &
-check_and_run "xautolock" "xautolock -time 15 -detectsleep -locker slock" &
+check_and_run "xautolock" "xautolock -time 5 -detectsleep -locker slock" &
 check_and_run "blueman-applet" &
 check_and_run "nm-applet" &
 check_and_run "greenclip" "greenclip daemon" &

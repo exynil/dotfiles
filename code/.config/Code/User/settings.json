@@ -49,4 +49,6 @@
     "editor.hover.delay": 1000,
     "editor.glyphMargin": false,
     "window.restoreWindows": "none",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "json.maxItemsComputed": 500000,
 }
