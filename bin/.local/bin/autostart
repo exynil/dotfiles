@@ -12,8 +12,7 @@ check_and_run "blueman-applet" &
 check_and_run "nm-applet" &
 check_and_run "greenclip" "greenclip daemon" &
 check_and_run "telegram" "telegram-desktop" &
-# check_and_run "udiskie" "udiskie -t"
-check_and_run "clipit" &
+check_and_run "udiskie" "udiskie -t" &
 check_and_run "picom" &
 
 sct 4500 &
