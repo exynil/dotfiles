@@ -5,7 +5,7 @@
     "explorer.confirmDelete": false,
     "explorer.compactFolders": false,
     "editor.rulers": [
-        88
+        120
     ],
     "workbench.iconTheme": "vscode-icons",
     "[json]": {
@@ -21,7 +21,8 @@
     "remote.SSH.remoteServerListenOnSocket": true,
     "glassit.alpha": 220,
     "files.exclude": {
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/.ruff_cache": true
     },
     "workbench.editor.enablePreview": false,
     "editor.lightbulb.enabled": "off",
@@ -33,11 +34,11 @@
     },
     "[python]": {
         "editor.formatOnType": true,
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.defaultFormatter": "charliermarsh.ruff"
     },
     "python.formatting.provider": "none",
     "codesnap.showWindowControls": false,
-    "prettier.printWidth": 100,
+    "prettier.printWidth": 120,
     "extensions.ignoreRecommendations": true,
     "editor.formatOnPaste": true,
     "editor.minimap.enabled": false,
@@ -47,8 +48,13 @@
     "window.menuBarVisibility": "toggle",
     "git.openRepositoryInParentFolders": "never",
     "editor.hover.delay": 1000,
-    "editor.glyphMargin": false,
+    "editor.glyphMargin": true ,
     "window.restoreWindows": "none",
     "workbench.colorTheme": "One Dark Pro Darker",
     "json.maxItemsComputed": 500000,
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.defaultInterpreterPath": "/media/hdd/max/public/.venv",
+    "editor.wordWrapColumn": 120,
 }
