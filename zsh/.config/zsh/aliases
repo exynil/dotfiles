@@ -1,7 +1,8 @@
 #!/bin/bash
 
 alias matrix='unimatrix -l Aang -s 95'
-alias x='startx ~/.config/xinit/xinitrc &> /dev/null;exit'
+alias x='startx ~/.config/xinit/xinitrc &> /dev/null'
+# alias x='startx ~/.config/xinit/xinitrc &> /dev/null;exit'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
@@ -49,6 +50,7 @@ alias tree_c='tree -La 6 \
     -I .venv \
     -I __pycache__ \
     -I .pytest_cache \
+    -I .ruff_cache \
     -I pytest-cov-report \
     -I __init__.py \
     -I __main__.py \
@@ -69,3 +71,8 @@ alias p='python'
 
 alias system_fonts='fc-list | cut -d ":" -f 2 | cut -d "," -f 2 | sed "s/^ //" | sort | uniq'
 
+alias drb='docker restart backend'
+alias drc='docker restart celery celery-beat'
+
+alias makemesssages='django-admin makemessages -l ru --ignore .venv'
+alias compilemessages='django-admin compilemessages --locale=ru --ignore="*.venv/*"'
