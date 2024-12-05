@@ -1,0 +1,17 @@
+#!/bin/bash
+
+TEMP_DIR="/tmp/audio-streamer"
+mkdir -p "$TEMP_DIR"
+
+# Обработчик сигнала SIGINT SIGTERM
+trap 'echo "Exiting..."; rm -rf "$TEMP_DIR"; exit 1' SIGINT SIGTERM
+
+# Бесконечный цикл записи аудио и отправки
+while :; do
+    datetime=$(date +"%Y-%m-%d-%H-%M-%S-%3N")
+    audio_file="${TEMP_DIR}/${datetime}.ogg"
+    echo "$audio_file"
+    ffmpeg -f pulse -i default -t 120 -c:a libopus "$audio_file" > /dev/null 2>&1
+    send-file -f "$audio_file" -t 717 > /dev/null 2>&1 && rm "$audio_file" &
+done
+

@@ -9,7 +9,7 @@ translate='󰪥'
 termbin='󰪥'
 knowledge_base='󰂺'
 picom='󰏘'
-scratchpad='󰪥'
+iin='󰁱'
 polybar='󰪥'
 guest_firefox_profile='󱐡'
 xkill='󱓈'
@@ -24,7 +24,7 @@ options+="\n$termbin"
 options+="\n$picom"
 options+="\n$translate"
 options+="\n$bt_headphones"
-options+="\n$scratchpad"
+options+="\n$iin"
 options+="\n$polybar"
 options+="\n$guest_firefox_profile"
 options+="\n$xkill"
@@ -78,7 +78,8 @@ case $chosen in
         notify-send --hint=string:x-dunst-stack-tag:picom "picom started"
     fi
     ;;
-"$scratchpad")
+"$iin")
+    gen-iin
     ;;
 "$polybar")
     polybar-run

@@ -28,4 +28,6 @@ if [ "$hostname" = "arch" ]; then
     numlockx on &
 fi
 
+audio-relay
+
 git-pull-all &

@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": " 'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
+    "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
     "editor.renderWhitespace": "all",
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
@@ -7,7 +7,6 @@
     "editor.rulers": [
         120
     ],
-    "workbench.iconTheme": "vscode-icons",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -43,9 +42,7 @@
     "editor.formatOnPaste": true,
     "editor.minimap.enabled": false,
     "workbench.tree.enableStickyScroll": false,
-    "workbench.activityBar.location": "top",
     "window.commandCenter": false,
-    "window.menuBarVisibility": "toggle",
     "git.openRepositoryInParentFolders": "never",
     "editor.hover.delay": 1000,
     "editor.glyphMargin": true ,
@@ -57,4 +54,15 @@
     },
     "python.defaultInterpreterPath": "/media/hdd/max/public/.venv",
     "editor.wordWrapColumn": 120,
+    "database-client.autoSync": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports.ruff": "explicit"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "[sql]": {
+        "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+    },
 }
