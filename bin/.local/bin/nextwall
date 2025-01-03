@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Директория с изображениями
+WALLPAPERS_DIR="/media/hdd/max/pictures/wallpapers"
+# Текущий символическая ссылка
+CURRENT_LINK="/media/hdd/max/pictures/wallpaper.jpg"
+
+# Функция для обновления символьной ссылки
+update_symlink() {
+    ln -sf "$1" "$CURRENT_LINK"
+}
+
+# Получаем все изображения в папке, исключая папку temp
+wallpapers=($(find "$WALLPAPERS_DIR" -type f ! -path "$WALLPAPERS_DIR/temp/*" | sort))
+# Находим индекс текущего изображения в списке
+current_wallpaper=$(readlink -f "$CURRENT_LINK")
+current_index=-1
+
+for i in "${!wallpapers[@]}"; do
+    if [[ "${wallpapers[$i]}" == "$current_wallpaper" ]]; then
+        current_index=$i
+        break
+    fi
+done
+
+# Проверка аргумента
+if [[ $# -ne 1 || ! "$1" =~ ^(next|prev)$ ]]; then
+    echo "Usage: $0 {next|prev}"
+    exit 1
+fi
+
+# Логика переключения
+if [[ "$1" == "next" ]]; then
+    new_index=$(((current_index + 1) % ${#wallpapers[@]}))
+elif [[ "$1" == "prev" ]]; then
+    new_index=$(((current_index - 1 + ${#wallpapers[@]}) % ${#wallpapers[@]}))
+fi
+
+# Получаем новый файл
+new_wallpaper="${wallpapers[$new_index]}"
+
+# Устанавливаем новое изображение как обои
+feh --no-fehbg --bg-fill "$new_wallpaper"
+
+# Обновляем символическую ссылку
+update_symlink "$new_wallpaper"

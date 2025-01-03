@@ -2,7 +2,9 @@
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CURRENT_DESKTOP="gnome"
+# export XDG_CURRENT_DESKTOP="gnome"
+
+export KWIN_DRM_USE_MODIFIERS=0
 
 export HDD="/media/hdd"
 export APP_DATA="$HDD/arch/app-data"
