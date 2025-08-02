@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# === Настройки ===
+URL="http://localhost:8000/api/auth/login/"
+EMAIL="s1@gmail.com"
+PASSWORD="v3cyumenhh8888"
+
+# === Получение токена ===
+RESPONSE=$(curl -s -X POST "$URL" \
+  -d "grant_type=client_credentials" \
+  -d "email=$EMAIL" \
+  -d "password=$PASSWORD")
+
+# === Извлечение токена ===
+ACCESS_TOKEN=$(echo "$RESPONSE" | grep -o '"access":"[^"]*"' | cut -d':' -f2 | tr -d '"')
+
+if [ -n "$ACCESS_TOKEN" ]; then
+  echo "Токен получен: $ACCESS_TOKEN"
+
+  # === Копируем в буфер обмена ===
+  if command -v xclip &>/dev/null; then
+    echo -n "$ACCESS_TOKEN" | xclip -selection clipboard
+    echo "Скопировано в буфер (xclip)"
+  elif command -v xsel &>/dev/null; then
+    echo -n "$ACCESS_TOKEN" | xsel --clipboard
+    echo "Скопировано в буфер (xsel)"
+  elif command -v pbcopy &>/dev/null; then
+    echo -n "$ACCESS_TOKEN" | pbcopy
+    echo "Скопировано в буфер (pbcopy)"
+  elif command -v wl-copy &>/dev/null; then
+    echo -n "$ACCESS_TOKEN" | wl-copy
+    echo "Скопировано в буфер (wl-copy)"
+  else
+    echo "Не найден инструмент для копирования в буфер. Установи xclip, xsel, pbcopy или wl-copy."
+  fi
+else
+  echo "Не удалось получить токен. Ответ:"
+  echo "$RESPONSE"
+fi

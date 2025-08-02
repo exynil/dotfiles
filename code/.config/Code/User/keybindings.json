@@ -23,4 +23,8 @@
     "key": "ctrl+q",
     "command": "-workbench.action.quit"
   },
+  {
+    "key": "ctrl+i",
+    "command": "composerMode.agent"
+  },
 ]

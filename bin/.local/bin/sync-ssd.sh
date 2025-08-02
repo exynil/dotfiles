@@ -85,9 +85,8 @@ if [[ "$SUCCESS" == true ]]; then
     --exclude '*/lost+found' \
     --exclude '*/logs' \
     --exclude '*/.Trash-1000' \
-    --exclude '*/downloads' \
     --exclude '*.swp' \
-    /media/hdd "$MOUNT_POINT/"
+    /media/hdd "$MOUNT_POINT"
   else
     echo "Синхронизация отменена пользователем."
   fi

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Переключаем раскладку на русскую
+setxkbmap ru
+
+TEXT=$(xclip -o -selection clipboard)
+
+xdotool type --delay 50 "$TEXT"
+
+setxkbmap -layout "us,ru" -option grp:super_space_toggle

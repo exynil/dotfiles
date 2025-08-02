@@ -5,11 +5,12 @@
 
 hostname=$(uname -n)
 
-if [ "$hostname" = "arch-rrg" ]; then
-    hdmi="HDMI-0"
-    dp="DP-4"
+if [ "$hostname" = "arch-pc" ]; then
+    m_1="DP-0"
+    m_2="DP-2"
 
-    xrandr --output "$hdmi" --mode 1920x1080 --pos 288x1343 --rotate normal \
-        --output "$dp"  --mode 1920x1080 --pos 2208x923 --rotate right
-
+    xrandr --output "$m_1" --mode 3840x2160 --pos 0x1209 --rotate normal \
+        --output "$m_2" --mode 3840x2160 --pos 3840x0 --rotate right
 fi
+
+

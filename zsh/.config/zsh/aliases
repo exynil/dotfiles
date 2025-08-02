@@ -76,3 +76,10 @@ alias drc='docker restart celery celery-beat'
 
 alias makemesssages='django-admin makemessages -l ru --ignore .venv'
 alias compilemessages='django-admin compilemessages --locale=ru --ignore="*.venv/*"'
+
+
+alias dloaddata='docker exec -it backend python manage.py loaddata'
+alias ddumpdata='docker exec -it backend python manage.py dumpdata --exclude auth --exclude admin --exclude contenttypes --exclude sessions'
+
+alias lloaddata='python manage.py loaddata'
+alias ldumpdata='python manage.py dumpdata --exclude auth --exclude admin --exclude contenttypes --exclude sessions'
