@@ -29,7 +29,8 @@
     "debug.inlineValues": "on",
     "files.autoSave": "onFocusChange",
     "files.associations": {
-        "*.txt": "bat"
+        "*.txt": "bat",
+        "*.py": "python"
     },
     "[python]": {
         "editor.formatOnType": true,
@@ -72,4 +73,11 @@
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "workbench.editor.empty.hint": "hidden",
 }
