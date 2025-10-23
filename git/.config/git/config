@@ -7,3 +7,5 @@
 	defaultBranch = master
 [core]
 	quotepath = false
+[push]
+	autoSetupRemote = true

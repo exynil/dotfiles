@@ -1,83 +1,79 @@
 {
-    "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
-    "editor.renderWhitespace": "all",
-    "workbench.startupEditor": "newUntitledFile",
-    "explorer.confirmDelete": false,
-    "explorer.compactFolders": false,
-    "editor.rulers": [
-        120
-    ],
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "security.workspace.trust.enabled": false,
-    "docker.languageserver.formatter.ignoreMultilineInstructions": true,
-    "terminal.integrated.persistentSessionReviveProcess": "never",
-    "editor.linkedEditing": true,
-    "vsicons.dontShowNewVersionMessage": true,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
-    "bracketPairColorizer.depreciation-notice": false,
-    "remote.SSH.remoteServerListenOnSocket": true,
-    "glassit.alpha": 220,
-    "files.exclude": {
-        "**/__pycache__": true,
-        "**/.ruff_cache": true
-    },
-    "workbench.editor.enablePreview": false,
-    "editor.lightbulb.enabled": "off",
-    "editor.parameterHints.enabled": false,
-    "debug.inlineValues": "on",
-    "files.autoSave": "onFocusChange",
-    "files.associations": {
-        "*.txt": "bat",
-        "*.py": "python"
-    },
-    "[python]": {
-        "editor.formatOnType": true,
-        "editor.defaultFormatter": "charliermarsh.ruff"
-    },
-    "python.formatting.provider": "none",
-    "codesnap.showWindowControls": false,
-    "prettier.printWidth": 120,
-    "extensions.ignoreRecommendations": true,
-    "editor.formatOnPaste": true,
-    "editor.minimap.enabled": false,
-    "workbench.tree.enableStickyScroll": false,
-    "window.commandCenter": false,
-    "git.openRepositoryInParentFolders": "never",
-    "editor.hover.delay": 1000,
-    "editor.glyphMargin": true ,
-    "window.restoreWindows": "none",
-    "workbench.colorTheme": "One Dark Pro Darker",
-    "json.maxItemsComputed": 500000,
-    "[vue]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "python.defaultInterpreterPath": "/media/hdd/max/public/.venv",
-    "editor.wordWrapColumn": 120,
-    "database-client.autoSync": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports.ruff": "explicit"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.iconTheme": "vscode-icons",
-    "[sql]": {
-        "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
-    },
-    "python.locator": "js",
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
-    "workbench.editor.empty.hint": "hidden",
+  "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome'",
+  "editor.renderWhitespace": "all",
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  "editor.rulers": [120],
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "security.workspace.trust.enabled": false,
+  "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "editor.linkedEditing": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "bracketPairColorizer.depreciation-notice": false,
+  "remote.SSH.remoteServerListenOnSocket": true,
+  "glassit.alpha": 220,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.ruff_cache": true
+  },
+  "workbench.editor.enablePreview": false,
+  "editor.lightbulb.enabled": "off",
+  "editor.parameterHints.enabled": false,
+  "debug.inlineValues": "on",
+  "files.autoSave": "onFocusChange",
+  "files.associations": {
+    "*.txt": "bat",
+    "*.py": "python"
+  },
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "python.formatting.provider": "none",
+  "codesnap.showWindowControls": false,
+  "prettier.printWidth": 120,
+  "extensions.ignoreRecommendations": true,
+  "workbench.tree.enableStickyScroll": false,
+  "window.commandCenter": false,
+  "git.openRepositoryInParentFolders": "never",
+  "editor.hover.delay": 1000,
+  "editor.glyphMargin": true,
+  "window.restoreWindows": "none",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "json.maxItemsComputed": 500000,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.defaultInterpreterPath": "/media/hdd/max/public/.venv",
+  "editor.wordWrapColumn": 120,
+  "database-client.autoSync": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.ruff": "explicit"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "[sql]": {
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+  },
+  "python.locator": "js",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "ruff.lineLength": 120,
 }

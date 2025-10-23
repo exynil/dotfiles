@@ -19,7 +19,7 @@
     "vis_shift": true,
     "vis_space": true,
     "geometry": null,
-    "screen": 1,
+    "screen": 0,
     "start_disabled": false,
     "window": null,
     "mouse": true,

@@ -18,14 +18,14 @@ noremap <C-Right> :tabnext<CR>
 call plug#begin('~/.config/vim/pluggins')
 
 Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'kien/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
-Plug 'lilydjwg/colorizer'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'kien/ctrlp.vim'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'ervandew/supertab'
+" Plug 'lilydjwg/colorizer'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
-Plug 'vim-scripts/LargeFile'
+" Plug 'vim-scripts/LargeFile'
 
 call plug#end()
 

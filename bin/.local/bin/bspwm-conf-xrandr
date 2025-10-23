@@ -9,8 +9,6 @@ if [ "$hostname" = "arch-pc" ]; then
     m_1="DP-0"
     m_2="DP-2"
 
-    xrandr --output "$m_1" --mode 3840x2160 --pos 0x1209 --rotate normal \
-        --output "$m_2" --mode 3840x2160 --pos 3840x0 --rotate right
+    xrandr --output "$m_1" --mode 3840x2160 --pos 0x0 --rotate normal \
+        --output "$m_2" --mode 3840x2160 --pos 3840x0 --rotate normal
 fi
-
-

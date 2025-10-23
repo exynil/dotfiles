@@ -1,6 +1,6 @@
 [greenclip]
   history_file = "~/.cache/greenclip.history"
-  max_history_length = 3000
+  max_history_length = 1500
   max_selection_size_bytes = 0
   trim_space_from_selection = true
   use_primary_selection_as_input = false
