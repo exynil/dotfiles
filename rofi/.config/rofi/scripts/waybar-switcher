@@ -1,0 +1,31 @@
+#!/bin/bash
+
+SCRIPT_DIR="$XDG_CONFIG_HOME/waybar"
+THEMES_DIR="$SCRIPT_DIR/themes"
+CURRENT_THEME_FILE="$SCRIPT_DIR/current-theme"
+
+rofi='rofi -i -theme themes/dmenu.rasi'
+
+apply_theme() {
+    local theme_name="$1"
+    local theme_path="$THEMES_DIR/$theme_name"
+
+    if [ -d "$theme_path" ] && [ -f "$theme_path/config.json" ] && [ -f "$theme_path/style.css" ]; then
+        echo "$theme_path" > "$CURRENT_THEME_FILE"
+        killall waybar 2>/dev/null
+        sleep 0.5
+        waybar -c "$theme_path/config.json" -s "$theme_path/style.css" &
+    else
+        notify-send "Waybar Theme" "❌ Тема не найдена: $theme_name"
+        exit 1
+    fi
+}
+
+
+themes=($(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort))
+
+choice=$(printf "%s\n" "${themes[@]}" | $rofi -p "waybar" -dmenu)
+
+[[ -z "$choice" ]] && exit 0
+
+apply_theme "$choice"

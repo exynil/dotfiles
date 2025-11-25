@@ -1,5 +1,5 @@
 #!/bin/bash
 
-xkb-switch -s us &
+set-en-layout
 
-rofi -theme 'themes/run.rasi' -show run -modi run
+rofi -i -theme 'themes/dmenu.rasi' -show run -modi run

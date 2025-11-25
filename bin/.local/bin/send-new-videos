@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+MOTION_DIR="$HDD/motion"
+
+DATE=$(date '+%Y.%m.%d')
+
+WORK_DIR="$MOTION_DIR/$DATE"
+
+mkdir -p "$WORK_DIR"
+
+TOKEN=""
+CHAT_ID=""
+
+mapfile -t UNSENDED_FILES < <(find "$WORK_DIR" -name "*UNSENDED*" | sort -t '\0')
+
+send_message() {
+  message=${1// /%20}
+  curl -s "https://api.telegram.org/bot$TOKEN/sendMessage?chat_id=$CHAT_ID&text=$message"
+}
+
+send() {
+  file="$1"
+
+  is_video_corrupted=$(ffprobe "$file"; echo $?)
+
+  if [ "$is_video_corrupted" == "0" ]
+  then
+    response=$(curl -F video=@"$file" "https://api.telegram.org/bot$TOKEN/sendVideo?chat_id=$CHAT_ID")
+    success=$(echo "$response" | jq -r '.ok')
+
+    if [ "$success" = "true" ]; then
+      mv "$file" "${file//UNSENDED/SENDED}"
+    else
+      echo "$DATE | Не удалось отправить $file" >> ~/motion.log
+      echo "$response" >> ~/motion.log
+
+      send_message "Не удалось отправить одно видео ${file##*/}"
+    fi
+  fi
+}
+
+for file in "${UNSENDED_FILES[@]}"; do
+  send "$file"
+done

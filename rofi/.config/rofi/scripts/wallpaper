@@ -1,59 +1,67 @@
 #!/bin/bash
 
-rofi='rofi -theme themes/wallpaper.rasi'
-wallpapers_dir="$HOME/Pictures/wallpapers"
+rofi='rofi -theme themes/dmenu.rasi'
+wallpapers_dir="$XDG_PICTURES_DIR/wallpapers"
 temp_dir="$wallpapers_dir/temp"
-wallpaper="$HOME/Pictures/wallpaper.jpg"
+wallpaper="$XDG_PICTURES_DIR/wallpaper.jpg"
 current_wallpaper="$(readlink -f "$wallpaper")"
-wallpaper_id="$(awk -F '[-.]' '{print $(NF-1)}' <<<"$current_wallpaper")"
-wallpaper_url="https://wallhaven.cc/w/$wallpaper_id"
-
-set_wallpaper() { ln -sf "$1" "$wallpaper" && feh --no-fehbg --bg-fill "$wallpaper"; }
+position_file="/tmp/rofi-wallpaper-position"
 
 options=(
     "󰇎 | random"
-    "󰸗 | random from latest"
+    "󰃭 | random from latest"
     "󰈈 | random from most viewed"
     "󰜸 | random from toplist"
     "󰓏 | random from favorites"
-    "󰗝 | random and blurred"
     "󰀼 | random from saved"
     "󰆓 | keep wallpaper"
     "󰃰 | last saved"
-    "󰈹 | $wallpaper_url")
+    " | delete current")
 
-chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row 2)"
+# Читаем последнюю позицию или используем 2 по умолчанию
+if [ -f "$position_file" ]; then
+    last_position=$(cat "$position_file")
+else
+    last_position=2
+fi
 
+chosen="$(printf '%s\n' "${options[@]}" | $rofi -p "wallpaper" -dmenu -selected-row "$last_position")"
+
+# Сохраняем выбранную позицию (кроме delete current, keep wallpaper и last saved)
 if [ -n "$chosen" ] &&
-    [ "$chosen" != "󰈹 | $wallpaper_url" ] &&
+    [ "$chosen" != " | delete current" ] &&
     [ "$chosen" != "󰆓 | keep wallpaper" ] &&
-    [ "$chosen" != "󰀼 | random from saved" ]; then
+    [ "$chosen" != "󰃰 | last saved" ]; then
+    for i in "${!options[@]}"; do
+        if [ "${options[$i]}" = "$chosen" ]; then
+            echo "$i" > "$position_file"
+            break
+        fi
+    done
+fi
+
+if [ -n "$chosen" ] && [ "$chosen" != "󰆓 | keep wallpaper" ]; then
     if [ "$(pgrep -c "$(basename "$0")")" -gt 1 ]; then
         notify-send "Please wait" && exit 1
     fi
 fi
 
 case $chosen in
-"󰇎 | random") set_wallpaper "$(swd -l "$temp_dir")" ;;
-"󰸗 | random from latest") set_wallpaper "$(swd -l "$temp_dir" -s date_added)" ;;
-"󰈈 | random from most viewed") set_wallpaper "$(swd -l "$temp_dir" -s views)" ;;
-"󰜸 | random from toplist") set_wallpaper "$(swd -l "$temp_dir" -s toplist)" ;;
-"󰓏 | random from favorites") set_wallpaper "$(swd -l "$temp_dir" -s favorites)" ;;
-"󰗝 | random and blurred")
-    img=$(swd -l "$temp_dir")
-    convert -blur 0x80 "$img" "$img"
-    set_wallpaper "$img"
-    ;;
+"󰇎 | random") set-wallpaper "$(swd -l "$temp_dir")" ;;
+"󰃭 | random from latest") set-wallpaper "$(swd -l "$temp_dir" -s date_added)" ;;
+"󰈈 | random from most viewed") set-wallpaper "$(swd -l "$temp_dir" -s views)" ;;
+"󰜸 | random from toplist") set-wallpaper "$(swd -l "$temp_dir" -s toplist)" ;;
+"󰓏 | random from favorites") set-wallpaper "$(swd -l "$temp_dir" -s favorites)" ;;
 "󰀼 | random from saved")
     mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
-    set_wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
+    set-wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
     ;;
 "󰆓 | keep wallpaper")
     PATTERN="$wallpapers_dir/*${current_wallpaper##*/}"
 
     # Проверяем имеется ли такое изображение
     if compgen -G "$PATTERN" >/dev/null; then
-        notify-send -u critical "Image already exists"
+        notify-send "Image already exists"
     else
         # Генерируем название изображения
         img="$(date +%y%m%d-%H%M%S)-${current_wallpaper##*/}"
@@ -63,7 +71,16 @@ case $chosen in
     fi
     ;;
 "󰃰 | last saved")
-    set_wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
+    set-wallpaper "$(find "$wallpapers_dir" -type f -maxdepth 1 | sort -n | tail -1)"
     ;;
-"󰈹 | $wallpaper_url") xdg-open "$wallpaper_url" & ;;
+" | delete current")
+    # Удаляем текущее изображение
+    if [ -f "$current_wallpaper" ]; then
+        rm "$current_wallpaper"
+    fi
+
+    # Устанавливаем случайное из сохраненных
+    mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
+    set-wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
+    ;;
 esac

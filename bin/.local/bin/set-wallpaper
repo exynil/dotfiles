@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# 1. Устанавливает переданный файл как обои.
+# 2. Создает символическую ссылку на указанный файл.
+
+# Проверяем, был ли передан аргумент
+if [ -z "$1" ]; then
+    echo "Ошибка: Укажите путь к файлу изображения."
+    echo "Использование: $0 /путь/к/вашему/изображению.jpg"
+    exit 1
+fi
+
+IMAGE_PATH="$1"
+wallpaper="$XDG_PICTURES_DIR/wallpaper.jpg"
+
+# Проверяем существование файла
+if [ ! -f "$IMAGE_PATH" ]; then
+    echo "Ошибка: Файл не найден: $IMAGE_PATH"
+    exit 1
+fi
+
+# Проверяем, что это файл изображения (простая проверка по расширению)
+if [[ ! "$IMAGE_PATH" =~ \.(jpe?g|png|gif|bmp)$ ]]; then
+    echo "Предупреждение: Файл $IMAGE_PATH может не быть изображением."
+fi
+
+ln -sf "$IMAGE_PATH" "$wallpaper"
+hyprctl hyprpaper reload ,"$wallpaper"
+matugen image "$(readlink -f ~/Pictures/wallpaper.jpg)"

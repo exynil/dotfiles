@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Уникализатор e-mail: заменяет дубли случайными вариантами
+
+wl-paste | awk -F@ '
+function rand3() {
+    chars="abcdefghijklmnopqrstuvwxyz0123456789"
+    out=""
+    for(i=0;i<3;i++) {
+        out = out substr(chars, int(rand()*length(chars))+1, 1)
+    }
+    return out
+}
+
+{
+    key=$0
+    if (++seen[key] == 1) {
+        print $0
+    } else {
+        print $1"_"rand3()"@"$2
+    }
+}' | wl-copy

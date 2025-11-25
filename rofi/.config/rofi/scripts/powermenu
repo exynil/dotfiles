@@ -6,8 +6,8 @@ uptime=$(uptime -p | sed -e 's/up/uptime -/g')
 shutdown='󰐥'
 reboot='󰜉'
 lock='󰌾'
-suspend='󰒲'
-logout='󰗽'
+suspend='󰤄'
+logout='󰈆'
 
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
@@ -20,15 +20,13 @@ case $chosen in
     systemctl reboot
     ;;
 "$lock")
-    xkb-switch -s us
-    slock
+    hyprlock
     ;;
 "$suspend")
     systemctl suspend
-    xkb-switch -s us
-    slock
+    hyprlock
     ;;
 "$logout")
-    pkill xinit
+    hyprctl dispatch exit
     ;;
 esac

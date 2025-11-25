@@ -1,62 +1,37 @@
 @import "colors.rasi"
 
 * {
-    font:                   "Ubuntu Mono 14";
-    background-color:       @background;
-    text-color:             @foreground;
+    font:                   "JetBrainsMono NFP 44";
+    background-color:       @surface;
+    text-color:             @on-secondary-container;
 }
 window {
-    width:                  530px;
-    border-color:           @background-light;
+    width:                  480px;
     location:               east;
-    border:                 1;
     x-offset:               -20px;
     y-offset:               0;
+    border-radius:          10px;
 }
 mainbox {
-    padding:                40px;
-}
-inputbar {
-    spacing:                0px;
-    children:               [ textbox-prompt-colon, prompt ];
-}
-prompt {
-    padding:                10px 30px 10px 8px;
-    background-color:       @background;
-    text-color:             @selected;
-    border-radius:          0px 5px 5px 0px;
-    border-color:           @selected;
-    border:                 1;
-}
-textbox-prompt-colon {
-    expand: false;
-    padding:                10px 8px 10px 18px;
-    background-color:       @selected;
-    text-color:             @background;
-    str:                    "rofi";
-    border-radius:          5px 0px 0px 5px;
+    padding:                30px;
+    children:               [listview];
 }
 listview {
     layout:                 vertical;
     columns:                3;
     lines:                  4;
-    padding:                15px 0px 0px 0px;
     spacing:                15px;
 }
 element-text {
-    font:                   "Material Design Icons 44";
-    background-color:       @background-light;
+    padding:                20px;
+    background-color:       @surface-container;
+    horizontal-align:       0.5;
+    vertical-align:         0.5;
+    border-radius:          10px;
+    border:                 1px;
 }
 element-text selected {
-    font:                   "Material Design Icons 44";
-    background-color:       @selected;
-    text-color:             @background;
-}
-element {
-    padding:                40px 40px 40px 40px;
-    background-color:       @background-light;
-    border-radius:          10px;
-}
-element selected {
-    background-color:       @selected;
+    background-color:       @on-secondary-fixed-variant;
+    text-color:             @on-secondary-container;
+    border-color:           @primary;
 }

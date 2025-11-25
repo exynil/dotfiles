@@ -1,0 +1,100 @@
+@import "/home/max/.config/waybar/colors.css";
+
+* {
+  font-family: "JetBrainsMono NFP";
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0 2px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+#window {
+  text-shadow: 1px 1px 2px @background;
+}
+
+#workspaces {
+  background-color: @background;
+  margin: 2px 1px;
+  padding: 2px 1px;
+  border-radius: 7px;
+}
+
+#workspaces button {
+  background-color: transparent;
+  margin: 0px 1px;
+  padding: 0px 4px;
+  border-radius: 5px;
+  color: @primary;
+}
+
+#workspaces button.active,
+#workspaces button.active.empty {
+  background-color: @primary;
+  color: @background;
+  padding: 0px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.visible,
+#workspaces button.visible.empty {
+  background-color: @primary;
+  color: @background;
+}
+
+#workspaces button.empty {
+  color: #727272;
+}
+
+#workspaces button.urgent {
+  background-color: @error_container;
+  color: #ecf0f1;
+}
+
+#workspaces button:hover {
+  background-color: @primary;
+  color: @background;
+}
+
+#custom-recorder,
+#custom-weather,
+#clock,
+#pulseaudio,
+#tray,
+#idle_inhibitor,
+#language {
+  background-color: @background;
+  color: @primary;
+  border-radius: 5px;
+  margin: 4px 1px;
+  padding: 0px 5px;
+}
+
+#tray {
+  color: #ecf0f1;
+}
+
+#pulseaudio.muted {
+  color: @error;
+}
+
+#idle_inhibitor {
+  color: @secondary;
+}
+
+#idle_inhibitor.activated {
+  color: @primary;
+}
+
+#language {
+  color: @primary;
+}
+
+tooltip {
+  background: @background;
+  border-radius: 8px;
+  border: 1px solid #555;
+}

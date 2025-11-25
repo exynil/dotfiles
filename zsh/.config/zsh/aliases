@@ -1,15 +1,13 @@
 #!/bin/bash
 
 alias matrix='unimatrix -l Aang -s 95'
-alias x='startx ~/.config/xinit/xinitrc &> /dev/null'
-# alias x='startx ~/.config/xinit/xinitrc &> /dev/null;exit'
+alias x='hyprland'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias wa='curl wttr.in/Almaty\?lang=ru'
 alias update='yay -Syu --noconfirm'
 alias ls='ls --color=auto'
-alias xrdb-reload='xrdb ~/.config/xresources/xresources'
 
 # Загрузка видео с YouTube в лучшем качестве
 alias y='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output-format mp4'
@@ -37,7 +35,7 @@ alias grc='gource -3840x2160 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i
 alias nvidia='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh nvidia.conf; cd ~'
 alias intel='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh intel.conf; cd ~'
 
-alias lock='export DISPLAY=:0;slock'
+alias lock='export WAYLAND_DISPLAY=wayland-1;export XDG_RUNTIME_DIR=/run/user/1000;hyprlock'
 
 alias pretty_json="sed 's/'\''/\"/g' | python3 -m json.tool | bat -l json"
 
@@ -56,7 +54,6 @@ alias tree_c='tree -La 6 \
     -I __main__.py \
 '
 
-alias rr='. ranger'
 alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
 alias find_blank='grep -r "[[:blank:]]$" -I . \
     --exclude-ri=.git \
@@ -71,15 +68,5 @@ alias p='python'
 
 alias system_fonts='fc-list | cut -d ":" -f 2 | cut -d "," -f 2 | sed "s/^ //" | sort | uniq'
 
-alias drb='docker restart backend'
-alias drc='docker restart celery celery-beat'
-
 alias makemesssages='django-admin makemessages -l ru --ignore .venv'
 alias compilemessages='django-admin compilemessages --locale=ru --ignore="*.venv/*"'
-
-
-alias dloaddata='docker exec -it backend python manage.py loaddata'
-alias ddumpdata='docker exec -it backend python manage.py dumpdata --exclude auth --exclude admin --exclude contenttypes --exclude sessions'
-
-alias lloaddata='python manage.py loaddata'
-alias ldumpdata='python manage.py dumpdata --exclude auth --exclude admin --exclude contenttypes --exclude sessions'

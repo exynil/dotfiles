@@ -25,6 +25,7 @@
 # Примечания:
 #   - Если файл отсутствует, скрипт будет предполагать его размер как 0.
 #   - Периодичность обновления прогресса составляет 0.1 секунды.
+#   - Если в течении 30 секунд не происходят изменения, скрипт завершает работу
 #
 # Автор: exynil
 # Дата: 01.05.2024
@@ -37,14 +38,31 @@ file_size_in_mb=$(awk "BEGIN {printf \"%.1f\", $dest_file_size / 1048576 }")
 tag="$(uuidgen)"
 
 local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
+last_change_time=$(date +%s)
+stale_limit=30
 
-while [ "$local_file_size" != "$dest_file_size" ]; do
+while [ "$local_file_size" -lt "$dest_file_size" ]; do
+    current_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
+
+    # Проверяем, изменился ли размер
+    if [ "$current_size" -ne "$local_file_size" ]; then
+        last_change_time=$(date +%s)
+        local_file_size="$current_size"
+    fi
+
+    # Проверка на "зависание" — если размер не менялся слишком долго
+    elapsed_since_change=$(( $(date +%s) - last_change_time ))
+    if [ "$elapsed_since_change" -ge "$stale_limit" ]; then
+        notify-send -t 5000 --icon="$preview_file" \
+            --hint=string:x-dunst-stack-tag:"$tag" \
+            "Похоже, загрузка остановилась" "Прогресс не изменялся более $stale_limit секунд."
+        exit 1
+    fi
+
     percent=$((local_file_size * 100 / dest_file_size))
-
-    notify-send -t 200 --icon="$preview_file" --hint=string:x-dunst-stack-tag:"$tag" \
+    notify-send -t 200 --icon="$preview_file" \
+        --hint=string:x-dunst-stack-tag:"$tag" \
         -h int:value:$percent "Downloading... $percent % | $file_size_in_mb MB"
-
-    local_file_size=$(stat -c%s "$local_file" 2>/dev/null || echo 0)
 
     sleep 0.1
 done

@@ -1,19 +1,24 @@
 #!/bin/bash
 
-# Define a help message
 _help_message() {
-    echo "ERROR. Must pass a single argument."
+    echo "Ошибка: нужно передать один аргумент — имя аудиофайла."
+    echo
+    echo "Доступные звуки:"
+    # Проверяем наличие директории
+    if [ -d "$XDG_SOUNDS_DIR" ]; then
+        # Ищем только аудиофайлы, сортируем и красиво выводим
+        find -L "$XDG_SOUNDS_DIR" -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.wav" -o -iname "*.ogg" \) \
+            -printf "  - %f\n" | sort
+    else
+        echo "  (Папка $XDG_SOUNDS_DIR не найдена)"
+    fi
 }
 
-# Show the help message if arguments are not equal to one.
 [ "$#" -eq 1 ] || {
     _help_message
     exit 1
 }
 
-# Sound folder location
-sound_dir="$HDD/max/sounds"
-
-if [ -f "$sound_dir/$1" ]; then
-    ffplay -nodisp -autoexit "$sound_dir/$1" 2>/dev/null &
+if [ -f "$XDG_SOUNDS_DIR/$1" ]; then
+    ffplay -nodisp -autoexit -loglevel quiet "$XDG_SOUNDS_DIR/$1" &
 fi

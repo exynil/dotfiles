@@ -1,14 +1,14 @@
 @import "colors.rasi"
 
 * {
-    font:                   "Ubuntu Mono 14";
-    background-color:       @background;
-    text-color:             @foreground;
+    font:                   "JetBrainsMono NFP 14";
+    background-color:       @surface;
+    text-color:             @on-secondary-container;
 }
 window {
-    width:                  848px;
-    border-color:           @background-light;
+    width:                  742px;
     border:                 1;
+    border-radius:          10px;
 }
 mainbox {
     padding:                40px;
@@ -18,20 +18,22 @@ inputbar {
     children:               [ textbox-prompt-colon, prompt ];
 }
 prompt {
-    padding:                10px 30px 10px 8px;
-    background-color:       @background;
-    text-color:             @selected;
+    padding:                10px 30px 8px 8px;
+    background-color:       @surface;
+    text-color:             @primary;
     border-radius:          0px 5px 5px 0px;
-    border-color:           @selected;
+    border-color:           @primary;
     border:                 1;
+    margin:                 0 0 2px 0;
 }
 textbox-prompt-colon {
     expand: false;
     padding:                10px 8px 10px 18px;
-    background-color:       @selected;
-    text-color:             @background;
+    background-color:       @primary;
+    text-color:             @on-primary;
     str:                    "system";
     border-radius:          5px 0px 0px 5px;
+    margin:                 0 0 2px 0;
 }
 listview {
     layout:                 horizontal;
@@ -39,19 +41,14 @@ listview {
     spacing:                15px;
 }
 element-text {
-    font:                   "Material Design Icons 44";
-    background-color:       @background-light;
-}
-element-text selected {
-    font:                   "Material Design Icons 44";
-    background-color:       @selected;
-    text-color:             @background;
-}
-element {
-    padding:                40px 40px 40px 40px;
-    background-color:       @background-light;
+    font:                   "JetBrainsMono NFP 44";
+    background-color:       @surface-container;
+    horizontal-align:       0.5;
+    vertical-align:         0.5;
+    padding:                20px 40px 20px 40px;
     border-radius:          10px;
 }
-element selected {
-    background-color:       @selected;
+element-text selected {
+    background-color:       @primary;
+    text-color:             @surface-container;
 }

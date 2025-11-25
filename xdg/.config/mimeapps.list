@@ -5,9 +5,10 @@ x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/postman=Postman.desktop
 application/pdf=firefox.desktop
-x-scheme-handler/tonsite=org.telegram.desktop.desktop
+x-scheme-handler/tonsite=org.telegram.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-KY39Y0.desktop;
 image/jpeg=imv.desktop;
-x-scheme-handler/tonsite=org.telegram.desktop.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;org.telegram.desktop;

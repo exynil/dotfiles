@@ -28,25 +28,37 @@ params+="&order=$order"
 
 api_url="https://wallhaven.cc/api/v1/search?$params"
 
-last_page=$(curl -s -L "$api_url" | jq -r '.meta.last_page')
-
-api_url+="&page=$((1 + RANDOM % last_page))"
+# Для random и toplist не нужно выбирать случайную страницу
+# Для остальных сортировок выбираем случайную страницу из первых 5% (делим на 20)
+if [ "$sorting" != "random" ] && [ "$sorting" != "toplist" ]; then
+  last_page=$(curl -s -L "$api_url" | jq -r '.meta.last_page')
+  max_page=$((last_page / 20))
+  [ $max_page -lt 1 ] && max_page=1
+  api_url+="&page=$((1 + RANDOM % max_page))"
+fi
 
 response=$(curl -s -L "$api_url")
 
+# Выбираем случайный обои из результатов (максимум 24 на страницу)
 index=$((RANDOM % 24))
 
+# Извлекаем информацию о выбранном обои
 wallpaper_url=$(jq -r ".data[$index].path" <<< "$response")
 wallpaper_size=$(jq -r ".data[$index].file_size" <<< "$response")
 
+# Получаем превью обоев
 wallpaper_preview_url=$(jq -r ".data[$index].thumbs.small" <<< "$response")
 wallpaper_preview="/tmp/swd/${wallpaper_preview_url##*/}"
 
+# Скачиваем превью
 curl --create-dirs -s -L "$wallpaper_preview_url" -o "$wallpaper_preview"
 
 wallpaper="$location/${wallpaper_url##*/}"
 
-fdp "$wallpaper" "$wallpaper_size" "$wallpaper_preview" &
+# Выполняем pre_hook, если он задан
+if [ -n "$pre_hook" ]; then
+    eval "$pre_hook"
+fi
 
 curl --create-dirs -s -L "$wallpaper_url" -o "$wallpaper"
 

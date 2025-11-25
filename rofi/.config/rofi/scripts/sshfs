@@ -1,0 +1,121 @@
+#!/bin/bash
+
+# Скрипт для монтирования/размонтирования серверов через sshfs
+
+# data - должна хранить путь к mount-servers.json
+
+# структура servers.json
+# [
+#   {
+#     "ssh_host": "baqylau-dev",
+#     "display_name": "Baqylau Development",  // опционально
+#     "remote_path": "/home/sysuser",
+#     "ssh_options": "-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3",
+#     "is_enabled": true
+#   },
+#   {
+#     "ssh_host": "work-server",
+#     "remote_path": "/data",
+#     "ssh_options": "-o reconnect",
+#     "is_enabled": true
+#   }
+# ]
+#
+# ssh_host - название хоста из ~/.ssh/config (используется для подключения и имени папки)
+# display_name - опциональное красивое название для меню (если не указано - используется ssh_host)
+
+set -euo pipefail
+
+# Конфигурация
+rofi_command='rofi -i -theme themes/dmenu.rasi -markup-rows'
+data="$APP_DATA/rofi/sshfs.json"
+mount_base="/mnt/servers"
+
+# Проверяем наличие файла
+if [[ ! -f "$data" ]]; then
+    echo "Файл конфигурации не найден: $data"
+    exit 1
+fi
+
+# Функция проверки монтирования
+is_mounted() {
+    local mount_point="$1"
+    mountpoint -q "$mount_point" 2>/dev/null
+}
+
+# Функция монтирования сервера
+mount_server() {
+    local ssh_host="$1"
+    local remote_path="$2"
+    local ssh_options="$3"
+    local mount_point="$mount_base/$ssh_host"
+
+    mkdir -p "$mount_point"
+
+    sshfs "${ssh_host}:${remote_path}" "$mount_point" $ssh_options
+
+    if [[ $? -eq 0 ]]; then
+        notify-send "SSHFS" "Сервер '$ssh_host' успешно примонтирован в $mount_point" -u normal
+    else
+        notify-send "SSHFS" "Ошибка монтирования '$ssh_host'" -u critical
+    fi
+}
+
+# Функция размонтирования сервера
+umount_server() {
+    local ssh_host="$1"
+    local mount_point="$mount_base/$ssh_host"
+
+    fusermount -u "$mount_point" 2>/dev/null || umount "$mount_point" 2>/dev/null
+
+    if [[ $? -eq 0 ]]; then
+        notify-send "SSHFS" "Сервер '$ssh_host' успешно отмонтирован" -u normal
+    else
+        notify-send "SSHFS" "Ошибка размонтирования '$ssh_host'" -u critical
+    fi
+}
+
+# Получаем список серверов и формируем опции
+options=""
+declare -A server_status
+
+while IFS= read -r server; do
+    ssh_host=$(echo "$server" | jq -r '.ssh_host')
+    display_name=$(echo "$server" | jq -r '.display_name // .ssh_host')
+    mount_point="$mount_base/$ssh_host"
+
+    if is_mounted "$mount_point"; then
+        option="<span color='#A3E635'></span> $display_name"
+        options+="$option"$'\n'
+        server_status["$option"]="unmount:$ssh_host"
+    else
+        option="<span color='#333'></span> $display_name"
+        options+="$option"$'\n'
+        server_status["$option"]="mount:$ssh_host"
+    fi
+done < <(jq -c '.[] | select(.is_enabled != false)' "$data")
+
+# Убираем последний перенос строки
+options="${options%$'\n'}"
+
+# Показываем меню
+chosen=$(echo "$options" | $rofi_command -p "servers" -dmenu)
+
+[[ -z "$chosen" ]] && exit 0
+
+# Получаем действие и ssh_host сервера
+action_data="${server_status[$chosen]}"
+action="${action_data%%:*}"
+ssh_host="${action_data#*:}"
+
+# Получаем данные сервера из JSON
+server_data=$(jq -r ".[] | select(.ssh_host==\"$ssh_host\")" "$data")
+remote_path=$(echo "$server_data" | jq -r '.remote_path')
+ssh_options=$(echo "$server_data" | jq -r '.ssh_options // ""')
+
+# Выполняем действие
+if [[ "$action" == "mount" ]]; then
+    mount_server "$ssh_host" "$remote_path" "$ssh_options" &
+elif [[ "$action" == "unmount" ]]; then
+    umount_server "$ssh_host" &
+fi

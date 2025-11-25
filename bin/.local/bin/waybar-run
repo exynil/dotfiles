@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SCRIPT_DIR="$XDG_CONFIG_HOME/waybar"
+THEMES_DIR="$SCRIPT_DIR/themes"
+CURRENT_THEME_FILE="$SCRIPT_DIR/current-theme"
+
+current_theme=""
+    
+if [ -f "$CURRENT_THEME_FILE" ]; then
+    current_theme=$(cat "$CURRENT_THEME_FILE")
+else
+    # Если файла нет, использовать default
+    current_theme="$THEMES_DIR/default"
+    echo "$current_theme" > "$CURRENT_THEME_FILE"
+fi
+
+if [ -d "$current_theme" ] && [ -f "$current_theme/config.json" ] && [ -f "$current_theme/style.css" ]; then
+    killall waybar
+    sleep 0.5
+    waybar -c "$current_theme/config.json" -s "$current_theme/style.css" &
+else
+    echo "Тема не найдена: $current_theme"
+    exit 1
+fi

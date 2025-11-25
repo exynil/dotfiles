@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Скрипт для открытия папок в редакторах
+
+# data - должна хранить путь к folders.json
+
+# структура folders.json
+
+# [
+#   {
+#     "folder_name": "Dotfiles",
+#     "path": "/media/hdd/arch/dotfiles",
+#     "editor": "code",
+#     "is_enabled": true
+#   },
+#   {
+#     "folder_name": "Knowledge Base",
+#     "path": "/media/hdd/obsidian/knowledge-base",
+#     "editor": "code",
+#     "is_enabled": true
+#   }
+# ]
+
+set -euo pipefail
+
+# Конфигурация
+rofi_command='rofi -i -theme themes/dmenu.rasi'
+data="$APP_DATA/rofi/open-folder.json"
+
+# Проверяем наличие файла
+if [[ ! -f "$data" ]]; then
+    echo "Файл конфигурации не найден: $data"
+    exit 1
+fi
+
+# Получаем список папок (только включенные)
+options=$(jq -r '.[] | select(.is_enabled != false) | .folder_name' "$data")
+
+# Показываем меню
+chosen=$(echo "$options" | $rofi_command -p "folders" -dmenu -markup-rows)
+
+[[ -z "$chosen" ]] && exit 0
+
+# Получаем команду для выполнения
+command=$(jq -r ".[] | select(.folder_name==\"$chosen\") | .editor + \" \" + .path" "$data")
+
+# Выполняем команду
+if [[ -n "$command" ]]; then
+    # Безопасное выполнение без eval
+    $command &
+fi

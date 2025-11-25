@@ -1,3 +1,5 @@
 #!/bin/bash
 
-rofi -theme 'themes/clipboard.rasi' -show clipboard -modi 'clipboard:greenclip print'
+rofi_command='rofi -i -dmenu -p 'clipboard' -theme themes/dmenu.rasi -show clipboard -display-columns 2'
+
+cliphist list | $rofi_command | cliphist decode | wl-copy

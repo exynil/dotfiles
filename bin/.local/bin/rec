@@ -1,0 +1,12 @@
+#!/bin/bash
+
+VIDEO_DIR="$HOME/Videos/wf-captures"
+mkdir -p "$VIDEO_DIR"
+
+filename="record_$(date +%F_%H-%M-%S).mp4"
+filepath="$VIDEO_DIR/$filename"
+
+geometry=$(slurp -o)
+[ -z "$geometry" ] && exit 0
+
+wf-recorder -a "@DEFAULT_SOURCE@" -g "$geometry" -f "$filepath" &

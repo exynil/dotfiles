@@ -1,3 +1,0 @@
-#!/bin/bash
-
-rofi -theme 'themes/window.rasi' -show window -modi window

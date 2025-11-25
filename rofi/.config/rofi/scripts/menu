@@ -2,100 +2,130 @@
 
 rofi_command='rofi -theme themes/menu.rasi'
 
-# Options
-bt_headphones='󰋋'
-touchpad='󰟸'
-translate='󰪥'
-termbin='󰪥'
-knowledge_base='󰂺'
-picom='󰏘'
-iin='󰁱'
-polybar='󰪥'
-guest_firefox_profile='󱐡'
-xkill='󱓈'
-trash_empty='󰩹'
-mpv_controller='󰪥'
+# Bluetooth устройства
+bt_device_1="B8:87:6E:56:87:3F"  # option_2
+bt_device_2="E8:7F:6B:27:DE:FB"  # option_6
 
+# WireGuard интерфейс
+wg_interface="wg-client"  # option_7
+
+# Функция проверки подключения Bluetooth
+is_bt_connected() {
+    local mac="$1"
+    local state=$(bluetoothctl info "$mac" 2>/dev/null | awk '/Connected:/{print $2}')
+    [ "$state" = "yes" ]
+}
+
+# Функция проверки подключения WireGuard
+is_wg_connected() {
+    local interface="$1"
+    sudo wg show "$interface" &>/dev/null
+}
+
+# Функция окраски иконки
+colorize_icon() {
+    local icon="$1"
+    local is_connected="$2"
+
+    if [ "$is_connected" = "true" ]; then
+        echo "<span color='#A3E635'>$icon</span>"  # зеленый - подключен
+    else
+        echo "<span color='#333'>$icon</span>"  # серый - не подключен
+    fi
+}
+
+# Статичные опции
+option_1='󰎄'
+option_3=''
+option_4=''
+option_5='󱎘'
+option_8=''
+option_9='󱐡'
+option_10='󰃽'
+option_11=''
+option_12=''
+
+# Динамические опции (Bluetooth)
+if is_bt_connected "$bt_device_1"; then
+    option_2=$(colorize_icon '󰦢' true)
+else
+    option_2=$(colorize_icon '󰦢' false)
+fi
+
+if is_bt_connected "$bt_device_2"; then
+    option_6=$(colorize_icon '󰥰' true)
+else
+    option_6=$(colorize_icon '󰥰' false)
+fi
+
+# Динамическая опция (WireGuard)
+if is_wg_connected "$wg_interface"; then
+    option_7=$(colorize_icon '󱚿' true)
+else
+    option_7=$(colorize_icon '󱛀' false)
+fi
 
 # Variable passed to rofi
-options="$knowledge_base"
-options+="\n$touchpad"
-options+="\n$termbin"
-options+="\n$picom"
-options+="\n$translate"
-options+="\n$bt_headphones"
-options+="\n$iin"
-options+="\n$polybar"
-options+="\n$guest_firefox_profile"
-options+="\n$xkill"
-options+="\n$trash_empty"
-options+="\n$mpv_controller"
+options="$option_1"
+options+="\n$option_2"
+options+="\n$option_3"
+options+="\n$option_4"
+options+="\n$option_5"
+options+="\n$option_6"
+options+="\n$option_7"
+options+="\n$option_8"
+options+="\n$option_9"
+options+="\n$option_10"
+options+="\n$option_11"
+options+="\n$option_12"
 
 
-chosen="$(echo -e $options | $rofi_command -p "menu" -dmenu -selected-row 5)"
-case $chosen in
-"$bt_headphones")
-    mac="E8:7F:6B:27:DE:FB"
+chosen="$(echo -e $options | $rofi_command -dmenu -selected-row 5 -markup-rows)"
 
-    state=$(bluetoothctl info "$mac" | awk '/Connected:/{print $2}')
+# Убираем span теги для сравнения
+chosen_clean=$(echo "$chosen" | sed 's/<[^>]*>//g')
 
-    if [ "$state" = "no" ]; then
-        bluetoothctl connect "$mac"
-        notify-send --hint=string:x-dunst-stack-tag:headphones "Galaxy Buds+ connected"
-    else
-        bluetoothctl disconnect "$mac"
-        notify-send --hint=string:x-dunst-stack-tag:headphones "Galaxy Buds+ disconnected"
-    fi
+case $chosen_clean in
+'󰎄')
+    play-sound "champagne-pop.ogg"
     ;;
-"$touchpad")
-    device="DELL0825:00 06CB:7E92 Touchpad"
-    state=$(xinput list-props "$device" | grep "Device Enabled" | grep -o "[01]$")
-
-    if [ "$state" == "1" ]; then
-        xinput --disable "$device"
-        notify-send --hint=string:x-dunst-stack-tag:touchpad "Touchpad disabled"
-    else
-        xinput --enable "$device"
-        notify-send --hint=string:x-dunst-stack-tag:touchpad "Touchpad enabled"
-    fi
+'󰦢')
+    state=$(bluetoothctl info "$bt_device_1" | awk '/Connected:/{print $2}')
+    [ "$state" = "no" ] && bluetoothctl connect "$bt_device_1" || bluetoothctl disconnect "$bt_device_1"
     ;;
-"$translate")
-    text="$(xsel -o)"
-    translate="$(trans -brief :ru "$text")"
-    notify-send -t $((${#text} * 150)) "$translate"
-    play-sound "cyclist.ogg"
+'')
     ;;
-"$termbin")
+'')
     ;;
-"$knowledge_base")
+'󱎘')
+    hyprctl kill
     ;;
-"$picom")
-    if pgrep -x "picom" >/dev/null; then
-        killall picom
-        notify-send --hint=string:x-dunst-stack-tag:picom "picom stopped"
-    else
-        picom &
-        notify-send --hint=string:x-dunst-stack-tag:picom "picom started"
-    fi
+'󰥰')
+    state=$(bluetoothctl info "$bt_device_2" | awk '/Connected:/{print $2}')
+    [ "$state" = "no" ] && bluetoothctl connect "$bt_device_2" || bluetoothctl disconnect "$bt_device_2"
     ;;
-"$iin")
-    gen-iin
+'')
     ;;
-"$polybar")
-    polybar-run
+'')
     ;;
-"$guest_firefox_profile")
+'󱐡')
     if pgrep -x "firefox" >/dev/null; then
         killall firefox
     fi
     firefox -P guest
     ;;
-"$mpv_controller")
+'󰃽')
+    rec
     ;;
-"$trash_empty")
-    trash-empty
+'')
     ;;
-"$xkill")
-    xkill
+'')
+    ;;
+'󱚿' | '󱛀')
+    if is_wg_connected "$wg_interface"; then
+        sudo wg-quick down "$wg_interface"
+    else
+        sudo wg-quick up "$wg_interface"
+    fi
     ;;
 esac

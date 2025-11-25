@@ -4,7 +4,7 @@
 # - Переводит текст из буфера обмена
 # - Выводит перевод в уведомление
 
-clipboard_text="$(xsel -o)"
+clipboard_text="$(wl-paste)"
 translated_text="$(trans -brief :ru "$clipboard_text")"
 notify_duration=$((${#clipboard_text} * 200))
 notify-send -t "$notify_duration" "$translated_text"

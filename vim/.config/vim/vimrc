@@ -18,13 +18,13 @@ noremap <C-Right> :tabnext<CR>
 call plug#begin('~/.config/vim/pluggins')
 
 Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 " Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'kien/ctrlp.vim'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'ervandew/supertab'
 " Plug 'lilydjwg/colorizer'
 " Plug 'jiangmiao/auto-pairs'
-Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 " Plug 'vim-scripts/LargeFile'
 
 call plug#end()
@@ -42,5 +42,8 @@ map <Leader> <Plug>(easymotion-prefix)
 " for plugin -> joshdick/onedark.vim
 colorscheme onedark
 
+" Отключение фона
+highlight Normal ctermbg=none
 
-
+" Цвет нумерации строк
+highlight LineNr guifg=#ffc85a ctermfg=214

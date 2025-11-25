@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Скрипт для быстрого запуска команд
+
+# data - должна хранить путь к commands.json
+
+# структура commands.json
+
+# [
+#   {
+#     "command_name": "Обновить систему",
+#     "description": "Обновить пакеты через yay",
+#     "command": "yay -Syu",
+#     "is_enabled": true
+#   },
+#   {
+#     "command_name": "Перезапустить Hyprland",
+#     "description": "Перезапустить оконный менеджер",
+#     "command": "hyprctl reload",
+#     "is_enabled": true
+#   }
+# ]
+
+set -euo pipefail
+
+# Конфигурация
+rofi_command='rofi -i -theme themes/dmenu.rasi'
+data="$APP_DATA/rofi/commands.json"
+
+# Проверяем наличие файла
+if [[ ! -f "$data" ]]; then
+    echo "Файл конфигурации не найден: $data"
+    exit 1
+fi
+
+# Получаем список команд (только включенные)
+options=$(jq -r '.[] | select(.is_enabled != false) | .command_name' "$data")
+
+# Показываем меню
+chosen=$(echo "$options" | $rofi_command -p "commands" -dmenu)
+
+[[ -z "$chosen" ]] && exit 0
+
+# Получаем команду для выполнения
+command=$(jq -r ".[] | select(.command_name==\"$chosen\") | .command" "$data")
+
+# Выполняем команду
+if [[ -n "$command" ]]; then
+    # Безопасное выполнение без eval
+    $command &
+fi

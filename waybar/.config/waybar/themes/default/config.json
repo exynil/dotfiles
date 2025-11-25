@@ -1,0 +1,97 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces", "custom/weather"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "pulseaudio", "tray"],
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "DP-1": [1, 2, 3, 4, 5],
+      "DP-2": [6, 7, 8, 9, 10]
+    },
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰨞",
+      "2": "󰈹",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": ""
+    }
+  },
+  "hyprland/language": {
+    "format": "{short}"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰈈",
+      "deactivated": "󰈉"
+    }
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "clock": {
+    "interval": 1,
+    "tooltip-format": "<big>{:%A %d %b %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%A %d %b %Y | %H:%M:%S}",
+    "format": "{:%A %d %b | %H:%M}",
+    "locale": "ru_RU.UTF-8",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "left",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#E2E8F0'>{}</span>",
+        "days": "<span color='#E2E8F0'>{}</span>",
+        "weeks": "<span color='#a9b665'>W{:%V}</span>",
+        "weekdays": "<span color='#d4be98'>{}</span>",
+        "today": "<span color='#ea6962'>{}</span>"
+      }
+    }
+  },
+  "pulseaudio": {
+    "format": "{volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": "{volume}% {icon} ",
+    "format-muted": "{volume}% ",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "speaker": "󰓃",
+      "hdmi": "?",
+      "headset": "",
+      "hands-free": "?",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "hifi": "?",
+      "default": ["", "", ""]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5
+  },
+  "custom/recorder": {
+    "exec": "~/.config/waybar/scripts/rec-status.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "pkill -INT wf-recorder",
+    "interval": 1
+  },
+    "custom/weather": {
+    "exec": "curl -s 'wttr.in/Karaganda?m&format=%t'",
+    "format": "󰖐 {}",
+    "interval": 150
+  }
+}
