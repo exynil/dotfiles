@@ -36,7 +36,7 @@ colorize_icon() {
 
 # Статичные опции
 option_1='󰎄'
-option_3=''
+option_3='󰻾'
 option_4=''
 option_5='󱎘'
 option_8=''
@@ -93,7 +93,8 @@ case $chosen_clean in
     state=$(bluetoothctl info "$bt_device_1" | awk '/Connected:/{print $2}')
     [ "$state" = "no" ] && bluetoothctl connect "$bt_device_1" || bluetoothctl disconnect "$bt_device_1"
     ;;
-'')
+'󰻾')
+    giin
     ;;
 '')
     ;;
