@@ -8,6 +8,13 @@ wallpaper="$XDG_PICTURES_DIR/wallpaper.jpg"
 current_wallpaper="$(readlink -f "$wallpaper")"
 position_file="/tmp/rofi-wallpaper-position"
 
+# Подсчитываем количество непросмотренных изображений
+unviewed_count=$(find "$unvided_wallpapers_dir" -type f \( \
+    -iname "*.jpg" -o \
+    -iname "*.jpeg" -o \
+    -iname "*.png" \
+\) ! -name "viewed_*" 2>/dev/null | wc -l)
+
 options=(
     "󰇎 | random"
     "󰃭 | random from latest"
@@ -15,7 +22,7 @@ options=(
     "󰜸 | random from toplist"
     "󰓏 | random from favorites"
     "󰀼 | random from saved"
-    "󰈖 | next unviewed"
+    "󰈖 | next unviewed ($unviewed_count)"
     "󰆓 | keep wallpaper"
     "󰃰 | last saved"
     " | delete current")
@@ -58,7 +65,7 @@ case $chosen in
     mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
     set-wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
     ;;
-"󰈖 | next unviewed")
+"󰈖 | next unviewed"*)
     # Получаем следующее непросмотренное изображение
     next_image=$(get-next-image "$unvided_wallpapers_dir")
     if [ -z "$next_image" ]; then
