@@ -2,6 +2,7 @@
 
 rofi='rofi -theme themes/dmenu.rasi'
 wallpapers_dir="$XDG_PICTURES_DIR/wallpapers"
+unvided_wallpapers_dir="$XDG_PICTURES_DIR/wallpapers_unviewed"
 temp_dir="$wallpapers_dir/temp"
 wallpaper="$XDG_PICTURES_DIR/wallpaper.jpg"
 current_wallpaper="$(readlink -f "$wallpaper")"
@@ -14,6 +15,7 @@ options=(
     "󰜸 | random from toplist"
     "󰓏 | random from favorites"
     "󰀼 | random from saved"
+    "󰈖 | next unviewed"
     "󰆓 | keep wallpaper"
     "󰃰 | last saved"
     " | delete current")
@@ -56,18 +58,42 @@ case $chosen in
     mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
     set-wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
     ;;
+"󰈖 | next unviewed")
+    # Получаем следующее непросмотренное изображение
+    next_image=$(get-next-image "$unvided_wallpapers_dir")
+    if [ -z "$next_image" ]; then
+        notify-send "No more unviewed images"
+    else
+        set-wallpaper "$next_image"
+    fi
+    ;;
 "󰆓 | keep wallpaper")
-    PATTERN="$wallpapers_dir/*${current_wallpaper##*/}"
+    # Создаем временную копию для обработки
+    temp_file=$(mktemp)
 
-    # Проверяем имеется ли такое изображение
-    if compgen -G "$PATTERN" >/dev/null; then
+    trap 'rm -f "$temp_file"' EXIT
+
+    cp "$current_wallpaper" "$temp_file"
+
+    # Удаляем метаданные через exiftool
+    exiftool -all= -overwrite_original "$temp_file" >/dev/null 2>&1
+
+    # Вычисляем md5sum
+    md5_hash=$(md5sum "$temp_file" | cut -d' ' -f1)
+
+    # Получаем расширение файла
+    extension="${current_wallpaper##*.}"
+
+    # Генерируем имя файла: дата-md5sum.расширение
+    date_prefix=$(date +%y%m%d-%H%M%S)
+    img="${date_prefix}-${md5_hash}.${extension}"
+
+    # Проверяем наличие дубликата по md5sum в имени файла
+    if compgen -G "$wallpapers_dir/*-${md5_hash}.${extension}" >/dev/null; then
         notify-send "Image already exists"
     else
-        # Генерируем название изображения
-        img="$(date +%y%m%d-%H%M%S)-${current_wallpaper##*/}"
-
-        # Сохраняем изображение
-        cp "$current_wallpaper" "$wallpapers_dir/$img" && notify-send "$img saved"
+        # Сохраняем изображение с новым именем
+        mv "$temp_file" "$wallpapers_dir/$img" && notify-send "$img saved"
     fi
     ;;
 "󰃰 | last saved")
