@@ -56,7 +56,7 @@ alias tree_c='tree -La 6 \
 
 alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
 alias find_blank='grep -r "[[:blank:]]$" -I . \
-    --exclude-ri=.git \
+    --exclude-dir=.git \
     --exclude-dir=node_modules \
     --exclude-dir=media \
     --exclude-dir=postgres-data \

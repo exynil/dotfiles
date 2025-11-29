@@ -5,7 +5,7 @@ THEMES_DIR="$SCRIPT_DIR/themes"
 CURRENT_THEME_FILE="$SCRIPT_DIR/current-theme"
 
 current_theme=""
-    
+
 if [ -f "$CURRENT_THEME_FILE" ]; then
     current_theme=$(cat "$CURRENT_THEME_FILE")
 else
