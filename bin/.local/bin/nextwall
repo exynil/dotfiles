@@ -13,7 +13,7 @@ current_wallpaper=$(readlink -f "$CURRENT_LINK")
 current_index=-1
 
 for i in "${!wallpapers[@]}"; do
-    if [[ "${wallpapers[$i]}" == "$current_wallpaper" ]]; then
+    if [[ "${wallpapers[$i]##*/}" == "${current_wallpaper##*/}" ]]; then
         current_index=$i
         break
     fi
