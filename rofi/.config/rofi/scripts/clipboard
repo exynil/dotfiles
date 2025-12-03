@@ -3,3 +3,4 @@
 rofi_command='rofi -i -dmenu -p 'clipboard' -theme themes/dmenu.rasi -show clipboard -display-columns 2'
 
 cliphist list | $rofi_command | cliphist decode | wl-copy
+# clipstore list | $rofi_command | cliphist decode | wl-copy
