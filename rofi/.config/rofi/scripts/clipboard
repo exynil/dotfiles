@@ -1,6 +1,15 @@
 #!/bin/bash
 
-rofi_command='rofi -i -dmenu -p 'clipboard' -theme themes/dmenu.rasi -show clipboard -display-columns 2'
-
-cliphist list | $rofi_command | cliphist decode | wl-copy
-# clipstore list | $rofi_command | cliphist decode | wl-copy
+rofi -i -modi 'clipboard:clipbox' \
+    -theme themes/clipboard.rasi -show clipboard \
+    -show-icons \
+    -kb-element-next '' \
+    -kb-custom-1 'Tab' \
+    -kb-custom-2 'Alt+1' \
+    -kb-custom-3 'Alt+2' \
+    -kb-custom-4 'Alt+3' \
+    -kb-custom-5 'Alt+4' \
+    -kb-custom-6 'Alt+5' \
+    -kb-custom-7 'Alt+d' \
+    -kb-mode-next '' \
+    -kb-custom-9 'Control+Tab'

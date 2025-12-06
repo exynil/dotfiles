@@ -81,4 +81,5 @@
   "workbench.colorTheme": "One Dark Pro Darker",
   "chat.agent.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "evenBetterToml.formatter.indentString": "",
 }

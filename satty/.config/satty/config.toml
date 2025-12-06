@@ -41,7 +41,7 @@ disable-notifications = true
 
 # Actions to trigger on right click (order is important)
 # [possible values: save-to-clipboard, save-to-file, exit]
-actions-on-right-click = ["save-to-clipboard", "exit"]
+actions-on-right-click = ["exit"]
 
 # Actions to trigger on Enter key (order is important)
 # [possible values: save-to-clipboard, save-to-file, exit]

@@ -1,0 +1,60 @@
+@import "colors.rasi"
+
+* {
+    font:                   "JetBrainsMono NFP 14";
+    background-color:       @surface;
+    text-color:             @on-surface;
+    highlight:              bold underline #F87171;
+}
+window {
+    width:                  866px;
+    border-radius:          10px;
+}
+mainbox {
+    padding:                40px;
+}
+inputbar {
+    spacing:                0px;
+    border-radius:          8px;
+    children:               [ prompt, entry ];
+}
+prompt {
+    padding:                8px;
+    background-color:       @primary;
+    text-color:             @on-primary;
+}
+entry {
+    padding:                8px;
+    background-color:       @surface-container;
+}
+message {
+    padding:                8px 0 0 0;
+}
+textbox {
+    background-color:       @surface-container;
+    padding:                8px;
+    border-radius:          8px;
+}
+listview {
+    padding:                8px 0 0 0;
+}
+element {
+    padding:                8px;
+    children:               [ "element-text", "element-icon" ];
+}
+element selected {
+    background-color:       @on-secondary-fixed-variant;
+    border-color:           @primary;
+    border:                 1px;
+    border-radius:          8px;
+}
+element-text selected {
+    text-color:             @on-secondary-container;
+    background-color:       @on-secondary-fixed-variant;
+}
+element-icon {
+    size:                   1em;
+}
+element-icon selected {
+    background-color:       @on-secondary-fixed-variant;
+}

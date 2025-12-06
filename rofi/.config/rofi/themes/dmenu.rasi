@@ -7,7 +7,7 @@
     highlight:              bold underline #F87171;
 }
 window {
-    width:                  848px;
+    width:                  866px;
     border-radius:          10px;
 }
 mainbox {
