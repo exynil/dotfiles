@@ -82,4 +82,5 @@
   "chat.agent.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "evenBetterToml.formatter.indentString": "",
+  "claudeCode.preferredLocation": "panel",
 }
