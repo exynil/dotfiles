@@ -9,6 +9,8 @@
 window {
     width:                  866px;
     border-radius:          10px;
+    border:                 1px;
+    border-color:           @surface-container;
 }
 mainbox {
     padding:                40px;

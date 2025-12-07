@@ -11,6 +11,8 @@ window {
     x-offset:               -20px;
     y-offset:               0;
     border-radius:          10px;
+    border:                 1px;
+    border-color:           @surface-container;
 }
 mainbox {
     padding:                30px;
