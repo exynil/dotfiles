@@ -1,0 +1,3 @@
+#!/bin/bash
+
+2fa | rofi -dmenu -p TOTP -theme 'themes/dmenu.rasi' | awk '{print $2}' | wl-copy

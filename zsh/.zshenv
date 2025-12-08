@@ -15,6 +15,7 @@ export EDITOR=$(which vim)
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VIMINIT="source ~/.config/vim/vimrc"
 export PASSWORD_STORE_DIR="$APP_DATA/pass"
+export TOTP_SECRETS_FILE="$APP_DATA/2fa/secrets"
 export TERM=xterm-256color
 
 # Настройка LESS
