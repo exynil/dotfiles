@@ -29,6 +29,7 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
+# Для отображения секунд в телеге
 export LC_TIME=C.UTF-8
 
 export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
