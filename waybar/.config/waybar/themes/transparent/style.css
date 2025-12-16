@@ -26,7 +26,7 @@ window#waybar {
 #workspaces button {
   background-color: transparent;
   margin: 0px 1px;
-  padding: 0px 4px;
+  padding: 0px 8px;
   border-radius: 5px;
   color: @primary;
 }
@@ -35,7 +35,6 @@ window#waybar {
 #workspaces button.active.empty {
   background-color: @primary;
   color: @background;
-  padding: 0px 10px;
   transition: all 0.2s ease-in-out;
 }
 
