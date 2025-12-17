@@ -83,5 +83,5 @@
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "evenBetterToml.formatter.indentString": "",
   "claudeCode.preferredLocation": "panel",
-  "terminal.integrated.suggest.upArrowNavigatesHistory": false,
+  "terminal.integrated.suggest.upArrowNavigatesHistory": false
 }
