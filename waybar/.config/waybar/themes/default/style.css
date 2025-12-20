@@ -5,7 +5,7 @@
   font-size: 14px;
   font-weight: bold;
   margin: 0;
-  padding: 0 2px;
+  padding: 0 1px;
 }
 
 window#waybar {
@@ -18,14 +18,14 @@ window#waybar {
 
 #workspaces {
   background-color: @background;
-  margin: 2px 1px;
-  padding: 2px 1px;
+  margin: 2px;
+  padding: 0px 1px;
   border-radius: 7px;
 }
 
 #workspaces button {
   background-color: transparent;
-  margin: 0px 1px;
+  margin: 2px 1px;
   padding: 0px 8px;
   border-radius: 5px;
   color: @primary;
@@ -35,7 +35,7 @@ window#waybar {
 #workspaces button.active.empty {
   background-color: @primary;
   color: @background;
-  /* transition: all 0.2s ease-in-out; */
+  transition: all 0.2s ease-in-out;
 }
 
 #workspaces button.visible,
@@ -49,7 +49,7 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-  background-color: @error;
+  background-color: @error_container;
   color: #ecf0f1;
 }
 
@@ -68,7 +68,7 @@ window#waybar {
   background-color: @surface_container_high;
   color: @primary;
   border-radius: 5px;
-  margin: 4px 1px;
+  margin: 4px 2px;
   padding: 0px 5px;
 }
 

@@ -2,10 +2,10 @@
   "layer": "top",
   "position": "top",
   "height": 32,
-  "spacing": 4,
-  "modules-left": ["hyprland/workspaces", "custom/weather"],
+  "spacing": 0,
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "pulseaudio", "tray"],
+  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "tray"],
   "hyprland/workspaces": {
     "persistent-workspaces": {
       "DP-1": [1, 2, 3, 4, 5],

@@ -3,7 +3,7 @@
   "position": "top",
   "height": 32,
   "spacing": 4,
-  "modules-left": ["hyprland/workspaces", "custom/weather"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "pulseaudio", "tray"],
   "hyprland/workspaces": {
