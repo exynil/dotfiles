@@ -8,7 +8,7 @@ export APP_DATA="$HDD/arch/app-data"
 export DOTFILES="${$(dirname "$(realpath "$HOME/.zshenv")")%/*}"
 
 export TERMINAL=$(which alacritty)
-export BROWSER=$(which firefox)
+export BROWSER=$(which zen-browser)
 export EDITOR=$(which vim)
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

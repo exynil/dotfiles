@@ -57,7 +57,7 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "vscode-great-icons",
   "[sql]": {
     "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
   },
@@ -78,7 +78,7 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.colorTheme": "Tokyo Night",
   "chat.agent.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "evenBetterToml.formatter.indentString": "",
