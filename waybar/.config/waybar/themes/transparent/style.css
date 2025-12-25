@@ -64,6 +64,7 @@ window#waybar {
 #pulseaudio,
 #tray,
 #idle_inhibitor,
+#battery,
 #language {
   background-color: @background;
   color: @primary;

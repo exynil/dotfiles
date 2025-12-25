@@ -5,11 +5,12 @@
   "spacing": 4,
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "pulseaudio", "tray"],
+  "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "battery", "pulseaudio", "tray"],
   "hyprland/workspaces": {
     "persistent-workspaces": {
       "DP-1": [1, 2, 3, 4, 5],
-      "DP-2": [6, 7, 8, 9, 10]
+      "DP-2": [6, 7, 8, 9, 10],
+      "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
     "format": "{icon}",
     "format-icons": {
@@ -81,6 +82,17 @@
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
     "scroll-step": 5
+  },
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "max-length": 25
   },
   "custom/recorder": {
     "exec": "~/.config/waybar/scripts/rec-status.sh",

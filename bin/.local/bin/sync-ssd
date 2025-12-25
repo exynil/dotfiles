@@ -95,7 +95,9 @@ if [[ "$SUCCESS" == true ]]; then
     --exclude '*/lost+found' \
     --exclude '*/logs' \
     --exclude '*/.Trash-1000' \
-    --exclude '*.swp' "$HDD" "$MOUNT_POINT"
+    --exclude '*.swp' \
+    --max-size 10GB \
+    "$HDD" "$MOUNT_POINT"
   else
     echo "Синхронизация отменена пользователем."
   fi

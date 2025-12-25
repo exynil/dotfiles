@@ -12,7 +12,6 @@
   "docker.languageserver.formatter.ignoreMultilineInstructions": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "editor.linkedEditing": true,
-  "vsicons.dontShowNewVersionMessage": true,
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "bracketPairColorizer.depreciation-notice": false,
   "remote.SSH.remoteServerListenOnSocket": true,
@@ -78,10 +77,10 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Tokyo Night",
   "chat.agent.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "evenBetterToml.formatter.indentString": "",
   "claudeCode.preferredLocation": "panel",
-  "terminal.integrated.suggest.upArrowNavigatesHistory": false
+  "terminal.integrated.suggest.upArrowNavigatesHistory": false,
+  "workbench.colorTheme": "Tokyo Night"
 }
