@@ -56,7 +56,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.iconTheme": "vscode-great-icons",
   "[sql]": {
     "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
   },
@@ -82,5 +81,6 @@
   "evenBetterToml.formatter.indentString": "",
   "claudeCode.preferredLocation": "panel",
   "terminal.integrated.suggest.upArrowNavigatesHistory": false,
-  "workbench.colorTheme": "Tokyo Night"
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.iconTheme": "vscode-icons"
 }

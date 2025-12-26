@@ -70,3 +70,5 @@ alias system_fonts='fc-list | cut -d ":" -f 2 | cut -d "," -f 2 | sed "s/^ //" |
 
 alias makemesssages='django-admin makemessages -l ru --ignore .venv'
 alias compilemessages='django-admin compilemessages --locale=ru --ignore="*.venv/*"'
+
+alias gsync='git reset --hard HEAD && git pull'
