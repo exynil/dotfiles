@@ -6,7 +6,7 @@ alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
 alias wa='curl wttr.in/Almaty\?lang=ru'
-alias update='yay -Syu --noconfirm'
+alias update='yay -Syu'
 alias ls='ls --color=auto'
 
 # Загрузка видео с YouTube в лучшем качестве
