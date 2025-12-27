@@ -13,13 +13,10 @@
 
 ### Screenshots
 
-<img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/1.jpg">
-
-<img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/2.jpg">
-
-<img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/3.jpg">
-
-<img src="https://github.com/exynil/files/blob/master/dotfiles/screenshots/4.jpg">
+![1](https://github.com/user-attachments/assets/3d4d6c2f-93aa-4da8-9ed7-528c16a39016)
+![2](https://github.com/user-attachments/assets/c3aedcc5-f54a-48b6-9cca-e92dd24eec33)
+![3](https://github.com/user-attachments/assets/e8f1fee5-dc24-4cf5-8ef8-30fd7107fa16)
+![4](https://github.com/user-attachments/assets/b1b83cdf-98f1-454f-a799-be4eef84ba96)
 
 
 ### Attention
