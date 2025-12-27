@@ -14,7 +14,7 @@ done
 
 folders=(
     "$DOTFILES"
-    "$HDD/obsidian/knowledge-base"
+    "$HDD/notes/knowledge-base"
     "$APP_DATA/pass"
     "$HDD/arch/scripts"
 )

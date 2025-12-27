@@ -1,3 +1,4 @@
+-- Символические ссылки
 Status:children_add(function(self)
     local h = self._current.hovered
     if h and h.link_to then
@@ -7,6 +8,7 @@ Status:children_add(function(self)
     end
 end, 3300, Status.LEFT)
 
+-- Владелец файла (user:group)
 Status:children_add(function()
     local h = cx.active.current.hovered
     if not h or ya.target_family() ~= "unix" then
