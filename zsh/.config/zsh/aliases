@@ -1,7 +1,7 @@
 #!/bin/bash
 
 alias matrix='unimatrix -l Aang -s 95'
-alias x='hyprland'
+alias x='start-hyprland'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'

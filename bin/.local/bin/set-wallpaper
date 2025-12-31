@@ -25,5 +25,5 @@ if [[ ! "$IMAGE_PATH" =~ \.(jpe?g|png|gif|bmp)$ ]]; then
 fi
 
 ln -sf "$IMAGE_PATH" "$wallpaper"
-hyprctl hyprpaper reload ,"$wallpaper"
+hyprctl hyprpaper wallpaper ,"$wallpaper"
 matugen image "$(readlink -f ~/Pictures/wallpaper.jpg)"
