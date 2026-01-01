@@ -81,6 +81,6 @@
   "evenBetterToml.formatter.indentString": "",
   "claudeCode.preferredLocation": "panel",
   "terminal.integrated.suggest.upArrowNavigatesHistory": false,
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "One Dark Pro Darker",
   "workbench.iconTheme": "vscode-icons"
 }

@@ -5,7 +5,7 @@
   "spacing": 0,
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "battery", "pulseaudio", "tray"],
+  "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "battery", "backlight", "pulseaudio", "tray"],
   "hyprland/workspaces": {
     "persistent-workspaces": {
       "DP-1": [1, 2, 3, 4, 5],
@@ -82,6 +82,11 @@
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
     "scroll-step": 5
+  },
+  "backlight": {
+    "device": "amdgpu_bl1",
+    "format": "{percent}% {icon}",
+    "format-icons": [""]
   },
   "battery": {
     "bat": "BAT0",
