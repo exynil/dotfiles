@@ -45,7 +45,8 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 export XDG_SOUNDS_DIR="$HOME/Sounds"
 
-# Для hyprland
 export HOSTNAME="$HOST"
+
+export GOPATH="$XDG_CACHE_HOME/go"
 
 [[ "$PATH" == *"$HOME/.local/bin"* ]] || PATH="$HOME/.local/bin:$PATH"
