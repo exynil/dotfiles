@@ -82,5 +82,6 @@
   "claudeCode.preferredLocation": "panel",
   "terminal.integrated.suggest.upArrowNavigatesHistory": false,
   "workbench.colorTheme": "One Dark Pro Darker",
-  "workbench.iconTheme": "vscode-icons"
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.activityBar.location": "top"
 }
