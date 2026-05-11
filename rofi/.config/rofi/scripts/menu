@@ -9,6 +9,8 @@ bt_device_2="E8:7F:6B:27:DE:FB"  # option_6
 # WireGuard интерфейс
 wg_interface="wg-client"  # option_7
 
+KBD_AUTO_BACKLIGHT_ENABLED_FILE="$APP_DATA/kbd-auto-backlight/enabled"
+
 # Функция проверки подключения Bluetooth
 is_bt_connected() {
     local mac="$1"
@@ -21,6 +23,11 @@ is_wg_connected() {
     local interface="$1"
     sudo wg show "$interface" &>/dev/null
 }
+
+is_kbd_auto_enabled() {
+    [[ -f "$KBD_AUTO_BACKLIGHT_ENABLED_FILE" ]] && [[ "$(cat "$KBD_AUTO_BACKLIGHT_ENABLED_FILE")" == "1" ]]
+}
+
 
 # Функция окраски иконки
 colorize_icon() {
@@ -42,7 +49,7 @@ option_5='󱎘'
 option_8=''
 option_9='󱐡'
 option_10='󰃽'
-option_11=''
+option_11='󰃻'
 option_12=''
 
 # Динамические опции (Bluetooth)
@@ -63,6 +70,13 @@ if is_wg_connected "$wg_interface"; then
     option_7=$(colorize_icon '󱚿' true)
 else
     option_7=$(colorize_icon '󱛀' false)
+fi
+
+# Динамическая опция (Keyboard auto backlight)
+if is_kbd_auto_enabled; then
+    option_8=$(colorize_icon '󰌌' true)
+else
+    option_8=$(colorize_icon '󰥻' false)
 fi
 
 # Variable passed to rofi
@@ -107,7 +121,12 @@ case $chosen_clean in
     ;;
 '')
     ;;
-'')
+'󰌌' | '󰥻')
+    if is_kbd_auto_enabled; then
+        echo "0" > "$KBD_AUTO_BACKLIGHT_ENABLED_FILE"
+    else
+        echo "1" > "$KBD_AUTO_BACKLIGHT_ENABLED_FILE"
+    fi
     ;;
 '󱐡')
     if pgrep -x "firefox" >/dev/null; then
@@ -118,7 +137,10 @@ case $chosen_clean in
 '󰃽')
     rec
     ;;
-'')
+'󰃻')
+    if ! pactl list short modules | grep -q module-combine-sink; then
+        pactl load-module module-combine-sink
+    fi
     ;;
 '')
     ;;

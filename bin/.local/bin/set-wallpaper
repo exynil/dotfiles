@@ -26,4 +26,4 @@ fi
 
 ln -sf "$IMAGE_PATH" "$wallpaper"
 hyprctl hyprpaper wallpaper ,"$wallpaper"
-matugen image "$(readlink -f ~/Pictures/wallpaper.jpg)"
+matugen image "$(readlink -f ~/Pictures/wallpaper.jpg)" --source-color-index 0

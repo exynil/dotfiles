@@ -1,8 +1,8 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 32,
-  "spacing": 0,
+  "height": 56,
+  "spacing": 5,
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["custom/recorder", "idle_inhibitor", "hyprland/language", "battery", "backlight", "pulseaudio", "tray"],
@@ -14,16 +14,16 @@
     },
     "format": "{icon}",
     "format-icons": {
-      "1": "󰨞",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": ""
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
     }
   },
   "hyprland/language": {
@@ -37,7 +37,7 @@
     }
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 32,
     "spacing": 8
   },
   "clock": {

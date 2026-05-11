@@ -1,14 +1,14 @@
 @import "colors.rasi"
 
 * {
-    font:                   "JetBrainsMono NFP 14";
+    font:                   "JetBrainsMono NFP 20";
     background-color:       @surface;
     text-color:             @on-secondary-container;
 }
 window {
-    width:                  742px;
+    width:                  1310px;
     border:                 1;
-    border-radius:          10px;
+    border-radius:          25px;
     border:                 1px;
     border-color:           @surface-container;
 }
@@ -23,7 +23,7 @@ prompt {
     padding:                10px 30px 8px 8px;
     background-color:       @surface;
     text-color:             @primary;
-    border-radius:          0px 5px 5px 0px;
+    border-radius:          0px 15px 15px 0px;
     border-color:           @primary;
     border:                 1;
     margin:                 0 0 2px 0;
@@ -34,7 +34,7 @@ textbox-prompt-colon {
     background-color:       @primary;
     text-color:             @on-primary;
     str:                    "system";
-    border-radius:          5px 0px 0px 5px;
+    border-radius:          15px 0px 0px 15px;
     margin:                 0 0 2px 0;
 }
 listview {
@@ -43,12 +43,12 @@ listview {
     spacing:                15px;
 }
 element-text {
-    font:                   "JetBrainsMono NFP 44";
+    font:                   "JetBrainsMono NFP 80";
     background-color:       @surface-container;
     horizontal-align:       0.5;
     vertical-align:         0.5;
-    padding:                20px 40px 20px 40px;
-    border-radius:          10px;
+    padding:                40px 80px 40px 80px;
+    border-radius:          15px;
 }
 element-text selected {
     background-color:       @primary;

@@ -2,32 +2,28 @@
 
 * {
   font-family: "JetBrainsMono NFP";
-  font-size: 14px;
+  font-size: 30px;
   font-weight: bold;
   margin: 0;
-  padding: 0 1px;
+  padding: 0 2px;
 }
 
 window#waybar {
   background-color: transparent;
 }
 
-#window {
-  text-shadow: 1px 1px 2px @background;
-}
-
 #workspaces {
-  background-color: @background;
-  margin: 2px;
-  padding: 0px 1px;
-  border-radius: 7px;
+  background-color: rgba(26, 27, 38, 0.8);
+  margin: 3px 4px;
+  padding: 3px 4px;
+  border-radius: 14px;
 }
 
 #workspaces button {
   background-color: transparent;
-  margin: 2px 1px;
-  padding: 0px 8px;
-  border-radius: 5px;
+  margin: 2px 2px;
+  padding: 0px 15px;
+  border-radius: 11px;
   color: @primary;
 }
 
@@ -45,7 +41,7 @@ window#waybar {
 }
 
 #workspaces button.empty {
-  color: #727272;
+  color: #828282;
 }
 
 #workspaces button.urgent {
@@ -67,11 +63,11 @@ window#waybar {
 #idle_inhibitor,
 #battery,
 #language {
-  background-color: @background;
+  background-color: rgba(26, 27, 38, 0.8);
   color: @primary;
-  border-radius: 5px;
-  margin: 4px 2px;
-  padding: 0px 5px;
+  margin: 6px 2px;
+  padding: 0px 10px;
+  border-radius: 11px;
 }
 
 #tray {

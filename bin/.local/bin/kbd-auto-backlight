@@ -1,0 +1,67 @@
+#!/bin/bash
+
+LIGHT_SENSOR="/sys/bus/iio/devices/iio:device0/in_illuminance_raw"
+
+KBD_AUTO_BACKLIGHT_ENABLED_FILE="$APP_DATA/kbd-auto-backlight/enabled"
+
+ON_THRESHOLD=8
+OFF_THRESHOLD=15
+
+LAST_STATE=""
+
+ALLOWED_HOSTS=(
+    "arch-laptop"
+)
+
+HOST_ALLOWED=0
+
+for HOST in "${ALLOWED_HOSTS[@]}"; do
+    if [[ "$HOSTNAME" == "$HOST" ]]; then
+        HOST_ALLOWED=1
+        break
+    fi
+done
+
+if [[ "$HOST_ALLOWED" != "1" ]]; then
+    exit 0
+fi
+
+# По умолчанию включено
+if [[ ! -f "$KBD_AUTO_BACKLIGHT_ENABLED_FILE" ]]; then
+    echo "1" > "$KBD_AUTO_BACKLIGHT_ENABLED_FILE"
+fi
+
+while true; do
+
+    ENABLED=$(cat "$KBD_AUTO_BACKLIGHT_ENABLED_FILE" 2>/dev/null)
+
+    # Авто режим выключен
+    if [[ "$ENABLED" != "1" ]]; then
+        sleep 5
+        continue
+    fi
+
+    if [[ ! -f "$LIGHT_SENSOR" ]]; then
+        sleep 5
+        continue
+    fi
+
+    LIGHT=$(cat "$LIGHT_SENSOR")
+
+    # Включаем подсветку
+    if (( LIGHT < ON_THRESHOLD )); then
+        if [[ "$LAST_STATE" != "on" ]]; then
+            sudo /home/max/.local/bin/set-kbd-backlight 3
+            LAST_STATE="on"
+        fi
+
+    # Выключаем подсветку
+    elif (( LIGHT > OFF_THRESHOLD )); then
+        if [[ "$LAST_STATE" != "off" ]]; then
+            sudo /home/max/.local/bin/set-kbd-backlight 0
+            LAST_STATE="off"
+        fi
+    fi
+
+    sleep 5
+done

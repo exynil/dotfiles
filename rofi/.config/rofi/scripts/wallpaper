@@ -62,8 +62,7 @@ case $chosen in
 "󰜸 | random from toplist") set-wallpaper "$(swd -l "$temp_dir" -s toplist)" ;;
 "󰓏 | random from favorites") set-wallpaper "$(swd -l "$temp_dir" -s favorites)" ;;
 "󰀼 | random from saved")
-    mapfile -t wallpapers < <(find "$wallpapers_dir" -maxdepth 1 -type f)
-    set-wallpaper "${wallpapers[$(("$RANDOM" % ${#wallpapers[@]}))]}"
+    set-wallpaper "$(find "$wallpapers_dir" -maxdepth 1 -type f | shuf -n 1)"
     ;;
 "󰈖 | next unviewed"*)
     # Получаем следующее непросмотренное изображение

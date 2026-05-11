@@ -1,12 +1,13 @@
 {
   "editor.fontFamily": "'JetBrains Mono', 'Noto Color Emoji',  'monospace', 'Droid Sans Fallback', 'Material Design Icons', 'Typicons', 'FontAwesome', 'JetBrainsMono NFP'",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
+  "editor.formatOnSave": false,
   "workbench.startupEditor": "newUntitledFile",
   "explorer.confirmDelete": false,
   "explorer.compactFolders": false,
   "editor.rulers": [120],
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "security.workspace.trust.enabled": false,
   "docker.languageserver.formatter.ignoreMultilineInstructions": true,
@@ -18,7 +19,7 @@
   "glassit.alpha": 220,
   "files.exclude": {
     "**/__pycache__": true,
-    "**/.ruff_cache": true
+    "**/.ruff_cache": true,
   },
   "workbench.editor.enablePreview": false,
   "editor.lightbulb.enabled": "off",
@@ -27,11 +28,11 @@
   "files.autoSave": "onFocusChange",
   "files.associations": {
     "*.txt": "bat",
-    "*.py": "python"
+    "*.py": "python",
   },
   "[python]": {
     "editor.formatOnType": true,
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "charliermarsh.ruff",
   },
   "python.formatting.provider": "none",
   "codesnap.showWindowControls": false,
@@ -45,36 +46,36 @@
   "window.restoreWindows": "none",
   "json.maxItemsComputed": 500000,
   "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
-  "python.defaultInterpreterPath": "/media/hdd/max/public/.venv",
+  "python.defaultInterpreterPath": "",
   "editor.wordWrapColumn": 120,
   "database-client.autoSync": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports.ruff": "explicit"
+    "source.organizeImports.ruff": "explicit",
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[sql]": {
-    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode",
   },
   "python.locator": "js",
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode",
   },
   "github.copilot.enable": {
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
   },
   "ruff.lineLength": 120,
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "chat.agent.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
@@ -82,5 +83,13 @@
   "claudeCode.preferredLocation": "panel",
   "terminal.integrated.suggest.upArrowNavigatesHistory": false,
   "workbench.colorTheme": "One Dark Pro Darker",
-  "workbench.iconTheme": "vscode-icons"
+  "workbench.iconTheme": "vscode-icons",
+  "window.zoomLevel": 2,
+  "explorer.confirmPasteNative": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "workbench.settings.applyToAllProfiles": [
+    "python.defaultInterpreterPath"
+  ],
+  "python.terminal.activateEnvironment": false,
+  "python.useEnvironmentsExtension": false,
 }

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+VALUE="$1"
+
+if [[ "$VALUE" != "0" && "$VALUE" != "3" ]]; then
+    exit 1
+fi
+
+echo "$VALUE" > /sys/class/leds/asus::kbd_backlight/brightness

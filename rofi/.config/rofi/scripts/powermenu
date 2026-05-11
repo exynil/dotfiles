@@ -20,11 +20,11 @@ case $chosen in
     systemctl reboot
     ;;
 "$lock")
-    hyprlock
+    sleep 0.2 && hyprlock
     ;;
 "$suspend")
     systemctl suspend
-    hyprlock
+    sleep 0.2 && hyprlock
     ;;
 "$logout")
     hyprctl dispatch exit

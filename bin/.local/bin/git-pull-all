@@ -2,7 +2,7 @@
 
 # Функция для проверки доступности интернета
 check_internet() {
-    wget -q --spider http://google.com
+    wget -q --spider https://google.com
     return $?
 }
 

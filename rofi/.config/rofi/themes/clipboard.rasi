@@ -1,14 +1,14 @@
 @import "colors.rasi"
 
 * {
-    font:                   "JetBrainsMono NFP 14";
+    font:                   "JetBrainsMono NFP 20";
     background-color:       @surface;
     text-color:             @on-surface;
     highlight:              bold underline #F87171;
 }
 window {
-    width:                  866px;
-    border-radius:          10px;
+    width:                  1250px;
+    border-radius:          15px;
     border:                 1px;
     border-color:           @surface-container;
 }
@@ -17,11 +17,11 @@ mainbox {
 }
 inputbar {
     spacing:                0px;
-    border-radius:          8px;
+    border-radius:          12px;
     children:               [ prompt, entry ];
 }
 prompt {
-    padding:                8px;
+    padding:                8px 15px;
     background-color:       @primary;
     text-color:             @on-primary;
 }
@@ -35,20 +35,20 @@ message {
 textbox {
     background-color:       @surface-container;
     padding:                8px;
-    border-radius:          8px;
+    border-radius:          12px;
 }
 listview {
     padding:                8px 0 0 0;
 }
 element {
-    padding:                8px;
+    padding:                8px 15px;
     children:               [ "element-text", "element-icon" ];
 }
 element selected {
     background-color:       @on-secondary-fixed-variant;
     border-color:           @primary;
     border:                 1px;
-    border-radius:          8px;
+    border-radius:          12px;
 }
 element-text selected {
     text-color:             @on-secondary-container;
