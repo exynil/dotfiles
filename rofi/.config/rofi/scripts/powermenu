@@ -27,6 +27,6 @@ case $chosen in
     sleep 0.2 && hyprlock
     ;;
 "$logout")
-    hyprctl dispatch exit
+    hyprctl dispatch 'hl.dsp.exit()'
     ;;
 esac
