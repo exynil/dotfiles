@@ -9,7 +9,7 @@
 }
 
 window#waybar {
-  background-color: transparent;
+  background-color: rgba(26, 27, 38, 0.3);
 }
 
 #workspaces {

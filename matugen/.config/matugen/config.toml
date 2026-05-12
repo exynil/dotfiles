@@ -1,5 +1,9 @@
 [config]
 
+[templates.hyprlock]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+
 [templates.hyprland]
 input_path = './templates/hyprland-colors.lua'
 output_path = '~/.config/hypr/colors.lua'

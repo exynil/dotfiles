@@ -3,8 +3,8 @@ local colors = require("colors")
 
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 20,
+        gaps_in  = 2,
+        gaps_out = 8,
 
         border_size = 4,
 
@@ -22,6 +22,11 @@ hl.config({
         layout = "dwindle",
     },
 
+    dwindle = {
+        preserve_split = true,
+        force_split = 2,
+    },
+
     decoration = {
         rounding       = 10,
         rounding_power = 2,
@@ -34,7 +39,7 @@ hl.config({
             enabled      = false,
             range        = 4,
             render_power = 3,
-            color        = 0xee1a1a1a,
+            color        = 0x00000000,
         },
 
         blur = {
@@ -76,6 +81,7 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "
 hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
+
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
