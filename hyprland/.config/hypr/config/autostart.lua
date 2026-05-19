@@ -18,7 +18,6 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("wl-paste --watch clipbox --store")
   hl.exec_cmd("wl-clip-persist --clipboard regular")
   hl.exec_cmd("dunst")
-  hl.exec_cmd("fix-a2dp")
   hl.exec_cmd("git-pull-all")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface text-scaling-factor 1.5")
 

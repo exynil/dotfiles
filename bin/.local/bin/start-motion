@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-killall motion
-mkdir -p "$HDD/motion/$(date +"%Y.%m.%d")" && cd $_
-notify-send "Motion initialization"
-motion -c ~/.config/motion/motion.conf

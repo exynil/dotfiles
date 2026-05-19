@@ -86,7 +86,6 @@ hl.bind("Print", hl.dsp.exec_cmd("QT_SCALE_FACTOR=1 flameshot gui"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim ~/Pictures/$(date +'%Y-%m-%d_%H-%M-%S_grim.png')"))
 hl.bind("ALT + Print", hl.dsp.exec_cmd("grim ~/Pictures/$(date +'%Y-%m-%d_%H-%M-%S_grim.png')"))
 hl.bind("CTRL + grave", hl.dsp.exec_cmd("dunstctl history-pop"))
-hl.bind("SUPER + g", hl.dsp.exec_cmd("translate"))
 hl.bind("SUPER + SHIFT + i", hl.dsp.exec_cmd("waybar-run"))
 hl.bind("SUPER + n", hl.dsp.exec_cmd("xpad -s"))
 
