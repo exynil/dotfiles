@@ -19,9 +19,6 @@ done
 
 TELEGRAM_API="https://api.telegram.org"
 
-# # Преобразование сообщения в URL-кодированный формат
-# caption=$(printf "%s" "$caption" | od -An -tx1 | tr ' ' % | tr -d '\n')
-
 URL="$TELEGRAM_API/bot$TOKEN/sendDocument"
 
 while :; do
