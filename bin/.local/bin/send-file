@@ -1,14 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-TOKEN="$(cat $APP_DATA/bot/token)"
+TOKEN="$(cat $APP_DATA/bot/$HOSTNAME/token)"
 CHAT_ID="$(cat $APP_DATA/bot/chat_id)"
 
 RETRY_DELAY=5
 
 # Обработка параметров командной строки
-while getopts ":hc:f:t:" opt; do
+while getopts ":c:f:t:" opt; do
     case $opt in
-    h) caption="[$(uname -n)] $caption" ;;
     c) caption="$caption$OPTARG" ;;
     f) file_path="$OPTARG" ;;
     t) topic_id="$OPTARG" ;;

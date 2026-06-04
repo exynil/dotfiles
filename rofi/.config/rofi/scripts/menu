@@ -24,8 +24,18 @@ is_wg_connected() {
     sudo wg show "$interface" &>/dev/null
 }
 
-is_kbd_auto_enabled() {
-    [[ -f "$KBD_AUTO_BACKLIGHT_ENABLED_FILE" ]] && [[ "$(cat "$KBD_AUTO_BACKLIGHT_ENABLED_FILE")" == "1" ]]
+# Только для ноутбука
+is_kbd_backlight_enabled() {
+    [ "$HOSTNAME" != "arch-laptop" ] && return 1
+
+    local brightness_file="/sys/class/leds/asus::kbd_backlight/brightness"
+
+    [ -r "$brightness_file" ] || return 1
+
+    local brightness
+    brightness=$(<"$brightness_file")
+
+    [ "${brightness:-0}" -gt 0 ]
 }
 
 
@@ -72,11 +82,17 @@ else
     option_7=$(colorize_icon '󱛀' false)
 fi
 
-# Динамическая опция (Keyboard auto backlight)
-if is_kbd_auto_enabled; then
-    option_8=$(colorize_icon '󰌌' true)
+# Динамическая опция (Keyboard backlight)
+if [ "$HOSTNAME" = "arch-laptop" ]; then
+    if is_kbd_backlight_enabled; then
+        echo "вкл"
+        option_8=$(colorize_icon '󰌌' true)
+    else
+        echo "выкл"
+        option_8=$(colorize_icon '󰌌' false)
+    fi
 else
-    option_8=$(colorize_icon '󰥻' false)
+    option_8=''
 fi
 
 # Variable passed to rofi
@@ -122,10 +138,10 @@ case $chosen_clean in
 '')
     ;;
 '󰌌' | '󰥻')
-    if is_kbd_auto_enabled; then
-        echo "0" > "$KBD_AUTO_BACKLIGHT_ENABLED_FILE"
+    if is_kbd_backlight_enabled; then
+        sudo $HOME/.local/bin/set-kbd-backlight 0
     else
-        echo "1" > "$KBD_AUTO_BACKLIGHT_ENABLED_FILE"
+        sudo $HOME/.local/bin/set-kbd-backlight 3
     fi
     ;;
 '󱐡')

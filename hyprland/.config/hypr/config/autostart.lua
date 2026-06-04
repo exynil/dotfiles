@@ -23,10 +23,5 @@ hl.on("hyprland.start", function ()
 
   if hostname == "arch-laptop" then
     hl.exec_cmd("battery-log")
-    hl.exec_cmd("kbd-auto-backlight")
-  end
-
-  if hostname == "arch-desktop" then
-    hl.exec_cmd("gsettings set org.gnome.desktop.interface text-scaling-factor 1.5")
   end
 end)
