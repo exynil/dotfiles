@@ -56,8 +56,7 @@ option_1='󰎄'
 option_3='󰻾'
 option_4=''
 option_5='󱎘'
-option_8=''
-option_9='󱐡'
+option_9=''
 option_10='󰃽'
 option_11='󰃻'
 option_12=''
@@ -85,10 +84,8 @@ fi
 # Динамическая опция (Keyboard backlight)
 if [ "$HOSTNAME" = "arch-laptop" ]; then
     if is_kbd_backlight_enabled; then
-        echo "вкл"
         option_8=$(colorize_icon '󰌌' true)
     else
-        echo "выкл"
         option_8=$(colorize_icon '󰌌' false)
     fi
 else
@@ -144,11 +141,7 @@ case $chosen_clean in
         sudo $HOME/.local/bin/set-kbd-backlight 3
     fi
     ;;
-'󱐡')
-    if pgrep -x "firefox" >/dev/null; then
-        killall firefox
-    fi
-    firefox -P guest
+'')
     ;;
 '󰃽')
     rec

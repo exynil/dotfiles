@@ -63,5 +63,4 @@ hl.layer_rule({
   name = "rofi",
   match = { namespace = "rofi" },
   no_screen_share = true,
-  dim_around = true,
 })
