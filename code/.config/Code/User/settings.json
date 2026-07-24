@@ -2,5 +2,6 @@
     "workbench.startupEditor": "none",
     "security.workspace.trust.enabled": false,
     "chat.disableAIFeatures": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden"
 }
