@@ -41,7 +41,7 @@ screenwatch() {
     while true; do
         local file="/tmp/$(date +'%Y%m%d_%H%M%S.png')"
 
-        grim "$file"
+        spectacle -b -n -o "$file"
 
         send-file -f "$file" -t 9480
 
@@ -55,15 +55,12 @@ screenwatch() {
 sendscreenshot() {
     local file="/tmp/$(date +'%Y%m%d_%H%M%S.png')"
 
-    grim "$file" &&
+    spectacle -b -n -o "$file" &&
     send-file -f "$file" -t 9536 &&
     rm -f "$file"
 }
 
-set-en-layout
 
-# # The next line updates PATH for CLI.
-# if [ -f "$HOME/yandex-cloud/path.bash.inc" ]; then source "$HOME/yandex-cloud/path.bash.inc"; fi
-
-# # The next line enables shell command completion for yc.
-# if [ -f "$HOME/yandex-cloud/completion.zsh.inc" ]; then source "$HOME/yandex-cloud/completion.zsh.inc"; fi
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    set-en-layout
+fi

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-alias matrix='unimatrix -l Aang -s 95'
-alias x='start-hyprland'
+alias x='startplasma-wayland'
 alias clock='tty-clock -Ssc'
 alias wb='curl wttr.in/Botakara\?lang=ru'
 alias wk='curl wttr.in/Karaganda\?lang=ru'
@@ -17,25 +16,15 @@ alias yp='youtube-dl -f "bestvideo+bestaudio/bestvideo+bestaudio" --merge-output
 alias c='code ./'
 alias v='source .venv/bin/activate'
 
-# Отключение возможности включения и отключения numlock
-alias n='xmodmap -e "keycode 77="'
-
 # Некоторые часто перезапускаемые службы
 alias srf='systemctl restart vsftpd'
 alias srs='systemctl restart sshd'
 alias srd='systemctl restart docker'
 
-alias watch_docker='watch -n 3 "docker ps --format '"'"'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"'"'"'
-
 # Архивация гит репозитория (untracked файлы пропускает)
 alias zip-git='git ls-files | zip -@ $(basename "$PWD")'
 
 alias grc='gource -3840x2160 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 ~/gource.mp4'
-
-alias nvidia='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh nvidia.conf; cd ~'
-alias intel='cd /media/hdd/arch/scripts/xorg-conf && sudo ./switch.sh intel.conf; cd ~'
-
-alias lock='export WAYLAND_DISPLAY=wayland-1;export XDG_RUNTIME_DIR=/run/user/1000;hyprlock'
 
 alias pretty_json="sed 's/'\''/\"/g' | python3 -m json.tool | bat -l json"
 
@@ -43,18 +32,8 @@ alias my_ip="curl -s ipinfo.io | pretty_json"
 
 alias remove_broken_links='find ~ -type l ! -exec test -e {} \; -exec rm {} \;'
 
-alias tree_c='tree -La 6 \
-    -I .git \
-    -I .venv \
-    -I __pycache__ \
-    -I .pytest_cache \
-    -I .ruff_cache \
-    -I pytest-cov-report \
-    -I __init__.py \
-    -I __main__.py \
-'
-
 alias rm_pycache='rm -rf $(find ./ -type d -name "__pycache__")'
+
 alias find_blank='grep -r "[[:blank:]]$" -I . \
     --exclude-dir=.git \
     --exclude-dir=node_modules \

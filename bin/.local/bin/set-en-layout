@@ -1,3 +1,3 @@
 #!/bin/bash
 
-hyprctl switchxkblayout all 0 > /dev/null
+qdbus6 org.kde.keyboard /Layouts setLayout 1 >/dev/null

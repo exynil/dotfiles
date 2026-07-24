@@ -238,6 +238,7 @@ dirs  = [
 	{ name = "Videos", text = "" },
 	{ name = "Sounds", text = "" },
 	{ name = "Templates", text = "" },
+	{ name = "Projects", text = "" },
 ]
 files = [
 	{ name = ".babelrc", text = "", fg = "#cbcb41" },
