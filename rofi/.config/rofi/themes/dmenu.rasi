@@ -1,55 +1,64 @@
 @import "colors.rasi"
 
 * {
-    font:                   "JetBrainsMono NFP 20";
-    background-color:       @surface;
-    text-color:             @on-surface;
-    highlight:              bold underline #F87171;
+    font:                   "JetBrainsMono NFP 12";
+    background-color:       transparent;
+    text-color:             @fg;
+    highlight:              bold #7dcfff;
 }
 window {
-    width:                  1250px;
-    border-radius:          15px;
+    transparency:           "real";
+    width:                  850px;
+    background-color:       @glass;
     border:                 1px;
-    border-color:           @surface-container;
+    border-color:           @accent-line;
+    border-radius:          16px;
 }
 mainbox {
-    padding:                40px;
+    padding:                20px;
+    spacing:                12px;
 }
 inputbar {
-    spacing:                0px;
-    border-radius:          12px;
+    padding:                10px 14px;
+    spacing:                10px;
+    background-color:       @field;
+    border:                 1px;
+    border-color:           @stroke;
+    border-radius:          10px;
     children:               [ prompt, entry ];
 }
 prompt {
-    padding:                8px 15px;
-    background-color:       @primary;
-    text-color:             @on-primary;
+    text-color:             @accent;
 }
 entry {
-    padding:                8px;
-    background-color:       @surface-container;
-}
-message {
-    padding:                8px 0 0 0;
+    placeholder:            "поиск…";
+    placeholder-color:      @fg-dim;
+    cursor-color:           @accent;
 }
 textbox {
-    background-color:       @surface-container;
-    padding:                8px;
-    border-radius:          12px;
+    padding:                8px 12px;
+    background-color:       @field;
+    border-radius:          10px;
+    text-color:             @fg-dim;
 }
 listview {
-    padding:                8px 0 0 0;
+    lines:                  15;
+    spacing:                3px;
+    scrollbar:              false;
+    fixed-height:           true;
 }
 element {
-    padding:                8px 15px;
+    padding:                8px 12px;
+    border:                 0 0 0 3px;
+    border-color:           transparent;
+    border-radius:          8px;
+    children:               [ element-text ];
 }
 element selected {
-    background-color:       @on-secondary-fixed-variant;
-    border-color:           @primary;
-    border:                 1px;
-    border-radius:          12px;
+    background-color:       @accent-glow;
+    border-color:           @accent;
 }
-element-text selected {
-    text-color:             @on-secondary-container;
-    background-color:       @on-secondary-fixed-variant;
+element-text {
+    background-color:       transparent;
+    text-color:             inherit;
 }

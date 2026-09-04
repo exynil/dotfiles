@@ -1,39 +1,45 @@
 @import "colors.rasi"
 
 * {
-    font:                   "JetBrainsMono NFP 80";
-    background-color:       @surface;
-    text-color:             @on-secondary-container;
+    font:                   "JetBrainsMono NFP 64";
+    background-color:       transparent;
+    text-color:             @fg;
 }
 window {
+    transparency:           "real";
     width:                  700px;
     location:               east;
     x-offset:               -20px;
     y-offset:               0;
-    border-radius:          15px;
+    background-color:       @glass;
     border:                 1px;
-    border-color:           @surface-container;
+    border-color:           @accent-line;
+    border-radius:          20px;
 }
 mainbox {
-    padding:                30px;
-    children:               [listview];
+    padding:                24px;
+    children:               [ listview ];
 }
 listview {
     layout:                 vertical;
     columns:                3;
     lines:                  4;
-    spacing:                15px;
+    spacing:                14px;
+}
+element {
+    background-color:       @tile;
+    border:                 1px;
+    border-color:           @stroke;
+    border-radius:          16px;
+    padding:                20px;
+}
+element selected {
+    background-color:       @accent-glow;
+    border-color:           @accent;
 }
 element-text {
-    padding:                20px;
-    background-color:       @surface-container;
+    background-color:       transparent;
+    text-color:             inherit;
     horizontal-align:       0.5;
     vertical-align:         0.5;
-    border-radius:          15px;
-    border:                 1px;
-}
-element-text selected {
-    background-color:       @on-secondary-fixed-variant;
-    text-color:             @on-secondary-container;
-    border-color:           @primary;
 }

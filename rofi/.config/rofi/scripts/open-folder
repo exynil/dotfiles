@@ -37,7 +37,7 @@ fi
 options=$(jq -r '.[] | select(.is_enabled != false) | .folder_name' "$data")
 
 # Показываем меню
-chosen=$(echo "$options" | $rofi_command -p "folders" -dmenu -markup-rows)
+chosen=$(echo "$options" | $rofi_command -p "folders" -dmenu -sync -markup-rows)
 
 [[ -z "$chosen" ]] && exit 0
 

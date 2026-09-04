@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOKEN="$(cat $APP_DATA/bot/$HOSTNAME/token)"
+TOKEN="$(cat $APP_DATA/bot/$HOSTNAME.token)"
 CHAT_ID="$(cat $APP_DATA/bot/chat_id)"
 
 RETRY_DELAY=5

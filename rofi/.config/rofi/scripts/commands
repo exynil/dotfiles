@@ -37,7 +37,7 @@ fi
 options=$(jq -r '.[] | select(.is_enabled != false) | .command_name' "$data")
 
 # Показываем меню
-chosen=$(echo "$options" | $rofi_command -p "commands" -dmenu)
+chosen=$(echo "$options" | $rofi_command -p "commands" -dmenu -sync)
 
 [[ -z "$chosen" ]] && exit 0
 

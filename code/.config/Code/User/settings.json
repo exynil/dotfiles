@@ -3,5 +3,6 @@
     "security.workspace.trust.enabled": false,
     "chat.disableAIFeatures": false,
     "explorer.confirmDelete": false,
-    "workbench.secondarySideBar.defaultVisibility": "hidden"
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "explorer.compactFolders": false
 }

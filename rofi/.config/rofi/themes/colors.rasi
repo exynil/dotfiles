@@ -1,0 +1,17 @@
+/* Tokyo Night — тёмная сине-фиолетовая палитра */
+* {
+    accent:          #bb9af7;
+    accent-bright:   #7dcfff;
+    on-accent:       #16161e;
+    accent-line:     rgba(187, 154, 247, 40%);
+    accent-glow:     rgba(187, 154, 247, 13%);
+
+    glass:           rgba(26, 27, 38, 93%);
+    field:           rgba(22, 22, 30, 65%);
+    tile:            rgba(255, 255, 255, 4%);
+    stroke:          rgba(255, 255, 255, 8%);
+
+    fg:              #c0caf5;
+    fg-dim:          #565f89;
+    danger:          #f7768e;
+}

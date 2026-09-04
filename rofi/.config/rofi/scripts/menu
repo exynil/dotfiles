@@ -9,8 +9,6 @@ bt_device_2="E8:7F:6B:27:DE:FB"  # option_6
 # WireGuard интерфейс
 wg_interface="wg-client"  # option_7
 
-KBD_AUTO_BACKLIGHT_ENABLED_FILE="$APP_DATA/kbd-auto-backlight/enabled"
-
 # Функция проверки подключения Bluetooth
 is_bt_connected() {
     local mac="$1"

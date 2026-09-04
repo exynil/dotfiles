@@ -1,56 +1,55 @@
 @import "colors.rasi"
 
 * {
-    font:                   "JetBrainsMono NFP 20";
-    background-color:       @surface;
-    text-color:             @on-secondary-container;
+    font:                   "JetBrainsMono NFP 16";
+    background-color:       transparent;
+    text-color:             @fg;
 }
 window {
-    width:                  1310px;
-    border:                 1;
-    border-radius:          25px;
+    transparency:           "real";
+    width:                  1140px;
+    background-color:       @glass;
     border:                 1px;
-    border-color:           @surface-container;
+    border-color:           @accent-line;
+    border-radius:          24px;
 }
 mainbox {
-    padding:                40px;
+    padding:                32px;
+    spacing:                18px;
 }
 inputbar {
-    spacing:                0px;
+    padding:                0 6px;
+    spacing:                12px;
     children:               [ textbox-prompt-colon, prompt ];
 }
-prompt {
-    padding:                10px 30px 8px 8px;
-    background-color:       @surface;
-    text-color:             @primary;
-    border-radius:          0px 15px 15px 0px;
-    border-color:           @primary;
-    border:                 1;
-    margin:                 0 0 2px 0;
-}
 textbox-prompt-colon {
-    expand: false;
-    padding:                10px 8px 10px 18px;
-    background-color:       @primary;
-    text-color:             @on-primary;
-    str:                    "system";
-    border-radius:          15px 0px 0px 15px;
-    margin:                 0 0 2px 0;
+    expand:                 false;
+    str:                    "󰅐";
+    text-color:             @accent;
+}
+prompt {
+    text-color:             @fg-dim;
 }
 listview {
     layout:                 horizontal;
-    padding:                15px 0px 0px 0px;
-    spacing:                15px;
+    spacing:                14px;
+}
+element {
+    background-color:       @tile;
+    border:                 1px;
+    border-color:           @stroke;
+    border-radius:          18px;
+    padding:                40px 70px;
+}
+element selected {
+    background-color:       @accent;
+    border-color:           @accent;
+    text-color:             @on-accent;
 }
 element-text {
-    font:                   "JetBrainsMono NFP 80";
-    background-color:       @surface-container;
+    font:                   "JetBrainsMono NFP 64";
+    background-color:       transparent;
+    text-color:             inherit;
     horizontal-align:       0.5;
     vertical-align:         0.5;
-    padding:                40px 80px 40px 80px;
-    border-radius:          15px;
-}
-element-text selected {
-    background-color:       @primary;
-    text-color:             @surface-container;
 }

@@ -20,13 +20,12 @@ case $chosen in
     systemctl reboot
     ;;
 "$lock")
-    sleep 0.2 && hyprlock
+    loginctl lock-session
     ;;
 "$suspend")
-    systemctl suspend
-    sleep 0.2 && hyprlock
+    qdbus6 org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend true
     ;;
 "$logout")
-    hyprctl dispatch 'hl.dsp.exit()'
+    qdbus6 org.kde.Shutdown /Shutdown org.kde.Shutdown.logout
     ;;
 esac

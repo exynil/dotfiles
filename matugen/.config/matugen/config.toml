@@ -1,10 +1,5 @@
 [config]
 
-
-[templates.rofi]
-input_path = './templates/rofi-colors.rasi'
-output_path = '~/.config/rofi/themes/colors.rasi'
-
 [templates.yazi]
 input_path = './templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
