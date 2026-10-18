@@ -58,7 +58,7 @@ reveal = [
 ]
 extract = [
 	{ run = 'ouch d -y %*',   desc = "Extract here with ouch", for = "windows" },
-	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+	{ run = 'ouch d -y %s', desc = "Extract here with ouch", for = "unix" },
 ]
 download = [
 	{ run = "ya emit download --open %S", desc = "Download and open" },
